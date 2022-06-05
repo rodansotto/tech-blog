@@ -5,7 +5,7 @@ categories:
   - "web-design"
 ---
 
-[![fluidlayout](/technical-blog/assets/images/fluidlayout.jpg)](https://rodansotto.files.wordpress.com/2015/01/fluidlayout.jpg)
+[![fluidlayout]({{ site.baseurl }}/assets/images/fluidlayout.jpg)](https://rodansotto.files.wordpress.com/2015/01/fluidlayout.jpg)
 
 Using CSS media queries is one part of making your web site responsive but you are limited to specific viewports.  Having a fluid layout on top of that will greatly improve the responsiveness and makes it more future proof.  In CSS, you can implement a fluid layout by sizing your elements’ horizontal dimensions in proportion using percentage _%_ rather than pixel _px_ and your fonts’ sizes using relative measurement _em_.
 

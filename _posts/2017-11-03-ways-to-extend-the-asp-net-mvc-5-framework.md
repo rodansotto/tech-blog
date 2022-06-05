@@ -5,7 +5,7 @@ categories:
   - "asp-net-mvc"
 ---
 
-![](/technical-blog/assets/images/mvcbloglogo.png)
+![]({{ site.baseurl }}/assets/images/mvcbloglogo.png)
 
 
 

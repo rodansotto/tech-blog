@@ -5,7 +5,7 @@ categories:
   - "javascript"
 ---
 
-![](/technical-blog/assets/images/angularbloglogo1.png)I've been following Angular for a while now and decided recently to develop Angular 2.0+ applications (skipped the previous version, AngularJS, as it's totally different)
+![]({{ site.baseurl }}/assets/images/angularbloglogo1.png)I've been following Angular for a while now and decided recently to develop Angular 2.0+ applications (skipped the previous version, AngularJS, as it's totally different)
 
 .  My initial impression: it does make developing SPA easy and opens the door to the world of open-source frameworks and libraries.  So here are some notes I gathered.
 

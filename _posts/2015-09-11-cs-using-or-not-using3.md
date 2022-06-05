@@ -5,7 +5,7 @@ categories:
   - "c-sharp"
 ---
 
-![](/technical-blog/assets/images/csbloglogo21.png)
+![]({{ site.baseurl }}/assets/images/csbloglogo21.png)
 
 
 

@@ -5,7 +5,7 @@ categories:
   - "web-design"
 ---
 
-[![ResponsiveEnough](/technical-blog/assets/images/responsiveenough.jpg)](http://rodansotto.files.wordpress.com/2014/04/responsiveenough.jpg)Looking at the figure above, it would be nice if the web site displays properly in other browser sizes from other devices.  Well have no fear, responsive web design is here.
+[![ResponsiveEnough]({{ site.baseurl }}/assets/images/responsiveenough.jpg)](http://rodansotto.files.wordpress.com/2014/04/responsiveenough.jpg)Looking at the figure above, it would be nice if the web site displays properly in other browser sizes from other devices.  Well have no fear, responsive web design is here.
 
 So what is responsive web design?  Responsive web design was coined by [Ethan Marcotte](http://www.alistapart.com/articles/responsive-web-design/).  It is basically an approach to making web sites respond to the differing viewports of browsers on different devices by using 3 existing techniques:
 

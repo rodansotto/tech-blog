@@ -5,7 +5,7 @@ categories:
   - "asp-net-mvc"
 ---
 
-![](/technical-blog/assets/images/myprojects.png)
+![]({{ site.baseurl }}/assets/images/myprojects.png)
 
 [DEMO](http://www.rodansotto.com/mvc5/HelloWorldOWINPipeline) | [CODE](http://www.rodansotto.com/projectcode/helloworldowinpipeline01.aspx) | [MY (Other) PROJECTS](http://www.rodansotto.com/myprojects.aspx)
 

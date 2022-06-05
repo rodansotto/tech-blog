@@ -5,7 +5,7 @@ categories:
   - "c-sharp"
 ---
 
-![](/technical-blog/assets/images/csbloglogo21.png)
+![]({{ site.baseurl }}/assets/images/csbloglogo21.png)
 
 You might not need to use multi-threading in all of your C# applications but as a modern software developer, you should make this part of your toolkit.
 

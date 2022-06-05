@@ -5,7 +5,7 @@ categories:
   - "c-sharp"
 ---
 
-[![extmethod](/technical-blog/assets/images/extmethod.jpg)](https://rodansotto.files.wordpress.com/2015/01/extmethod.jpg)
+[![extmethod]({{ site.baseurl }}/assets/images/extmethod.jpg)](https://rodansotto.files.wordpress.com/2015/01/extmethod.jpg)
 
 If not or you are struggling to understand it, then no worries.  I too didn’t understand it fully well when I coded this, but it worked wonderfully.  I am going to break down this code into digestible parts because there is just too much.  I would suggest going through the provided links as well to fully understand each part before going to the next.
 

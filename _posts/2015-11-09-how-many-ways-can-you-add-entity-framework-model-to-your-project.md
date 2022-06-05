@@ -19,6 +19,6 @@ Code First and Reverse Engineer Code First does not automatically generate an **
 
 It can get confusing what these code first and database first mean.  It all lies down to how you synchronize your model changes between the database and code or more accurately where you make your model changes, is it in code or database?  Although in reverse engineer code first, you can change your model in the database, and re-generate the code, essentially doing a database first.
 
-![](/technical-blog/assets/images/eflogo.png)
+![]({{ site.baseurl }}/assets/images/eflogo.png)
 
 

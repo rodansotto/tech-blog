@@ -5,7 +5,7 @@ categories:
   - "design-patterns"
 ---
 
-![](/technical-blog/assets/images/dpbloglogo.png)**DIP** (or _Dependency Inversion Principle_)
+![]({{ site.baseurl }}/assets/images/dpbloglogo.png)**DIP** (or _Dependency Inversion Principle_)
 
  is one of the principles of SOLID.  **SOLID** stands for:
 

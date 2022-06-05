@@ -5,7 +5,7 @@ categories:
   - "javascript"
 ---
 
-![](/technical-blog/assets/images/productcatalogangulardemob.jpg)
+![]({{ site.baseurl }}/assets/images/productcatalogangulardemob.jpg)
 
 [DEMO](http://rodansotto.com/projects/angular/productcatalogdemo/#/products) | CODE (will put it up soon!)
 
@@ -19,7 +19,7 @@ So how did I make VS IDE work?  Well I only used VS IDE as a glorified editor r
 
 In this first iteration, I only have one module and one component that displays the product catalog.  I did setup a route for the component.  As I refactor and/or improve on this app, it will eventually have a proper navigation.  And of course, I had to rewrite rules for the URL so it uses the main angular app's base href.
 
-I have an angular service that calls a web API to retrieve the products data.  I had to pass some paging, sorting, and search info to the web API and I thought I can pass them in the request body but unfortunately Angular's HttpClient does not allow it so I ended up passing them as URL parameters.  I only have one web API method on the backed.  And I only request for /technical-blog/assets/images/photos if the image view is active.
+I have an angular service that calls a web API to retrieve the products data.  I had to pass some paging, sorting, and search info to the web API and I thought I can pass them in the request body but unfortunately Angular's HttpClient does not allow it so I ended up passing them as URL parameters.  I only have one web API method on the backed.  And I only request for {{ site.baseurl }}/assets/images/photos if the image view is active.
 
 There is not much code on the component side that really needs explanation, it's pretty straightforward.  Much of the effort is in making the angular material components work.  For this app, I used the following angular material components: table, paginator, sort, input, button, icon, card, tooltip, and progress spinner.  I really enjoy working on UI so this was worth the time and I think it's a good UI and good thing I went for angular material.
 

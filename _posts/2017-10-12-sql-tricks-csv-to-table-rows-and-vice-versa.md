@@ -5,7 +5,7 @@ categories:
   - "sql-server"
 ---
 
-![](/technical-blog/assets/images/sqllogo1.png) I was looking for a one-line SQL statement to convert a comma-separated value list string to table rows and vice-versa and below is what I found.  I prefer not to put logic in my SQL code (I prefer to limit it with just the simple CRUD statements) but if no other choice then these two SQL tricks will come in handy.  You can try to execute this SQL query on any online SQL compiler you can find on the Internet, but I would recommend [rextester's sql compiler](http://rextester.com/l/sql_server_online_compiler)
+![]({{ site.baseurl }}/assets/images/sqllogo1.png) I was looking for a one-line SQL statement to convert a comma-separated value list string to table rows and vice-versa and below is what I found.  I prefer not to put logic in my SQL code (I prefer to limit it with just the simple CRUD statements) but if no other choice then these two SQL tricks will come in handy.  You can try to execute this SQL query on any online SQL compiler you can find on the Internet, but I would recommend [rextester's sql compiler](http://rextester.com/l/sql_server_online_compiler)
 
 .
 

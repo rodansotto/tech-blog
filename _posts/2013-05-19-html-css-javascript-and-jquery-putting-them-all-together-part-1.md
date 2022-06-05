@@ -66,7 +66,7 @@ Declarations are the _name: value;_ pairs inside the curly braces _{}_.  In our
 
 [W3Schools](http://www.w3schools.com/) has a nice visual way of explaining the CSS syntax:
 
-![](/technical-blog/assets/images/selector.gif)
+![]({{ site.baseurl }}/assets/images/selector.gif)
 
 
 

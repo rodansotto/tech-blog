@@ -5,7 +5,7 @@ categories:
   - "c-sharp"
 ---
 
-![](/technical-blog/assets/images/linqbloglogo.png)
+![]({{ site.baseurl }}/assets/images/linqbloglogo.png)
 
 Query syntax:
 

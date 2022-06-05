@@ -5,7 +5,7 @@ categories:
   - "android"
 ---
 
-[![HTMLonAndroid](/technical-blog/assets/images/htmlonandroid.jpg)](http://rodansotto.files.wordpress.com/2014/05/htmlonandroid.jpg)Although you can easily test your HTML page’s responsive design using Chrome’s [Mobile Emulation](https://developers.google.com/chrome-developer-tools/docs/mobile-emulation) feature, you can also do it, albeit the harder way, by loading the page on the Android emulator’s browser.
+[![HTMLonAndroid]({{ site.baseurl }}/assets/images/htmlonandroid.jpg)](http://rodansotto.files.wordpress.com/2014/05/htmlonandroid.jpg)Although you can easily test your HTML page’s responsive design using Chrome’s [Mobile Emulation](https://developers.google.com/chrome-developer-tools/docs/mobile-emulation) feature, you can also do it, albeit the harder way, by loading the page on the Android emulator’s browser.
 
 First you must run the **Android Virtual Device (AVD) Manager** to launch your Android emulator.  You don’t necessarily have to run the IDE that came with your Android emulator (e.g. Eclipse or Android Studio).  You can use the batch file **android.bat** which you can find under **sdk/tools** of your Android installation folder.  In the **command prompt**, just type in **“android.bat avd”**.
 

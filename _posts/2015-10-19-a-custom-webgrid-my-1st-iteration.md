@@ -15,6 +15,6 @@ If you find that you cannot reference WebGrid in your view, there is a chance th
 
 You can copy and paste the [code](http://rodansotto.com/projectcode/webgriddemo1controller.aspx) into your own project but you have to change the column names in the WebGrid, add these same columns to sort on in the controller, and change the fields you want to filter on in both view and controller.  Also, you can change the default page size in the FilterSortPageInfo class.  Oh by the way, this is a read-only WebGrid and there is no edit or add functionality.  Cheers!
 
-![](/technical-blog/assets/images/myprojects.png)
+![]({{ site.baseurl }}/assets/images/myprojects.png)
 
 

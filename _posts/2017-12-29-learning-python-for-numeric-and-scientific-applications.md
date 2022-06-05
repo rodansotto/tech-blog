@@ -5,7 +5,7 @@ categories:
   - "ai"
 ---
 
-![](/technical-blog/assets/images/pybloglogo.png)
+![]({{ site.baseurl }}/assets/images/pybloglogo.png)
 
 My purpose in learning Python is mainly for numeric and scientific applications, such as AI deep learning.  So my notes will focus mainly on using Python for these types of applications.
 

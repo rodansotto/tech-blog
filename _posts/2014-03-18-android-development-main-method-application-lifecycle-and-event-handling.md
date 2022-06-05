@@ -95,7 +95,7 @@ Knowing the different states in the lifecycle, how to take advantage of them by 
 
 The figure below describes the states an android app goes through and the different lifecycle callbacks that the system calls and that the app can implement.
 
-![](/technical-blog/assets/images/basic-lifecycle.png)
+![]({{ site.baseurl }}/assets/images/basic-lifecycle.png)
 
 
 

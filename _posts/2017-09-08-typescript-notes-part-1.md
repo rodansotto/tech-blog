@@ -5,7 +5,7 @@ categories:
   - "javascript"
 ---
 
-![](/technical-blog/assets/images/tslogo.png) I decided to post a series of notes on TypeScript and this is Part 1.  I think understanding what TypeScript does makes you a better JavaScript programmer as you will come to know the issues inherent in JavaScript.  The format I will be using is to present the TypeScript code and explain it along the way in the comments itself and then present the generated JavaScript code.  You can play with the code by copying it and pasting it on any online TypeScript compiler/runner app.  I recommend [Playground TypeScript](https://www.typescriptlang.org/play/)
+![]({{ site.baseurl }}/assets/images/tslogo.png) I decided to post a series of notes on TypeScript and this is Part 1.  I think understanding what TypeScript does makes you a better JavaScript programmer as you will come to know the issues inherent in JavaScript.  The format I will be using is to present the TypeScript code and explain it along the way in the comments itself and then present the generated JavaScript code.  You can play with the code by copying it and pasting it on any online TypeScript compiler/runner app.  I recommend [Playground TypeScript](https://www.typescriptlang.org/play/)
 
 .  So let's get to it and no more dilly dally.
 

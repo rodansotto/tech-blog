@@ -51,6 +51,6 @@ GO
 
 As you can see inner transactions are ignored and the outermost transaction becomes the only one true transaction.  [SQL Server Transaction Locking and Row Versioning Guide](https://technet.microsoft.com/en-us/library/jj856598(v=sql.110).aspx#Advanced) has a section on nested transactions that explains it better.  It's a great article so I recommend reading it from start to finish.
 
-![](/technical-blog/assets/images/sqllogo1.png)
+![]({{ site.baseurl }}/assets/images/sqllogo1.png)
 
 

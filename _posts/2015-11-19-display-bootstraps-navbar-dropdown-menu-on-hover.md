@@ -36,6 +36,6 @@ Using only 3 simple CSS rules, you can have your Bootstrap’s navbar menu dropd
 \[/code\]
 
   
-![](/technical-blog/assets/images/csslogo.png)
+![]({{ site.baseurl }}/assets/images/csslogo.png)
 
 

@@ -5,7 +5,7 @@ categories:
   - "web-design"
 ---
 
-[![UsingMediaQueries2](/technical-blog/assets/images/usingmediaqueries21.jpg)](http://rodansotto.files.wordpress.com/2014/05/usingmediaqueries21.jpg)CSS media queries allows your site to be responsive by changing the styles and layout when viewed from different devices such as mobile devices.
+[![UsingMediaQueries2]({{ site.baseurl }}/assets/images/usingmediaqueries21.jpg)](http://rodansotto.files.wordpress.com/2014/05/usingmediaqueries21.jpg)CSS media queries allows your site to be responsive by changing the styles and layout when viewed from different devices such as mobile devices.
 
 Before media queries, web developers resort to creating a separate web site for mobile viewing.  With media queries you don’t have to anymore.  So what do media queries look like and how do you use them?
 

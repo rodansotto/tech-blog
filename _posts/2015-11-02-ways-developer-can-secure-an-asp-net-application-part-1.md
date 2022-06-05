@@ -23,6 +23,6 @@ categories:
 - Do not rely on the [Request Headers](http://www.w3.org/Protocols/HTTP/HTRQ_Headers.html) as they can be easily faked, most notably the [Referer](http://www.w3.org/Protocols/HTTP/HTRQ_Headers.html#z14) Header.
 - Do not disable [system.web/httpRuntime, attribute enableHeaderChecking](https://msdn.microsoft.com/en-CA/library/e1f13641(v=vs.100).aspx) in web.config or in code using [HttpRuntimeSection.EnableHeaderChecking Property](https://msdn.microsoft.com/en-us/library/system.web.configuration.httpruntimesection.enableheaderchecking(v=vs.110).aspx).
 
-![](/technical-blog/assets/images/secureaspnetlogo.png)
+![]({{ site.baseurl }}/assets/images/secureaspnetlogo.png)
 
 

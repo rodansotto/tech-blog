@@ -5,7 +5,7 @@ categories:
   - "net"
 ---
 
-![](/technical-blog/assets/images/xmldoccomments_01d.jpg)
+![]({{ site.baseurl }}/assets/images/xmldoccomments_01d.jpg)
 
 Remember the "///"?  They are the C# XML documentation comments and they are pretty useful when you are building your APIs and frameworks so other developers who use your code can at least see some useful information on your classes and methods through the intellisense provided by the Visual Studio IDE.
 
@@ -15,9 +15,9 @@ Take the following sample code below.  I have a constructor and a method decora
 
 And on the code where they are used, when I hover over them I will see my comments displayed.
 
-![xmldoccomments_01](/technical-blog/assets/images/xmldoccomments_01.jpg)
+![xmldoccomments_01]({{ site.baseurl }}/assets/images/xmldoccomments_01.jpg)
 
-![xmldoccomments_02b](/technical-blog/assets/images/xmldoccomments_02b.jpg)
+![xmldoccomments_02b]({{ site.baseurl }}/assets/images/xmldoccomments_02b.jpg)
 
 So how about code testing?  .NET or more accurately Visual Studio comes with the Microsoft unit test framework.  It's so easy to add one to your new project or existing project.  Once you have the stubs created for you, you can start coding your tests.
 
@@ -27,7 +27,7 @@ Below is a sample unit testing code I created.
 
 So every time you make changes to your code, and I say you will always need to change or refactor code, running these tests will make sure you didn't break anything.  So it is a pretty useful tool and I see the benefit in this.  And it's so nice to see so many green check marks on your Test Explorer.
 
-![unittesting_01](/technical-blog/assets/images/unittesting_01.jpg)
+![unittesting_01]({{ site.baseurl }}/assets/images/unittesting_01.jpg)
 
 **For more information, check out these links:**
 

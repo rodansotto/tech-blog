@@ -33,6 +33,6 @@ Given an input of 1-7 indicating the day of the week (Sunday being a 1, Monday a
 
 Here are some sample outputs of the program:
 
-![](/technical-blog/assets/images/clip_image0021.jpg)
+![]({{ site.baseurl }}/assets/images/clip_image0021.jpg)
 
 

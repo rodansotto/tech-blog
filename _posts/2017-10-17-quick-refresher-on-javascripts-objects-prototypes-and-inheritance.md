@@ -5,7 +5,7 @@ categories:
   - "javascript"
 ---
 
-![](/technical-blog/assets/images/jsbloglogo.png) Here is how we commonly code JavaScript's objects, prototypes and inheritance.  You can copy the JavaScript code below and quickly run it on any online JavaScript compiler/runner app on the Internet.  I use [JS Bin](https://jsbin.com/kilujodupi/edit?js,console)
+![]({{ site.baseurl }}/assets/images/jsbloglogo.png) Here is how we commonly code JavaScript's objects, prototypes and inheritance.  You can copy the JavaScript code below and quickly run it on any online JavaScript compiler/runner app on the Internet.  I use [JS Bin](https://jsbin.com/kilujodupi/edit?js,console)
 
 .
 
