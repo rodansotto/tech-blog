@@ -9,7 +9,7 @@ categories:
 
 .
 
-\[code language="sql" light="true"\]
+```sql
 -- So if you have a comma separated list, for example a list of integers
 DECLARE @MyListOfInts VARCHAR(255) = '123,456,789'
 
@@ -41,4 +41,4 @@ SELECT SUBSTRING
     ,2
     ,1000
 )
-\[/code\]
+```

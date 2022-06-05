@@ -5,11 +5,9 @@ categories:
   - "javascript"
 ---
 
-![]({{ site.baseurl }}/assets/images/jsbloglogo.png) Here is how we commonly code JavaScript's objects, prototypes and inheritance.  You can copy the JavaScript code below and quickly run it on any online JavaScript compiler/runner app on the Internet.  I use [JS Bin](https://jsbin.com/kilujodupi/edit?js,console)
+![]({{ site.baseurl }}/assets/images/jsbloglogo.png) Here is how we commonly code JavaScript's objects, prototypes and inheritance.  You can copy the JavaScript code below and quickly run it on any online JavaScript compiler/runner app on the Internet.  I use [JS Bin](https://jsbin.com/kilujodupi/edit?js,console).
 
-.
-
-\[code language="javascript" light="true"\]
+```js
 // If we don't need to create/instantiate objects, then an object literal will do
 console.log("\*\*\*\*\*Object Literal\*\*\*\*\*");
 var EmployeeMe = {
@@ -74,4 +72,4 @@ console.log(Object.getPrototypeOf(Object.getPrototypeOf(Object.getPrototypeOf(m)
 
 // As we can see in the last three statements how Manager inherits Employee
 //  and the Employee inherits from Object by traversing the prototype chain
-\[/code\]
+```

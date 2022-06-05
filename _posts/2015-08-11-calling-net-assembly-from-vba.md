@@ -6,13 +6,34 @@ categories:
   - "ms-access"
 ---
 
+![]({{ site.baseurl }}/assets/images/vbalogo.png)
+
 Stuck in VBA?  You don’t have to be.  You can move all your business logic code from VBA to a .Net assembly.  It’s easier than you might think and this post will show you how.
 
 First you need to create a new _Class Library_ project and below is the basic structure of a _COM-callable wrapper_ for your .Net assembly.
 
-\[code language="csharp" light="true"\] // need this so we can decorate our classes with ClassInterface // and ComVisible attributes using System.Runtime.InteropServices;
+```cs
+// need this so we can decorate our classes with ClassInterface 
+// and ComVisible attributes using System.Runtime.InteropServices;
 
-// namespace should be the same as assembly name // so when VBA calls it via New or CreateObject() it will use same reference name // and prog ID // ie. New YourNetAssembly.TestFunc or CreateObject("YourNetAssembly.TestFunc") namespace YourNetAssembly { // need to decorate class with following attributes // so we can access its members using intellisense in VBA editor \[ClassInterface(ClassInterfaceType.AutoDual), ComVisible(true)\] public class TestFunc { public int Add(int num1, int num2) { return num1 + num2; } } } \[/code\]
+// namespace should be the same as assembly name 
+// so when VBA calls it via New or CreateObject() it will use same reference name 
+// and prog ID 
+// ie. New YourNetAssembly.TestFunc or CreateObject("YourNetAssembly.TestFunc") 
+  namespace YourNetAssembly 
+  { 
+    // need to decorate class with following attributes 
+    // so we can access its members using intellisense in VBA editor 
+    [ClassInterface(ClassInterfaceType.AutoDual), ComVisible(true)]
+    public class TestFunc 
+    { 
+      public int Add(int num1, int num2) 
+      { 
+        return num1 + num2; 
+      } 
+    } 
+  } 
+```
 
  
 
@@ -34,9 +55,11 @@ Once registered, you then add a reference to it from your VBA application.  Fro
 
 There are two ways you might want to call your .Net assembly.  Using the _New_ keyword, or using _CreateObject()_.
 
-\[code language="vb" light="true"\] Dim objTestFunc As New YourNetAssembly.TestFunc ' OR ... Dim objTestFunc As Object Set objTestFunc = CreateObject("YourNetAssembly.TestFunc")
+```
+Dim objTestFunc As New YourNetAssembly.TestFunc ' OR ... Dim objTestFunc As Object Set objTestFunc = CreateObject("YourNetAssembly.TestFunc")
 
-Dim intResult As Integer intResult = objTestFunc.Add(1, 2) MsgBox intResult \[/code\]
+Dim intResult As Integer intResult = objTestFunc.Add(1, 2) MsgBox intResult 
+```
 
  
 
@@ -44,11 +67,13 @@ Great, but how about debugging or stepping into the .Net assembly?  Well if you
 
 What about if your VBA development environment is on a different machine?  Well hope is not lost yet.  Assuming you have a debugger program installed on that machine, you can place a _Debug.Assert(false);_ or _Debugger.Break();_ in your .Net assembly and this will force it to go into debugging mode when it hits that code and open the debugger program.  Be sure to copy the PDB (debug) file for your .Net assembly plus the source code so you can step through .Net code.
 
-\[code language="csharp" light="true"\] public int Add(int num1, int num2) { System.Diagnostics.Debugger.Break(); // OR ... System.Diagnostics.Debug.Assert(false);
+```cs
+public int Add(int num1, int num2) { System.Diagnostics.Debugger.Break(); // OR ... System.Diagnostics.Debug.Assert(false);
 
 // if Debugger.Break() does not work properly i.e. it does not return back // to the VBA application after debugging, // then use Debug.Assert(false) instead
 
-return num1 + num2; } \[/code\]
+return num1 + num2; } 
+```
 
  
 
@@ -58,6 +83,6 @@ So that’s all there is to it.  Easy eh?  So start coding away then!
 
 Actually you don't need to check the _Make assembly COM-Visible_ in your project’s _Properties –> Application –> Assembly Information…_. unless you want to expose all your public classes in the assembly.  And besides since you still need to decorate your public classes with COM attributes, might as well just use COM attributes to select only those ones you want to be COM-visible.
 
-I found this great article that summarizes what you need to do: [Best Practice in Writing a COM-Visible Assembly (C#)](http://www.codeproject.com/Articles/612604/Best-Practice-in-Writing-a-COM-Visible-Assembly-Cs).  I didn't bother adding the _ProgId_ attribute to my COM-visible classes though, but the rest I did.  Plus I created an interface for each, as was suggested in the article.  Nice thing having an interface is you can control which methods in your COM-visible classes you want to expose, giving you a more granular level of control. ![]({{ site.baseurl }}/assets/images/vbalogo.png)
+I found this great article that summarizes what you need to do: [Best Practice in Writing a COM-Visible Assembly (C#)](http://www.codeproject.com/Articles/612604/Best-Practice-in-Writing-a-COM-Visible-Assembly-Cs).  I didn't bother adding the _ProgId_ attribute to my COM-visible classes though, but the rest I did.  Plus I created an interface for each, as was suggested in the article.  Nice thing having an interface is you can control which methods in your COM-visible classes you want to expose, giving you a more granular level of control.
 
 

@@ -5,6 +5,8 @@ categories:
   - "asp-net"
 ---
 
+![]({{ site.baseurl }}/assets/images/secureaspnetlogo.png)
+
 - Don’t turn off request validation unless you need to.  [Request Validation in ASP.NET](https://msdn.microsoft.com/en-us/library/hh882339(v=vs.110).aspx) explains what this feature does, how to disable it if you must in Web Forms, MVC, and Web Pages and how to manually validate request in absence of it.
 - To mitigate [Cross-Site Scripting (XSS)](https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)) attack, encode any input that you output via [Response.Write()](https://msdn.microsoft.com/en-us/library/1463ysyw(v=vs.110).aspx), [embedded code block <%= %>](https://msdn.microsoft.com/en-us/library/ms178135(v=vs.100).aspx) or by setting a property on a control that produces text within a page,  using [HttpUtility.HtmlEncode()](https://msdn.microsoft.com/en-us/library/73z22y6h(v=vs.110).aspx)  or [HttpUtility.UrlEncode()](https://msdn.microsoft.com/en-us/library/4fkewx0t(v=vs.110).aspx).  [HttpUtility Methods](https://msdn.microsoft.com/en-us/library/system.web.httputility_methods(v=vs.110).aspx) contains all the encoding and decoding methods for html, html attribute, javascript, query string, and url.
 - There is a new embedded code block syntax in ASP.NET 4 that automatically HTML encode output, the [<%: %>](http://weblogs.asp.net/scottgu/new-lt-gt-syntax-for-html-encoding-output-in-asp-net-4-and-asp-net-mvc-2).
@@ -23,6 +25,6 @@ categories:
 - Do not rely on the [Request Headers](http://www.w3.org/Protocols/HTTP/HTRQ_Headers.html) as they can be easily faked, most notably the [Referer](http://www.w3.org/Protocols/HTTP/HTRQ_Headers.html#z14) Header.
 - Do not disable [system.web/httpRuntime, attribute enableHeaderChecking](https://msdn.microsoft.com/en-CA/library/e1f13641(v=vs.100).aspx) in web.config or in code using [HttpRuntimeSection.EnableHeaderChecking Property](https://msdn.microsoft.com/en-us/library/system.web.configuration.httpruntimesection.enableheaderchecking(v=vs.110).aspx).
 
-![]({{ site.baseurl }}/assets/images/secureaspnetlogo.png)
+
 
 

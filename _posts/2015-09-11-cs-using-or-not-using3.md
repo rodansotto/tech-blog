@@ -11,13 +11,17 @@ categories:
 
 I am not referring to the **using** directive to import types defined in other namespaces, but I am referring to the **using** statement to define a scope where at the end of it an object will be disposed, such as this:
 
-\[code language="csharp" light="true"\] using (var cn = new SqlConnection()) { // your code here... } \[/code\]
+```cs
+using (var cn = new SqlConnection()) { // your code here... } 
+```
 
  
 
 Just be aware that the **using** statement is just a shortcut or a convenient syntax for the below code:
 
-\[code language="csharp" light="true"\] var cn = new SqlConnection(); try { // your code here... } finally { if (cn != null) ((IDisposable)cn).Dispose(); } \[/code\]
+```cs
+var cn = new SqlConnection(); try { // your code here... } finally { if (cn != null) ((IDisposable)cn).Dispose(); } 
+```
 
  
 

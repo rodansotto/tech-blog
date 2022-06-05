@@ -7,7 +7,8 @@ categories:
 
 With CSS3 transitions you can animate text as well as other elements in your web page without any JavaScript.  See my demo at [http://rodansotto.com/projects/css/TransitionIAmTitanium.html](http://rodansotto.com/projects/css/TransitionIAmTitanium.html "http://rodansotto.com/projects/css/TransitionIAmTitanium.html") (_just move mouse to center box to animate text and outside box to return to original state_).  In there I am also using a custom web font using CSS3 rule @font-face, HSL (or HSLA) to define color rather than using hex or RGB, text shadow, box shadow, radial gradient, repeating linear gradient, and viewport width and height to dynamically size my text and the other elements in the page.  Most of these CSS3 features may not be implemented yet in some browser versions but I tested this in Chrome and IE 11 and it works.  Below is the CSS code:
 
-\[code language="csharp" light="true"\] /\* see https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face using web font from fontspring.com for more free web fonts, go to http://www.fontsquirrel.com/ \*/ @font-face { font-family: 'linottesemibold'; src: url('./fonts/Linotte-SemiBold-webfont.eot'); src: url('./fonts/Linotte-SemiBold-webfont.eot?#iefix') format('embedded-opentype'), url('./fonts/Linotte-SemiBold-webfont.woff2') format('woff2'), url('./fonts/Linotte-SemiBold-webfont.woff') format('woff'), url('./fonts/Linotte-SemiBold-webfont.ttf') format('truetype'), url('./fonts/Linotte-SemiBold-webfont.svg#linottesemibold') format('svg'); font-weight: normal; font-style: normal; }
+```cs
+/\* see https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face using web font from fontspring.com for more free web fonts, go to http://www.fontsquirrel.com/ \*/ @font-face { font-family: 'linottesemibold'; src: url('./fonts/Linotte-SemiBold-webfont.eot'); src: url('./fonts/Linotte-SemiBold-webfont.eot?#iefix') format('embedded-opentype'), url('./fonts/Linotte-SemiBold-webfont.woff2') format('woff2'), url('./fonts/Linotte-SemiBold-webfont.woff') format('woff'), url('./fonts/Linotte-SemiBold-webfont.ttf') format('truetype'), url('./fonts/Linotte-SemiBold-webfont.svg#linottesemibold') format('svg'); font-weight: normal; font-style: normal; }
 
 body { /\* fallback for browsers not supporting radial-gradient, like IE 9 and below \*/ background-color: hsl(210, 30%, 90%); /\* see https://developer.mozilla.org/en-US/docs/Web/CSS/radial-gradient \*/ background: radial-gradient(ellipse farthest-corner, white 70%, hsl(210, 30%, 80%) 100%); }
 
@@ -35,4 +36,5 @@ body { /\* fallback for browsers not supporting radial-gradient, like IE 9 and b
 
 .container:hover .letter\_i { color: hsla(0, 100%, 50%, 1); /\* red \*/ }
 
-.container:hover .letter\_am { color: hsla(120, 100%, 50%, 1); /\* green \*/ } \[/code\]
+.container:hover .letter\_am { color: hsla(120, 100%, 50%, 1); /\* green \*/ } 
+```

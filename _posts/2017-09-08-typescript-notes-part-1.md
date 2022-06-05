@@ -9,7 +9,7 @@ categories:
 
 .  So let's get to it and no more dilly dally.
 
-\[code language="javascript"\]
+```ts
 // TypeScript Notes: Part 1
 
 // Using var
@@ -120,11 +120,11 @@ function myFunctionWithRestParam(...x: Array<number>): void {
 myFunctionWithRestParam(1, 2); // displays 1 and 2
 myFunctionWithRestParam(3, 4, 5); // displays 3, 4, and 5
 myFunctionWithRestParam(6, 7, 8, 9, 0); // displays 6, 7, 8, 9, and 0
-\[/code\]
+```
 
   
 
-\[code language="javascript"\]
+```js
 // Generated JavaScript Code From TypeScript Notes: Part 1
 
 var myDeclaredVar = "Rodan Sotto";
@@ -222,4 +222,4 @@ function myFunctionWithRestParam() {
 myFunctionWithRestParam(1, 2); // displays 1 and 2
 myFunctionWithRestParam(3, 4, 5); // displays 3, 4, and 5
 myFunctionWithRestParam(6, 7, 8, 9, 0); // displays 6, 7, 8, 9, and 0
-\[/code\]
+```

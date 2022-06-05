@@ -5,11 +5,13 @@ categories:
   - "web-design"
 ---
 
+![]({{ site.baseurl }}/assets/images/csslogo.png)
+
 [DEMO](http://rodansotto.com/projects/css/BSNavbar_AutoDropdownOnHover.htm)
 
 Using only 3 simple CSS rules, you can have your Bootstrap’s navbar menu dropdown display on hover seamlessly.  Below is the CSS code:
 
-\[code language="css" light="true"\]
+```css
 /\* display dropdown menu on hover
    only when navbar is not in mobile mode (hamburger menu mode) \*/
 @media (min-width: 768px) 
@@ -33,9 +35,9 @@ Using only 3 simple CSS rules, you can have your Bootstrap’s navbar menu dropd
 		background-color: transparent;
 	}
 }
-\[/code\]
+```
 
   
-![]({{ site.baseurl }}/assets/images/csslogo.png)
+
 
 

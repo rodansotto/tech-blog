@@ -9,7 +9,7 @@ categories:
 
 .
 
-\[code language="javascript"\]
+```ts
 // TypeScript Notes: Part 2
 
 // Classes, access modifiers, properties, constructor
@@ -150,11 +150,11 @@ let k = new AnotherPerson("Kane");
 k.CanSing = true;
 k.CanDance = false;
 k.ShowAbilities();
-\[/code\]
+```
 
   
 
-\[code language="javascript"\]
+```js
 // Generated JavaScript Code From TypeScript Notes: Part 2
 
 // Classes, access modifiers, properties, constructor
@@ -314,4 +314,4 @@ var \_\_extends = (this && this.\_\_extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (\_\_.prototype = b.prototype, new \_\_());
     };
 })();
-\[/code\]
+```

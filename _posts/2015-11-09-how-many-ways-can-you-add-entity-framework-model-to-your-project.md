@@ -5,6 +5,8 @@ categories:
   - "net"
 ---
 
+![]({{ site.baseurl }}/assets/images/eflogo.png)
+
 Let me count the ways.  3?  Well there are at least 3 ways you can add Entity Framework (EF) model to your .NET project, that I know of.  One is **Code First**, second is **Reverse Engineer Code First**, and third is the **ADO.NET Entity Data Model (EDMX)**.
 
 **Code First**, as the name suggests, requires you to code your EF model.  Yep, this requires more coding but gives you  a lot more control.  Usually you go this route if you don’t have an existing database to model or you want to create a fresh new database for your project.  I have not tried this approach as mostly the projects I worked on already has existing database. 
@@ -19,6 +21,6 @@ Code First and Reverse Engineer Code First does not automatically generate an **
 
 It can get confusing what these code first and database first mean.  It all lies down to how you synchronize your model changes between the database and code or more accurately where you make your model changes, is it in code or database?  Although in reverse engineer code first, you can change your model in the database, and re-generate the code, essentially doing a database first.
 
-![]({{ site.baseurl }}/assets/images/eflogo.png)
+
 
 
