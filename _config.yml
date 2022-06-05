@@ -27,6 +27,18 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: rodansotto
 github_username:  rodansotto
 
+# Page default value
+defaults:
+  home:
+    heading: "Rodan Sotto's Tech Blog"
+    subheading: "A software developer's personal notes"
+    banner: 
+      image: "/assets/images/design2.jpg"             # Image banner source
+      height: "320px"         # Banner default height
+
+# Pagination setting
+# paginate: 5
+
 # Build settings
 # theme: minima
 remote_theme: "jeffreytse/jekyll-theme-yat"
