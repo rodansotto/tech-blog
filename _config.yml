@@ -37,7 +37,7 @@ defaults:
       height: "320px"         # Banner default height
 
 # Pagination setting
-# paginate: 5
+paginate: 5
 
 # Build settings
 # theme: minima
