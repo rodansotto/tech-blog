@@ -53,11 +53,11 @@ Public Sub Main()
   
     End Try  
   
-    ReadFiles(ReportSourcePath, "\*.rds")  
+    ReadFiles(ReportSourcePath, "*.rds")  
   
-    'ReadFiles(ReportSourcePath, "\*.rsd")  
+    'ReadFiles(ReportSourcePath, "*.rsd")  
   
-    ReadFiles(ReportSourcePath, "\*.rdl")  
+    ReadFiles(ReportSourcePath, "*.rdl")  
   
     'Publish the report  
   
@@ -141,15 +141,15 @@ Public Sub ReadFiles(filepath As String, fileextension As String)
   
                 Select Case fileextension  
   
-                    Case "\*.rds"  
+                    Case "*.rds"  
   
                         CreateDataSource(filedoc(rptcount).tostring.trim)  
   
-                    Case "\*.rsd"  
+                    Case "*.rsd"  
   
                         CreateDataSet(filedoc(rptcount).tostring.trim)  
   
-                    Case "\*.rdl"  
+                    Case "*.rdl"  
   
                         PublishReport(filedoc(rptcount).tostring.trim)  
   
@@ -487,8 +487,8 @@ Public Sub PublishReport(ByVal reportName As String)
             If item.Name <> "" Then  
   
                 Console.WriteLine("Report: {0} published successfully with warnings", reportName)  
-                UpdateDataSources\_report(reportName)  
-                UpdateDataSet\_report(reportName)  
+                UpdateDataSources_report(reportName)  
+                UpdateDataSet_report(reportName)  
             Else  
   
                 Dim warning As Warning  
@@ -504,8 +504,8 @@ Public Sub PublishReport(ByVal reportName As String)
         Else  
   
             Console.WriteLine("Report: {0} published successfully with no warnings", reportName)  
-            UpdateDataSources\_report(reportName)  
-            UpdateDataSet\_report(reportName)  
+            UpdateDataSources_report(reportName)  
+            UpdateDataSet_report(reportName)  
         End If  
   
     Catch goof As SoapException  
@@ -616,7 +616,7 @@ End Sub
   
 'Utility to Update The Data Sources on the Server  
   
-Public Sub UpdateDataSources\_report(ReportName As String)  
+Public Sub UpdateDataSources_report(ReportName As String)  
   
     rs.Credentials = System.Net.CredentialCache.DefaultCredentials  
   
@@ -662,7 +662,7 @@ End Sub
   
 'Utility to link The Dataset with the Report  
   
-Public Sub UpdateDataSet\_report(ReportName As String)  
+Public Sub UpdateDataSet_report(ReportName As String)  
   
     rs.Credentials = System.Net.CredentialCache.DefaultCredentials  
   

@@ -108,4 +108,4 @@ Back again with design patterns, defining them briefly and the design principles
           
         
 
-\* This is the second in the Design Patterns series.  The first one is [Design Patterns: Strategy, Observer, and Decorator](http://rodansotto.wordpress.com/2013/11/05/design-patterns-strategy-observer-and-decorator/).
+* This is the second in the Design Patterns series.  The first one is [Design Patterns: Strategy, Observer, and Decorator](http://rodansotto.wordpress.com/2013/11/05/design-patterns-strategy-observer-and-decorator/).

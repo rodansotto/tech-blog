@@ -9,7 +9,7 @@ Besides the standard comparison operators (**\=**, **\>**, **<**, etc.), the boo
 
 **LIKE**
 
-Use this when you want to match the value of a column to a string with wildcard characters specified after this keyword.  You use **%** to mean 1 or more characters and **\_** to mean just 1 character.  Enclosing characters in **\[\]** indicates that any of the characters inside is OK.  Specifying **^** before a character excludes that character.
+Use this when you want to match the value of a column to a string with wildcard characters specified after this keyword.  You use **%** to mean 1 or more characters and **_** to mean just 1 character.  Enclosing characters in **\[\]** indicates that any of the characters inside is OK.  Specifying **^** before a character excludes that character.
 
 **IN**
 

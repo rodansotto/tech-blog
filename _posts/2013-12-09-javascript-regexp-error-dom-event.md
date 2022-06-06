@@ -90,7 +90,7 @@ _W3Schools.com_ has a very good beginner resource on [HTML DOM](http://www.w3sch
 
 **Default Action Cancellation**
 
-var event\_handler = function(evt) {  
+var event_handler = function(evt) {  
     if (!evt) evt = window.event;   // for IE  
       
     // ...  
@@ -106,7 +106,7 @@ var event\_handler = function(evt) {
       
 window.onload = function() {  
     var link = document.getElementById("link");  
-    link.onclick = event\_handler;      
+    link.onclick = event_handler;      
 }  
 
   

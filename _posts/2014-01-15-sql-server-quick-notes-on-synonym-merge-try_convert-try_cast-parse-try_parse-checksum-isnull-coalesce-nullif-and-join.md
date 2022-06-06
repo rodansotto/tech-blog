@@ -11,23 +11,23 @@ Starting in SQL Server 2005, you can use **[SYNONYM](http://msdn.microsoft.com/e
 
 \-- say for example you have the following synonym,
 \-- where ClientToronto is the database name
-CREATE SYNONYM SYN\_CUSTOMERS FOR ClientToronto.dbo.Customers
+CREATE SYNONYM SYN_CUSTOMERS FOR ClientToronto.dbo.Customers
 GO
 \-- 
 \-- and you have a SQL statement that uses that synonym
-SELECT \* FROM SYN\_CUSTOMERS
+SELECT * FROM SYN_CUSTOMERS
 \-- 
 \-- if you ever need to run the same SQL statement for a different client,
 \-- say for a client in Chicago, all you have to do is update the synonym
 \-- to point to a different database
-DROP SYNONYM SYN\_CUSTOMERS
+DROP SYNONYM SYN_CUSTOMERS
 GO
-CREATE SYNONYM SYN\_CUSTOMERS FOR ClientChicago.dbo.Customers
+CREATE SYNONYM SYN_CUSTOMERS FOR ClientChicago.dbo.Customers
 GO
 \--
 \-- to check which object the synonym is referring to, 
 \-- you can use the system view sys.synonyms
-SELECT BASE\_OBJECT\_NAME FROM sys.synonyms WHERE NAME = 'SYN\_CUSTOMERS'
+SELECT BASE_OBJECT_NAME FROM sys.synonyms WHERE NAME = 'SYN_CUSTOMERS'
 
  
 
@@ -55,13 +55,13 @@ WHEN NOT MATCHED THEN
 
  
 
-**TRY\_CONVERT, TRY\_CAST, PARSE, TRY\_PARSE**
+**TRY_CONVERT, TRY_CAST, PARSE, TRY_PARSE**
 
-If you want to avoid getting an error when using **CONVERT** or **CAST**, use **[TRY\_CONVERT](http://msdn.microsoft.com/en-us/library/hh230993.aspx)** and **[TRY\_CAST](http://msdn.microsoft.com/en-us/library/hh974669.aspx)**.  These functions, which unfortunately are available only in SQL Server 2012, return NULL if the conversion or casting failed.  New in SQL Server 2012 too are **[PARSE](http://msdn.microsoft.com/en-us/library/hh213316.aspx)** and **[TRY\_PARSE](http://msdn.microsoft.com/en-us/library/hh213126.aspx)** functions, used only for converting from string to date/time and number types, much like the **TryParse()** method in C#, if you know C#.
+If you want to avoid getting an error when using **CONVERT** or **CAST**, use **[TRY_CONVERT](http://msdn.microsoft.com/en-us/library/hh230993.aspx)** and **[TRY_CAST](http://msdn.microsoft.com/en-us/library/hh974669.aspx)**.  These functions, which unfortunately are available only in SQL Server 2012, return NULL if the conversion or casting failed.  New in SQL Server 2012 too are **[PARSE](http://msdn.microsoft.com/en-us/library/hh213316.aspx)** and **[TRY_PARSE](http://msdn.microsoft.com/en-us/library/hh213126.aspx)** functions, used only for converting from string to date/time and number types, much like the **TryParse()** method in C#, if you know C#.
 
-SELECT TRY\_CONVERT(DATETIME2, '1/1/2014')
-SELECT TRY\_CAST('1/1/2014' AS DATETIME2)
-SELECT TRY\_PARSE('1/1/2014' AS DATETIME2)
+SELECT TRY_CONVERT(DATETIME2, '1/1/2014')
+SELECT TRY_CAST('1/1/2014' AS DATETIME2)
+SELECT TRY_PARSE('1/1/2014' AS DATETIME2)
 
  
 

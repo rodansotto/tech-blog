@@ -59,4 +59,4 @@ These services can be layered into the network without impacting the application
 
  
 
-\*This article is Part 2 of the HTTP Fundamental series.  For Part 1, click [**here**](http://rodansotto.wordpress.com/2013/10/29/http-fundamentals-part-1-url-encoding-request-and-response/).
+*This article is Part 2 of the HTTP Fundamental series.  For Part 1, click [**here**](http://rodansotto.wordpress.com/2013/10/29/http-fundamentals-part-1-url-encoding-request-and-response/).

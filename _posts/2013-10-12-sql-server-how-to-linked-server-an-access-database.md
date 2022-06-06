@@ -8,7 +8,7 @@ categories:
 
 Below is the script to create a linked server to an Access database:
 
-EXEC master.dbo.sp\_addlinkedserver   
+EXEC master.dbo.sp_addlinkedserver   
     @server = N'MyLinkedServerAccessDB',   
     @srvproduct = N'Access',   
     @provider = N'Microsoft.Jet.OLEDB.4.0',   
@@ -16,7 +16,7 @@ EXEC master.dbo.sp\_addlinkedserver
 
 Plus you also need to create the linked server login.  What’s important to note here is that the password for the admin account in the Access database is blank by default, unless you have set the password.
 
-EXEC master.dbo.sp\_addlinkedsrvlogin   
+EXEC master.dbo.sp_addlinkedsrvlogin   
     @rmtsrvname = N'MyLinkedServerAccessDB',  
     @useself = N'False',  
     @locallogin = N'sa',  

@@ -9,10 +9,10 @@ categories:
     
     WITH Table2 AS
     (
-        SELECT \*
+        SELECT *
         FROM Table1
     )
-    SELECT \*
+    SELECT *
     FROM Table2
     
      
@@ -20,9 +20,9 @@ categories:
 
  
 
-- **ROW\_NUMBER()** and **RANK()** is useful in numbering or ranking the records based on a criteria.  Both of them are used pretty much the same way and below is an example of using **RANK()** in it’s simplest form:
+- **ROW_NUMBER()** and **RANK()** is useful in numbering or ranking the records based on a criteria.  Both of them are used pretty much the same way and below is an example of using **RANK()** in it’s simplest form:
     
-    SELECT \*, RANK() OVER(ORDER BY Grade DESC) AS StudentRank
+    SELECT *, RANK() OVER(ORDER BY Grade DESC) AS StudentRank
     FROM StudentGrades
     
      
@@ -32,10 +32,10 @@ categories:
 
 - **Derived Table** allows you to substitute a query in place of a table in the **FROM** or **JOIN** clause for example.  Below is one such use:
     
-    SELECT \*
+    SELECT *
     FROM
     (
-        SELECT \*
+        SELECT *
         FROM Table1
     ) AS Table2
     

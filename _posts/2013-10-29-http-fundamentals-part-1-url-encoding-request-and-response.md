@@ -25,7 +25,7 @@ HTTP fundamentals a web developer needs to know:
     
     - **Scheme** describes how to access a particular resource. In our example above, it’s **HTTP**. It can be **HTTPS**, **FTP**, or **MAILTO**.
     - **Host** is the name of the computer hosting the resource. In our example, it’s **mydevsite**.
-    - **Path** is the path to the specific resource. In our example, it’s **/mydevpage**. A **URL** does not have to point to a specific file, like an image (**\*.jpg**) or **ASPX** file (**\*.aspx**). Nowadays, URLs are dynamic and, for **search engine optimization** (**SEO**), they usually contain descriptive keywords. See [**URL optimization for SEO**](http://blog.woorank.com/2013/05/url-optimization-5-best-practices-for-seo/)_._
+    - **Path** is the path to the specific resource. In our example, it’s **/mydevpage**. A **URL** does not have to point to a specific file, like an image (***.jpg**) or **ASPX** file (***.aspx**). Nowadays, URLs are dynamic and, for **search engine optimization** (**SEO**), they usually contain descriptive keywords. See [**URL optimization for SEO**](http://blog.woorank.com/2013/05/url-optimization-5-best-practices-for-seo/)_._
     - **Port** is specified if the host is listening to **HTTP requests** on a port number other than **80**, which is the **default HTTP port number**. Usually specified when testing, debugging, or developing web sites. In our example, its **1234**.
     - **Query**, or **query string**, comes after **?** (the **question mark**) and contains **name=value** pairs separated by **&** (the ampersand). In our example, its **first=Rodan&last=Sotto**.
     - **Fragment** is the part after the **#** sign. This is processed by the browser to display the element identified by the fragment at the top of the screen. In our example, the **comment** section is displayed on top of the screen.
@@ -100,7 +100,7 @@ HTTP fundamentals a web developer needs to know:
     - **Cookie** – cookie information
     - **If-Modified-Since** – date the client last retrieved the resource; requests the server to only send the resource if it’s been modified since that time
 
-- A **full HTTP request** might look like the one below. Note that some headers contain multiple values, like the Accept header. The **\*** (asterisk) in one of the values, usually provided as the last value, means anything. The **q=\[0..1\]** represents relative degree of preference, 1.0 being the highest and the default value. In our example below, the Accept header tells us the client will accept any content types but likes HTML best.
+- A **full HTTP request** might look like the one below. Note that some headers contain multiple values, like the Accept header. The ***** (asterisk) in one of the values, usually provided as the last value, means anything. The **q=\[0..1\]** represents relative degree of preference, 1.0 being the highest and the default value. In our example below, the Accept header tells us the client will accept any content types but likes HTML best.
     
      
     
@@ -108,11 +108,11 @@ HTTP fundamentals a web developer needs to know:
     Host: mydevsite.com
     Connection: keep-alive
     User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) Chrome/16.0.912.75 Safari/535.7
-    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,\*/\*;q=0.8
+    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
     Referer: http://www.google.com/url?&q=mydevsite
     Accept-Encoding: gzip,deflate,sdch
     Accept-Language: en-US,en;q=0.8
-    Accept-Charset: ISO-8859-1,utf-8;q=0.7,\*;q=0.3
+    Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.3
     
      
     

@@ -9,55 +9,56 @@ If you have worked in ASP.NET MVC, you know that the default view engine (or tem
 
 So here I present to you the very basic syntax you need to know about Razor.  In the code below I am using C#, my preferred language.  You can view the generated HTML page [here](http://rodansotto.com/mvc4/razorcsdemo).
 
+```html
 <div\>
     
 <h1\>Razor Demo Using C#</h1\>
     
-@\*  
+@*  
    Razor comments can be one line or multiple lines.
    Unlike HTML comments, Razor comments are not rendered to the page.
-\*@
+*@
     
 @{
-   @\* You can add Razor comments inside the Razor code block such as this. \*@
+   @* You can add Razor comments inside the Razor code block such as this. *@
 }
     
 @{
    // But why use Razor comments when you can use C# comments.
-   /\*
-    \* C# multi-line comment
-    \*/
+   /*
+    * C# multi-line comment
+    */
 }
     
-@\*  
+@*  
    Razor code starts with @ character.
    It can be a single statement block, an inline expression,
     or a multi-statement block.
    Once you start your code with @, all of the .NET framework,
     ASP.NET, and all the C# features are available to you.
-\*@
+*@
     
-@\* An example of a Razor single statement block: \*@
+@* An example of a Razor single statement block: *@
 @{ var myGreeting = "<Hello, World!>"; } 
     
-@\* 
+@* 
    Below is an example of a Razor inline expression.
    Note that the output from server code is automatically HTML-encoded.
     < and > characters in the variable myGreeting will automatically
     be encoded to &lt; and &gt; so it can be displayed properly
     in the browser.  You can check the page source to verify this.
-\*@
+*@
 <p\>The value of myGreeting is: @myGreeting</p\>
     
-@\* 
+@* 
    A Razor inline expression can be multi-token if enclosed in ()
     as in example below.
    Note that () can also be used to explicitly declare a Razor
     inline expression.
-\*@
+*@
 <p\>@("The value of myGreeting is: " + myGreeting)</p\>
     
-@\* Here is an example of a Razor multi-statement block \*@
+@* Here is an example of a Razor multi-statement block *@
 @{
     var myGreeting2 = "Hello, Universe!";
     var myDate = DateTime.Today.ToString("MMMM dd, yyyy");   
@@ -65,7 +66,7 @@ So here I present to you the very basic syntax you need to know about Razor.  I
     
 <p\>@myGreeting2 Today is @myDate.</p\>
     
-@\*
+@*
     You will notice in the previous examples of Razor code blocks, 
      be they single or multi-statement blocks, are enclosed in {}.
      They don't have to be always enclosed in {}.
@@ -73,7 +74,7 @@ So here I present to you the very basic syntax you need to know about Razor.  I
      Since it is essentially a single statement, 
      it can follow the @ character immediately.
      The same goes with for, foreach, switch, etc.
-\*@
+*@
     
 @{ var myMsg = ""; }
     
@@ -88,9 +89,9 @@ else
  
 <p\>@myMsg<p\>
     
-@\*
+@*
     You can also mix text and markup in the code block.
-\*@
+*@
     
 @if (true)
 {
@@ -108,6 +109,7 @@ else
 }
     
 </div\>
+```
 
 Additional Resources:
 

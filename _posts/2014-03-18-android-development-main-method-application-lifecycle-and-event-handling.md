@@ -19,12 +19,12 @@ _**Is there a main() method in Android?**_  There is no **main()** method but t
 
     <application
         android:allowBackup\="true"
-        android:icon\="@drawable/ic\_launcher"
-        android:label\="@string/app\_name"
+        android:icon\="@drawable/ic_launcher"
+        android:label\="@string/app_name"
         android:theme\="@style/AppTheme" \>
         <activity
             android:name\="com.example.app.MainActivity"
-            android:label\="@string/app\_name" \>
+            android:label\="@string/app_name" \>
             <intent-filter\>
                 <action android:name\="android.intent.action.MAIN" />
 
@@ -39,33 +39,33 @@ All android apps contain at least one activity.  An **activity** is much like a
 
 <RelativeLayout xmlns:android\="http://schemas.android.com/apk/res/android"
     xmlns:tools\="http://schemas.android.com/tools"
-    android:layout\_width\="match\_parent"
-    android:layout\_height\="match\_parent"
-    android:paddingLeft\="@dimen/activity\_horizontal\_margin"
-    android:paddingRight\="@dimen/activity\_horizontal\_margin"
-    android:paddingTop\="@dimen/activity\_vertical\_margin"
-    android:paddingBottom\="@dimen/activity\_vertical\_margin"
+    android:layout_width\="match_parent"
+    android:layout_height\="match_parent"
+    android:paddingLeft\="@dimen/activity_horizontal_margin"
+    android:paddingRight\="@dimen/activity_horizontal_margin"
+    android:paddingTop\="@dimen/activity_vertical_margin"
+    android:paddingBottom\="@dimen/activity_vertical_margin"
     tools:context\="com.example.app.MainActivity"\>
 
     <Button
-        android:layout\_width\="wrap\_content"
-        android:layout\_height\="wrap\_content"
+        android:layout_width\="wrap_content"
+        android:layout_height\="wrap_content"
         android:text\="Click me!!!"
         android:id\="@+id/button"
-        android:layout\_marginTop\="30dp"
+        android:layout_marginTop\="30dp"
         android:onClick\="buttonOnClick"
-        android:layout\_alignParentTop\="true"
-        android:layout\_centerHorizontal\="true" />
+        android:layout_alignParentTop\="true"
+        android:layout_centerHorizontal\="true" />
 
     <TextView
-        android:layout\_width\="wrap\_content"
-        android:layout\_height\="wrap\_content"
+        android:layout_width\="wrap_content"
+        android:layout_height\="wrap_content"
         android:textAppearance\="?android:attr/textAppearanceLarge"
         android:text\="No text..."
         android:id\="@+id/textView"
-        android:layout\_below\="@+id/button"
-        android:layout\_centerHorizontal\="true"
-        android:layout\_marginTop\="22dp" />
+        android:layout_below\="@+id/button"
+        android:layout_centerHorizontal\="true"
+        android:layout_marginTop\="22dp" />
 </RelativeLayout\>
 
 The activity’s **behavior** is defined in a **Java class**.
@@ -75,7 +75,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity\_main);
+        setContentView(R.layout.activity_main);
     }
     //
     public void buttonOnClick(View v) {

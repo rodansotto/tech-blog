@@ -9,7 +9,7 @@ categories:
 
 **Page Load** event is fired when the page is loaded and accessed for the first time and when it is loaded in response to a client postback.  But if you need to initialize variables or want something to happen only once during the first load of the page, you can use the **IsPostBack** property of the **Page** object to determine if the page is loaded for the first time or due to postback:
 
-    Protected Sub Page\_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not Page.IsPostBack Then
             ' do some initialization here...
         End If
@@ -35,7 +35,7 @@ To identify each browser session, ASP.NET assigns a unique ID to a session, the 
 
 **ViewState Object**
 
-ViewState object is useful in persisting data on the page between postbacks.  It makes use of the **\_\_VIEWSTATE** input hidden field that is inserted into the generated page.  \_\_VIEWSTATE contains the state of all the controls on the page in encrypted form.
+ViewState object is useful in persisting data on the page between postbacks.  It makes use of the **__VIEWSTATE** input hidden field that is inserted into the generated page.  __VIEWSTATE contains the state of all the controls on the page in encrypted form.
 
 **Profile Object**
 

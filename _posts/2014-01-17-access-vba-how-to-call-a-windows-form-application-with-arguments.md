@@ -5,7 +5,7 @@ categories:
   - "ms-access"
 ---
 
-To call a Windows Form application (\*.exe) with arguments in VBA, you use the **[Shell()](http://office.microsoft.com/en-ca/access-help/shell-function-HA001228906.aspx)** function.
+To call a Windows Form application (*.exe) with arguments in VBA, you use the **[Shell()](http://office.microsoft.com/en-ca/access-help/shell-function-HA001228906.aspx)** function.
 
 Shell "C:\\Dev\\SampleWinFormWithArgs.exe arg1", vbNormalFocus
 

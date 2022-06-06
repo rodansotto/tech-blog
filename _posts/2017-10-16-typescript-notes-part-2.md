@@ -20,12 +20,12 @@ class Employee {
     protected HomeAddress: string;
 
     // properties / accessors
-    private \_position: string;
+    private _position: string;
     get Position(): string {
-        return this.\_position;
+        return this._position;
     }
     set Position(position: string) {
-        this.\_position = position;
+        this._position = position;
     }
 
     // constructor
@@ -86,9 +86,9 @@ console.log("Company shares set to " + m.CompanyShares); // displays "Company sh
 console.log("Home address set to " + m.GetHomeAddress()); // displays "Home address set to Toronto, ON"
 
 // Template strings
-// To use, enclose your template string with the tick symbol (\`)
+// To use, enclose your template string with the tick symbol (`)
 //  and enclose the variables in ${} notation
-console.log(\`Manager ${m.FullName} is hired ${m.HireDate.toLocaleDateString()} as a ${m.Position} and he lives in ${m.GetHomeAddress()}\`);
+console.log(`Manager ${m.FullName} is hired ${m.HireDate.toLocaleDateString()} as a ${m.Position} and he lives in ${m.GetHomeAddress()}`);
 // displays "Manager John Smith is hired ?1?/?1?/?2000 as a Development Manager and he lives in Toronto, ON"
 
 // Interfaces
@@ -105,11 +105,11 @@ class Person implements ICanSing, ICanDance {
     }
 
     Sing(): void {
-        console.log(\`${this.Name} can sing!\`);
+        console.log(`${this.Name} can sing!`);
     }
 
     Dance(): void {
-        console.log(\`${this.Name} can dance!\`);
+        console.log(`${this.Name} can dance!`);
     }
 }
 
@@ -138,11 +138,11 @@ class AnotherPerson extends AbstractPerson {
     }
 
     Sing(): void {
-        console.log(\`${this.Name} can sing!\`);
+        console.log(`${this.Name} can sing!`);
     }
 
     Dance(): void {
-        console.log(\`${this.Name} can dance!\`);
+        console.log(`${this.Name} can dance!`);
     }
 }
 
@@ -158,7 +158,7 @@ k.ShowAbilities();
 // Generated JavaScript Code From TypeScript Notes: Part 2
 
 // Classes, access modifiers, properties, constructor
-var Employee = /\*\* @class \*/ (function () {
+var Employee = /** @class */ (function () {
     // constructor
     function Employee() {
         console.log("Employee object created");
@@ -166,10 +166,10 @@ var Employee = /\*\* @class \*/ (function () {
     
 	Object.defineProperty(Employee.prototype, "Position", {
         get: function () {
-            return this.\_position;
+            return this._position;
         },
         set: function (position) {
-            this.\_position = position;
+            this._position = position;
         },
         enumerable: true,
         configurable: true
@@ -197,7 +197,7 @@ e.Position = "Senior Software Developer";
 console.log("Position set to " + e.Position); // displays "Position set to Senior Software Developer"
 
 // Using shorthand properties to initialize properties at construction
-var Employer = /\*\* @class \*/ (function () {
+var Employer = /** @class */ (function () {
     function Employer(Name, Address, misc) {
         this.Name = Name;
         this.Address = Address;
@@ -210,14 +210,14 @@ var er = new Employer("Acme Company", "Ontario, Canada", "xyz");
 console.log("Employer: " + er.Name + ", " + er.Address); // displays "Employer: Acme Company, Ontario, Canada"
 
 // Inheritance, protected variables in derived classes
-var Manager = /\*\* @class \*/ (function (\_super) {
-    \_\_extends(Manager, \_super);
+var Manager = /** @class */ (function (_super) {
+    __extends(Manager, _super);
     
 	function Manager(CompanyShares, address) {
-        var \_this = \_super.call(this) || this;
-        \_this.CompanyShares = CompanyShares;
-        \_this.HomeAddress = address;
-        return \_this;
+        var _this = _super.call(this) || this;
+        _this.CompanyShares = CompanyShares;
+        _this.HomeAddress = address;
+        return _this;
     }
     
     Manager.prototype.GetHomeAddress = function () {
@@ -241,7 +241,7 @@ console.log("Manager " + m.FullName + " is hired " + m.HireDate.toLocaleDateStri
 
 // Interfaces
 
-var Person = /\*\* @class \*/ (function () {
+var Person = /** @class */ (function () {
     function Person(Name) {
         this.Name = Name;
     }
@@ -263,7 +263,7 @@ j.Dance(); // displays "Jane can dance!"
 
 // Abstract classes
 
-var AbstractPerson = /\*\* @class \*/ (function () {
+var AbstractPerson = /** @class */ (function () {
     function AbstractPerson() {
     }
 
@@ -277,13 +277,13 @@ var AbstractPerson = /\*\* @class \*/ (function () {
     return AbstractPerson;
 }());
 
-var AnotherPerson = /\*\* @class \*/ (function (\_super) {
-    \_\_extends(AnotherPerson, \_super);
+var AnotherPerson = /** @class */ (function (_super) {
+    __extends(AnotherPerson, _super);
     
 	function AnotherPerson(Name) {
-        var \_this = \_super.call(this) || this;
-        \_this.Name = Name;
-        return \_this;
+        var _this = _super.call(this) || this;
+        _this.Name = Name;
+        return _this;
     }
     
 	AnotherPerson.prototype.Sing = function () {
@@ -302,16 +302,16 @@ k.CanSing = true;
 k.CanDance = false;
 k.ShowAbilities();
 
-// This is the \_\_extends code used to implement classes extending another class or abstract class in Typescript
-var \_\_extends = (this && this.\_\_extends) || (function () {
+// This is the __extends code used to implement classes extending another class or abstract class in Typescript
+var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
-        ({ \_\_proto\_\_: \[\] } instanceof Array && function (d, b) { d.\_\_proto\_\_ = b; }) ||
+        ({ __proto__: \[\] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
         function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d\[p\] = b\[p\]; };
     
 	return function (d, b) {
         extendStatics(d, b);
-        function \_\_() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (\_\_.prototype = b.prototype, new \_\_());
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
 ```

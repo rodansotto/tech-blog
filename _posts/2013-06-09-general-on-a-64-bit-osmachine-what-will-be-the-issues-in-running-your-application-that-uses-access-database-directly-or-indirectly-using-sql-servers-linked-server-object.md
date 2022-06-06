@@ -23,20 +23,20 @@ Here is why:
 
 - If you have created a link to your Access database from your SQL Server, you might encounter a similar collation problem below when running your T-SQL queries involving joins to the linked server Access database:
 
-> Cannot resolve the collation conflict between "Latin1\_General\_CI\_AS" and "SQL\_Latin1\_General\_CP1\_CI\_AS" in the equal to operation.
+> Cannot resolve the collation conflict between "Latin1_General_CI_AS" and "SQL_Latin1_General_CP1_CI_AS" in the equal to operation.
 
  
 
-One way to solve this problem is by adding the **COLLATE DATABASE\_DEFAULT** to every text fields that you are comparing with either on the **WHERE** or **JOIN** clause, such as the example below:
+One way to solve this problem is by adding the **COLLATE DATABASE_DEFAULT** to every text fields that you are comparing with either on the **WHERE** or **JOIN** clause, such as the example below:
 
-SELECT \*
+SELECT *
 FROM 
     SQLServerTable1 s
     INNER JOIN LinkedServerAccessDB...AccessDBTable1 AS a
         ON s.DateField1 = a.DateField1
         AND s.IntField1 = a.IntField1
-        AND s.TextField1 COLLATE DATABASE\_DEFAULT = a.TextField1 COLLATE DATABASE\_DEFAULT
-        AND s.TextField2 COLLATE DATABASE\_DEFAULT = a.TextField2 COLLATE DATABASE\_DEFAULT
+        AND s.TextField1 COLLATE DATABASE_DEFAULT = a.TextField1 COLLATE DATABASE_DEFAULT
+        AND s.TextField2 COLLATE DATABASE_DEFAULT = a.TextField2 COLLATE DATABASE_DEFAULT
 
  
 

@@ -30,7 +30,9 @@ categories:
 
 Sometimes deleting so many rows in a SQL Server table takes up a loooong time.  If rolling back data does not matter, use TRUNCATE instead.
 
-```sql TRUNCATE TABLE dbo.MyTable ```
+```sql
+TRUNCATE TABLE dbo.MyTable 
+```
 
 **Generate INSERTs**
 
@@ -38,11 +40,13 @@ I used to use a script I got from the Internet that generates INSERT statements 
 
 **NOT IN vs. NOT EXISTS**
 
-```sql SELECT ProductID FROM Products WHERE ProductID NOT IN ( SELECT ProductID FROM OrderDetails )
+```sql
+SELECT ProductID FROM Products WHERE ProductID NOT IN ( SELECT ProductID FROM OrderDetails )
 
-\-- versus
+-- versus
 
-SELECT ProductID FROM Products p WHERE NOT EXISTS ( SELECT 1 FROM OrderDetails od WHERE od.ProductID = p.ProductID ) ```
+SELECT ProductID FROM Products p WHERE NOT EXISTS ( SELECT 1 FROM OrderDetails od WHERE od.ProductID = p.ProductID ) 
+```
 
 I am not talking about the performance difference between these two SQL operations but rather the functional difference between them.  It might be tempting to say they are the same but it is not.  NOT IN will not behave as one expects when the column used for comparison in the subquery contains NULL values (OrderDetails.ProductID in the example above).  The article [NOT EXISTS vs NOT IN](http://sqlinthewild.co.za/index.php/2010/02/18/not-exists-vs-not-in/) explains why.
 

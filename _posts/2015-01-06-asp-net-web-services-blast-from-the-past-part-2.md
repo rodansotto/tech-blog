@@ -17,12 +17,14 @@ Some important points:
 
 - When you use this method, you need to add the below config to the web service’s _web.config_ file, otherwise you will get this [error](http://stackoverflow.com/questions/657313/request-format-is-unrecognized-for-url-unexpectedly-ending-in).
 
-```xml <configuration> <system.web> <!-- enable HttpGet and HttpPost on the web service --> <webservices> <protocols> <add name="HttpGet" /> <add name="HttpPost" /> </protocols> </webservices> </system.web> </configuration> ```
+```xml
+<configuration> <system.web> <!-- enable HttpGet and HttpPost on the web service --> <webservices> <protocols> <add name="HttpGet" /> <add name="HttpPost" /> </protocols> </webservices> </system.web> </configuration> 
+```
 
 - The response you get will be displayed in the browser in XML format (see my demo [web page](http://rodansotto.com/projects/asmx/UsingHTTPPost.aspx)).  If you want to handle the response, you need to code to send a POST request and handle the response, as in below:
 
 ```cs
-protected void Translatev2Button\_Click(object sender, EventArgs e) { if (EnglishTextBox.Text != string.Empty) { try { // this is the content of the request byte\[\] content = System.Text.Encoding.ASCII.GetBytes( "english=" + EnglishTextBox.Text);
+protected void Translatev2Button_Click(object sender, EventArgs e) { if (EnglishTextBox.Text != string.Empty) { try { // this is the content of the request byte\[\] content = System.Text.Encoding.ASCII.GetBytes( "english=" + EnglishTextBox.Text);
 
 // create the request System.Net.WebRequest request = System.Net.HttpWebRequest.Create( "http://rodansotto.com/asmx/" + "TranslateToFrenchService.asmx/TranslateToFrench"); request.Method = "POST"; request.ContentType = "application/x-www-form-urlencoded"; request.ContentLength = content.Length;
 
@@ -37,7 +39,8 @@ protected void Translatev2Button\_Click(object sender, EventArgs e) { if (Englis
 
 Another way to call a web service is by using [jQuery.ajax()](http://api.jquery.com/jquery.ajax/) function.  This is the preferred way by many.  [Understand jQuery Ajax Function: Call Web Service Using jQuery Ajax Method](http://www.c-sharpcorner.com/UploadFile/dacca2/understand-jquery-ajax-function-call-web-service-using-jque/) shows you how.  Below is the client-side code for my demo [web page](http://rodansotto.com/projects/asmx/UsingJQueryAJAX.aspx) that uses jQuery AJAX to consume the simple [web service](http://rodansotto.com/asmx/translatetofrenchservice.asmx) I created.
 
-```js <head runat="server"> <script src="http://ajax.googleapis.com/.../1.11.2/jquery.min.js"> </script> <script> $(document).ready(function () { $("#TranslateButton").click(function () { // have to add following statement to enable cross-domain request $.support.cors = true;
+```js
+<head runat="server"> <script src="http://ajax.googleapis.com/.../1.11.2/jquery.min.js"> </script> <script> $(document).ready(function () { $("#TranslateButton").click(function () { // have to add following statement to enable cross-domain request $.support.cors = true;
 
 $.ajax({ type: "POST",
 
@@ -61,7 +64,7 @@ Some important points:
 - And don’t forget to enable the following attribute in your web service class: _\[System.Web.Script.Services.ScriptService\]_.
 
 ```cs
-namespace MyWebService { /// <summary> /// Summary description for TranslateToFrenchService /// </summary> \[WebService(Namespace = "http://rodansotto.com/")\] \[WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1\_1)\] \[System.ComponentModel.ToolboxItem(false)\] // To allow this Web Service to be called from script, // using ASP.NET AJAX, uncomment the following line. \[System.Web.Script.Services.ScriptService\] public class TranslateToFrenchService : System.Web.Services.WebService { 
+namespace MyWebService { /// <summary> /// Summary description for TranslateToFrenchService /// </summary> \[WebService(Namespace = "http://rodansotto.com/")\] \[WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)\] \[System.ComponentModel.ToolboxItem(false)\] // To allow this Web Service to be called from script, // using ASP.NET AJAX, uncomment the following line. \[System.Web.Script.Services.ScriptService\] public class TranslateToFrenchService : System.Web.Services.WebService { 
 ```
 
 And that concludes this topic ASP.NET Web Services - Blast From The Past.

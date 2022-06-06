@@ -147,8 +147,8 @@ var myNotHoistedLetVar;
 
 var myBlockLevelScopingLetVar = 5;
 if (myBlockLevelScopingLetVar > 2) {
-    var myBlockLevelScopingLetVar\_1 = 6;
-    console.log(myBlockLevelScopingLetVar\_1); // displays 6 as expected
+    var myBlockLevelScopingLetVar_1 = 6;
+    console.log(myBlockLevelScopingLetVar_1); // displays 6 as expected
 }
 console.log(myBlockLevelScopingLetVar); // displays 5
 
@@ -210,12 +210,12 @@ myFunctionWithOptionalParams(1, 2); // displays 1 and 2
 myFunctionWithOptionalParams(1); // displays 1 and "undefined"
 
 function myFunctionWithRestParam() {
-    var x = \[\];
-    for (var \_i = 0; \_i < arguments.length; \_i++) {
-        x\[\_i - 0\] = arguments\[\_i\];
+    var x = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        x[_i - 0] = arguments[_i];
     }
-    for (var \_a = 0, x\_1 = x; \_a < x\_1.length; \_a++) {
-        var e = x\_1\[\_a\];
+    for (var _a = 0, x_1 = x; _a < x_1.length; _a++) {
+        var e = x_1[_a];
         console.log(e);
     }
 }

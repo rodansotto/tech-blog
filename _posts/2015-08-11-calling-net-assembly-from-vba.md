@@ -20,19 +20,19 @@ First you need to create a new _Class Library_ project and below is the basic st
 // so when VBA calls it via New or CreateObject() it will use same reference name 
 // and prog ID 
 // ie. New YourNetAssembly.TestFunc or CreateObject("YourNetAssembly.TestFunc") 
-  namespace YourNetAssembly 
+namespace YourNetAssembly 
+{ 
+  // need to decorate class with following attributes 
+  // so we can access its members using intellisense in VBA editor 
+  [ClassInterface(ClassInterfaceType.AutoDual), ComVisible(true)]
+  public class TestFunc 
   { 
-    // need to decorate class with following attributes 
-    // so we can access its members using intellisense in VBA editor 
-    [ClassInterface(ClassInterfaceType.AutoDual), ComVisible(true)]
-    public class TestFunc 
+    public int Add(int num1, int num2) 
     { 
-      public int Add(int num1, int num2) 
-      { 
-        return num1 + num2; 
-      } 
+      return num1 + num2; 
     } 
   } 
+} 
 ```
 
  
@@ -56,7 +56,8 @@ Once registered, you then add a reference to it from your VBA application.  Fro
 There are two ways you might want to call your .Net assembly.  Using the _New_ keyword, or using _CreateObject()_.
 
 ```
-Dim objTestFunc As New YourNetAssembly.TestFunc ' OR ... Dim objTestFunc As Object Set objTestFunc = CreateObject("YourNetAssembly.TestFunc")
+Dim objTestFunc As New YourNetAssembly.TestFunc 
+' OR ... Dim objTestFunc As Object Set objTestFunc = CreateObject("YourNetAssembly.TestFunc")
 
 Dim intResult As Integer intResult = objTestFunc.Add(1, 2) MsgBox intResult 
 ```
@@ -68,11 +69,17 @@ Great, but how about debugging or stepping into the .Net assembly?  Well if you
 What about if your VBA development environment is on a different machine?  Well hope is not lost yet.  Assuming you have a debugger program installed on that machine, you can place a _Debug.Assert(false);_ or _Debugger.Break();_ in your .Net assembly and this will force it to go into debugging mode when it hits that code and open the debugger program.  Be sure to copy the PDB (debug) file for your .Net assembly plus the source code so you can step through .Net code.
 
 ```cs
-public int Add(int num1, int num2) { System.Diagnostics.Debugger.Break(); // OR ... System.Diagnostics.Debug.Assert(false);
+public int Add(int num1, int num2) 
+{ 
+  System.Diagnostics.Debugger.Break(); 
+  // OR ... System.Diagnostics.Debug.Assert(false);
 
-// if Debugger.Break() does not work properly i.e. it does not return back // to the VBA application after debugging, // then use Debug.Assert(false) instead
+  // if Debugger.Break() does not work properly i.e. it does not return back 
+  // to the VBA application after debugging, 
+  // then use Debug.Assert(false) instead
 
-return num1 + num2; } 
+  return num1 + num2; 
+} 
 ```
 
  

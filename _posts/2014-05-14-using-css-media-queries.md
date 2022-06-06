@@ -40,13 +40,13 @@ The most commonly used media features are _width_, which is the device’s viewp
 
 Below is the formal syntax definition of media queries:
 
-media\_query\_list: <media\_query\> \[, <media\_query\> \]\*
-media\_query: \[\[only | not\]? <media\_type\> \[ and <expression\> \]\*\]
-  | <expression\> \[ and <expression\> \]\*
-expression: ( <media\_feature\> \[: <value\>\]? )
-media\_type: all | aural | braille | handheld | print |
+media_query_list: <media_query\> \[, <media_query\> \]*
+media_query: \[\[only | not\]? <media_type\> \[ and <expression\> \]*\]
+  | <expression\> \[ and <expression\> \]*
+expression: ( <media_feature\> \[: <value\>\]? )
+media_type: all | aural | braille | handheld | print |
   projection | screen | tty | tv | embossed
-media\_feature: width | min-width | max-width
+media_feature: width | min-width | max-width
   | height | min-height | max-height
   | device-width | min-device-width | max-device-width
   | device-height | min-device-height | max-device-height
@@ -66,12 +66,12 @@ To illustrate the benefits of using media queries, open this page [http://rodans
 
 If I want the page to display nicely, say on a Nexus 7 tablet with 800 width resolution and a Nexus S smartphone with 480 width resolution, I need to add the following media queries to my CSS.
 
-/\* Nexus 7 tablet styles/layout \*/
+/* Nexus 7 tablet styles/layout */
 @media screen and (max-width: 604px) {
 }
-/\* Nexus S smartphone styles/layout \*/    
+/* Nexus S smartphone styles/layout */    
 @media screen and (max-width: 320px) {
-    /\* ... \*/
+    /* ... */
 }
 
  

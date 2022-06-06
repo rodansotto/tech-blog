@@ -35,21 +35,21 @@ When instantiated, a generic type definition becomes a _constructed generic type
 You can place limits or _constraints_ on generic type parameters.
 
 // limit type to value types except Nullable
-public class MyGenericClass<T> where T : struct {/\*...\*/}
+public class MyGenericClass<T> where T : struct {/*...*/}
     
 // limit type to reference types which can include classes,
 //  interfaces, delegates, and array types
-public class MyGenericClass<T> where T : class {/\*...\*/}
+public class MyGenericClass<T> where T : class {/*...*/}
     
 // limit type to types with public parameterless constructor
 // must be specified last in multiple constraints
-public class MyGenericClass<T> where T : new() {/\*...\*/}
+public class MyGenericClass<T> where T : new() {/*...*/}
     
 // limit type to specified base class or to types derived from it
-public class MyGenericClass<T> where T : MyBaseClass {/\*...\*/}
+public class MyGenericClass<T> where T : MyBaseClass {/*...*/}
     
 // limit type to specified interface or to types that implement it
-public class MyGenericClass<T> where T : IMyInterface {/\*...\*/}
+public class MyGenericClass<T> where T : IMyInterface {/*...*/}
     
     
 // limit type to specified type parameter    
@@ -58,12 +58,12 @@ public class MyGenericClass<T> where T : IMyInterface {/\*...\*/}
 //  parameter of the containing type
 public class MyGenericClass<T>
 {
-    void MyMethod<U>(List<U> items) where U : T {/\*...\*/}
+    void MyMethod<U>(List<U> items) where U : T {/*...*/}
 }
     
 // in a generic class, it enforces an inheritance relationship
 //  between the two type parameters
-public class MyGenericClass<T, U> where U : T {/\*...\*/}
+public class MyGenericClass<T, U> where U : T {/*...*/}
     
     
 // type parameter can have multiple constraints 
@@ -85,7 +85,7 @@ A method is considered a _generic method definition_ if it has two parameter lis
 public class MyClass
 {
     // a generic method inside a non-generic class
-    T MyGenericMethod<T>(T arg) {/\*...\*/}
+    T MyGenericMethod<T>(T arg) {/*...*/}
 }
 
  

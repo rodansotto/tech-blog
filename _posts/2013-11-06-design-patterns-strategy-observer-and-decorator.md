@@ -18,7 +18,7 @@ Here and in the next posts, I will talk about design patterns, it’s definition
         - Note: To implement composition, a class will have an interface type reference to a concrete implementation that is usually initialized during the class constructor
 
 - C# Examples:
-    - [Basic calculation of two numbers (+,-) that can expand to any number of operators (/,\*,etc.)](http://newguid.net/vs2008-vs2010/2010/design-patternsc-basic-example-strategy-pattern/)
+    - [Basic calculation of two numbers (+,-) that can expand to any number of operators (/,*,etc.)](http://newguid.net/vs2008-vs2010/2010/design-patternsc-basic-example-strategy-pattern/)
     - [Simple shipping cost calculation that can take in different shipping methods](http://dotnetcodr.com/2013/04/29/design-patterns-and-practices-in-net-the-strategy-pattern/).  This example also shows how to implement the strategy pattern using the [delegate](http://msdn.microsoft.com/en-us/library/900fyy8e(v=vs.110).aspx) approach.
     - [Consultant search algorithm using different strategies](http://blog.lowendahl.net/design-patterns/strategy-pattern/).  It also has [delegate implementation](http://blog.lowendahl.net/design-patterns/strategy-patterns-using-delegates/).
 

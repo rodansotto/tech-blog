@@ -9,7 +9,7 @@ categories:
 
 ```js
 // If we don't need to create/instantiate objects, then an object literal will do
-console.log("\*\*\*\*\*Object Literal\*\*\*\*\*");
+console.log("*****Object Literal*****");
 var EmployeeMe = {
   FullName: "Rodan Sotto",
   HireDate: "12/1/2015",
@@ -24,7 +24,7 @@ console.log(EmployeeMe); // displays the object literal itself
 console.log(Object.getPrototypeOf(EmployeeMe)); // displays the object literal's prototype which is Object
 
 // Otherwise, we would use a constructor function to define the properties of the class
-console.log("\*\*\*\*\*Constructor Function\*\*\*\*\*");
+console.log("*****Constructor Function*****");
 var Employee = function(fullName, hireDate){
   this.FullName = fullName;
   this.HireDate = hireDate;
@@ -48,7 +48,7 @@ console.log(Object.getPrototypeOf(Object.getPrototypeOf(e))); // displays Object
 
 // To inherit from Employee, the following is the common pattern used
 // Notice the call to Employee.call(), this calls the Employee constructor but runs it in the context of the Manager by passing "this"
-console.log("\*\*\*\*\*Inheritance\*\*\*\*\*");
+console.log("*****Inheritance*****");
 var Manager = function(fullName, hireDate, companyShares){
   Employee.call(this, fullName, hireDate);
   this.CompanyShares = companyShares;

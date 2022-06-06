@@ -9,8 +9,8 @@ If you have a table with an [image](http://msdn.microsoft.com/en-us/library/ms18
 
 UPDATE MyTable
 SET MyImageField = (
-    SELECT \* 
-    FROM OPENROWSET(BULK N'C:\\MyExcelFile.xls', SINGLE\_BLOB) AS MyFile
+    SELECT * 
+    FROM OPENROWSET(BULK N'C:\\MyExcelFile.xls', SINGLE_BLOB) AS MyFile
 )
 FROM MyTable
 WHERE ...

@@ -55,7 +55,7 @@ var invoice = {
   taxRate: 0.35,  
   dueDays: 30,  
   getSalesTax: function(subTotal) {  
-    return (subTotal \* invoice.taxRate);  
+    return (subTotal * invoice.taxRate);  
   },  
   getTotal: function(subTotal, salesTax) {  
     return (subTotal + salesTax);  

@@ -12,24 +12,24 @@ categories:
 Using only 3 simple CSS rules, you can have your Bootstrap’s navbar menu dropdown display on hover seamlessly.  Below is the CSS code:
 
 ```css
-/\* display dropdown menu on hover
-   only when navbar is not in mobile mode (hamburger menu mode) \*/
+/* display dropdown menu on hover
+   only when navbar is not in mobile mode (hamburger menu mode) */
 @media (min-width: 768px) 
 {
-	/\* display submenu on hover \*/
+	/* display submenu on hover */
 	.dropdown:hover .dropdown-menu {
 		display: block;
 	}
 
-	/\* since submenu gets displayed too when dropdown menu is clicked 
+	/* since submenu gets displayed too when dropdown menu is clicked 
 		and remains displayed until dropdown menu is clicked again,
-		we need to hide submenu \*/
+		we need to hide submenu */
 	.open > .dropdown-menu {
 		display: none;
 	}
 
-	/\* also dropdown menu is highlighted when clicked,
-		so we need to unhighlight dropdown menu \*/
+	/* also dropdown menu is highlighted when clicked,
+		so we need to unhighlight dropdown menu */
 	.navbar-default .navbar-nav > .open > a, 
 	.navbar-default .navbar-nav > .open > a:focus {
 		background-color: transparent;

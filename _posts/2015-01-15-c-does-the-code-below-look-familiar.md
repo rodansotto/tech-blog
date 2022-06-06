@@ -21,9 +21,9 @@ So what’s an _extension method_?  An extension method is like a static functi
 public static IOrderedQueryable<TSource> OrderByWithDirection<TSource, TKey>( this IQueryable<TSource> query, Expression<Func<TSource, TKey>> keySelector, string sortDir) 
 ```
 
-Depending on the sort direction, OrderByWithDirection calls either OrderBy or OrderByDescending, both of which are actually extension methods themselves extending IQueryable<TSource>.  So it’s only logical that OrderByWithDirection extends the same type as well.  OrderBy and OrderByDescending are part of the _Queryable_ class, much like OrderByWithDirection is part of _ExtensionMethods_ class in the code.  See [Queryable Class](http://msdn.microsoft.com/en-us/library/system.linq.queryable(v=vs.100).aspx), [Queryable.OrderBy Method](http://msdn.microsoft.com/en-us/library/bb549264(v=vs.100).aspx), and [Queryable.OrderByDescending Method](http://msdn.microsoft.com/en-us/library/bb534316(v=vs.100).aspx).
+Depending on the sort direction, OrderByWithDirection calls either OrderBy or OrderByDescending, both of which are actually extension methods themselves extending `IQueryable<TSource>`.  So it’s only logical that OrderByWithDirection extends the same type as well.  OrderBy and OrderByDescending are part of the _Queryable_ class, much like OrderByWithDirection is part of _ExtensionMethods_ class in the code.  See [Queryable Class](http://msdn.microsoft.com/en-us/library/system.linq.queryable(v=vs.100).aspx), [Queryable.OrderBy Method](http://msdn.microsoft.com/en-us/library/bb549264(v=vs.100).aspx), and [Queryable.OrderByDescending Method](http://msdn.microsoft.com/en-us/library/bb534316(v=vs.100).aspx).
 
-OrderBy and OrderByDescending requires an _Expression<Func<TSource, TKey>>_, basically a function to extract a key from an element.  So in OrderByWithDirection, I am passing this function on the second parameter:
+OrderBy and OrderByDescending requires an `Expression<Func<TSource, TKey>>`, basically a function to extract a key from an element.  So in OrderByWithDirection, I am passing this function on the second parameter:
 
 ```cs
 public static IOrderedQueryable<TSource> OrderByWithDirection<TSource, TKey>( this IQueryable<TSource> query, Expression<Func<TSource, TKey>> keySelector, string sortDir) 
@@ -32,17 +32,28 @@ public static IOrderedQueryable<TSource> OrderByWithDirection<TSource, TKey>( th
 To call OrderByWithDirection you would code something like this:
 
 ```cs
-// products variable is of type IQueryable<Product> products = products.OrderByWithDirection(p => p.ProductName, "desc"); 
+// products variable is of type IQueryable<Product> 
+products = products.OrderByWithDirection(p => p.ProductName, "desc"); 
 ```
 
-Here we are passing a lambda expression.  At first, it might look like this lambda expression is returning the product name value and not the product name key, _ProductName_.  But because we are passing this as an Expression<Func<TSource, TKey>>, the lambda expression is being represented as an expression tree which makes this possible.  See [Expression<TDelegate> Class](http://msdn.microsoft.com/en-us/library/bb335710(v=vs.100).aspx), [Func<T, TResult> Delegate](http://msdn.microsoft.com/en-us/library/bb549151(v=vs.100).aspx), [Expression Trees](http://msdn.microsoft.com/en-us/library/bb397951(v=vs.100).aspx), and [How to: Use Expression Trees to Build Dynamic Queries](http://msdn.microsoft.com/en-us/library/bb882637(v=vs.100).aspx).
+Here we are passing a lambda expression.  At first, it might look like this lambda expression is returning the product name value and not the product name key, _ProductName_.  But because we are passing this as an `Expression<Func<TSource, TKey>>`, the lambda expression is being represented as an expression tree which makes this possible.  See [Expression\<TDelegate\> Class](http://msdn.microsoft.com/en-us/library/bb335710(v=vs.100).aspx), [Func\<T, TResult\> Delegate](http://msdn.microsoft.com/en-us/library/bb549151(v=vs.100).aspx), [Expression Trees](http://msdn.microsoft.com/en-us/library/bb397951(v=vs.100).aspx), and [How to: Use Expression Trees to Build Dynamic Queries](http://msdn.microsoft.com/en-us/library/bb882637(v=vs.100).aspx).
 
-Last but not the least, the return type.  Since OrderByWithDirection returns whatever the OrderBy or OrderByDescending returns, it’s only logical to return the same type as well, which is _IOrderedQueryable<TSource>_. See [IOrderedQueryable Interface](http://msdn.microsoft.com/en-us/library/System.Linq.IOrderedQueryable(v=vs.100).aspx).
+Last but not the least, the return type.  Since OrderByWithDirection returns whatever the OrderBy or OrderByDescending returns, it’s only logical to return the same type as well, which is `IOrderedQueryable<TSource>`. See [IOrderedQueryable Interface](http://msdn.microsoft.com/en-us/library/System.Linq.IOrderedQueryable(v=vs.100).aspx).
 
 Below is the complete code in text:
 
 ```cs
-using System; using System.Linq; using System.Linq.Expressions;
+using System;
+using System.Linq;
+using System.Linq.Expressions;
 
-public static class ExtensionMethods { public static IOrderedQueryable<TSource> OrderByWithDirection<TSource, TKey>( this IQueryable<TSource> query, Expression<Func<TSource, TKey>> keySelector, string sortDir) { if (sortDir.ToUpper().Equals("DESC")) { return query.OrderByDescending(keySelector); } else { return query.OrderBy(keySelector); } } } 
+public static class ExtensionMethods {
+  public static IOrderedQueryable < TSource > OrderByWithDirection < TSource, TKey > (this IQueryable < TSource > query, Expression < Func < TSource, TKey >> keySelector, string sortDir) {
+    if (sortDir.ToUpper().Equals("DESC")) {
+      return query.OrderByDescending(keySelector);
+    } else {
+      return query.OrderBy(keySelector);
+    }
+  }
+}
 ```
