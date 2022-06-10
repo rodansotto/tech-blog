@@ -7,7 +7,7 @@ categories:
 
 ![]({{ site.baseurl }}/assets/images/productcatalogangulardemob.jpg)
 
-[DEMO (unavailable)](#) | [CODE](https://github.com/rodansotto/productcatalogdemo-angular2)
+[DEMO](https://rodansotto.github.io/productcatalogdemo-angular14/products) | [CODE](https://github.com/rodansotto/productcatalogdemo-angular2)
 
 
 
