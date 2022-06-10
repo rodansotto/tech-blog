@@ -7,7 +7,7 @@ categories:
 
 If you have worked in ASP.NET MVC, you know that the default view engine (or templating engine) is Razor, much like the .aspx/.ascx/.master file templates in ASP.NET Web Forms.  One thing I like about Razor is that you can use C# or VB.NET as the programming language to code in Razor.  All you need to do is learn how to use the Razor syntax.
 
-So here I present to you the very basic syntax you need to know about Razor.  In the code below I am using C#, my preferred language.  You can view the generated HTML page [here](http://rodansotto.com/mvc4/razorcsdemo).
+So here I present to you the very basic syntax you need to know about Razor.  In the code below I am using C#, my preferred language.  You can view the generated HTML page [here](https://rodansotto.github.io/mvc4/razorcsdemo).
 
 ```html
 <div\>

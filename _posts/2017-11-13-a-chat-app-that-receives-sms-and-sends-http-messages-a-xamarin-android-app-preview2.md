@@ -5,7 +5,7 @@ categories:
   - "android"
 ---
 
-[PREVIEW](http://rodansotto.com/projects/mysmswebchatpreview.html)
+[PREVIEW](https://rodansotto.github.io/projects/mysmswebchatpreview.html)
 
 ![MySMSWebChat02]({{ site.baseurl }}/assets/images/mysmswebchat021.jpg)A while back, I delved into Android development using Android Studio and Java (in this [article](https://rodansotto.wordpress.com/2014/03/18/android-development-main-method-application-lifecycle-and-event-handling/)).  It was a little bit difficult for me as I need to familiarize myself with Android Studio and relearn Java.  But with Xamarin now part of Visual Studio, it became easier.  All I need to concern myself is the Android development itself.  So in just a few days, I created my first usable Android mobile application.  This app can now receive SMS messages but the sending of HTTP messages is still in the works (which is why it's still in a preview).
 

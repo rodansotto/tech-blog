@@ -9,7 +9,7 @@ My last [post](http://rodansotto.wordpress.com/2013/06/11/asp-net-what-are-web-s
 
 **Creating a Web Service and Consuming It Using WSDL Generated Proxy Class**
 
-[ASP.NET - Web Services from TutorialsPoint](http://www.tutorialspoint.com/asp.net/asp.net_web_services.htm) shows you how to create a web service, how to test the web service locally, and how to consume the web service using proxy.  For this demo, I have created a simple [web service](http://rodansotto.com/asmx/translatetofrenchservice.asmx) and a [web page](http://rodansotto.com/projects/asmx/UsingProxy.aspx) that consumes it using proxy.
+[ASP.NET - Web Services from TutorialsPoint](http://www.tutorialspoint.com/asp.net/asp.net_web_services.htm) shows you how to create a web service, how to test the web service locally, and how to consume the web service using proxy.  For this demo, I have created a simple [web service](https://rodansotto.github.io/asmx/translatetofrenchservice.asmx) and a [web page](https://rodansotto.github.io/projects/asmx/UsingProxy.aspx) that consumes it using proxy.
 
 Some important points:
 
@@ -17,7 +17,7 @@ Some important points:
 - Make sure to change the _\[WebService(Namespace = ”http://tempuri.org/”)\]_ attribute for your web service class to something unique before you go live with your web service.  I have mine changed below:
 
 ```cs
-namespace MyWebService { /// <summary> /// Summary description for TranslateToFrenchService /// </summary> \[WebService(Namespace = "http://rodansotto.com/")\] \[WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)\] \[System.ComponentModel.ToolboxItem(false)\] // To allow this Web Service to be called from script, // using ASP.NET AJAX, uncomment the following line. //\[System.Web.Script.Services.ScriptService\] public class TranslateToFrenchService : System.Web.Services.WebService { private string\[,\] translations = { {"good morning", "bonjour"}, {"good evening", "bonsoir"}, {"thank you", "merci"}, {"please", "s'il vous plait"}, {"welcome", "bienvenue"}, {"goodbye", "au revoir"}, {"see you soon", "à bientôt"} };
+namespace MyWebService { /// <summary> /// Summary description for TranslateToFrenchService /// </summary> \[WebService(Namespace = "https://rodansotto.github.io/")\] \[WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)\] \[System.ComponentModel.ToolboxItem(false)\] // To allow this Web Service to be called from script, // using ASP.NET AJAX, uncomment the following line. //\[System.Web.Script.Services.ScriptService\] public class TranslateToFrenchService : System.Web.Services.WebService { private string\[,\] translations = { {"good morning", "bonjour"}, {"good evening", "bonsoir"}, {"thank you", "merci"}, {"please", "s'il vous plait"}, {"welcome", "bienvenue"}, {"goodbye", "au revoir"}, {"see you soon", "à bientôt"} };
 
 \[WebMethod\] public string TranslateToFrench(string english) { for (int i = 0; i &lt; translations.GetLength(0); i++) { if (string.Compare( english, translations\[i, 0\], true) == 0) { return translations\[i, 1\]; } } return ""; } } } 
 ```
@@ -28,7 +28,7 @@ namespace MyWebService { /// <summary> /// Summary description for TranslateToFr
     - Add as a service reference.  [Walkthrough: Creating and Accessing WCF Services from MSDN](http://msdn.microsoft.com/en-us/library/bb386386.aspx) shows you how to add a service reference.  When you add a service reference, additional config is added to the consuming app’s web.config file under <configuration>.  The following is the config that was added to my web page’s site’s web.config file:
     
     ```xml
-    <configuration> <!-- config added for using a service reference --> <system.serviceModel> <bindings> <basicHttpBinding> <binding name="TranslateToFrenchServiceSoap"/> </basicHttpBinding> </bindings> <client> <endpoint address= "http://rodansotto.com/asmx/TranslateToFrenchService.asmx" binding="basicHttpBinding" bindingConfiguration="TranslateToFrenchServiceSoap" contract="MyWebServiceB.TranslateToFrenchServiceSoap" name="TranslateToFrenchServiceSoap"/> </client> </system.serviceModel> </configuration> 
+    <configuration> <!-- config added for using a service reference --> <system.serviceModel> <bindings> <basicHttpBinding> <binding name="TranslateToFrenchServiceSoap"/> </basicHttpBinding> </bindings> <client> <endpoint address= "https://rodansotto.github.io/asmx/TranslateToFrenchService.asmx" binding="basicHttpBinding" bindingConfiguration="TranslateToFrenchServiceSoap" contract="MyWebServiceB.TranslateToFrenchServiceSoap" name="TranslateToFrenchServiceSoap"/> </client> </system.serviceModel> </configuration> 
     ```
     
     To invoke the web service method using the service reference, I used the following code where _MyWebServiceB_ is the namespace I provided:
@@ -44,7 +44,7 @@ namespace MyWebService { /// <summary> /// Summary description for TranslateToFr
     - Add as a web reference.  To add a web reference you have to go to the same _Add Service Reference_ dialog window and click the _Advanced…_ button.  Then click the _Add Web Reference…_ button.  The following are the config added to my web page’s site’s web.config file and also the code I used to invoke the web service method.  You will see the differences between adding as a web reference and adding as a service reference.
 
 ```xml
-<configuration> <!-- config added for using a web reference --> <applicationsettings> <mywebapp.properties.settings> <setting name="MyWebApp_MyWebService_TranslateToFrenchService" serializeas="String"> <value> http://rodansotto.com/asmx/TranslateToFrenchService.asmx </value> </setting> </mywebapp.properties.settings> </applicationsettings> </configuration> 
+<configuration> <!-- config added for using a web reference --> <applicationsettings> <mywebapp.properties.settings> <setting name="MyWebApp_MyWebService_TranslateToFrenchService" serializeas="String"> <value> https://rodansotto.github.io/asmx/TranslateToFrenchService.asmx </value> </setting> </mywebapp.properties.settings> </applicationsettings> </configuration> 
 ```
 
 ```cs

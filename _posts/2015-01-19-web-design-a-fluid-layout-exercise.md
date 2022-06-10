@@ -19,7 +19,7 @@ Another way of making images fluid is by resizing these images on the server bef
 
 Also, there is a rapid or quick way of making a web site fluid by using a grid system.  One example of a grid system is Bootstrap.  This I will not cover too.
 
-For this exercise, I have 2 sites, one with [non-fluid layout](http://rodansotto.com/projects/css/NonFluidLayout.html) and another with a [fluid layout](http://rodansotto.com/projects/css/FluidLayout.html).  Both of these use CSS media queries.  I only have listed below the fully commented CSS for the fluid layout web site.  The HTML source you can view from the browser and the non-fluid CSS should be the same name except for the CSS extension (_*.css_ instead of _*.html_).
+For this exercise, I have 2 sites, one with [non-fluid layout](https://rodansotto.github.io/projects/css/NonFluidLayout.html) and another with a [fluid layout](https://rodansotto.github.io/projects/css/FluidLayout.html).  Both of these use CSS media queries.  I only have listed below the fully commented CSS for the fluid layout web site.  The HTML source you can view from the browser and the non-fluid CSS should be the same name except for the CSS extension (_*.css_ instead of _*.html_).
 
 ```css
 /* When converting from fixed width to fluid, the general formula used is: divide target by context. */
