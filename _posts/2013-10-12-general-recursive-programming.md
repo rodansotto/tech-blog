@@ -13,7 +13,7 @@ Remember Fibonacci?  Fibonacci numbers are defined as the sum of the two preced
 
   
 
-I still remember Fibonacci because I was given a test on it in my job interview 4 years ago.  In fact, I blogged about it [here](http://rodansotto.wordpress.com/2009/04/14/general-fibonacci-sequence-using-a-loop-versus-a-recursive-function/).  You can use a loop function to program Fibonacci, but a recursive function is the way to go, as in below:
+I still remember Fibonacci because I was given a test on it in my job interview 4 years ago.  In fact, I blogged about it [here](https://rodansotto.github.io/tech-blog/2009/04/14/general-fibonacci-sequence-using-a-loop-versus-a-recursive-function.html).  You can use a loop function to program Fibonacci, but a recursive function is the way to go, as in below:
 
 public int fibonacci(int n)  
 {  

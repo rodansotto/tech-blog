@@ -36,7 +36,7 @@ Gone is the old days of simple web pages.  Nowadays, a webpage requires more th
 
 - A URL cannot restrict the client or server to a specific type of technology.
 - A URL cannot force the server to store a resource using any particular technology.
-- A URL cannot specify the representation of a specific resource, and a resource can have multiple representations.  This is where content negotiation, discussed in [**Part 1**](http://rodansotto.wordpress.com/2013/10/29/http-fundamentals-part-1-url-encoding-request-and-response/) of this series, kicks in.
+- A URL cannot specify the representation of a specific resource, and a resource can have multiple representations.  This is where content negotiation, discussed in [**Part 1**](https://rodansotto.github.io/tech-blog/2013/10/29/http-fundamentals-part-1-url-encoding-request-and-response.html) of this series, kicks in.
 - A URL cannot say what a user wants to do with a resource.  This is where the HTTP methods comes in.
 
 Because an **HTTP message** is a **simple**, **plain text message** and **fully self-describing**, and together with the **indirection provided by URLs**, HTTP applications can rely on a number of **services that provide value** as a message moves between the client application and the server application.  Examples of services would be:
@@ -59,4 +59,4 @@ These services can be layered into the network without impacting the application
 
  
 
-*This article is Part 2 of the HTTP Fundamental series.  For Part 1, click [**here**](http://rodansotto.wordpress.com/2013/10/29/http-fundamentals-part-1-url-encoding-request-and-response/).
+*This article is Part 2 of the HTTP Fundamental series.  For Part 1, click [**here**](https://rodansotto.github.io/tech-blog/2013/10/29/http-fundamentals-part-1-url-encoding-request-and-response.html).

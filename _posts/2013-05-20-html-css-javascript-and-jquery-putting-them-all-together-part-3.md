@@ -38,5 +38,5 @@ In the example above, I pointed my jQuery library to Microsoft’s CDN in the fi
 
 So now you know how _HTML_, _CSS_, _Javascript_, and _jQuery_ ties together, it’s time to move forward to more meaty stuff, get more familiar and learn more about what these technologies can do.  This ends my 3-part post on this topic.  Below are the links to my other parts of this post:
 
-- [Web UI: HTML, CSS, Javascript, and jQuery: Putting them all together (Part 1)](http://rodansotto.wordpress.com/2013/05/19/web-ui-html-css-javascript-and-jquery-putting-them-all-together-part-1/)
-- [Web UI- HTML, CSS, Javascript, and jQuery- Putting them all together (Part 2)](http://rodansotto.wordpress.com/2013/05/20/web-ui-html-css-javascript-and-jquery-putting-them-all-together-part-2/ "Web UI- HTML, CSS, Javascript, and jQuery- Putting them all together (Part 1)")
+- [Web UI: HTML, CSS, Javascript, and jQuery: Putting them all together (Part 1)](https://rodansotto.github.io/tech-blog/2013/05/19/web-ui-html-css-javascript-and-jquery-putting-them-all-together-part-1.html)
+- [Web UI- HTML, CSS, Javascript, and jQuery- Putting them all together (Part 2)](https://rodansotto.github.io/tech-blog/2013/05/20/web-ui-html-css-javascript-and-jquery-putting-them-all-together-part-2.html "Web UI- HTML, CSS, Javascript, and jQuery- Putting them all together (Part 1)")

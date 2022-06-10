@@ -5,7 +5,7 @@ categories:
   - "web-design"
 ---
 
-In my last blog [here](http://rodansotto.wordpress.com/2013/05/19/web-ui-html-css-javascript-and-jquery-putting-them-all-together-part-1/), I talked about ways to put CSS in an HTML, the preferred method using external style sheets, and how styles are overwritten when using more than one method.  I also talked about the syntax for declaring a CSS property.
+In my last blog [here](https://rodansotto.github.io/tech-blog/2013/05/19/web-ui-html-css-javascript-and-jquery-putting-them-all-together-part-1.html), I talked about ways to put CSS in an HTML, the preferred method using external style sheets, and how styles are overwritten when using more than one method.  I also talked about the syntax for declaring a CSS property.
 
 Here I am going to go through some of the basic CSS properties that one would need to know in order to have a good understanding of the capabilities of the CSS, and also a means to brush up one’s CSS knowledge if it ever becomes rusty.  So here they are:
 

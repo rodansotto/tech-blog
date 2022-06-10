@@ -5,7 +5,7 @@ categories:
   - "c-sharp"
 ---
 
-To illustrate raising events, let’s pick a very simple but classic example of a publisher and subscriber relationship.  Note that events make use of delegates and if you need to brush up on delegates, check my post [here](http://rodansotto.wordpress.com/2014/05/16/c-quick-review-on-delegates/ "C#: Quick Review on Delegates").
+To illustrate raising events, let’s pick a very simple but classic example of a publisher and subscriber relationship.  Note that events make use of delegates and if you need to brush up on delegates, check my post [here](https://rodansotto.github.io/tech-blog/2014/05/16/c-quick-review-on-delegates.html "C#: Quick Review on Delegates").
 
 // So here you have a publisher class
 public class Publisher

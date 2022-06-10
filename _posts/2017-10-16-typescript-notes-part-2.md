@@ -5,7 +5,7 @@ categories:
   - "javascript"
 ---
 
-![]({{ site.baseurl }}/assets/images/tslogo.png) Part 2 is all about classes, interfaces, abstract classes, and inheritance in TypeScript.  It's similar to OOP in C#.  So easy to grasp and use that one might totally forget how OOP in JavaScript works.  Same as in [TypeScript Notes: Part 1](https://rodansotto.wordpress.com/2017/09/08/typescript-notes-part-1/), I will present the TypeScript code and the generated JavaScript code.  The generated JavaScript code might be overwhelming to understand at first but as long as your knowledge with JavaScript objects is still intact, you should be able to figure it out.  For a refresher, read [MDN's Introducing JavaScript objects](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects)
+![]({{ site.baseurl }}/assets/images/tslogo.png) Part 2 is all about classes, interfaces, abstract classes, and inheritance in TypeScript.  It's similar to OOP in C#.  So easy to grasp and use that one might totally forget how OOP in JavaScript works.  Same as in [TypeScript Notes: Part 1](https://rodansotto.github.io/tech-blog/2017/09/08/typescript-notes-part-1.html), I will present the TypeScript code and the generated JavaScript code.  The generated JavaScript code might be overwhelming to understand at first but as long as your knowledge with JavaScript objects is still intact, you should be able to figure it out.  For a refresher, read [MDN's Introducing JavaScript objects](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects)
 
 .
 

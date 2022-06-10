@@ -6,7 +6,7 @@ categories:
   - "web-design"
 ---
 
-On my previous [post](http://rodansotto.wordpress.com/2013/05/19/web-ui-html-css-javascript-and-jquery-putting-them-all-together-part-1/), I talked about _HTML_ and _CSS_.  Now I’m going to talk about _Javascript_. 
+On my previous [post](https://rodansotto.github.io/tech-blog/2013/05/19/web-ui-html-css-javascript-and-jquery-putting-them-all-together-part-1.html), I talked about _HTML_ and _CSS_.  Now I’m going to talk about _Javascript_. 
 
 Javascript is a popular scripting language that makes an HTML page dynamic.  To add Javascript code, you use the _<script>_ tag and you can put them in the _<head>_ or in the _<body>_ section of the HTML page.  It is recommended to put all of them in the _<head>_ section.  Below is an example of a Javascript function being called on a click event of the _<p>_ tag.
 

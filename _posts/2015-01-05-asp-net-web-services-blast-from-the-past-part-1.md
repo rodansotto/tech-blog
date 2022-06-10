@@ -5,7 +5,7 @@ categories:
   - "asp-net"
 ---
 
-My last [post](http://rodansotto.wordpress.com/2013/06/11/asp-net-what-are-web-services/) regarding web services was June 13, 2013 and I ended it with an expectation of a sequel.  Fast forward to today, web services have now been regarded by Microsoft as legacy technologies and recommends using WCF services instead.  Then again, with Web API available why use WCF services if you are only using HTTP for these services?  That will have to be explored on a separate posts.  In this post I will revisit,  hence the title, the basics of creating a web service and the many ways of how to consume it.  I will mostly provide links to avoid reinventing the wheels but still provide my own code and demos as well.
+My last [post](https://rodansotto.github.io/tech-blog/2013/06/11/asp-net-what-are-web-services.html) regarding web services was June 13, 2013 and I ended it with an expectation of a sequel.  Fast forward to today, web services have now been regarded by Microsoft as legacy technologies and recommends using WCF services instead.  Then again, with Web API available why use WCF services if you are only using HTTP for these services?  That will have to be explored on a separate posts.  In this post I will revisit,  hence the title, the basics of creating a web service and the many ways of how to consume it.  I will mostly provide links to avoid reinventing the wheels but still provide my own code and demos as well.
 
 **Creating a Web Service and Consuming It Using WSDL Generated Proxy Class**
 

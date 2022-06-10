@@ -81,4 +81,4 @@ You would think that **[ISNULL](http://msdn.microsoft.com/en-us/library/ms184325
 
 **JOIN**
 
-I already talked about SQL Server joins in this [post](http://rodansotto.wordpress.com/2007/05/05/sql-server-2005-joins-and-union/).  But for a visual description, click [here](http://www.codeproject.com/KB/database/Visual_SQL_Joins/Visual_SQL_JOINS_orig.jpg).
+I already talked about SQL Server joins in this [post](https://rodansotto.github.io/tech-blog/2007/05/05/sql-server-2005-joins-and-union.html).  But for a visual description, click [here](http://www.codeproject.com/KB/database/Visual_SQL_Joins/Visual_SQL_JOINS_orig.jpg).

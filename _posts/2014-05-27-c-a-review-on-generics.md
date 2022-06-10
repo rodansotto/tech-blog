@@ -134,7 +134,7 @@ There are also _generic interface counterparts_ for ordering and equality compar
 
  
 
-You also have _generic delegates_ in .NET framework.  An example is the _EventHandler<TEventArgs>_ which you can use in handling events with custom event arguments.  No need to declare your own delegate type for the event.  If you need to brush up on events and delegates, see my post on [raising events](http://rodansotto.wordpress.com/2014/05/21/c-quick-review-on-raising-events/ "C#: Quick Review on Raising Events") and [nongeneric delegates](http://rodansotto.wordpress.com/2014/05/16/c-quick-review-on-delegates/ "C#: Quick Review on Delegates").
+You also have _generic delegates_ in .NET framework.  An example is the _EventHandler<TEventArgs>_ which you can use in handling events with custom event arguments.  No need to declare your own delegate type for the event.  If you need to brush up on events and delegates, see my post on [raising events](https://rodansotto.github.io/tech-blog/2014/05/21/c-quick-review-on-raising-events.html "C#: Quick Review on Raising Events") and [nongeneric delegates](https://rodansotto.github.io/tech-blog/2014/05/16/c-quick-review-on-delegates.html "C#: Quick Review on Delegates").
 
 public event EventHandler<PublishedEventArgs> Published;
 

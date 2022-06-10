@@ -5,7 +5,7 @@ categories:
   - "asp-net"
 ---
 
-Here is part 2 of this topic as promised.  It will cover consuming web service using HTTP POST and using jQuery AJAX.  If you missed part 1 of this topic, click [here](http://rodansotto.wordpress.com/2015/01/05/asp-net-web-services-blast-from-the-past-part-1/).
+Here is part 2 of this topic as promised.  It will cover consuming web service using HTTP POST and using jQuery AJAX.  If you missed part 1 of this topic, click [here](https://rodansotto.github.io/tech-blog/2015/01/05/asp-net-web-services-blast-from-the-past-part-1.html).
 
 But before I start, I forgot to mention in part 1 that when you set up your web service as part of a web site, like when you deploy your web service in a virtual directory of a web site, you need to make sure the _<compilation>_ setting in the web site’s _web.config_ file does not have the _targetFramework_ attribute which is usually present when targeting .NET Framework 4.0 and up.  Otherwise, your web service will not work.  Ok, so on to part 2.
 

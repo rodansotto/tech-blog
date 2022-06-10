@@ -5,7 +5,7 @@ categories:
   - "design-patterns"
 ---
 
-Here and in the next posts, I will talk about design patterns, it’s definition, the guiding design principles they embody, and their C# examples.  But before you dive into design patterns, here is a refresher on [four OO basics](http://rodansotto.wordpress.com/2013/11/05/design-patterns-the-four-oo-basics/).
+Here and in the next posts, I will talk about design patterns, it’s definition, the guiding design principles they embody, and their C# examples.  But before you dive into design patterns, here is a refresher on [four OO basics](https://rodansotto.github.io/tech-blog/2013/11/05/design-patterns-the-four-oo-basics.html).
 
 **Design Pattern #1: Strategy Pattern**
 

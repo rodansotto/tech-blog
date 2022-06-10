@@ -5,7 +5,7 @@ categories:
   - "net"
 ---
 
-Addendum to [.NET 2.0: Notes on Foundation Part 1](https://rodansotto.wordpress.com/2009/03/28/net-2-0-notes-on-foundation-part-1-3/)
+Addendum to [.NET 2.0: Notes on Foundation Part 1](https://rodansotto.github.io/tech-blog/2009/03/28/net-2-0-notes-on-foundation-part-1-3.html)
 
 **Value Types – Built-in, User-defined, and Enumerations**
 

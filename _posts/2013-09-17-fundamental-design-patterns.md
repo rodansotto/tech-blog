@@ -8,11 +8,11 @@ categories:
 Fundamental design patterns are divided into 3 categories:
 
 - Creational
-    - [Singleton](http://rodansotto.wordpress.com/2014/02/10/design-patterns-factory-method-abstract-factory-and-singleton/ "Design Patterns: Factory Method, Abstract Factory, and Singleton")
+    - [Singleton](https://rodansotto.github.io/tech-blog/2014/02/10/design-patterns-factory-method-abstract-factory-and-singleton.html "Design Patterns: Factory Method, Abstract Factory, and Singleton")
     - Builder
     - Prototype
-    - [Abstract Factory](http://rodansotto.wordpress.com/2014/02/10/design-patterns-factory-method-abstract-factory-and-singleton/ "Design Patterns: Factory Method, Abstract Factory, and Singleton")
-    - [Factory Method](http://rodansotto.wordpress.com/2014/02/10/design-patterns-factory-method-abstract-factory-and-singleton/ "Design Patterns: Factory Method, Abstract Factory, and Singleton")
+    - [Abstract Factory](https://rodansotto.github.io/tech-blog/2014/02/10/design-patterns-factory-method-abstract-factory-and-singleton.html "Design Patterns: Factory Method, Abstract Factory, and Singleton")
+    - [Factory Method](https://rodansotto.github.io/tech-blog/2014/02/10/design-patterns-factory-method-abstract-factory-and-singleton.html "Design Patterns: Factory Method, Abstract Factory, and Singleton")
 - Behavioral
     - Mediator
     - Visitor
@@ -20,13 +20,13 @@ Fundamental design patterns are divided into 3 categories:
     - Iterator
     - Command
     - Memento
-    - [Observer](http://rodansotto.wordpress.com/2013/11/05/design-patterns-strategy-observer-and-decorator/ "Design Patterns: Strategy, Observer, and Decorator")
+    - [Observer](https://rodansotto.github.io/tech-blog/2013/11/05/design-patterns-strategy-observer-and-decorator.html "Design Patterns: Strategy, Observer, and Decorator")
     - Interpreter
     - Chain of Responsibility
     - State
-    - [Strategy](http://rodansotto.wordpress.com/2013/11/05/design-patterns-strategy-observer-and-decorator/ "Design Patterns: Strategy, Observer, and Decorator")
+    - [Strategy](https://rodansotto.github.io/tech-blog/2013/11/05/design-patterns-strategy-observer-and-decorator.html "Design Patterns: Strategy, Observer, and Decorator")
 - Structural
-    - [Decorator](http://rodansotto.wordpress.com/2013/11/05/design-patterns-strategy-observer-and-decorator/ "Design Patterns: Strategy, Observer, and Decorator")
+    - [Decorator](https://rodansotto.github.io/tech-blog/2013/11/05/design-patterns-strategy-observer-and-decorator.html "Design Patterns: Strategy, Observer, and Decorator")
     - Proxy
     - Composite
     - Facade

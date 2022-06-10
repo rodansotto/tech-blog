@@ -5,7 +5,7 @@ categories:
   - "javascript"
 ---
 
-This post is a follow-up to my previous posts, [Object Oriented Programming In Javascript](http://rodansotto.wordpress.com/2013/09/21/web-ui-working-with-objects-in-javascript/) and [JavaScript Array and How It’s Different from Object](http://rodansotto.wordpress.com/2013/11/03/web-ui-javascript-array-and-how-its-different-from-object/).  In this post I will touch on regular expressions, error handling, basic DOM scripting, image preloading, and timing events.
+This post is a follow-up to my previous posts, [Object Oriented Programming In Javascript](https://rodansotto.github.io/tech-blog/2013/09/21/web-ui-working-with-objects-in-javascript.html) and [JavaScript Array and How It’s Different from Object](https://rodansotto.github.io/tech-blog/2013/11/03/web-ui-javascript-array-and-how-its-different-from-object.html).  In this post I will touch on regular expressions, error handling, basic DOM scripting, image preloading, and timing events.
 
 **Regular Expressions**
 
