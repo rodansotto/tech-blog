@@ -11,7 +11,7 @@ categories:
 
 
 
-This is my first Angular app but not the first time creating the product list for the AdventureWorks products database.  I previously created one using MVC 4 (check my post [here](https://rodansotto.github.io/tech-blog/asp-net-mvc/2015/10/19/a-custom-webgrid-my-1st-iteration.html) but this time around it has an image view besides the list view and it uses Web API to communicate to the back-end.  I initially used Bootstrap as my UI framework but decided to use Angular Material as I found it to be more easy to integrate with Angular.
+This is my first Angular app but not the first time creating the product list for the AdventureWorks products database.  I previously created one using MVC 4 (check my post [here](https://rodansotto.github.io/tech-blog/2015/10/19/a-custom-webgrid-my-1st-iteration.html) but this time around it has an image view besides the list view and it uses Web API to communicate to the back-end.  I initially used Bootstrap as my UI framework but decided to use Angular Material as I found it to be more easy to integrate with Angular.
 
 It was an adventure and really worth going through it.  I was thinking of using VS Code but when I tried it hoping it should be similar to the full-featured VS IDE but it's not.  Since I don't want to spend another time familiarizing myself with VS Code, I went with VS IDE, for now.
 
