@@ -56,6 +56,10 @@ permalink: /:year/:month/:day/:title:output_ext
 remote_theme: "jeffreytse/jekyll-theme-yat"
 plugins:
   - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-paginate
+  - jekyll-spaceship
 
 # Exclude from processing.
 # The following items will not be processed, by default.
