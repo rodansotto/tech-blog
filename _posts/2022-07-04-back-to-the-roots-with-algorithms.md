@@ -45,7 +45,7 @@ This is about algorithms but data structures are also important and one cannot d
     4. Resource utilization and availability in an organization
     5. Robotic motion and neural networks
 * There are some more data structures out there but the above is enough to start with.  And having listed the applications they can be used for gives them much deserving appreciation and importance.
-* Check [.NET Collections and Data Structures](https://docs.microsoft.com/en-us/dotnet/standard/collections) from Microsoft for the data structures available in .NET and their complexities as well.
+* You can check [.NET Collections and Data Structures](https://docs.microsoft.com/en-us/dotnet/standard/collections) from Microsoft for the data structures available in .NET and their complexities as well.
 * Additionally look at [Fundamental Data Structures and Algorithms in C#](https://dev.to/adavidoaiei/fundamental-data-structures-and-algorithms-in-c-4ocf) to get a visual explanation and C# code example of the above data structures.
 * For Javascript, check [JavaScript data types and data structures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures) from Mozilla.  It has in ECMAScript 6 new data structures such as [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) and [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map).
 * And for visual explanation and Javascript code example check [Data Structures in JavaScript – With Code Examples](https://www.freecodecamp.org/news/data-structures-in-javascript-with-examples/).
@@ -69,18 +69,37 @@ Now that we got the data structures out of the way, let's get on with algorithms
     Exponential | $ 2 ^ {N} $ | exhaustive search | check all subsets
 
 * There is also this **Amortized Analysis** that is used for algorithms where an occasional operation is very slow, but most of the other operations are faster. In Amortized Analysis, a sequence of operations is analyzed and guarantees a worst-case average time that is lower than the worst-case time of a particularly expensive operation.
-* Algorithms can fall on these following common types: **brute force**, **recursive**, **divide and conquer** (e.g. binary search), **dynamic programming**, **greedy algorithm**, **backtracking**.
-* **Brute force** is a direct and straightforward technique of solving problems in which all possible ways to a given problem is enumerated.  Best for solving small and simple problems.
-* **Recursive** involves a function calling itself directly or indirectly, performing same operations multiple times with different inputs, and with a base condition to stop recursion.
-* **Divide and Conquer** involves dividing the problem into smaller sub-problems, solving them recursively, then combining them to get final solution of the whole problem.
-* **Dynamic programming** is also known as the **memoization technique** because in this, the idea is to store the previously calculated result to avoid calculating it again and again.
-* In the **Greedy Algorithm**, the solution is built part by part. The decision to choose the next part is done on the basis that it gives the immediate benefit. It never considers the choices that had taken previously. E.g. Dijkstra shortest path algorithm.
-* In **Backtracking**, the problem is solved in an incremental way i.e. it is an algorithmic-technique for solving problems recursively by trying to build a solution incrementally, one piece at a time, removing those solutions that fail to satisfy the constraints of the problem at any point of time.
+* Following are some types of algorithms based on their implementation:
+    * **Brute force** is a direct and straightforward technique of solving problems in which all possible ways to a given problem is enumerated.  Best for solving small and simple problems.
+    * **Recursive** involves a function calling itself directly or indirectly, performing same operations multiple times with different inputs, and with a base condition to stop recursion.
+    * **Divide and Conquer** involves dividing the problem into smaller sub-problems, solving them recursively, then combining them to get final solution of the whole problem.
+    * **Dynamic programming** is also known as the **memoization technique** because in this, the idea is to store the previously calculated result to avoid calculating it again and again.
+    * **Greedy Algorithm** is where the solution is built part by part. The decision to choose the next part is done on the basis that it gives the immediate benefit. It never considers the choices that had taken previously. E.g. **Dijkstra shortest path algorithm**.
+    * **Backtracking** solves the problem in an incremental way i.e. it is an algorithmic-technique for solving problems recursively by trying to build a solution incrementally, one piece at a time, removing those solutions that fail to satisfy the constraints of the problem at any point of time.
+* And you have other types of algorithms based on their purpose:
+    * **Sorting Algorithm** is used to rearrange a given array or list elements according to a comparison operator on the elements.  And following are the known sorting algorithms around:
+        * **Selection Sort**
+        * **Bubble Sort**
+        * **Insertion Sort**
+        * **Merge Sort**
+        * **Quicksort**
+        * **Heapsort**
+        * **Iterative Heapsort**
+        * **Counting Sort**
+        * **Radix Sort**
+        * **Bucket Sort**
+    * **Searching Algorithm** is designed to check for an element or retrieve an element from any data structure where it is stored.  They are further classified into:
+        * Sequential Search (e.g. **Linear Search**)
+        * Interval Search (e.g. **Binary Search**)
+    * **Pattern Search Algorithm** also known as **String Search Algorithm** is designed for searching a string within another string
+    * **Mathematical Algorithm** (e.g. **Fibonacci**, **Greatest Common Denominator**)
+    * **Geometric Algorithm** is designed to solve Geometric Problems and require in-depth knowledge of different mathematical subjects like combinatorics, topology, algebra, differential geometry etc. (e.g. **Lines**, **Triangles**, **3D Objects**, **Polygons**)
+    * **Graph Algorithm** (e.g. **Breadth First Search**, **Depth First Search**, **Cycle**, **Shortest Paths**)
 
 ### What's Next
 There's a ton more things to know about algorithms (and data structures) and what best way to be familiar with them is to implement them using your favorite programming language.  So I started implementing my own solutions to some of the algorithm problems out there, the code you can see and run on [My .NET C# Fiddle library](https://dotnetfiddle.net/Authors/224214/Rodan%20Sotto).
 
-So far at the time of this posting, I managed to work on these algorithm problems: **Robot Bounded in Circle**, **Maximize Score After N Operations**, **All Combination of Numbers Sum to Target**, and **Fractional Knapsack**.  I will be building that library as I continue implementing different kinds of algorithms.  And that I feel is the best way to learn and make it stick longer.  I am also planning on implementing them on Javascript and Python, so really I'm excited about this journey.
+So far at the time of this posting, I managed to work on these algorithm problems: **Robot Bounded in Circle**, **Maximize Score After N Operations**, **All Combination of Numbers Sum to Target**, and **Fractional Knapsack**.  I will be building that library as I continue implementing different kinds of algorithms.  And that I feel is the best way to learn and make them stick longer.  I am also planning on implementing them on Javascript and Python, so really I'm excited about this journey.
 
 ### References
 * [Applications of Data Structures from CSVeda](https://csveda.com/data-structure/applications-of-data-structures)
