@@ -51,7 +51,7 @@ This is about algorithms but data structures are also important and one cannot d
 * And for visual explanation and Javascript code example check [Data Structures in JavaScript – With Code Examples](https://www.freecodecamp.org/news/data-structures-in-javascript-with-examples/).
 
 ### Algorithms
-Now that we got the data structures out of the way, let's get a refresher on algorithms.
+Now that we got the data structures out of the way, let's get on with algorithms.
 
 * **Algorithm** is a set of instructions to solve a class of specific problems or to perform a computation.
 * In **Asymptotic Analysis**, the **performance (or complexity) of an algorithm is evaluated in terms of input size** (not the actual running time). It's calculated by **how the time (or space) taken by an algorithm increases with the input size**.
