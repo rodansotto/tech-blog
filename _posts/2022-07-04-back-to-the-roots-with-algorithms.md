@@ -45,8 +45,10 @@ This is about algorithms but data structures are also important and one cannot d
     4. Resource utilization and availability in an organization
     5. Robotic motion and neural networks
 * There are some more data structures out there but the above is enough to start with.  And having listed the applications they can be used for gives them much deserving appreciation and importance.
-* This [document](https://docs.microsoft.com/en-us/dotnet/standard/collections/#choose-a-collection) from Microsoft lists the data structures available in .NET.
-* This [one](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures) from Mozilla lists the data structures available in Javascript.  It has in ECMAScript 6 new data structures such as [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) and [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map).
+* Check [.NET Collections and Data Structures](https://docs.microsoft.com/en-us/dotnet/standard/collections) from Microsoft for the data structures available in .NET and their complexities as well.
+* Additionally look at [Fundamental Data Structures and Algorithms in C#](https://dev.to/adavidoaiei/fundamental-data-structures-and-algorithms-in-c-4ocf) to get a visual explanation and C# code example of the above data structures.
+* For Javascript, check [JavaScript data types and data structures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures) from Mozilla.  It has in ECMAScript 6 new data structures such as [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) and [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map).
+* And for visual explanation and Javascript code example check [Data Structures in JavaScript – With Code Examples](https://www.freecodecamp.org/news/data-structures-in-javascript-with-examples/).
 
 ### Algorithms
 Now that we got the data structures out of the way, let's get a refresher on algorithms.
@@ -84,6 +86,4 @@ So far at the time of this posting, I managed to work on these algorithm problem
 * [Applications of Data Structures from CSVeda](https://csveda.com/data-structure/applications-of-data-structures)
 * [Data Structures from GeeksForGeeks](https://www.geeksforgeeks.org/data-structures)
 * [Algorithms from GeeksForGeeks](https://www.geeksforgeeks.org/fundamentals-of-algorithms)
-* [.NET Collections and Data Structures](https://docs.microsoft.com/en-us/dotnet/standard/collections)
-* [JavaScript data types and data structures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures)
-* [Algorithms, 4th Edition](https://algs4.cs.princeton.edu/home)
+* [Algorithms, 4th Edition from Sedgewick and Wayne](https://algs4.cs.princeton.edu/home)
