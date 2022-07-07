@@ -7,6 +7,8 @@ categories: ai
 
 ![]({{ site.baseurl }}/assets/images/aibloglogo.png)
 
+_(Note: I have the code up on my .NET C# Fiddle libray [here](https://dotnetfiddle.net/0aI8Ea) where you can check it and run it online)_
+
 There is definitely no good time to explore this than now and it just so happens I stumbled upon this really great article [here](https://rubikscode.net/2022/07/04/implementing-simple-neural-network-in-c/) talking about creating a simple neural network in C#.
 
 As I've mentioned in my 2017 post [here](/tech-blog/2017/10/27/ai-anyone.html), I have been wanting to explore this avenue on AI, this **Artificial Neural Network** (**ANN**).  Why I picked ANN is because truth be told I had my first rodeo with AI back in my University days when I was assisting someone doing his Master's thesis on ANN which he implemented in C++ language (just to be clear, I was completing my Bachelor and not Master at the time).  Yeah, ANN has been around for a while now.
