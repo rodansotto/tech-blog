@@ -35,7 +35,7 @@ header_pages:
   - categories.markdown
 #   - tags.html
 #   - about.md
-  - search.html
+  - search2.html
 
 # Page default value
 defaults:
