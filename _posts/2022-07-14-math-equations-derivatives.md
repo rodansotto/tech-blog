@@ -5,6 +5,8 @@ date: "2022-07-14"
 categories: math
 ---
 
+![]({{ site.baseurl }}/assets/images/math.png)
+
 The need for Math is real when diving deep into AI which I found myself scrambling.  Thus I made it my mission to brush up on my math.
 
 ### Branches of Mathematics
