@@ -61,9 +61,9 @@ Now that we got the data structures out of the way, let's get on with algorithms
     name | order of growth | description | example
     ---------|----------|---------|---------
     Constant | $ 1 $ | statement | add 2 numbers
-    Logarithmic | log $ N $ (barely slower than constant) | divide in half | binary search
+    Logarithmic | $ log \ N $ (barely slower than constant) | divide in half | binary search
     Linear | $ N $ | loop | find the maximum
-    Linearithmic | $ N $ log $ N $ | divide and conquer | mergesort
+    Linearithmic | $ N \ log \ N $ | divide and conquer | mergesort
     Quadratic | $ N ^ {2} $ | double loop | check all pairs
     Cubic | $ N ^ {3} $ | triple loop | check all triples
     Exponential | $ 2 ^ {N} $ | exhaustive search | check all subsets
