@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://rodansotto.github.io/tech-blog/sitemap.xml

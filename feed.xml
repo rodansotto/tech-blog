@@ -1,0 +1,546 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="https://rodansotto.github.io/tech-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rodansotto.github.io/tech-blog/" rel="alternate" type="text/html" /><updated>2022-07-14T17:48:05+00:00</updated><id>https://rodansotto.github.io/tech-blog/feed.xml</id><title type="html">Rodan Sotto’s Tech Blog</title><subtitle>A software developer's personal notes</subtitle><entry><title type="html">Branches of Mathematics, Solving Equations and Calculating Derivatives</title><link href="https://rodansotto.github.io/tech-blog/2022/07/14/math-equations-derivatives.html" rel="alternate" type="text/html" title="Branches of Mathematics, Solving Equations and Calculating Derivatives" /><published>2022-07-14T00:00:00+00:00</published><updated>2022-07-14T00:00:00+00:00</updated><id>https://rodansotto.github.io/tech-blog/2022/07/14/math-equations-derivatives</id><content type="html" xml:base="https://rodansotto.github.io/tech-blog/2022/07/14/math-equations-derivatives.html">&lt;p&gt;&lt;img src=&quot;/tech-blog/assets/images/math.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The need for Math is real when diving deep into AI which I found myself scrambling.  Thus I made it my mission to brush up on my math.&lt;/p&gt;
+
+&lt;h3 id=&quot;branches-of-mathematics&quot;&gt;Branches of Mathematics&lt;/h3&gt;
+
+&lt;h4 id=&quot;traditional-branches&quot;&gt;Traditional Branches&lt;/h4&gt;
+&lt;p&gt;I do recall the following traditional branches of Math being taught in school but could not say I still know them all:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Arithmetic&lt;/strong&gt; - study of numbers using various operations on them such as addition, subtraction, multiplication, and division&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Algebra&lt;/strong&gt; - study of variables, expressions and equations such as linear equations and quadratic equations&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Geometry&lt;/strong&gt; - study of shapes such as points, lines, angles, surfaces, and solids&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Trigonometry&lt;/strong&gt; - study of triangles specifically side lengths and angles&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Calculus&lt;/strong&gt; - study of continuous change or rate of change&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And those are just touching the fundamentals as there are also advanced topics within those branches.  There is a whole swat of other fields in Math that I do not know.  It’s actually so hard to categorize them, classify them, divide them into parts so that it would be easy to navigate between them.  I am basically thrown into the ocean or into the &lt;a href=&quot;/tech-blog/assets/images/math/mathematics_trench.jpg&quot;&gt;math trench&lt;/a&gt; on my own, and it’s up to me to navigate them.&lt;/p&gt;
+
+&lt;h4 id=&quot;advanced-branches&quot;&gt;Advanced Branches&lt;/h4&gt;
+&lt;p&gt;There are other branches that maybe worth looking into beyond Calculus to further widen your knowledge in Math, explore the math trench as I would say.  Here are some of them:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Discrete Math&lt;/strong&gt; - antithesis of Calculus; a broad field involving anything that can be separated into discrete objects, with topics like &lt;strong&gt;Formal Logic&lt;/strong&gt;, &lt;strong&gt;Counting Problems&lt;/strong&gt;, and &lt;strong&gt;Graph Theory&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Real Analysis&lt;/strong&gt; - heart of Calculus; an important field that provides justification for all of Calculus; studies the behavior of real numbers, sequences and series of real numbers, and real functions&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Complex Analysis&lt;/strong&gt; - analysis that takes real functions and extends them to the complex plane; investigates functions of complex numbers&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Modern/Abstract Algebra&lt;/strong&gt; - an advanced field in Algebra;  the study of algebraic structures such as groups, rings, fields, modules, vector spaces, lattices, and algebras&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Linear Algebra&lt;/strong&gt; - study involving linear equations; of lines and planes, vector spaces and mappings that are required for linear transforms&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Differential Geometry&lt;/strong&gt; - studies the geometry of smooth shapes and smooth spaces, otherwise known as smooth manifolds using differential calculus, integral calculus, linear algebra and multilinear algebra&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Probability and Statistics&lt;/strong&gt; - &lt;strong&gt;Probability&lt;/strong&gt; deals with predicting the likelihood of future events, while &lt;strong&gt;Statistics&lt;/strong&gt; involves the analysis of the frequency of past events&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Numerical Methods&lt;/strong&gt; -  a mathematical tool designed to solve numerical problems in &lt;strong&gt;Numerical Analysis&lt;/strong&gt;, which is the study of algorithms that use numerical approximation for the problems of mathematical analysis&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Information Theory and Signal Processing&lt;/strong&gt; - &lt;strong&gt;Information Theory&lt;/strong&gt; is the scientific study of the quantification, storage, and communication of digital information while &lt;strong&gt;Signal Processing&lt;/strong&gt; is analyzing, modifying, and synthesizing signals such as sound, images, and scientific measurements&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;branches-for-ai&quot;&gt;Branches for AI&lt;/h4&gt;
+&lt;p&gt;And there are these branches of Math that you will need when diving deep into AI.  Besides &lt;strong&gt;Linear Algebra&lt;/strong&gt;, the following are some of them:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Analytic Geometry&lt;/strong&gt; - also known as coordinate geometry or &lt;strong&gt;Cartesian geometry&lt;/strong&gt;, is the study of geometry using a coordinate system&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Matric Decompositions&lt;/strong&gt; - in linear algebra, a matrix decomposition or matrix factorization is a factorization of a matrix into a product of matrices&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Vector Calculus&lt;/strong&gt; - or vector analysis, is concerned with differentiation and integration of vector fields, primarily in 3-dimensional Euclidean space $ R^3 $&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Probability and Distributions&lt;/strong&gt; - in &lt;strong&gt;Probability and Statistics&lt;/strong&gt;, a &lt;strong&gt;probability distribution&lt;/strong&gt; is a statistical function that describes all the possible values and likelihoods that a random variable can take within a given range&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Continuous Optimization&lt;/strong&gt; - as opposed to &lt;strong&gt;Discrete Optimization&lt;/strong&gt;, the variables used in the objective function are required to be continuous variables—that is, to be chosen from a set of real values between which there are no gaps&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;specific-concepts-for-ai&quot;&gt;Specific Concepts for AI&lt;/h4&gt;
+&lt;p&gt;To be more specific, the following are some of the concepts you will need:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;In &lt;strong&gt;Algebra&lt;/strong&gt;, they are the &lt;em&gt;Exponents&lt;/em&gt;, &lt;em&gt;Radicals&lt;/em&gt;, &lt;em&gt;Factorials&lt;/em&gt;, &lt;em&gt;Summations&lt;/em&gt;, &lt;em&gt;Scientific Notations&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;In &lt;strong&gt;Linear Algebra&lt;/strong&gt;, they are the &lt;em&gt;Scalars&lt;/em&gt;, &lt;em&gt;Vectors&lt;/em&gt;, &lt;em&gt;Matrices&lt;/em&gt;, &lt;em&gt;Tensors&lt;/em&gt;, &lt;em&gt;Eigenvectors &amp;amp; Eigenvalues&lt;/em&gt;, &lt;em&gt;Singular Value Decomposition&lt;/em&gt;, &lt;em&gt;Principal Component Analysis (PCA)&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;In &lt;strong&gt;Calculus&lt;/strong&gt;, they are the &lt;em&gt;Derivatives&lt;/em&gt;, &lt;em&gt;Vector/Matrix Calculus&lt;/em&gt;, &lt;em&gt;Gradient Algorithms&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;In &lt;strong&gt;Probability and Statistics&lt;/strong&gt;, they are the &lt;em&gt;Basic Statistics&lt;/em&gt;, &lt;em&gt;Basic rules in probability&lt;/em&gt;, &lt;em&gt;Random variables&lt;/em&gt;, &lt;em&gt;Bayes’ Theorem&lt;/em&gt;, &lt;em&gt;Maximum Likelihood Estimation (MLE)&lt;/em&gt;, &lt;em&gt;Common Distributions&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;In &lt;strong&gt;Information Theory&lt;/strong&gt;, they are the &lt;em&gt;Entropy&lt;/em&gt;, &lt;em&gt;Cross-Entropy&lt;/em&gt;, &lt;em&gt;Kullback Leibler Divergence&lt;/em&gt;, &lt;em&gt;Viterbi Algorithm&lt;/em&gt;, &lt;em&gt;Encoder-Decoder&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;To learn more about these concepts, check this article &lt;a href=&quot;https://www.freecodecamp.org/news/all-the-math-you-need-in-artificial-intelligence/&quot;&gt;All the Math You Need to Know in Artificial Intelligence&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;As you can see now, it’s really daunting how much math you need to know when getting into AI.  I don’t expect to know them all at once but at least I know for now what they are which I can get into more depth as needed.&lt;/p&gt;
+
+&lt;h3 id=&quot;solving-equations&quot;&gt;Solving Equations&lt;/h3&gt;
+&lt;p&gt;For now it would be wise to know how to solve equations as I find this will help in understanding the formulas, computations, or calculations that abound in AI.&lt;/p&gt;
+
+&lt;h4 id=&quot;techniques&quot;&gt;Techniques&lt;/h4&gt;
+&lt;p&gt;To solve equations, you need to know some basic techniques and these techniques are:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.mathsisfun.com/algebra/introduction.html&quot;&gt;Add or Subtract&lt;/a&gt; the same value from both sides (the balancing method)
+&lt;img src=&quot;/tech-blog/assets/images/math/addsubvalbothsides.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;Clear out any fractions by &lt;a href=&quot;https://www.mathsisfun.com/algebra/introduction-multiply.html&quot;&gt;Multiplying&lt;/a&gt; every term by the bottom parts, and in case of multiple fractions multiplying by their &lt;a href=&quot;https://www.cuemath.com/numbers/least-common-denominator-lcd/&quot;&gt;LCD&lt;/a&gt;
+&lt;img src=&quot;/tech-blog/assets/images/math/multeverytermbybottompart.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;If there are decimals, multiply both sides of the equation by the lowest &lt;a href=&quot;https://www.cuemath.com/numbers/powers-of-10/&quot;&gt;power of 10&lt;/a&gt; to convert them into whole numbers&lt;/li&gt;
+  &lt;li&gt;Divide every term by the same nonzero value
+&lt;img src=&quot;/tech-blog/assets/images/math/diveveryterm.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.mathsisfun.com/algebra/like-terms.html&quot;&gt;Combine Like Terms&lt;/a&gt;
+&lt;img src=&quot;/tech-blog/assets/images/math/combineliketerms.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.mathsisfun.com/algebra/factoring.html&quot;&gt;Factoring&lt;/a&gt; and using &lt;a href=&quot;https://www.cuemath.com/numbers/distributive-property/&quot;&gt;Distributive Property&lt;/a&gt;
+&lt;img src=&quot;/tech-blog/assets/images/math/factor.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.mathsisfun.com/algebra/expanding.html&quot;&gt;Expanding&lt;/a&gt; (the opposite of factoring) may also help
+&lt;img src=&quot;/tech-blog/assets/images/math/expand.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;Recognizing a pattern, such as the &lt;a href=&quot;https://www.mathsisfun.com/algebra/special-binomial-products.html&quot;&gt;difference of squares&lt;/a&gt;
+&lt;img src=&quot;/tech-blog/assets/images/math/diffofsq.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;Sometimes we can apply a function to both sides (e.g. square both sides)
+&lt;img src=&quot;/tech-blog/assets/images/math/sqbothsides.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;rules-formulas--properties&quot;&gt;Rules, Formulas,  Properties&lt;/h4&gt;
+&lt;p&gt;The rules, formulas, and properties in the different fields of Mathematics are tools for solving equations. You need to know them as well.  The following infographics lists some of them.&lt;/p&gt;
+
+&lt;h5 id=&quot;algebra&quot;&gt;Algebra&lt;/h5&gt;
+&lt;p&gt;In &lt;strong&gt;Algebra&lt;/strong&gt; you have: associative, commutative, and distributive properties; arithmetic operations rules; properties of exponents, radicals, inequalities, absolute values, complex numbers, logarithms, and polynomials; common factoring techniques; quadratic equation formula.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/tech-blog/assets/images/math/algebra.webp&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;geometry&quot;&gt;Geometry&lt;/h5&gt;
+&lt;p&gt;In &lt;strong&gt;Geometry&lt;/strong&gt; you have:  circumference and area formulas for square, rectangle, circle, triangle, parallelogram, and trapezoid; area of a circular ring as well as the area and segment length of a circular sector; area and volume of rectangular box, cube, and cylinder; area, side length, and volume of a right circular cone, as well as the volume of a frustum of a cone; pythagorean theorem.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/tech-blog/assets/images/math/geometry-shapes-solids.webp&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;trigonometry&quot;&gt;Trigonometry&lt;/h5&gt;
+
+&lt;p&gt;In &lt;strong&gt;Trigonometry&lt;/strong&gt; you have: right triangle definitions for sine, cosine, tangent, cosecant, secant, and cotangent; unit circle definitions for all trig functions; range, domain and period for each of the trig functions; inverse trig function notation as well as domain and range.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/tech-blog/assets/images/math/trigonometry-definition.webp&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;And you have trigonometry laws and identities such as: law of cosines, law of sines, and law of tangents; tangent identities, reciprocal identities, Pythagorean identities, periodic identities, even/odd identities, double angle identities, half angle identities, product to sum identities, sum to product identities, sum/difference identities, and cofunction identities; Mollweide’s formula.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/tech-blog/assets/images/math/trigonometry-laws-and-identities.webp&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;calculus&quot;&gt;Calculus&lt;/h5&gt;
+&lt;p&gt;In &lt;strong&gt;Calculus Derivatives and Limits&lt;/strong&gt; you have: mean value theorem, derivative’s basic properties; common derivative formulas; product rule, quotient rule, power rule, chain rule, and L’Hopital’s rule; properties of limits, limit evaluations at infinity; limit evaluation method for factoring and cancelling.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/tech-blog/assets/images/math/calculus-derivatives-limits.webp&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In &lt;strong&gt;Calculus Integrals&lt;/strong&gt; you have: fundamental theorem of calculus, integration properties, methods for approximating definite integrals such as left hand rectangle, right hand rectangle, midpoint rule, trapezoid rule, and Simpson’s rule; common integrals; trigonometric substitution when using integrals; integration by substitution as well as the integration by parts.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/tech-blog/assets/images/math/calculus-integrals.webp&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;calculating-derivatives&quot;&gt;Calculating Derivatives&lt;/h3&gt;
+&lt;p&gt;I wanted to focus here on how to get the derivative of the composition of two or more functions as you will need this in understanding the backpropagation algorithm used in machine learning&lt;/p&gt;
+
+&lt;p&gt;A &lt;strong&gt;composition of function&lt;/strong&gt; is defined as:&lt;/p&gt;
+
+&lt;p&gt;$ h(x) = f(g(x)) $&lt;/p&gt;
+
+&lt;p&gt;The &lt;strong&gt;derivative&lt;/strong&gt; then is defined as, using the &lt;strong&gt;chain rule&lt;/strong&gt; depicted in the previous infographic for the calculus derivatives and limits:&lt;/p&gt;
+
+&lt;p&gt;$ \frac{d}{dx}(f(g(x))) =  f’(g(x)){\cdot}g’(x) = \frac{df}{dg}{\cdot}\frac{dg}{dx} $&lt;/p&gt;
+
+&lt;p&gt;Let’s use a simple example.  Say you have this function:&lt;/p&gt;
+
+&lt;p&gt;$ A = 1 + B^2 $&lt;/p&gt;
+
+&lt;p&gt;And $ B $ is also another function:&lt;/p&gt;
+
+&lt;p&gt;$ B = \frac{1}{1 + C} $&lt;/p&gt;
+
+&lt;p&gt;And $ C $ is yet another function (we will be using a composition of three functions for this example):&lt;/p&gt;
+
+&lt;p&gt;$ C = 2x $, where $ x $ has a value of $ 5 $.&lt;/p&gt;
+
+&lt;p&gt;Get the derivative of $ A $ &lt;strong&gt;with respect to&lt;/strong&gt; $ x $, in other words, what’s the &lt;strong&gt;effect on the output&lt;/strong&gt; $ A $ &lt;strong&gt;given a change in variable&lt;/strong&gt; $ x $?&lt;/p&gt;
+
+&lt;p&gt;Using substitution, you will end up with this all encompassing single function:&lt;/p&gt;
+
+&lt;p&gt;$ A(x) = 1 + {\frac{1}{1 + {2x}}}^2 $&lt;/p&gt;
+
+&lt;p&gt;You can try to get the derivative of this function straight away, but in cases where you have a more complex looking function it might be difficult.  This is where the &lt;strong&gt;chain rule&lt;/strong&gt; can be useful.  Using the &lt;strong&gt;chain rule&lt;/strong&gt;, we can have:&lt;/p&gt;
+
+&lt;p&gt;$ \frac{dA}{dx} = A’(B(C(x))){\cdot}B’(C(x)){\cdot}C’(x) $&lt;/p&gt;
+
+&lt;p&gt;$ = \frac{dA}{dB}{\cdot}\frac{dB}{dC}{\cdot}\frac{dC}{dx} $&lt;/p&gt;
+
+&lt;p&gt;Then we get the derivatives for $ A $, $ B $, and $ C $ separately.&lt;/p&gt;
+
+&lt;p&gt;For the first derivative,&lt;/p&gt;
+
+&lt;p&gt;$ \frac{dA}{dB} = \frac{d}{dB}(1 + B^2) $&lt;/p&gt;
+
+&lt;p&gt;, since &lt;strong&gt;derivative of a constant is 0&lt;/strong&gt; and using &lt;strong&gt;power rule&lt;/strong&gt; you get&lt;/p&gt;
+
+&lt;p&gt;$ = 0 + 2B = 2B $&lt;/p&gt;
+
+&lt;p&gt;For the second derivative,&lt;/p&gt;
+
+&lt;p&gt;$ \frac{dB}{dC} = \frac{d}{dC}(\frac{1}{1 + C}) $&lt;/p&gt;
+
+&lt;p&gt;, using &lt;strong&gt;quotient rule&lt;/strong&gt; you get&lt;/p&gt;
+
+&lt;p&gt;$ = \frac{0{\cdot}(1 + C) - 1{\cdot}1}{(1 + C)^2} = \frac{-1}{(1 + C)^2} $&lt;/p&gt;
+
+&lt;p&gt;And for the third derivative,&lt;/p&gt;
+
+&lt;p&gt;$ \frac{dC}{dx} = \frac{d}{dx}(2x) = 2{\cdot}C’(x) = 2 $&lt;/p&gt;
+
+&lt;p&gt;Multiplying them all together, we have:&lt;/p&gt;
+
+&lt;p&gt;$ A’(x) = 2B{\cdot}(\frac{-1}{(1 + C)^2}){\cdot}2 $&lt;/p&gt;
+
+&lt;p&gt;You can simplify that equation further or substitute with values to get the derivative, since we know $ x = 5 $.&lt;/p&gt;
+
+&lt;p&gt;So there you go.  Having been able to get the derivative is a step closer to appreciating Math again, at least for me.  And having a good knowledge of different Maths will definitely serve you well not just in the area of AI, but in games, financial, blockchain and metaverse.&lt;/p&gt;
+
+&lt;h3 id=&quot;references&quot;&gt;References&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.cantorsparadise.com/beyond-calculus-the-math-classes-you-didnt-take-d0365ac42e41&quot;&gt;Beyond Calculus: The Math Classes You Didn’t Take&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://mml-book.github.io/book/mml-book.pdf&quot;&gt;Mathematics For Machine Learning (PDF)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.freecodecamp.org/news/all-the-math-you-need-in-artificial-intelligence/&quot;&gt;All the Math You Need to Know in Artificial Intelligence&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.mathsisfun.com/algebra/equations-solving.html&quot;&gt;Solving Equations from MathIsFun&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.cuemath.com/algebra/solving-an-equation/&quot;&gt;Solving Equations from CueMath&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.sosmath.com/algebra/solve/solve0/solve0.html&quot;&gt;Solving Equations from S.O.S. Math&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://sites.austincc.edu/tsiprep/math-review/&quot;&gt;Math Review&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.eeweb.com/tools/math-help/&quot;&gt;Math Reference Sheets&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.rapidtables.com/math/symbols/index.html&quot;&gt;Mathematical Symbols&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.khanacademy.org/math/calculus-1/cs1-derivatives-definition-and-basic-rules&quot;&gt;Derivatives: definition and basic rules&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="math" /><summary type="html"></summary></entry><entry><title type="html">A Simple Neural Network In C#</title><link href="https://rodansotto.github.io/tech-blog/2022/07/06/a-simple-neural-network-in-c-sharp.html" rel="alternate" type="text/html" title="A Simple Neural Network In C#" /><published>2022-07-06T00:00:00+00:00</published><updated>2022-07-06T00:00:00+00:00</updated><id>https://rodansotto.github.io/tech-blog/2022/07/06/a-simple-neural-network-in-c-sharp</id><content type="html" xml:base="https://rodansotto.github.io/tech-blog/2022/07/06/a-simple-neural-network-in-c-sharp.html">&lt;p&gt;&lt;img src=&quot;/tech-blog/assets/images/aibloglogo.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;(Note: I have the code up on my .NET C# Fiddle libray &lt;a href=&quot;https://dotnetfiddle.net/0aI8Ea&quot;&gt;here&lt;/a&gt; where you can check it and run it online)&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;There is definitely no good time to explore this than now and it just so happens I stumbled upon this really great article &lt;a href=&quot;https://rubikscode.net/2022/07/04/implementing-simple-neural-network-in-c/&quot;&gt;here&lt;/a&gt; talking about creating a simple neural network in C#.&lt;/p&gt;
+
+&lt;p&gt;As I’ve mentioned in my 2017 post &lt;a href=&quot;/tech-blog/2017/10/27/ai-anyone.html&quot;&gt;here&lt;/a&gt;, I have been wanting to explore this avenue on AI, this &lt;strong&gt;Artificial Neural Network&lt;/strong&gt; (&lt;strong&gt;ANN&lt;/strong&gt;).  Why I picked ANN is because truth be told I had my first rodeo with AI back in my University days when I was assisting someone doing his Master’s thesis on ANN which he implemented in C++ language (just to be clear, I was completing my Bachelor and not Master at the time).  Yeah, ANN has been around for a while now.&lt;/p&gt;
+
+&lt;p&gt;To give a brief explanation of it as I can, &lt;strong&gt;Artificial Neural Network&lt;/strong&gt; is patterned after our own biological neural network the nervous system, which is why it’s called ANN.  It has the same smallest building units as the &lt;strong&gt;neurons&lt;/strong&gt;, with simulated connections like the &lt;strong&gt;synapses&lt;/strong&gt;, and with &lt;strong&gt;weighted inputs&lt;/strong&gt; and outputs for receiving and sending (or &lt;strong&gt;propagating&lt;/strong&gt;) signals (or values), from and to neighboring neurons.  The neurons in ANN are grouped into &lt;strong&gt;layers&lt;/strong&gt; and connections are made between these layers.  And on top of it, a &lt;a href=&quot;https://rubikscode.net/2018/01/22/backpropagation-algorithm-in-artificial-neural-networks/&quot;&gt;backpropagation algorithm&lt;/a&gt; is usually used as the fastest way to update weights in the ANNs when &lt;strong&gt;training/error correcting&lt;/strong&gt;.  This backpropagation algorithm is complex and maybe I can dive into this more next time.&lt;/p&gt;
+
+&lt;p&gt;But it does seem easy to understand the basic structure of an ANN, right.  Don’t be fooled but the complexity lies in the functions that handle/process input and what weights they come in and to come up with an output or not and what the output value is and how error correction is handled and back propagating it, meaning how much to change the input weights so next time it is trained again it gets closer and closer to the desired output.  So there is a lot of math involved here.  And plus how many neurons to place in a layer and how many layers to setup also affect how good the ANN learns.  Don’t quote me on this yet, as I have not really dived deep into this, but that is based on what I understood during that time in my University days and it actually makes sense if you think about it.&lt;/p&gt;
+
+&lt;p&gt;For now, I pulled this code into my .NET C# Fiddle libray &lt;a href=&quot;https://dotnetfiddle.net/0aI8Ea&quot;&gt;here&lt;/a&gt; where I can play with it and run it online (e.g. train ANN) and get to understand how ANN works really, if I’m near to what my initial understanding is.  However, the provided initial training model does not actually do anything (e.g. what is it learning to solve the problem).  But it’s a good start for a neural network C# implementation that I can work on and improve on.  Really excited I came across this, can’t wait to play with it.&lt;/p&gt;
+
+&lt;p&gt;By the way, the original code (from the author of the article) is actually available in GitHub &lt;a href=&quot;https://github.com/NMZivkovic/SimpleNeuralNetworkInCSharp&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;References:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://rubikscode.net/2018/02/19/artificial-neural-networks-series/&quot;&gt;Artificial Neural Networks Series&lt;/a&gt; - this is actually the home page that contains a list of links to other great articles on AI, Deep Learning, and Neural Networks in their site&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="ai" /><summary type="html"></summary></entry><entry><title type="html">Back to the Roots with Algorithms</title><link href="https://rodansotto.github.io/tech-blog/2022/07/04/back-to-the-roots-with-algorithms.html" rel="alternate" type="text/html" title="Back to the Roots with Algorithms" /><published>2022-07-04T00:00:00+00:00</published><updated>2022-07-04T00:00:00+00:00</updated><id>https://rodansotto.github.io/tech-blog/2022/07/04/back-to-the-roots-with-algorithms</id><content type="html" xml:base="https://rodansotto.github.io/tech-blog/2022/07/04/back-to-the-roots-with-algorithms.html">&lt;p&gt;&lt;img src=&quot;/tech-blog/assets/images/my-net-fiddle.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;data-structures&quot;&gt;Data Structures&lt;/h3&gt;
+&lt;p&gt;This is about algorithms but data structures are also important and one cannot do without the other.  So first a refresher on data structures.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Data structure&lt;/strong&gt; is the organization of data in the computer&lt;/li&gt;
+  &lt;li&gt;The following are the basic data structures in computer programming: &lt;strong&gt;Array&lt;/strong&gt;, &lt;strong&gt;Linked&lt;/strong&gt; &lt;strong&gt;List&lt;/strong&gt;, &lt;strong&gt;Stack&lt;/strong&gt;, &lt;strong&gt;Queue&lt;/strong&gt;, &lt;strong&gt;Tree&lt;/strong&gt;, and &lt;strong&gt;Graph&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Array&lt;/strong&gt; is pretty much the most common and basic one of them all that software developers used often.  It is used to store multiple items together in contiguous memory locations.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Linked List&lt;/strong&gt; stores multiple items as well but in separate locations and are linked using pointers that tells you where the next item is.  Some applications are:
+    &lt;ol&gt;
+      &lt;li&gt;Implement dynamic memory management functions of operating system&lt;/li&gt;
+      &lt;li&gt;Polynomial implementation for mathematical operations&lt;/li&gt;
+      &lt;li&gt;As circular linked list to implement OS or application functions that require round robin execution of tasks&lt;/li&gt;
+      &lt;li&gt;When a user uses the alt+tab key combination to browse through the opened application to select a desired application&lt;/li&gt;
+      &lt;li&gt;As circular queue to maintain the playing sequence of multiple players in a game&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Stack&lt;/strong&gt; is a linear data structure that dictates the order in which operations are performed.  It’s a last in first out (&lt;strong&gt;LIFO&lt;/strong&gt;) or first in last out (&lt;strong&gt;FILO&lt;/strong&gt;) operation.  Some applications are:
+    &lt;ol&gt;
+      &lt;li&gt;Manage function calls including nested operations, recursive operations&lt;/li&gt;
+      &lt;li&gt;Checking, evaluating, converting expressions in various programming languages&lt;/li&gt;
+      &lt;li&gt;In all the problems solutions based on backtracking&lt;/li&gt;
+      &lt;li&gt;Used in depth first search in graph and tree traversal&lt;/li&gt;
+      &lt;li&gt;Operating system functions&lt;/li&gt;
+      &lt;li&gt;Undo and redo functions in an editor&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Queue&lt;/strong&gt; is similar to stack but it’s a first in first out (&lt;strong&gt;FIFO&lt;/strong&gt;) operation.  Some applications are:
+    &lt;ol&gt;
+      &lt;li&gt;Used in breadth search operation in graphs&lt;/li&gt;
+      &lt;li&gt;Job scheduling, CPU scheduling, disk scheduling, printer buffer, keyboard buffer in operating systems&lt;/li&gt;
+      &lt;li&gt;Data transfer between peripheral devices and CPU&lt;/li&gt;
+      &lt;li&gt;Interrupts generated by the user applications for CPU&lt;/li&gt;
+      &lt;li&gt;Calls handled by the customers&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Tree&lt;/strong&gt; is a non-linear data structure whose elements can have more than 1 children. One kind of tree that is commonly referred to as &lt;strong&gt;Binary Tree&lt;/strong&gt; has at most 2 children.  Binary tree node contains the data, a pointer to the left child and a pointer to the right child.  Some applications of a tree data structure are:
+    &lt;ol&gt;
+      &lt;li&gt;Implementing the hierarchical structures in computer systems like directory and file system&lt;/li&gt;
+      &lt;li&gt;Decision making in gaming applications&lt;/li&gt;
+      &lt;li&gt;Parsing of expressions and statements in programming language compilers&lt;/li&gt;
+      &lt;li&gt;Hash trees&lt;/li&gt;
+      &lt;li&gt;Path-finding algorithm to implement in AI, robotics and video games applications&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Graph&lt;/strong&gt; is a non-linear data structure consisting of a finite set of vertices (or nodes) and set of edges which connect a pair of nodes.  Some applications are:
+    &lt;ol&gt;
+      &lt;li&gt;Representing networks and routes in communication, transportation and travel applications&lt;/li&gt;
+      &lt;li&gt;Interconnections in social networks and other network based applications&lt;/li&gt;
+      &lt;li&gt;Mapping applications&lt;/li&gt;
+      &lt;li&gt;Resource utilization and availability in an organization&lt;/li&gt;
+      &lt;li&gt;Robotic motion and neural networks&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;There are some more data structures out there but the above is enough to start with.  And having listed the applications they can be used for gives them much deserving appreciation and importance.&lt;/li&gt;
+  &lt;li&gt;You can check &lt;a href=&quot;https://docs.microsoft.com/en-us/dotnet/standard/collections&quot;&gt;.NET Collections and Data Structures&lt;/a&gt; from Microsoft for the data structures available in .NET and their complexities as well.&lt;/li&gt;
+  &lt;li&gt;Additionally look at &lt;a href=&quot;https://dev.to/adavidoaiei/fundamental-data-structures-and-algorithms-in-c-4ocf&quot;&gt;Fundamental Data Structures and Algorithms in C#&lt;/a&gt; to get a visual explanation and C# code example of the above data structures.&lt;/li&gt;
+  &lt;li&gt;For Javascript, check &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures&quot;&gt;JavaScript data types and data structures&lt;/a&gt; from Mozilla.  It has in ECMAScript 6 new data structures such as &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set&quot;&gt;Set&lt;/a&gt; and &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map&quot;&gt;Map&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;And for visual explanation and Javascript code example check &lt;a href=&quot;https://www.freecodecamp.org/news/data-structures-in-javascript-with-examples/&quot;&gt;Data Structures in JavaScript – With Code Examples&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;algorithms&quot;&gt;Algorithms&lt;/h3&gt;
+&lt;p&gt;Now that we got the data structures out of the way, let’s get on with algorithms.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Algorithm&lt;/strong&gt; is a set of instructions to solve a class of specific problems or to perform a computation.&lt;/li&gt;
+  &lt;li&gt;In &lt;strong&gt;Asymptotic Analysis&lt;/strong&gt;, the &lt;strong&gt;performance (or complexity) of an algorithm is evaluated in terms of input size&lt;/strong&gt; (not the actual running time). It’s calculated by &lt;strong&gt;how the time (or space) taken by an algorithm increases with the input size&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;One of 3 asymptotic anotations is the &lt;strong&gt;Big O notation&lt;/strong&gt; (e.g. $ O(N) $) which defines an upper bound of an algorithm (worst case).&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The following are the common &lt;strong&gt;Order-of-growth classifications&lt;/strong&gt;, from fastest to slowest:&lt;/p&gt;
+
+    &lt;table&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th&gt;name&lt;/th&gt;
+          &lt;th&gt;order of growth&lt;/th&gt;
+          &lt;th&gt;description&lt;/th&gt;
+          &lt;th&gt;example&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td&gt;Constant&lt;/td&gt;
+          &lt;td&gt;$ 1 $&lt;/td&gt;
+          &lt;td&gt;statement&lt;/td&gt;
+          &lt;td&gt;add 2 numbers&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;Logarithmic&lt;/td&gt;
+          &lt;td&gt;$ log \ N $ (barely slower than constant)&lt;/td&gt;
+          &lt;td&gt;divide in half&lt;/td&gt;
+          &lt;td&gt;binary search&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;Linear&lt;/td&gt;
+          &lt;td&gt;$ N $&lt;/td&gt;
+          &lt;td&gt;loop&lt;/td&gt;
+          &lt;td&gt;find the maximum&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;Linearithmic&lt;/td&gt;
+          &lt;td&gt;$ N \ log \ N $&lt;/td&gt;
+          &lt;td&gt;divide and conquer&lt;/td&gt;
+          &lt;td&gt;mergesort&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;Quadratic&lt;/td&gt;
+          &lt;td&gt;$ N ^ {2} $&lt;/td&gt;
+          &lt;td&gt;double loop&lt;/td&gt;
+          &lt;td&gt;check all pairs&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;Cubic&lt;/td&gt;
+          &lt;td&gt;$ N ^ {3} $&lt;/td&gt;
+          &lt;td&gt;triple loop&lt;/td&gt;
+          &lt;td&gt;check all triples&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;Exponential&lt;/td&gt;
+          &lt;td&gt;$ 2 ^ {N} $&lt;/td&gt;
+          &lt;td&gt;exhaustive search&lt;/td&gt;
+          &lt;td&gt;check all subsets&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/li&gt;
+  &lt;li&gt;There is also this &lt;strong&gt;Amortized Analysis&lt;/strong&gt; that is used for algorithms where an occasional operation is very slow, but most of the other operations are faster. In Amortized Analysis, a sequence of operations is analyzed and guarantees a worst-case average time that is lower than the worst-case time of a particularly expensive operation.&lt;/li&gt;
+  &lt;li&gt;Following are some types of algorithms based on their implementation:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;Brute force&lt;/strong&gt; is a direct and straightforward technique of solving problems in which all possible ways to a given problem is enumerated.  Best for solving small and simple problems.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Recursive&lt;/strong&gt; involves a function calling itself directly or indirectly, performing same operations multiple times with different inputs, and with a base condition to stop recursion.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Divide and Conquer&lt;/strong&gt; involves dividing the problem into smaller sub-problems, solving them recursively, then combining them to get final solution of the whole problem.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Dynamic programming&lt;/strong&gt; is also known as the &lt;strong&gt;memoization technique&lt;/strong&gt; because in this, the idea is to store the previously calculated result to avoid calculating it again and again.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Greedy Algorithm&lt;/strong&gt; is where the solution is built part by part. The decision to choose the next part is done on the basis that it gives the immediate benefit. It never considers the choices that had taken previously. E.g. &lt;strong&gt;Dijkstra shortest path algorithm&lt;/strong&gt;.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Backtracking&lt;/strong&gt; solves the problem in an incremental way i.e. it is an algorithmic-technique for solving problems recursively by trying to build a solution incrementally, one piece at a time, removing those solutions that fail to satisfy the constraints of the problem at any point of time.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;And you have other types of algorithms based on their purpose:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;Sorting Algorithm&lt;/strong&gt; is used to rearrange a given array or list elements according to a comparison operator on the elements.  And following are the known sorting algorithms around:
+        &lt;ul&gt;
+          &lt;li&gt;&lt;strong&gt;Selection Sort&lt;/strong&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;strong&gt;Bubble Sort&lt;/strong&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;strong&gt;Insertion Sort&lt;/strong&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;strong&gt;Merge Sort&lt;/strong&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;strong&gt;Quicksort&lt;/strong&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;strong&gt;Heapsort&lt;/strong&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;strong&gt;Iterative Heapsort&lt;/strong&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;strong&gt;Counting Sort&lt;/strong&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;strong&gt;Radix Sort&lt;/strong&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;strong&gt;Bucket Sort&lt;/strong&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Searching Algorithm&lt;/strong&gt; is designed to check for an element or retrieve an element from any data structure where it is stored.  They are further classified into:
+        &lt;ul&gt;
+          &lt;li&gt;Sequential Search (e.g. &lt;strong&gt;Linear Search&lt;/strong&gt;)&lt;/li&gt;
+          &lt;li&gt;Interval Search (e.g. &lt;strong&gt;Binary Search&lt;/strong&gt;)&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Pattern Search Algorithm&lt;/strong&gt; also known as &lt;strong&gt;String Search Algorithm&lt;/strong&gt; is designed for searching a string within another string&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Mathematical Algorithm&lt;/strong&gt; (e.g. &lt;strong&gt;Fibonacci&lt;/strong&gt;, &lt;strong&gt;Greatest Common Denominator&lt;/strong&gt;)&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Geometric Algorithm&lt;/strong&gt; is designed to solve Geometric Problems and require in-depth knowledge of different mathematical subjects like combinatorics, topology, algebra, differential geometry etc. (e.g. &lt;strong&gt;Lines&lt;/strong&gt;, &lt;strong&gt;Triangles&lt;/strong&gt;, &lt;strong&gt;3D Objects&lt;/strong&gt;, &lt;strong&gt;Polygons&lt;/strong&gt;)&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Graph Algorithm&lt;/strong&gt; (e.g. &lt;strong&gt;Breadth First Search&lt;/strong&gt;, &lt;strong&gt;Depth First Search&lt;/strong&gt;, &lt;strong&gt;Cycle&lt;/strong&gt;, &lt;strong&gt;Shortest Paths&lt;/strong&gt;)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;whats-next&quot;&gt;What’s Next&lt;/h3&gt;
+&lt;p&gt;There’s a ton more things to know about algorithms (and data structures) and what best way to be familiar with them is to implement them using your favorite programming language.  So I started implementing my own solutions to some of the algorithm problems out there, the code you can see and run on &lt;a href=&quot;https://dotnetfiddle.net/Authors/224214/Rodan%20Sotto&quot;&gt;My .NET C# Fiddle library&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;So far at the time of this posting, I managed to work on these algorithm problems: &lt;strong&gt;Robot Bounded in Circle&lt;/strong&gt;, &lt;strong&gt;Maximize Score After N Operations&lt;/strong&gt;, &lt;strong&gt;All Combination of Numbers Sum to Target&lt;/strong&gt;, and &lt;strong&gt;Fractional Knapsack&lt;/strong&gt;.  I will be building that library as I continue implementing different kinds of algorithms.  And that I feel is the best way to learn and make them stick longer.  I am also planning on implementing them on Javascript and Python, so really I’m excited about this journey.&lt;/p&gt;
+
+&lt;h3 id=&quot;references&quot;&gt;References&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://csveda.com/data-structure/applications-of-data-structures&quot;&gt;Applications of Data Structures from CSVeda&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.geeksforgeeks.org/data-structures&quot;&gt;Data Structures from GeeksForGeeks&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.geeksforgeeks.org/fundamentals-of-algorithms&quot;&gt;Algorithms from GeeksForGeeks&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://algs4.cs.princeton.edu/home&quot;&gt;Algorithms, 4th Edition from Sedgewick and Wayne&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="algorithms" /><summary type="html"></summary></entry><entry><title type="html">Is This Still Working In 2022 ?!?!</title><link href="https://rodansotto.github.io/tech-blog/2022/06/19/is-this-still-working-in-2022.html" rel="alternate" type="text/html" title="Is This Still Working In 2022 ?!?!" /><published>2022-06-19T00:00:00+00:00</published><updated>2022-06-19T00:00:00+00:00</updated><id>https://rodansotto.github.io/tech-blog/2022/06/19/is-this-still-working-in-2022</id><content type="html" xml:base="https://rodansotto.github.io/tech-blog/2022/06/19/is-this-still-working-in-2022.html">&lt;p&gt;&lt;img src=&quot;/tech-blog/assets/images/hello-verse.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I haven’t made a post for almost 5 years now since I took this job which I’m still at right now.  I’m going 5 years in this job pretty soon.  Part of the reason is of course the pandemic.  The other is it just kept me busy and kept me learning… and I learned a lot.  But what’s with the title then?  I thought of posting this on LinkedIn and see if that title catches attention.&lt;/p&gt;
+
+&lt;p&gt;Anyways, that aside, I just wanted to share that I put up my web site again (as it was down for while now) and this time hosted on GitHub at &lt;a href=&quot;https://rodansotto.github.io&quot;&gt;rodansotto.github.io&lt;/a&gt;.  I thought it makes sense for my web site which features coding projects I did in my spare time, to live besides their source code.  Yes I have uploaded my source code to GitHub and this will be my code repository moving forward.  You can see my repositories at &lt;a href=&quot;https://github.com/rodansotto&quot;&gt;github.com/rodansotto&lt;/a&gt;.  Also, I migrated my technical blog from WordPress to GitHub and it’s now at &lt;a href=&quot;https://rodansotto.github.io/tech-blog&quot;&gt;rodansotto.github.io/tech-blog&lt;/a&gt;.  So if you are reading this now, then you are reading this on GitHub.&lt;/p&gt;
+
+&lt;p&gt;Enough of the intro, let’s get down to business.  I wanted to share in this post what I learned as a software developer in the last almost 5 years and anything else I want to learn further moving forward.  I will not go into details on each one of them as I want to keep this post from getting too long.  Just going to list them out for now.&lt;/p&gt;
+
+&lt;p&gt;As far as back end technologies goes, here is a list of things I learned:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://servicestack.net/&quot;&gt;Servicestack&lt;/a&gt; on C# .NET Framework for creating RESTful APIs for the front end to call (before ASP.Net MVC API and ASP.Net Core were available)&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://swagger.io/&quot;&gt;Swagger&lt;/a&gt; (came with Servicestack) for viewing those APIs and trying them out in a browser&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://aws.amazon.com/&quot;&gt;Amazon Web Services (AWS)&lt;/a&gt;: EC2, S3, Athena, CloudFront, CloudWatch, Elasticsearch,  RDS, SES, SNS, SQS, CloudFormation, IAM, Lambda, Management Console, Systems Manager - App Management&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://cloud.google.com/&quot;&gt;Google Cloud Platform&lt;/a&gt;: BigQuery, Cloud Storage, Cloud Functions, Cloud Scheduler, IAM,&lt;/li&gt;
+  &lt;li&gt;3rd Party API Integrations: &lt;a href=&quot;https://www.lever.co/&quot;&gt;Lever&lt;/a&gt;, &lt;a href=&quot;https://www.smartsheet.com/&quot;&gt;Smartsheet&lt;/a&gt;, &lt;a href=&quot;https://www.manageengine.com/products/service-desk/&quot;&gt;ServiceDeskPlus&lt;/a&gt;, &lt;a href=&quot;https://slack.com/&quot;&gt;Slack&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Databases: &lt;a href=&quot;https://www.postgresql.org/&quot;&gt;PostgreSQL&lt;/a&gt;, &lt;a href=&quot;https://www.mongodb.com/atlas/database&quot;&gt;MongoDB&lt;/a&gt; / &lt;a href=&quot;https://www.mongodb.com/docs/drivers/csharp/&quot;&gt;MongoDB C#/.NET Driver&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://nunit.org/&quot;&gt;NUnit&lt;/a&gt; for unit-testing .NET code&lt;/li&gt;
+  &lt;li&gt;Others: &lt;a href=&quot;https://www.puppeteersharp.com/&quot;&gt;Puppeteer&lt;/a&gt; for scraping LinkedIn profiles, &lt;a href=&quot;https://www.elastic.co/elasticsearch/&quot;&gt;Elasticsearch&lt;/a&gt; (here is the &lt;a href=&quot;https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html&quot;&gt;reference&lt;/a&gt;), &lt;a href=&quot;https://www.elastic.co/guide/en/kibana/current/index.html&quot;&gt;Kibana&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And for front end technologies:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://mithril.js.org/&quot;&gt;Mithril&lt;/a&gt; a not so new Javascript framework for building single page applications in MVC style&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.typescriptlang.org/&quot;&gt;Typescript&lt;/a&gt; for coding with type checking in Javascript&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://lit.dev/&quot;&gt;Lit&lt;/a&gt; a library for building fast, lightweight &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/Web_Components&quot;&gt;web components&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://vaadin.com/router&quot;&gt;Vaadin Router&lt;/a&gt; for client-side routing of web components&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://redux.js.org/&quot;&gt;Redux&lt;/a&gt; for managing state in Javascript applications&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/carbon-design-system/carbon-web-components&quot;&gt;Carbon Web Components&lt;/a&gt; a variant of &lt;a href=&quot;https://carbondesignsystem.com/&quot;&gt;Carbon Design System&lt;/a&gt; implemented as web components&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://storybook.js.org/&quot;&gt;StoryBook&lt;/a&gt; for documenting UI components but also for developing and testing UI components in isolation&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;What I would look to try or learn next are:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://reactjs.org/&quot;&gt;React&lt;/a&gt; or &lt;a href=&quot;https://vuejs.org/&quot;&gt;Vue&lt;/a&gt; (just one of them for now).  Maybe create a to do list app which will be a part of like a mail or calendar app similar to Google Mail or Google Calendar.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://angular.io/&quot;&gt;Angular&lt;/a&gt;. Actually continue learning it (it’s a big framework btw) by building more features on this Angular project I worked on last time, the product catalog, to maybe make it more like an Amazon online store, right?.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-6.0&quot;&gt;ASP.NET Core&lt;/a&gt;. Probably only for it’s &lt;a href=&quot;https://docs.microsoft.com/en-us/aspnet/core/web-api/?view=aspnetcore-6.0&quot;&gt;Web API&lt;/a&gt; and &lt;a href=&quot;https://docs.microsoft.com/en-us/aspnet/core/signalr/introduction?view=aspnetcore-6.0&quot;&gt;SignalR&lt;/a&gt;.  I’m still interested with ASP.Net Core.  I’m thinking of getting a free &lt;a href=&quot;https://azure.microsoft.com/en-ca/&quot;&gt;Azure&lt;/a&gt; account to play with these and maybe try out the other free stuff there.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.python.org/&quot;&gt;Phython&lt;/a&gt; / &lt;a href=&quot;https://en.wikipedia.org/wiki/Machine_learning&quot;&gt;Machine Learning&lt;/a&gt;.  Yes machine learning has been in my radar for a while now.  It’s a pretty big scope and it’s very technical if I may say.  There are so many stuff out there being put out with how to make machines learn.  I’m interested in using Phython for this.  I recently read about this article 
+&lt;a href=&quot;https://www.analyticsinsight.net/top-100-machine-learning-project-ideas-for-tech-enthusiasts/&quot;&gt;Top 100 Machine Learning Project Ideas for Tech Enthusiasts&lt;/a&gt; and it can definitely be a source of motivation.&lt;/li&gt;
+  &lt;li&gt;Metaverse Application Development.  Technologies surrounding this really piqued my interest.  I’m hoping they would be useful outside of social networking, like maybe in the medical fields or somewhere else.  This article &lt;a href=&quot;https://simpleprogrammer.com/skills-metaverse-developer/&quot;&gt;The Skills You Need To Become a Metaverse Developer&lt;/a&gt; lists out those technologies.&lt;/li&gt;
+  &lt;li&gt;Blockchain Application Development.  I’m interested on blockchain technologies for non-financial applications though.  This article 
+&lt;a href=&quot;https://www.section.io/engineering-education/the-complete-roadmap-to-blockchain-development/&quot;&gt;A Complete Roadmap to Blockchain Development&lt;/a&gt; will serve as an introduction and guide.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Now we’ve come to the end of this post.  Writing a blog really takes time, for me at least.  I would prefer to spend it coding on my projects than blogging. But I will make it to a point to put one every month.  So that’s it, all 5 years worth in one post, well just in summary.&lt;/p&gt;</content><author><name></name></author><category term="general" /><summary type="html"></summary></entry><entry><title type="html">Welcome to My Jekyll-Powered Tech Blog!</title><link href="https://rodansotto.github.io/tech-blog/2022/06/05/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to My Jekyll-Powered Tech Blog!" /><published>2022-06-05T00:55:09+00:00</published><updated>2022-06-05T00:55:09+00:00</updated><id>https://rodansotto.github.io/tech-blog/2022/06/05/welcome-to-jekyll</id><content type="html" xml:base="https://rodansotto.github.io/tech-blog/2022/06/05/welcome-to-jekyll.html">&lt;p&gt;I just migrated my technical blog from WordPress to
+Jekyll on GitHub Pages.  And here’s how I did it:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Exported my blog site in WordPress to XML.  See &lt;a href=&quot;https://wordpress.com/support/export/&quot;&gt;https://wordpress.com/support/export/&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Used &lt;a href=&quot;https://github.com/lonekorean/wordpress-export-to-markdown&quot;&gt;wordpress-export-to-markdown&lt;/a&gt; to convert Wordpress export XML file into Markdown files suitable for Jekyll.&lt;/li&gt;
+  &lt;li&gt;Created GitHub Pages site with Jekyll.  Found this &lt;a href=&quot;https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/creating-a-github-pages-site-with-jekyll&quot;&gt;site&lt;/a&gt; really helpful.&lt;/li&gt;
+  &lt;li&gt;Installed a different theme other than the default one that came with Jekyll.  I’m using &lt;a href=&quot;https://github.com/jeffreytse/jekyll-theme-yat&quot;&gt;jeffreytse/jekyll-theme-yat&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;</content><author><name></name></author><category term="general" /><summary type="html">I just migrated my technical blog from WordPress to Jekyll on GitHub Pages. And here’s how I did it:</summary></entry><entry><title type="html">Learning Python for Numeric and Scientific Applications</title><link href="https://rodansotto.github.io/tech-blog/2017/12/29/learning-python-for-numeric-and-scientific-applications.html" rel="alternate" type="text/html" title="Learning Python for Numeric and Scientific Applications" /><published>2017-12-29T00:00:00+00:00</published><updated>2017-12-29T00:00:00+00:00</updated><id>https://rodansotto.github.io/tech-blog/2017/12/29/learning-python-for-numeric-and-scientific-applications</id><content type="html" xml:base="https://rodansotto.github.io/tech-blog/2017/12/29/learning-python-for-numeric-and-scientific-applications.html">&lt;p&gt;&lt;img src=&quot;/tech-blog/assets/images/pybloglogo.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;My purpose in learning Python is mainly for numeric and scientific applications, such as AI deep learning.  So my notes will focus mainly on using Python for these types of applications.&lt;/p&gt;
+
+&lt;p&gt;The code below demonstrates a little about Python such as some variables and types; lists; subsetting and slicing lists; adding, removing and copying lists; some of its built-in functions and built-in object methods.  Then it demonstrates how to use the NumPy package specifically the NumPy array, some NumPy statistical methods, and how to generate your own sample data.  You can run this code online and I recommend using &lt;a href=&quot;https://repl.it/languages/python3&quot;&gt;repl.it&lt;/a&gt;.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/9051a1e538c2a5ca213f50dd18e0a5f1.js&quot;&gt; &lt;/script&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Additional References:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.python.org/&quot;&gt;Python.org&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wiki.python.org/moin/NumericAndScientific&quot;&gt;Numeric and Scientific Python Modules, Libraries, Tools, and Frameworks&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.python.org/3/library/index.html&quot;&gt;The Python Standard Library&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.python.org/3/installing/index.html&quot;&gt;Installing Python Modules&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.numpy.org/&quot;&gt;NumPy&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.datacamp.com/community/tutorials/data-science-python-ide&quot;&gt;Top 5 Python IDEs For Data Science&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://jupyter.org/index.html&quot;&gt;Jupyter&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://pythonhosted.org/spyder/&quot;&gt;Spyder - Documentation&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="ai" /><summary type="html"></summary></entry><entry><title type="html">LINQ Exercises Using Both Query and Fluent Syntaxes</title><link href="https://rodansotto.github.io/tech-blog/2017/12/09/linq-exercises-using-both-query-and-fluent-syntaxes.html" rel="alternate" type="text/html" title="LINQ Exercises Using Both Query and Fluent Syntaxes" /><published>2017-12-09T00:00:00+00:00</published><updated>2017-12-09T00:00:00+00:00</updated><id>https://rodansotto.github.io/tech-blog/2017/12/09/linq-exercises-using-both-query-and-fluent-syntaxes</id><content type="html" xml:base="https://rodansotto.github.io/tech-blog/2017/12/09/linq-exercises-using-both-query-and-fluent-syntaxes.html">&lt;p&gt;&lt;img src=&quot;/tech-blog/assets/images/linqbloglogo.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Query syntax:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/743544a69c2ab450bea0fcd3067b14d5.js&quot;&gt; &lt;/script&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt;Fluent syntax:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/eb44d5d0dfcaf25f4b70dce188ab140c.js&quot;&gt; &lt;/script&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Resources:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/&quot;&gt;Language Integrated Query (LINQ)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="c-sharp" /><summary type="html"></summary></entry><entry><title type="html">Product Catalog: An Angular and Material Demo</title><link href="https://rodansotto.github.io/tech-blog/2017/12/04/product-catalog-an-angular-and-material-demo.html" rel="alternate" type="text/html" title="Product Catalog: An Angular and Material Demo" /><published>2017-12-04T00:00:00+00:00</published><updated>2017-12-04T00:00:00+00:00</updated><id>https://rodansotto.github.io/tech-blog/2017/12/04/product-catalog-an-angular-and-material-demo</id><content type="html" xml:base="https://rodansotto.github.io/tech-blog/2017/12/04/product-catalog-an-angular-and-material-demo.html">&lt;p&gt;&lt;img src=&quot;/tech-blog/assets/images/productcatalogangulardemob.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;[DEMO (unavailable)](#)&lt;/td&gt;
+      &lt;td&gt;[CODE](https://github.com/rodansotto/productcatalogdemo-angular2)&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;This is my first Angular app but not the first time creating the product list for the AdventureWorks products database.  I previously created one using MVC 4 (check my post &lt;a href=&quot;https://rodansotto.github.io/tech-blog/2015/10/19/a-custom-webgrid-my-1st-iteration.html&quot;&gt;here&lt;/a&gt; but this time around it has an image view besides the list view and it uses Web API to communicate to the back-end.  I initially used Bootstrap as my UI framework but decided to use Angular Material as I found it to be more easy to integrate with Angular.&lt;/p&gt;
+
+&lt;p&gt;It was an adventure and really worth going through it.  I was thinking of using VS Code but when I tried it hoping it should be similar to the full-featured VS IDE but it’s not.  Since I don’t want to spend another time familiarizing myself with VS Code, I went with VS IDE, for now.&lt;/p&gt;
+
+&lt;p&gt;So how did I make VS IDE work?  Well I only used VS IDE as a glorified editor really.  I depended on angular CLI pretty much for generating my initial angular app and scaffolding.  With VS IDE, I created a blank ASP.NET application and just opened my angular app files from there.&lt;/p&gt;
+
+&lt;p&gt;In this first iteration, I only have one module and one component that displays the product catalog.  I did setup a route for the component.  As I refactor and/or improve on this app, it will eventually have a proper navigation.  And of course, I had to rewrite rules for the URL so it uses the main angular app’s base href.&lt;/p&gt;
+
+&lt;p&gt;I have an angular service that calls a web API to retrieve the products data.  I had to pass some paging, sorting, and search info to the web API and I thought I can pass them in the request body but unfortunately Angular’s HttpClient does not allow it so I ended up passing them as URL parameters.  I only have one web API method on the backed.  And I only request for images/photos if the image view is active.&lt;/p&gt;
+
+&lt;p&gt;There is not much code on the component side that really needs explanation, it’s pretty straightforward.  Much of the effort is in making the angular material components work.  For this app, I used the following angular material components: table, paginator, sort, input, button, icon, card, tooltip, and progress spinner.  I really enjoy working on UI so this was worth the time and I think it’s a good UI and good thing I went for angular material.&lt;/p&gt;
+
+&lt;p&gt;So what’s next?  I still have to do the product detail view.  As for long-term goal, I am thinking of making this an angular module that you can just plug in in your projects, maybe thinking of creating an angular product catalog and ordering module, something like that.  Also might add in some product management module.&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Additional Resources:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://material.angular.io/&quot;&gt;Angular Material&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://material.io/icons/&quot;&gt;Material Design Icons&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="javascript" /><summary type="html"></summary></entry><entry><title type="html">.NET Code Documentation And Testing: They Are There, Why Not Use It?</title><link href="https://rodansotto.github.io/tech-blog/2017/11/28/net-code-documentation-and-testing-they-are-there-why-not-use-it-4.html" rel="alternate" type="text/html" title=".NET Code Documentation And Testing: They Are There, Why Not Use It?" /><published>2017-11-28T00:00:00+00:00</published><updated>2017-11-28T00:00:00+00:00</updated><id>https://rodansotto.github.io/tech-blog/2017/11/28/net-code-documentation-and-testing-they-are-there-why-not-use-it-4</id><content type="html" xml:base="https://rodansotto.github.io/tech-blog/2017/11/28/net-code-documentation-and-testing-they-are-there-why-not-use-it-4.html">&lt;p&gt;&lt;img src=&quot;/tech-blog/assets/images/xmldoccomments_01d.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Remember the “///”?  They are the C# XML documentation comments and they are pretty useful when you are building your APIs and frameworks so other developers who use your code can at least see some useful information on your classes and methods through the intellisense provided by the Visual Studio IDE.&lt;/p&gt;
+
+&lt;p&gt;Take the following sample code below.  I have a constructor and a method decorated with XML comments.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/2b0818cb3279e065d9fc6e18a89d2950.js&quot;&gt; &lt;/script&gt;
+
+&lt;p&gt;And on the code where they are used, when I hover over them I will see my comments displayed.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/tech-blog/assets/images/xmldoccomments_01.jpg&quot; alt=&quot;xmldoccomments_01&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/tech-blog/assets/images/xmldoccomments_02b.jpg&quot; alt=&quot;xmldoccomments_02b&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;So how about code testing?  .NET or more accurately Visual Studio comes with the Microsoft unit test framework.  It’s so easy to add one to your new project or existing project.  Once you have the stubs created for you, you can start coding your tests.&lt;/p&gt;
+
+&lt;p&gt;Below is a sample unit testing code I created.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/9f607d9b76a910caefc4211c94340c7e.js&quot;&gt; &lt;/script&gt;
+
+&lt;p&gt;So every time you make changes to your code, and I say you will always need to change or refactor code, running these tests will make sure you didn’t break anything.  So it is a pretty useful tool and I see the benefit in this.  And it’s so nice to see so many green check marks on your Test Explorer.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/tech-blog/assets/images/unittesting_01.jpg&quot; alt=&quot;unittesting_01&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;For more information, check out these links:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/xmldoc/recommended-tags-for-documentation-comments&quot;&gt;Recommended Tags for Documentation Comments (C# Programming Guide)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.microsoft.com/en-us/visualstudio/test/unit-test-your-code&quot;&gt;Unit Test Your Code&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://msdn.microsoft.com/en-us/library/jj159345.aspx&quot;&gt;Testing for Continuous Delivery with Visual Studio 2012&lt;/a&gt; - this might seem old but it contains best practices and fundamentals that still apply today&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="net" /><summary type="html"></summary></entry><entry><title type="html">I’m familiar with .NET Framework, so what is .NET Standard and .NET Core?</title><link href="https://rodansotto.github.io/tech-blog/2017/11/25/im-familiar-with-net-framework-so-what-is-net-standard-and-net-core.html" rel="alternate" type="text/html" title="I’m familiar with .NET Framework, so what is .NET Standard and .NET Core?" /><published>2017-11-25T00:00:00+00:00</published><updated>2017-11-25T00:00:00+00:00</updated><id>https://rodansotto.github.io/tech-blog/2017/11/25/im-familiar-with-net-framework-so-what-is-net-standard-and-net-core</id><content type="html" xml:base="https://rodansotto.github.io/tech-blog/2017/11/25/im-familiar-with-net-framework-so-what-is-net-standard-and-net-core.html">&lt;p&gt;&lt;img src=&quot;/tech-blog/assets/images/netbloglogo.png&quot; alt=&quot;&quot; /&gt;Basically .NET Framework is an implementation of .NET, much like &lt;a href=&quot;http://www.mono-project.com/&quot;&gt;Mono&lt;/a&gt; if you know Mono.  .NET Core is a newer implementation of .NET that is dubbed as cross-platform and designed for cloud.  Now .NET Standard is what is common among these .NET implementations and if your .NET app targets .NET Standard, it would mean that it can run on any .NET implementations.  That is all there is to it.  See &lt;a href=&quot;https://docs.microsoft.com/en-us/dotnet/standard/frameworks&quot;&gt;Target frameworks&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;.&lt;/p&gt;</content><author><name></name></author><category term="net" /><summary type="html">Basically .NET Framework is an implementation of .NET, much like Mono if you know Mono.  .NET Core is a newer implementation of .NET that is dubbed as cross-platform and designed for cloud.  Now .NET Standard is what is common among these .NET implementations and if your .NET app targets .NET Standard, it would mean that it can run on any .NET implementations.  That is all there is to it.  See Target frameworks</summary></entry></feed>
