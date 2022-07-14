@@ -26,7 +26,7 @@ baseurl: "/tech-blog" # the subpath of your site, e.g. /blog
 url: "https://rodansotto.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: rodansotto
 github_username:  rodansotto
-favicon: "rsicon.ico" # the favicon for your site
+# favicon: "rsicon.ico" # the favicon for your site
 
 # If you want to link only specific pages in your header, uncomment
 # this and add the path to the pages in order as they should show up
