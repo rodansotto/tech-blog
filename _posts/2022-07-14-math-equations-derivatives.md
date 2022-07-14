@@ -184,3 +184,4 @@ So there you go.  Having been able to get the derivative is a step closer to app
 * [Math Review](https://sites.austincc.edu/tsiprep/math-review/)
 * [Math Reference Sheets](https://www.eeweb.com/tools/math-help/)
 * [Mathematical Symbols](https://www.rapidtables.com/math/symbols/index.html)
+* [Derivatives: definition and basic rules](https://www.khanacademy.org/math/calculus-1/cs1-derivatives-definition-and-basic-rules)
