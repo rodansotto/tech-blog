@@ -18,3 +18,4 @@ Jekyll site: https://jekyllrb.com/
 
 Theme used: https://github.com/jeffreytse/jekyll-theme-yat
 
+This site uses MathJax.  A basic tutorial and quick reference can be found here: https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference
