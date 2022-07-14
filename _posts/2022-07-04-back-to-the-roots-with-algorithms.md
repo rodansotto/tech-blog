@@ -55,7 +55,7 @@ Now that we got the data structures out of the way, let's get on with algorithms
 
 * **Algorithm** is a set of instructions to solve a class of specific problems or to perform a computation.
 * In **Asymptotic Analysis**, the **performance (or complexity) of an algorithm is evaluated in terms of input size** (not the actual running time). It's calculated by **how the time (or space) taken by an algorithm increases with the input size**.
-* One of 3 asymptotic anotations is the **Big O notation** (e.g. O($ N $)) which defines an upper bound of an algorithm (worst case).
+* One of 3 asymptotic anotations is the **Big O notation** (e.g. $ O(N) $) which defines an upper bound of an algorithm (worst case).
 * The following are the common **Order-of-growth classifications**, from fastest to slowest:
 
     name | order of growth | description | example
