@@ -7,37 +7,29 @@ categories:
 
 Back again with design patterns, defining them briefly and the design principles they are based on, and providing several very good (almost) real-world C# examples that are available on the Internet.  In this series we have the factory patterns and the singleton pattern and their several different implementations.
 
+
 **Design Pattern #4: Factory Method Pattern**
-
 - Defines an interface for creating an object but lets subclasses decide which class to instantiate.  It lets a class defer instantiation to the subclasses.
-
 - Design Principle:
     - _Design Principle #6_ :  Depend on abstraction.  Do not depend on concrete classes.
-
-- C# Examples:
-    
+- C# Examples: 
     - [Example using multiple vehicle factories where each vehicle factory produces only one type of vehicle](http://www.intstrings.com/ramivemula/articles/c-design-patternfactory-method/).
         
         > <table style="font-size:.85em;" border="1" cellspacing="0" cellpadding="0" width="898"><tbody><tr><td valign="top" width="150">Product</td><td valign="top" width="746">Vehicle</td></tr><tr><td valign="top" width="150">ConcreteProduct</td><td valign="top" width="746">Bike, Car, Bus</td></tr><tr><td valign="top" width="150">Creator</td><td valign="top" width="746">Factory; with abstract method <em>GetVehicle()</em></td></tr><tr><td valign="top" width="150">ConcreteCreator</td><td valign="top" width="746">TwoWheeler, CompactFourWheeler, FourWheeler</td></tr></tbody></table>
-        
-    
+          
     - [An online bookstore application using multiple distributors to send books to its customers](http://www.codeproject.com/Articles/184765/Factory-Method-Design-Pattern).  This example uses the _parameterized factory_ implementation or the _procedural solution/basic noob_ implementation, wherein the bookstore factory receives the customer location to determine which distributor to choose from.
         
         > <table style="font-size:.85em;" border="1" cellspacing="0" cellpadding="0" width="896"><tbody><tr><td valign="top" width="153">Product</td><td valign="top" width="741">IDistributor</td></tr><tr><td valign="top" width="153">ConcreteProduct</td><td valign="top" width="741">EastCoastDistributor, MidwestDistributor, WestCoastDistributor</td></tr><tr><td valign="top" width="153">Creator</td><td valign="top" width="741">IBookStore; with abstract method <em>GetDistributor()</em></td></tr><tr><td valign="top" width="153">ConcreteCreator</td><td valign="top" width="741">BookStoreA</td></tr></tbody></table>
-        
-    
+            
     - [A lodging inquiry system wherein a customer can get details of different types of available rooms](http://www.codeproject.com/Articles/37547/Exploring-Factory-Pattern).  This example also shows the _registration with reflection_ implementation, the _self registration without reflection_ implementation and the _self registration with reflection_ implementation.  It is actually using a _factory pattern_, a pattern that is the basis for the _factory method pattern_ and the _abstract factory pattern_. The only difference between the factory pattern and the factory method pattern is in the creator. The factory method pattern requires an abstract class which defines the interface for several factories, thus abstracting the client from both the type of product and type of factory used to create the product.
         
         > <table style="font-size:.85em;" border="1" cellspacing="0" cellpadding="0" width="896"><tbody><tr><td valign="top" width="154">Product</td><td valign="top" width="740">IRoomType</td></tr><tr><td valign="top" width="154">ConcreteProduct</td><td valign="top" width="740">ACRoom, DeluxeRoom, NonACRoom</td></tr><tr><td valign="top" width="154">Creator</td><td valign="top" width="740">-</td></tr><tr><td valign="top" width="154">ConcreteCreator</td><td valign="top" width="740">RoomFactory; concrete class with concrete method <em>GetRoomType()</em></td></tr></tbody></table>
         
 
 **Design Pattern #5: Abstract Factory Pattern**
-
 - Provides an interface for creating families of related or dependent objects without specifying their concrete classes.
-
 - Design Principle:
     - Same as the factory method pattern, it follows the _Design Principle #6_.
-
 - C# Examples:
     - [A drawing and printing machine that can process low and high resolution](http://gugiaji.wordpress.com/2013/01/19/abstract-factory-pattern-example-with-c/).  This can be extended to process medium resolution by creating a medium resolution factory that provides the medium resolution display and print drivers.
         
@@ -53,22 +45,16 @@ Back again with design patterns, defining them briefly and the design principles
         
 
 **Design Pattern #6: Singleton Pattern**
-
 - Ensures a class only has one instance and provides a global point of access to it
-
-- C# Examples:
-    
-    - [Singleton implementations from MSDN](http://msdn.microsoft.com/en-us/library/ff650316.aspx).  It shows 3 implementations: the _basic_ implementation, the _static initialization_ implementation, and the _multithreaded_ or _double-check locking_ implementation.
-    
+- C# Examples:  
+    - [Singleton implementations from MSDN](http://msdn.microsoft.com/en-us/library/ff650316.aspx).  It shows 3 implementations: the _basic_ implementation, the _static initialization_ implementation, and the _multithreaded_ or _double-check locking_ implementation.    
     - [Singleton implementations from the book C# In Depth](http://csharpindepth.com/articles/general/singleton.aspx).  It shows 6 implementations:
-        
         - basic implementation that is not thread-safe
         - simple thread-safe implementation using a lock
         - attempted thread-safe using double-check locking implementation
         - static initialization implementation that is thread-safe without using locks but not quite as lazy
-        
-        - full lazy static initialization implementation
-        
+        - full lazy static initialization implementation     
+```cs
         public sealed class Singleton  
         {  
             private Singleton()  
@@ -88,11 +74,9 @@ Back again with design patterns, defining them briefly and the design principles
                 internal static readonly Singleton instance = new Singleton();  
             }  
         }
-        
-          
-        
-        - C# 4.0’s Lazy<T> static initialization implementation
-        
+```
+        - C# 4.0’s Lazy<T> static initialization implementation        
+```cs
         public sealed class Singleton  
         {  
             private static readonly Lazy<Singleton> lazy =  
@@ -104,8 +88,7 @@ Back again with design patterns, defining them briefly and the design principles
             {  
             }  
         }
+```        
+         
         
-          
-        
-
 * This is the second in the Design Patterns series.  The first one is [Design Patterns: Strategy, Observer, and Decorator](https://rodansotto.github.io/tech-blog/2013/11/05/design-patterns-strategy-observer-and-decorator.html).

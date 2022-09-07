@@ -8,11 +8,11 @@ categories:
 Fundamental design patterns are divided into 3 categories:
 
 - Creational
-    - [Singleton](https://rodansotto.github.io/tech-blog/2014/02/10/design-patterns-factory-method-abstract-factory-and-singleton.html "Design Patterns: Factory Method, Abstract Factory, and Singleton")
+    - [Singleton](/tech-blog/2014/02/11/design-patterns-factory-method-abstract-factory-and-singleton.html)
     - Builder
     - Prototype
-    - [Abstract Factory](https://rodansotto.github.io/tech-blog/2014/02/10/design-patterns-factory-method-abstract-factory-and-singleton.html "Design Patterns: Factory Method, Abstract Factory, and Singleton")
-    - [Factory Method](https://rodansotto.github.io/tech-blog/2014/02/10/design-patterns-factory-method-abstract-factory-and-singleton.html "Design Patterns: Factory Method, Abstract Factory, and Singleton")
+    - [Abstract Factory](/tech-blog/2014/02/11/design-patterns-factory-method-abstract-factory-and-singleton.html)
+    - [Factory Method](/tech-blog/2014/02/11/design-patterns-factory-method-abstract-factory-and-singleton.html)
 - Behavioral
     - Mediator
     - Visitor
@@ -20,13 +20,13 @@ Fundamental design patterns are divided into 3 categories:
     - Iterator
     - Command
     - Memento
-    - [Observer](https://rodansotto.github.io/tech-blog/2013/11/05/design-patterns-strategy-observer-and-decorator.html "Design Patterns: Strategy, Observer, and Decorator")
+    - [Observer](/tech-blog/2013/11/06/design-patterns-strategy-observer-and-decorator.html)
     - Interpreter
     - Chain of Responsibility
     - State
-    - [Strategy](https://rodansotto.github.io/tech-blog/2013/11/05/design-patterns-strategy-observer-and-decorator.html "Design Patterns: Strategy, Observer, and Decorator")
+    - [Strategy](/tech-blog/2013/11/06/design-patterns-strategy-observer-and-decorator.html)
 - Structural
-    - [Decorator](https://rodansotto.github.io/tech-blog/2013/11/05/design-patterns-strategy-observer-and-decorator.html "Design Patterns: Strategy, Observer, and Decorator")
+    - [Decorator](/tech-blog/2013/11/06/design-patterns-strategy-observer-and-decorator.html)
     - Proxy
     - Composite
     - Facade
