@@ -5,7 +5,7 @@ date: "2022-09-25"
 categories: angular
 ---
 
-![]({{ site.baseurl }}/assets/images/angularbloglogo1.png)
+![]({{ site.baseurl }}/assets/images/angularbanner.png)
 
 I was going over my Angular post back in 2017, [My notes on Angular (2.0+)](/tech-blog/2017/11/23/my-notes-on-angular-2-0.html), and thought I should provide code examples from my Angular product catalog application demo that you can check out [here](https://rodansotto.github.io/productcatalogdemo-angular14/products) with the full source code [here](https://github.com/rodansotto/productcatalogdemo-angular14).
 
