@@ -140,12 +140,12 @@ With two-way binding, we enclose the attribute with `[(` and `)]`.
 
 ## Built-in attribute directives
 
-We also don't have examples of built-in attribute directives in our Angular application.  But one such attribute is the `NgModel` mentioned above.  The other commonly used ones are: `NgClass` and `NgStyle`.  See [Built-in attribute directives](https://angular.io/guide/built-in-directives#built-in-attribute-directives) for some code examples.
+We also don't have examples of [built-in attribute directives](https://angular.io/guide/built-in-directives#built-in-attribute-directives) in our Angular application.  But one such attribute is the `NgModel` mentioned above.  The other commonly used ones are: `NgClass` and `NgStyle`.
 
 
 ## Built-in structural directives
 
-Our `ProductListComponent`'s template in [/src/app/product-list/product-list.component.html](https://github.com/rodansotto/productcatalogdemo-angular14/blob/main/src/app/product-list/product-list.component.html) has examples of some of Angular's built-in structural directives.
+Our `ProductListComponent`'s template in [/src/app/product-list/product-list.component.html](https://github.com/rodansotto/productcatalogdemo-angular14/blob/main/src/app/product-list/product-list.component.html) has examples of some of Angular's [built-in structural directives](https://angular.io/guide/built-in-directives#built-in-structural-directives).
 
 One such built-in structural directive is `*ngIf`:
 
