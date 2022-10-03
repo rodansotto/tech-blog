@@ -7,7 +7,7 @@ categories: front-end
 
 ![]({{ site.baseurl }}/assets/images/tictactoe-ng-rx-lit.png)
 
-I created a quick and simple tic-tac-toe game in [Angular](https://angular.io/), [React](https://reactjs.org/), and [Lit](https://lit.dev/) to show the many similarities these 3 frontend frameworks have.  You will see they all share pretty much the same HTML, CSS and [TypeScript](https://www.typescriptlang.org/) code.
+I created a quick and simple tic-tac-toe game in [Angular](https://angular.io/), [React](https://reactjs.org/), and [Lit](https://lit.dev/) to show the similarities between these 3 frontend frameworks.  You can see they all share pretty much the same HTML, CSS and [TypeScript](https://www.typescriptlang.org/) code.
 
 Check them out there:
 
