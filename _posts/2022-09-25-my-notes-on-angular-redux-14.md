@@ -2,7 +2,7 @@
 layout: post
 title: "My notes on Angular (Redux 14)"
 date: "2022-09-25"
-categories: angular
+categories: front-end
 ---
 
 ![]({{ site.baseurl }}/assets/images/angularbanner.png)
