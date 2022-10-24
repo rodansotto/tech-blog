@@ -129,7 +129,7 @@ Now with [AWS Cloud Development Kit](https://aws.amazon.com/cdk/), or CDK, (I th
 
 #### C#
 So below is what a cloud stack in C# looks like.  With CDK, you create a cloud stack in your programming language.
-```cs
+```c#
 using Amazon.CDK;
 using Amazon.CDK.AWS.S3;
 
