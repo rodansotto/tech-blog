@@ -2,7 +2,7 @@
 layout: post
 title: "Demystifying .NET Core apps, a quick walkthrough (.NET 6)"
 date: "2022-10-23"
-categories: .net
+categories: net
 ---
 
 ![]({{ site.baseurl }}/assets/images/netcoreapps.png)
