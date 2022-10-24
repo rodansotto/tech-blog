@@ -8,17 +8,18 @@ categories:
 
 I’m not talking about closure in a relationship :).  I am talking about closure in programming.  I first encountered closure in JavaScript the hard way.  I was debugging for days the following code as to why it was not behaving the way I expect it to be.
 
+```js
 var setRowsOnclickEvent = function () {
     var table = $("tableList");
     
     for (var i = 1; i < table.rows.length; i++) {
-        var row = table.rows\[i\];
+        var row = table.rows[i];
         
         row.onclick = function () {
             var table = $("tableList");
             
             for (var j = 1; j < table.rows.length; j++) {
-                var row = table.rows\[j\];
+                var row = table.rows[j];
                 
                 if (j == i) {
                     row.className = "selectRow";
@@ -30,10 +31,7 @@ var setRowsOnclickEvent = function () {
         }
     }
 }
-
- 
-
- 
+```
 
 The JavaScript function above is setting the onclick event of all the rows in the table.  It iterates through each row in the table and assigns an inline function, an event handler, to the row’s onclick event.  Note that the event handler, or the inner function, uses the loop variable i of the outer function, containing the row number, so that whenever the row is clicked it get’s highlighted.
 
@@ -47,18 +45,19 @@ In the above JavaScript code, what’s happening is whenever any row is clicked,
 
 Below is my solution to the JavaScript code above.  The solution is to wrap the event handler in another function where I pass in i as a function parameter, thereby forcing the compiler to capture the value of i as it increments itself inside the loop.
 
+```js
 var setRowsOnclickEvent = function () {
     var table = $("tableList");
     
     for (var i = 1; i < table.rows.length; i++) {
-        var row = table.rows\[i\];
+        var row = table.rows[i];
         
         row.onclick = (function (i) {
             return function () {
                 var table = $("tableList");
                 
                 for (var j = 1; j < table.rows.length; j++) {
-                    var row = table.rows\[j\];
+                    var row = table.rows[j];
                     
                     if (j == i) {
                         row.className = "selectRow";
@@ -71,15 +70,13 @@ var setRowsOnclickEvent = function () {
         })(i);
     }
 }
-
- 
-
- 
+```
 
 **EDIT:**  The code above works by making the function (outer function) that wraps the event handler (inner function) as an IIFE (Immediately Invoked Function Expressions).  This creates a scope object for the outer function (remember Javascript scoping stops at the function level while C# continues at the block level) containing the current value of _i_ in the loop which is retained even after the outer function has returned.  Then each row's onclick event will end up having an inner function with access to a separate outer function's scope object, each containing a different value of _i_.
 
 It’s not only the JavaScript language that has closure.  Other languages have it as well, like C#.  I encountered closure in C# the same way I did in JavaScript.  I was declaring/passing in a lambda expression to a function call inside a foreach loop, that references the foreach variable.  And since C# has a slightly different handling of closure than JavaScript, the solution is different.  In C#, one just need to assign the foreach or loop variable to a temporary variable and reference the temporary variable instead.
 
+```js
 public void SomeFunction()
 {
     // ...
@@ -98,10 +95,7 @@ public void SomeFunction()
     }
     // ...
 }
-
- 
-
- 
+```
 
 It’s not easy to wrap your mind around closure, at least for me.  [Closures in C# vs JavaScript - Same But Different](http://www.smartik.net/2013/07/Closures-CSharp-vs-JS-Same-But-Different.html) really explains it to me clearly, from a really really technical point of view, as in how the compiler handles closure both in C# and JavaScript.  Don’t worry it’s not a long read but one needs to really read through the code. I’ve got other links for further reading if need be:
 
