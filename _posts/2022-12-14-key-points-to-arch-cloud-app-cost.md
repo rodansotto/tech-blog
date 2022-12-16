@@ -6,10 +6,16 @@ categories:
 ---
 
 
-![]({{ site.baseurl }}/assets/images/cloud.png)
+![]({{ site.baseurl }}/assets/images/cloud-cost.png)
 
 
-These are key points from the course I took recently on [Build great solutions with the Microsoft Azure Well-Architected Framework](https://learn.microsoft.com/en-us/training/paths/azure-well-architected-framework/).  I think these points are applicable no matter which cloud provider you use.  This will be a 5-part series on cost, operation, performance, reliability and security considerations on architecturing cloud applications.  Part 1 is on cost.
+These are key points from the course I took recently on [Build great solutions with the Microsoft Azure Well-Architected Framework](https://learn.microsoft.com/en-us/training/paths/azure-well-architected-framework/).  I think these points are applicable no matter which cloud provider you use.  This will be a 5-part series on cost, operations, performance, reliability and security considerations on architecturing cloud applications.
+
+Here are the links to the other parts:
+- [Part 2: Operations](/tech-blog/2022/12/16/key-points-to-arch-cloud-app-ops.html)
+
+<p></p>
+This is Part 1: Cost and below are the key points to optimize cost for your cloud architecture.
 
 
 ## Plan and estimate your cloud costs
@@ -29,30 +35,27 @@ Like which services to select, which service tier or virtual machine (VM) size t
 
 ## Provision with optimization
 
-- Select appropriate service tiers and sizes
+### Select appropriate service tiers and sizes
 
-  - Carefully evaluate workload/resource requirements for your application
+- Carefully evaluate workload/resource requirements for your application
 
-  - How much CPU, memory and storage is required
+- How much CPU, memory and storage is required
 
-<p></p>
-- Pay only for consumption
+### Pay only for consumption
 
-  - Pay for only the amount of transactions, CPU time, or run time of your application
+- Pay for only the amount of transactions, CPU time, or run time of your application
 
-<p></p>
-- Use spot instances for low-priority workloads
+### Use spot instances for low-priority workloads
 
-  - Take advantage of unused capacity on the cloud provider at a significant cost savings
-  
-  - Best for batch processing jobs and the like
+- Take advantage of unused capacity on the cloud provider at a significant cost savings
 
-<p></p>
-- Use managed services when possible
+- Best for batch processing jobs and the like
 
-  - This avoids managing the underlying infrastructure or lower-level services
+### Use managed services when possible
 
-  - Managed services are the application and database services
+- This avoids managing the underlying infrastructure or lower-level services
+
+- Managed services are the application and database services
 
 
 ## Take advantage of reserved instances
@@ -66,68 +69,63 @@ Like which services to select, which service tier or virtual machine (VM) size t
 
 This ensures costs aren't growing out of control and detects areas to improve efficiency.  Resource demands will shift over time and cloud services will evolve.
 
-- Track your cloud spend
+### Track your cloud spend
 
-  - Track where your costs are going and how they're allocated across your resources
+- Track where your costs are going and how they're allocated across your resources
 
-<p></p>
-- Conduct cost reviews
+### Conduct cost reviews
 
-  - Regularly check your costs to track your cloud spending
+- Regularly check your costs to track your cloud spending
 
-<p></p>
-- Respond to cost alerts
+### Respond to cost alerts
 
-  - Configure alerts that are based on spending, such as alerts on budget or department spending quota
+- Configure alerts that are based on spending, such as alerts on budget or department spending quota
 
-<p></p>
-- Report anomalies
+### Report anomalies
 
-  - Active engagement on cost can ensure that you identify a potential for cost overrun before it becomes problematic
+- Active engagement on cost can ensure that you identify a potential for cost overrun before it becomes problematic
 
 
 ## Maximize efficiency of cloud spend
 
 By determining whether the increase is the result of natural, efficient growth, or whether the cost can be reduced by improving efficiency with the organization's cloud resources.  But make sure maximizing efficiency doesn't negatively affect the performance of your system (e.g. running a system at 100% utilization runs the risk of introducing performance issues)
 
-- Optimize IaaS costs
+### Optimize IaaS costs
 
-  - Compute
-  
-    - Choose a smaller size for the virtual machine instance
+- Compute
 
-    - Reduce the number of hours a virtual machine runs (e.g. implementing shutdown schedules)
+  - Choose a smaller size for the virtual machine instance
 
-    - Use discounts for the compute costs if available
+  - Reduce the number of hours a virtual machine runs (e.g. implementing shutdown schedules)
 
-  <p></p>
-  - VM disk storage
-
-    - If performance is not required, go for a standard storage instead
+  - Use discounts for the compute costs if available
 
 <p></p>
-- Optimize PaaS costs
+- VM disk storage
 
-  - Optimize database costs
+  - If performance is not required, go for a standard storage instead
 
-    - Single database server vs elastic pool of databases
+### Optimize PaaS costs
 
-    - Using elastic pool makes sense for multiple databases that have unpredictable bursts or spikes in activity because database transaction units (DTUs) or virtual cores (vCores) are shared among the databases in the pool, in essence you are provisioning resources for the entire pool
+- Optimize database costs
 
+  - Single database server vs elastic pool of databases
 
-  <p></p>
-  - Optimize blob storage costs
+  - Using elastic pool makes sense for multiple databases that have unpredictable bursts or spikes in activity because database transaction units (DTUs) or virtual cores (vCores) are shared among the databases in the pool, in essence you are provisioning resources for the entire pool
 
-    - Blob storage is a good place to store all your unstructured data that can be accessed in massive scale
+<p></p>
+- Optimize blob storage costs
 
-    - Take advantage of discounts based on access tier if available: does your data need to be accessed often, infrequently or rarely and explore options to move data from temporary storage to a more permanent storage
+  - Blob storage is a good place to store all your unstructured data that can be accessed in massive scale
 
-  <p></p>
-  - Consumption pricing models
+  - Take advantage of discounts based on access tier if available: does your data need to be accessed often, infrequently or rarely and explore options to move data from temporary storage to a more permanent storage
 
-    - Moving to pay-for-what-you-use model can save you money
+<p></p>
+- Consumption pricing models
 
-    - Services like Azure Functions/AWS Lambda/GCP Cloud Functions are billed on number of executions, length of execution time, and the amount of memory used
+  - Moving to pay-for-what-you-use model can save you money
+
+  - Services like Azure Functions/AWS Lambda/GCP Cloud Functions are billed on number of executions, length of execution time, and the amount of memory used
 
 
 ## Links to architecture from Azure, AWS, and Google Cloud
