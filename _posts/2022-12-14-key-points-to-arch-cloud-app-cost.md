@@ -13,6 +13,7 @@ These are key points from the course I took recently on [Build great solutions w
 
 Here are the links to the other parts:
 - [Part 2: Operations](/tech-blog/2022/12/16/key-points-to-arch-cloud-app-ops.html)
+- [Part 3: Performance](/tech-blog/2023/01/16/key-points-to-arch-cloud-app-perf.html)
 
 <p></p>
 This is Part 1: Cost and below are the key points to optimize cost for your cloud architecture.
