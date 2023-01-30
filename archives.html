@@ -1,0 +1,2570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Archives | Rodan Sotto’s Tech Blog</title>
+<meta name="generator" content="Jekyll v3.9.2">
+<meta property="og:title" content="Archives">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="A software developer’s personal notes">
+<meta property="og:description" content="A software developer’s personal notes">
+<link rel="canonical" href="https://rodansotto.github.io/tech-blog/archives.html">
+<meta property="og:url" content="https://rodansotto.github.io/tech-blog/archives.html">
+<meta property="og:site_name" content="Rodan Sotto’s Tech Blog">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Archives">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"A software developer’s personal notes","headline":"Archives","url":"https://rodansotto.github.io/tech-blog/archives.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="icon" href="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+  <link rel="stylesheet" href="/tech-blog/assets/css/main.css">
+  <script src="/tech-blog/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="https://rodansotto.github.io/tech-blog/feed.xml" title="Rodan Sotto's Tech Blog">
+<!--<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">-->
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs tpbg ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+
+  .tpbg {
+    background: transparent;
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header " role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/tech-blog/">
+  <img class="site-favicon" title="Rodan Sotto's Tech Blog" src="" onerror="this.style.display='none'">
+  Rodan Sotto's Tech Blog
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+<a class="page-link" href="/tech-blog/">HOME</a><a class="page-link" href="/tech-blog/archives.html">ARCHIVES</a><a class="page-link" href="/tech-blog/categories.html">CATEGORIES</a><a class="page-link" href="/tech-blog/search2.html">SEARCH</a>
+
+
+
+
+</div>
+        </nav>
+</div>
+  </div>
+</header>
+
+<script>
+  function initHeader() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;var scrollStatus = "";
+
+      if (y <= 0) {
+        scrollStatus = "top";
+      } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  }
+  document.addEventListener('DOMContentLoaded', initHeader);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    hashValue = decodeURIComponent(hashValue);
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+<div id="click-to-top" class="click-to-top">
+  <i class="fa fa-arrow-up"></i>
+</div>
+<script>
+  (function () {
+    const clickToTop = document.getElementById('click-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        clickToTop.classList.add('show')
+      }else {
+        clickToTop.classList.remove('show')
+      }
+    });
+    clickToTop.addEventListener('click', () => {
+      window.smoothScrollTo(0);
+    });
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  <div class="page-segments">
+  <ul class="page-segments-list">
+    
+    <h2 id="2023" class="segment-name">2023</h2>
+      
+      
+        
+        <li> 
+<span class="post-meta">Jan 30, 2023</span>
+<span>
+  <a class="post-link" href="/tech-blog/2023/01/30/key-points-to-arch-cloud-app-reliab.html">
+    Key Points To Architecturing Cloud Applications, Part 4: Reliability
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Jan 16, 2023</span>
+<span>
+  <a class="post-link" href="/tech-blog/2023/01/16/key-points-to-arch-cloud-app-perf.html">
+    Key Points To Architecturing Cloud Applications, Part 3: Performance
+  </a>
+</span>
+ </li>
+        
+      
+    
+    <h2 id="2022" class="segment-name">2022</h2>
+      
+      
+        
+        <li> 
+<span class="post-meta">Dec 16, 2022</span>
+<span>
+  <a class="post-link" href="/tech-blog/2022/12/16/key-points-to-arch-cloud-app-ops.html">
+    Key Points To Architecturing Cloud Applications, Part 2: Operations
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Dec 14, 2022</span>
+<span>
+  <a class="post-link" href="/tech-blog/2022/12/14/key-points-to-arch-cloud-app-cost.html">
+    Key Points To Architecturing Cloud Applications, Part 1: Cost
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Dec 13, 2022</span>
+<span>
+  <a class="post-link" href="/tech-blog/2022/12/13/securing-asp-net-2022.html">
+    Ways Developer Can Secure An ASP.NET Application (Redux 2022)
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Nov 15, 2022</span>
+<span>
+  <a class="post-link" href="/tech-blog/2022/11/15/maintainable-scalable-software-checklist.html">
+    Maintainable and Scalable Software: A Checklist
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Oct 23, 2022</span>
+<span>
+  <a class="post-link" href="/tech-blog/2022/10/23/demystifying-net-core-apps.html">
+    Demystifying .NET Core apps, a quick walkthrough (.NET 6)
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Oct 2, 2022</span>
+<span>
+  <a class="post-link" href="/tech-blog/2022/10/02/tictactoe-ng-rx-lit.html">
+    Tic-Tac-Toe in Angular, React, and Lit
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Sep 25, 2022</span>
+<span>
+  <a class="post-link" href="/tech-blog/2022/09/25/my-notes-on-angular-redux-14.html">
+    My notes on Angular (Redux 14)
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Sep 6, 2022</span>
+<span>
+  <a class="post-link" href="/tech-blog/2022/09/06/task-based-async-pattern.html">
+    Multi-threading in C#: Task-Based Asynchronous Pattern (TAP)
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Aug 7, 2022</span>
+<span>
+  <a class="post-link" href="/tech-blog/2022/08/07/how-i-trained-my-csharp-neural-network.html">
+    How I Trained A Simple Neural Network In C# To Recognize Numbers 0-9
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Aug 2, 2022</span>
+<span>
+  <a class="post-link" href="/tech-blog/2022/08/02/from-cloudformation-to-serverless-to-cdk.html">
+    From CloudFormation To Serverless Framework To Cloud Development Kit?
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Jul 14, 2022</span>
+<span>
+  <a class="post-link" href="/tech-blog/2022/07/14/math-equations-derivatives.html">
+    Branches of Mathematics, Solving Equations and Calculating Derivatives
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Jul 6, 2022</span>
+<span>
+  <a class="post-link" href="/tech-blog/2022/07/06/a-simple-neural-network-in-c-sharp.html">
+    A Simple Neural Network In C#
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Jul 4, 2022</span>
+<span>
+  <a class="post-link" href="/tech-blog/2022/07/04/back-to-the-roots-with-algorithms.html">
+    Back to the Roots with Algorithms
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Jun 19, 2022</span>
+<span>
+  <a class="post-link" href="/tech-blog/2022/06/19/is-this-still-working-in-2022.html">
+    Is This Still Working In 2022 ?!?!
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Jun 5, 2022</span>
+<span>
+  <a class="post-link" href="/tech-blog/2022/06/05/welcome-to-jekyll.html">
+    Welcome to My Jekyll-Powered Tech Blog!
+  </a>
+</span>
+ </li>
+        
+      
+    
+    <h2 id="2017" class="segment-name">2017</h2>
+      
+      
+        
+        <li> 
+<span class="post-meta">Dec 29, 2017</span>
+<span>
+  <a class="post-link" href="/tech-blog/2017/12/29/learning-python-for-numeric-and-scientific-applications.html">
+    Learning Python for Numeric and Scientific Applications
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Dec 9, 2017</span>
+<span>
+  <a class="post-link" href="/tech-blog/2017/12/09/linq-exercises-using-both-query-and-fluent-syntaxes.html">
+    LINQ Exercises Using Both Query and Fluent Syntaxes
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Dec 4, 2017</span>
+<span>
+  <a class="post-link" href="/tech-blog/2017/12/04/product-catalog-an-angular-and-material-demo.html">
+    Product Catalog: An Angular and Material Demo
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Nov 28, 2017</span>
+<span>
+  <a class="post-link" href="/tech-blog/2017/11/28/net-code-documentation-and-testing-they-are-there-why-not-use-it-4.html">
+    .NET Code Documentation And Testing:  They Are There, Why Not Use It?
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Nov 25, 2017</span>
+<span>
+  <a class="post-link" href="/tech-blog/2017/11/25/im-familiar-with-net-framework-so-what-is-net-standard-and-net-core.html">
+    I'm familiar with .NET Framework, so what is .NET Standard and .NET Core?
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Nov 23, 2017</span>
+<span>
+  <a class="post-link" href="/tech-blog/2017/11/23/my-notes-on-angular-2-0.html">
+    My notes on Angular (2.0+)
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Nov 16, 2017</span>
+<span>
+  <a class="post-link" href="/tech-blog/2017/11/16/multi-threading-in-c-a-must-have-in-your-programming-arsenal-imo.html">
+    Multi-threading in C#: A must have in your programming arsenal (IMO)
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Nov 13, 2017</span>
+<span>
+  <a class="post-link" href="/tech-blog/2017/11/13/a-chat-app-that-receives-sms-and-sends-http-messages-a-xamarin-android-app-preview2.html">
+    A chat app that receives SMS and sends HTTP messages (A Xamarin Android App Preview)
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Nov 9, 2017</span>
+<span>
+  <a class="post-link" href="/tech-blog/2017/11/09/some-visual-studio-productivity-tips.html">
+    Some Visual Studio Productivity Tips
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Nov 7, 2017</span>
+<span>
+  <a class="post-link" href="/tech-blog/2017/11/07/dont-confuse-dip-ioc-and-di-together-they-are-all-different-but-related.html">
+    Don't confuse DIP, IoC, and DI together.  They are all different but related.
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Nov 3, 2017</span>
+<span>
+  <a class="post-link" href="/tech-blog/2017/11/03/ways-to-extend-the-asp-net-mvc-5-framework.html">
+    Ways to Extend The ASP.NET MVC 5 Framework
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Nov 1, 2017</span>
+<span>
+  <a class="post-link" href="/tech-blog/2017/11/01/asp-net-mvc-5-owinkatana-pipeline-and-middleware-components-a-demo.html">
+    ASP.NET MVC 5: OWIN/Katana Pipeline And Middleware Components (A Demo)
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Oct 27, 2017</span>
+<span>
+  <a class="post-link" href="/tech-blog/2017/10/27/ai-anyone.html">
+    AI, Anyone?
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Oct 17, 2017</span>
+<span>
+  <a class="post-link" href="/tech-blog/2017/10/17/quick-refresher-on-javascripts-objects-prototypes-and-inheritance.html">
+    Quick refresher on JavaScript's objects, prototypes and inheritance
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Oct 16, 2017</span>
+<span>
+  <a class="post-link" href="/tech-blog/2017/10/16/typescript-notes-part-2.html">
+    TypeScript Notes: Part 2
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Oct 12, 2017</span>
+<span>
+  <a class="post-link" href="/tech-blog/2017/10/12/sql-tricks-csv-to-table-rows-and-vice-versa.html">
+    SQL Tricks: CSV To Table Rows And Vice Versa
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Sep 8, 2017</span>
+<span>
+  <a class="post-link" href="/tech-blog/2017/09/08/typescript-notes-part-1.html">
+    TypeScript Notes: Part 1
+  </a>
+</span>
+ </li>
+        
+      
+    
+    <h2 id="2016" class="segment-name">2016</h2>
+      
+      
+        
+        <li> 
+<span class="post-meta">Jun 3, 2016</span>
+<span>
+  <a class="post-link" href="/tech-blog/2016/06/03/sql-server-hiding-your-prod-data-and-built-in-function-stuff.html">
+    SQL Server: Hiding your prod data and built-in function STUFF()
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">May 27, 2016</span>
+<span>
+  <a class="post-link" href="/tech-blog/2016/05/27/writing-to-an-output-text-file-and-finding-out-extra-characters-or-lines-in-it.html">
+    Writing to an output text file and finding out extra characters or lines in it?
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">May 26, 2016</span>
+<span>
+  <a class="post-link" href="/tech-blog/2016/05/26/column-aliases-in-order-by-works-on-older-sql-version-but-not-on-sql-2014.html">
+    Column aliases in ORDER BY works on older SQL version but not on SQL 2014?
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">May 25, 2016</span>
+<span>
+  <a class="post-link" href="/tech-blog/2016/05/25/whats-new-in-c-6.html">
+    What's new in C# 6?
+  </a>
+</span>
+ </li>
+        
+      
+    
+    <h2 id="2015" class="segment-name">2015</h2>
+      
+      
+        
+        <li> 
+<span class="post-meta">Nov 19, 2015</span>
+<span>
+  <a class="post-link" href="/tech-blog/2015/11/19/display-bootstraps-navbar-dropdown-menu-on-hover.html">
+    Display Bootstrap’s Navbar Dropdown Menu On Hover
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Nov 9, 2015</span>
+<span>
+  <a class="post-link" href="/tech-blog/2015/11/09/how-many-ways-can-you-add-entity-framework-model-to-your-project.html">
+    How Many Ways Can You Add Entity Framework Model To Your Project?
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Nov 2, 2015</span>
+<span>
+  <a class="post-link" href="/tech-blog/2015/11/02/ways-developer-can-secure-an-asp-net-application-part-1.html">
+    Ways Developer Can Secure An ASP.NET Application, Part 1
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Oct 19, 2015</span>
+<span>
+  <a class="post-link" href="/tech-blog/2015/10/19/a-custom-webgrid-my-1st-iteration.html">
+    A Custom WebGrid (My 1st Iteration)
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Sep 15, 2015</span>
+<span>
+  <a class="post-link" href="/tech-blog/2015/09/15/nested-transactions-in-sql-server.html">
+    Nested Transactions in SQL Server
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Sep 11, 2015</span>
+<span>
+  <a class="post-link" href="/tech-blog/2015/09/11/cs-using-or-not-using3.html">
+    C#: Using or not using
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Aug 11, 2015</span>
+<span>
+  <a class="post-link" href="/tech-blog/2015/08/11/calling-net-assembly-from-vba.html">
+    Calling .Net Assembly from VBA
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Mar 13, 2015</span>
+<span>
+  <a class="post-link" href="/tech-blog/2015/03/13/why-i-chose-c-over-vb-net.html">
+    Why I Chose C# Over VB.NET?
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Feb 27, 2015</span>
+<span>
+  <a class="post-link" href="/tech-blog/2015/02/27/c-whats-with-enums-anyways.html">
+    C#: What’s with Enums anyways?
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Feb 9, 2015</span>
+<span>
+  <a class="post-link" href="/tech-blog/2015/02/09/web-design-a-text-animation-exercise-and-more.html">
+    Web Design: A Text Animation Exercise and More
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Jan 19, 2015</span>
+<span>
+  <a class="post-link" href="/tech-blog/2015/01/19/web-design-a-fluid-layout-exercise.html">
+    Web Design: A Fluid Layout Exercise
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Jan 15, 2015</span>
+<span>
+  <a class="post-link" href="/tech-blog/2015/01/15/c-does-the-code-below-look-familiar.html">
+    C#: Does the code below look familiar?
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Jan 9, 2015</span>
+<span>
+  <a class="post-link" href="/tech-blog/2015/01/09/web-design-resources.html">
+    Web Design: Resources
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Jan 7, 2015</span>
+<span>
+  <a class="post-link" href="/tech-blog/2015/01/07/sql-server-my-quick-and-dirty-way-of-debugging-stored-procedure.html">
+    SQL Server: My Quick and Dirty Way of Debugging Stored Procedure
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Jan 6, 2015</span>
+<span>
+  <a class="post-link" href="/tech-blog/2015/01/06/asp-net-web-services-blast-from-the-past-part-2.html">
+    ASP.NET Web Services - Blast From The Past (Part 2)
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Jan 5, 2015</span>
+<span>
+  <a class="post-link" href="/tech-blog/2015/01/05/asp-net-web-services-blast-from-the-past-part-1.html">
+    ASP.NET Web Services - Blast From The Past (Part 1)
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Jan 1, 2015</span>
+<span>
+  <a class="post-link" href="/tech-blog/2015/01/01/sql-server-schemas-delete-vs-truncate-generate-inserts-and-not-in-vs-not-exists.html">
+    SQL Server: Schemas, DELETE vs. TRUNCATE, Generate INSERTs, and NOT IN vs. NOT EXISTS
+  </a>
+</span>
+ </li>
+        
+      
+    
+    <h2 id="2014" class="segment-name">2014</h2>
+      
+      
+        
+        <li> 
+<span class="post-meta">Dec 26, 2014</span>
+<span>
+  <a class="post-link" href="/tech-blog/2014/12/26/the-very-basic-syntax-of-razor.html">
+    The Very Basic Syntax of Razor
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Oct 27, 2014</span>
+<span>
+  <a class="post-link" href="/tech-blog/2014/10/27/new-to-active-directory-and-need-to-use-it-in-net.html">
+    New to Active Directory and need to use it in .NET?
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Oct 7, 2014</span>
+<span>
+  <a class="post-link" href="/tech-blog/2014/10/07/sql-server-quickly-run-a-command-on-each-database-how.html">
+    SQL Server: Quickly run a command on each database.  How?
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Sep 5, 2014</span>
+<span>
+  <a class="post-link" href="/tech-blog/2014/09/05/is-that-a-vb-code-or-c.html">
+    Is that a VB code or C#?
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Jul 9, 2014</span>
+<span>
+  <a class="post-link" href="/tech-blog/2014/07/09/storing-an-excel-file-in-a-sql-server-database.html">
+    Storing an Excel File in a SQL Server Database
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Jun 24, 2014</span>
+<span>
+  <a class="post-link" href="/tech-blog/2014/06/24/ssrs-automating-report-deployment-using-rs-exe.html">
+    SSRS: Automating Report Deployment using RS.EXE
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Jun 4, 2014</span>
+<span>
+  <a class="post-link" href="/tech-blog/2014/06/04/demonstrating-the-new-html5-and-css3-features.html">
+    Demonstrating the new HTML5 and CSS3 Features
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Jun 3, 2014</span>
+<span>
+  <a class="post-link" href="/tech-blog/2014/06/03/access-type-mismatch-run-time-error-after-converting-to-accdb-format.html">
+    Access: Type Mismatch Run-time Error After Converting to ACCDB Format
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">May 27, 2014</span>
+<span>
+  <a class="post-link" href="/tech-blog/2014/05/27/c-a-review-on-generics.html">
+    C#: A Review on Generics
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">May 21, 2014</span>
+<span>
+  <a class="post-link" href="/tech-blog/2014/05/21/c-quick-review-on-raising-events.html">
+    C#: Quick Review on Raising Events
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">May 16, 2014</span>
+<span>
+  <a class="post-link" href="/tech-blog/2014/05/16/c-quick-review-on-delegates.html">
+    C#: Quick Review on Delegates
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">May 14, 2014</span>
+<span>
+  <a class="post-link" href="/tech-blog/2014/05/14/using-css-media-queries.html">
+    Using CSS Media Queries
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">May 12, 2014</span>
+<span>
+  <a class="post-link" href="/tech-blog/2014/05/12/testing-an-html-page-on-the-android-emulator-browser.html">
+    Testing an HTML Page on the Android Emulator Browser
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">May 8, 2014</span>
+<span>
+  <a class="post-link" href="/tech-blog/2014/05/08/always-wondered-how-you-can-write-custom-code-in-sql-server-reports.html">
+    Always wondered how you can write custom code in SQL Server reports?
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Apr 3, 2014</span>
+<span>
+  <a class="post-link" href="/tech-blog/2014/04/03/responsive-html5-and-css3-web-design-responsive-enough-err-hello.html">
+    Responsive HTML5 and CSS3 Web Design: Responsive Enough? Err… Hello?!?
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Mar 18, 2014</span>
+<span>
+  <a class="post-link" href="/tech-blog/2014/03/18/android-development-main-method-application-lifecycle-and-event-handling.html">
+    Android Development: main() Method, Application Lifecycle, and Event Handling
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Mar 3, 2014</span>
+<span>
+  <a class="post-link" href="/tech-blog/2014/03/03/winforms-using-devexpress-there-is-a-quick-way-of-making-sure-only-one-instance-of-a-form-is-open.html">
+    WinForms: Using DevExpress, there is a quick way of making sure only one instance of a form is open
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Feb 13, 2014</span>
+<span>
+  <a class="post-link" href="/tech-blog/2014/02/13/javascript-you-think-you-know-it-well.html">
+    JavaScript: You think you know it well?
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Feb 11, 2014</span>
+<span>
+  <a class="post-link" href="/tech-blog/2014/02/11/design-patterns-factory-method-abstract-factory-and-singleton.html">
+    Design Patterns: Factory Method, Abstract Factory, and Singleton
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Feb 5, 2014</span>
+<span>
+  <a class="post-link" href="/tech-blog/2014/02/05/http-fundamentals-part-2-communication-stack-http-connections-and-rest-style-of-architecture.html">
+    HTTP Fundamentals, Part 2: Communication Stack, HTTP Connections, and REST Style of Architecture
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Jan 17, 2014</span>
+<span>
+  <a class="post-link" href="/tech-blog/2014/01/17/access-vba-how-to-call-a-windows-form-application-with-arguments.html">
+    Access VBA: How To Call A Windows Form Application with Arguments
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Jan 15, 2014</span>
+<span>
+  <a class="post-link" href="/tech-blog/2014/01/15/sql-server-quick-notes-on-synonym-merge-try_convert-try_cast-parse-try_parse-checksum-isnull-coalesce-nullif-and-join.html">
+    SQL Server: Quick Notes on SYNONYM, MERGE, TRY_CONVERT, TRY_CAST, PARSE, TRY_PARSE, CHECKSUM, ISNULL, COALESCE, NULLIF, and JOIN
+  </a>
+</span>
+ </li>
+        
+      
+    
+    <h2 id="2013" class="segment-name">2013</h2>
+      
+      
+        
+        <li> 
+<span class="post-meta">Dec 17, 2013</span>
+<span>
+  <a class="post-link" href="/tech-blog/2013/12/17/javascript-attachingdetaching-event-onload-vs-domcontentloaded-manipulating-dom-and-css.html">
+    JavaScript: Attaching/Detaching Event, OnLoad vs. DOMContentLoaded, Manipulating DOM and CSS
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Dec 9, 2013</span>
+<span>
+  <a class="post-link" href="/tech-blog/2013/12/09/javascript-regexp-error-dom-event.html">
+    JavaScript: RegExp, Error, DOM, and Event
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Dec 3, 2013</span>
+<span>
+  <a class="post-link" href="/tech-blog/2013/12/03/net-regular-expression-testers-and-quick-reference-guides.html">
+    .NET: Regular Expression Testers and Quick Reference Guides
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Dec 2, 2013</span>
+<span>
+  <a class="post-link" href="/tech-blog/2013/12/02/so-what-is-closure.html">
+    So what is Closure?
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Nov 26, 2013</span>
+<span>
+  <a class="post-link" href="/tech-blog/2013/11/26/c-predicates-in-linq-to-entities.html">
+    C#: Predicates in LINQ to Entities
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Nov 12, 2013</span>
+<span>
+  <a class="post-link" href="/tech-blog/2013/11/12/asp-net-mvc-ef-razor.html">
+    ASP.NET: Beginner's Resource on MVC 4, Entity Framework, and Razor
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Nov 11, 2013</span>
+<span>
+  <a class="post-link" href="/tech-blog/2013/11/11/c-quick-notes-on-some-cool-features.html">
+    C#: Quick notes on some cool features…
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Nov 6, 2013</span>
+<span>
+  <a class="post-link" href="/tech-blog/2013/11/06/design-patterns-strategy-observer-and-decorator.html">
+    Design Patterns: Strategy, Observer, and Decorator
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Nov 5, 2013</span>
+<span>
+  <a class="post-link" href="/tech-blog/2013/11/05/design-patterns-the-four-oo-basics.html">
+    Design Patterns: The Four OO Basics
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Nov 3, 2013</span>
+<span>
+  <a class="post-link" href="/tech-blog/2013/11/03/javascript-array-and-how-its-different-from-object.html">
+    JavaScript Array and How It’s Different from Object
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Oct 29, 2013</span>
+<span>
+  <a class="post-link" href="/tech-blog/2013/10/29/http-fundamentals-part-1-url-encoding-request-and-response.html">
+    HTTP Fundamentals, Part 1: URL, Encoding, Request and Response
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Oct 14, 2013</span>
+<span>
+  <a class="post-link" href="/tech-blog/2013/10/14/css-fundamentals.html">
+    CSS Fundamentals
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Oct 12, 2013</span>
+<span>
+  <a class="post-link" href="/tech-blog/2013/10/12/sql-server-how-to-linked-server-an-access-database.html">
+    SQL Server: How to Linked Server an Access Database
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Oct 12, 2013</span>
+<span>
+  <a class="post-link" href="/tech-blog/2013/10/12/general-recursive-programming.html">
+    General: Recursive Programming
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Sep 21, 2013</span>
+<span>
+  <a class="post-link" href="/tech-blog/2013/09/21/working-with-objects-in-javascript.html">
+    Object Oriented Programming In Javascript
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Sep 17, 2013</span>
+<span>
+  <a class="post-link" href="/tech-blog/2013/09/17/fundamental-design-patterns.html">
+    Design Patterns: Fundamentals
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Sep 14, 2013</span>
+<span>
+  <a class="post-link" href="/tech-blog/2013/09/14/html-fundamentals.html">
+    HTML Fundamentals
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Sep 11, 2013</span>
+<span>
+  <a class="post-link" href="/tech-blog/2013/09/11/webbing-my-way-to-frontend-development.html">
+    Webbing My Way To Frontend Development
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Jun 12, 2013</span>
+<span>
+  <a class="post-link" href="/tech-blog/2013/06/12/asp-net-what-are-web-services.html">
+    ASP.NET: What are web services?
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Jun 9, 2013</span>
+<span>
+  <a class="post-link" href="/tech-blog/2013/06/09/general-on-a-64-bit-osmachine-what-will-be-the-issues-in-running-your-application-that-uses-access-database-directly-or-indirectly-using-sql-servers-linked-server-object.html">
+    General: On a 64-bit OS/machine, what will be the issues in running your application that uses Access database directly or indirectly using SQL Server’s Linked Server object
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">May 29, 2013</span>
+<span>
+  <a class="post-link" href="/tech-blog/2013/05/29/sql-server-error-handling-2.html">
+    SQL Server: Error Handling
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">May 20, 2013</span>
+<span>
+  <a class="post-link" href="/tech-blog/2013/05/20/html-css-javascript-and-jquery-putting-them-all-together-part-3.html">
+    HTML, CSS, Javascript, and jQuery: Putting them all together (Part 3)
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">May 20, 2013</span>
+<span>
+  <a class="post-link" href="/tech-blog/2013/05/20/html-css-javascript-and-jquery-putting-them-all-together-part-2.html">
+    HTML, CSS, Javascript, and jQuery: Putting them all together (Part 2)
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">May 19, 2013</span>
+<span>
+  <a class="post-link" href="/tech-blog/2013/05/19/html-css-javascript-and-jquery-putting-them-all-together-part-1.html">
+    HTML, CSS, Javascript, and jQuery: Putting them all together (Part 1)
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">May 13, 2013</span>
+<span>
+  <a class="post-link" href="/tech-blog/2013/05/13/c-how-many-versions-of-c-do-we-have-right-now.html">
+    C#: How many versions of C# do we have right now?
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">May 8, 2013</span>
+<span>
+  <a class="post-link" href="/tech-blog/2013/05/08/sql-server-common-table-expression-cte-row_number-rank-derived-table-openxml.html">
+    SQL Server: Common Table Expression (CTE), ROW_NUMBER(), RANK(), Derived Table, OPENXML()
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">May 5, 2013</span>
+<span>
+  <a class="post-link" href="/tech-blog/2013/05/05/net-framework-from-2-0-to-3-0-to-3-5-to-4-0-and-finally-to-4-5-whats-the-difference.html">
+    .NET Framework: From 2.0 to 3.0, to 3.5, to 4.0, and finally to 4.5, what’s the difference?
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">May 3, 2013</span>
+<span>
+  <a class="post-link" href="/tech-blog/2013/05/03/html-doctype-elements-attributes-paragraphs-empty-html-elements-formatting-link-element-head-element.html">
+    HTML: DOCTYPE, Elements, Attributes, Paragraphs, Empty HTML Elements, Formatting, Link Element, Head Element
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">May 1, 2013</span>
+<span>
+  <a class="post-link" href="/tech-blog/2013/05/01/web-design-introduction.html">
+    Web Design: Introduction
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Apr 30, 2013</span>
+<span>
+  <a class="post-link" href="/tech-blog/2013/04/30/c-quick-facts-on-numeric-suffixes-verbatim-string-null-coalescing-short-circuiting-main-entry-point-fall-through-switch-case.html">
+    C#: Quick facts on numeric suffixes, verbatim string, null coalescing, short-circuiting, main entry point, fall through switch-case
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Apr 28, 2013</span>
+<span>
+  <a class="post-link" href="/tech-blog/2013/04/28/general-c-html-css-javascript-ajax.html">
+    General: C#, HTML, CSS, Javascript, AJAX
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Apr 25, 2013</span>
+<span>
+  <a class="post-link" href="/tech-blog/2013/04/25/sql-server-multi-tenant-data-architecture.html">
+    SQL Server: Multi-Tenant Data Architecture
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Apr 21, 2013</span>
+<span>
+  <a class="post-link" href="/tech-blog/2013/04/21/asp-net-get-post-ispostback-querystring-and-form.html">
+    ASP.NET: GET, POST, IsPostBack, QueryString, and Form
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Apr 18, 2013</span>
+<span>
+  <a class="post-link" href="/tech-blog/2013/04/18/general-if-we-have-cloud-then-what-is-saas-what-about-asp-2.html">
+    General: If we have Cloud, then what is SaaS? What about ASP?
+  </a>
+</span>
+ </li>
+        
+      
+    
+    <h2 id="2011" class="segment-name">2011</h2>
+      
+      
+        
+        <li> 
+<span class="post-meta">May 11, 2011</span>
+<span>
+  <a class="post-link" href="/tech-blog/2011/05/11/net-2-0-addendum-to-notes-on-foundation-part-1.html">
+    .NET 2.0: Addendum to Notes on Foundation Part 1
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">May 10, 2011</span>
+<span>
+  <a class="post-link" href="/tech-blog/2011/05/10/general-getting-certified.html">
+    General: Getting certified
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Apr 29, 2011</span>
+<span>
+  <a class="post-link" href="/tech-blog/2011/04/29/net-3-5-introduction-to-xaml-part-1.html">
+    .NET 3.5: Introduction to XAML - Part 1
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Apr 27, 2011</span>
+<span>
+  <a class="post-link" href="/tech-blog/2011/04/27/sql-server-2005-select-insert-update-delete.html">
+    SQL Server 2005: SELECT, INSERT, UPDATE, DELETE
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Apr 26, 2011</span>
+<span>
+  <a class="post-link" href="/tech-blog/2011/04/26/sql-server-2005-data-types-and-books-online.html">
+    SQL Server 2005: Data Types and Books Online
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Apr 21, 2011</span>
+<span>
+  <a class="post-link" href="/tech-blog/2011/04/21/sql-server-2005-interview-questions-answers.html">
+    SQL Server 2005: Interview Q&amp;A
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Apr 20, 2011</span>
+<span>
+  <a class="post-link" href="/tech-blog/2011/04/20/general-im-back-blogging-again.html">
+    General: I’m back blogging again :)
+  </a>
+</span>
+ </li>
+        
+      
+    
+    <h2 id="2009" class="segment-name">2009</h2>
+      
+      
+        
+        <li> 
+<span class="post-meta">Apr 18, 2009</span>
+<span>
+  <a class="post-link" href="/tech-blog/2009/04/18/net-3-5-quick-look-at-what-is-in-wpf.html">
+    .NET 3.5: Quick look at what is in WPF
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Apr 18, 2009</span>
+<span>
+  <a class="post-link" href="/tech-blog/2009/04/18/net-3-5-quick-look-at-what-is-in-wcf.html">
+    .NET 3.5: Quick look at what is in WCF
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Apr 14, 2009</span>
+<span>
+  <a class="post-link" href="/tech-blog/2009/04/14/general-fibonacci-sequence-using-a-loop-versus-a-recursive-function.html">
+    General: Fibonacci sequence using a loop versus a recursive function
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Apr 8, 2009</span>
+<span>
+  <a class="post-link" href="/tech-blog/2009/04/08/net-2-0-notes-on-foundation-part-5-c.html">
+    .NET 2.0: Notes on Foundation Part 5 (C#)
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Apr 3, 2009</span>
+<span>
+  <a class="post-link" href="/tech-blog/2009/04/03/net-3-5-wpf-wcf-wwf-asp-net-3-5-ado-net-3-5.html">
+    .NET 3.5: WPF, WCF, WWF, ASP.NET 3.5, ADO.NET 3.5
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Apr 3, 2009</span>
+<span>
+  <a class="post-link" href="/tech-blog/2009/04/03/net-2-0-notes-on-foundation-part-4-c.html">
+    .NET 2.0: Notes on Foundation Part 4 (C#)
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Apr 2, 2009</span>
+<span>
+  <a class="post-link" href="/tech-blog/2009/04/02/design-patterns-mediator-adapter-proxy-and-observer-patterns.html">
+    Design Patterns: Mediator, Adapter, Proxy, and Observer Patterns
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Apr 1, 2009</span>
+<span>
+  <a class="post-link" href="/tech-blog/2009/04/01/net-2-0-notes-on-foundation-part-3-c.html">
+    .NET 2.0: Notes on Foundation Part 3 (C#)
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Apr 1, 2009</span>
+<span>
+  <a class="post-link" href="/tech-blog/2009/04/01/design-patterns-introduction.html">
+    Design Patterns: Introduction
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Apr 1, 2009</span>
+<span>
+  <a class="post-link" href="/tech-blog/2009/04/01/asp-net-2-0-crystal-reports-fitting-the-report-inside-the-available-space-in-your-web-page.html">
+    ASP.NET 2.0: Crystal Reports – Fitting the report inside the available space in your web page
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Mar 31, 2009</span>
+<span>
+  <a class="post-link" href="/tech-blog/2009/03/31/net-2-0-notes-on-foundation-part-2-c-2.html">
+    .NET 2.0: Notes on Foundation Part 2 (C#)
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Mar 28, 2009</span>
+<span>
+  <a class="post-link" href="/tech-blog/2009/03/28/net-2-0-notes-on-foundation-part-1-3.html">
+    .NET 2.0: Notes on Foundation Part 1
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Mar 27, 2009</span>
+<span>
+  <a class="post-link" href="/tech-blog/2009/03/27/general-it-has-been-a-while-since-my-last-post.html">
+    General: It has been a while since my last post
+  </a>
+</span>
+ </li>
+        
+      
+    
+    <h2 id="2007" class="segment-name">2007</h2>
+      
+      
+        
+        <li> 
+<span class="post-meta">May 8, 2007</span>
+<span>
+  <a class="post-link" href="/tech-blog/2007/05/08/asp-net-2-0-learning-the-basics-part-iii.html">
+    ASP.NET 2.0: Learning the Basics, Part III
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">May 5, 2007</span>
+<span>
+  <a class="post-link" href="/tech-blog/2007/05/05/vb-2005-things-to-know-about-the-visual-studio-2005-ide.html">
+    VB 2005: Things to know about the Visual Studio 2005 IDE
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">May 5, 2007</span>
+<span>
+  <a class="post-link" href="/tech-blog/2007/05/05/vb-2005-the-global-keyword.html">
+    VB 2005: The Global keyword
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">May 5, 2007</span>
+<span>
+  <a class="post-link" href="/tech-blog/2007/05/05/vb-2005-putting-xml-comments-to-your-source-code.html">
+    VB 2005: Putting XML comments to your source code
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">May 5, 2007</span>
+<span>
+  <a class="post-link" href="/tech-blog/2007/05/05/vb-2005-dont-declare-a-form-mustinherit-if-you-will-be-inheriting-the-form.html">
+    VB 2005: Don't declare a form MustInherit if you will be inheriting the form
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">May 5, 2007</span>
+<span>
+  <a class="post-link" href="/tech-blog/2007/05/05/vb-2005-code-generation-in-visual-studio-2005.html">
+    VB 2005: Code generation in Visual Studio 2005
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">May 5, 2007</span>
+<span>
+  <a class="post-link" href="/tech-blog/2007/05/05/vb-2005-building-applications-in-vs-2005-ide.html">
+    VB 2005: Building applications in VS 2005 IDE
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">May 5, 2007</span>
+<span>
+  <a class="post-link" href="/tech-blog/2007/05/05/sql-server-2005-understanding-decimal-numeric-float-and-real-data-types.html">
+    SQL Server 2005: Understanding decimal, numeric, float, and real data types
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">May 5, 2007</span>
+<span>
+  <a class="post-link" href="/tech-blog/2007/05/05/sql-server-2005-query-window-in-microsoft-sql-server-management-studio.html">
+    SQL Server 2005: Query window in Microsoft SQL Server Management Studio
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">May 5, 2007</span>
+<span>
+  <a class="post-link" href="/tech-blog/2007/05/05/sql-server-2005-joins-and-union.html">
+    SQL Server 2005: JOINS and UNION
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">May 5, 2007</span>
+<span>
+  <a class="post-link" href="/tech-blog/2007/05/05/sql-server-2005-inserting-default-values.html">
+    SQL Server 2005: Inserting DEFAULT values
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">May 5, 2007</span>
+<span>
+  <a class="post-link" href="/tech-blog/2007/05/05/sql-server-2005-information_schema-views.html">
+    SQL Server 2005: INFORMATION_SCHEMA views
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">May 5, 2007</span>
+<span>
+  <a class="post-link" href="/tech-blog/2007/05/05/general-problem-importing-access-into-oracle-using-sqlloader.html">
+    General: Problem importing Access into Oracle using SQL*Loader
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">May 5, 2007</span>
+<span>
+  <a class="post-link" href="/tech-blog/2007/05/05/asp-net-2-0-learning-the-basics-part-ii.html">
+    ASP.NET 2.0: Learning the Basics, Part II
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">May 4, 2007</span>
+<span>
+  <a class="post-link" href="/tech-blog/2007/05/04/asp-net-2-0-learning-the-basics-part-i.html">
+    ASP.NET 2.0: Learning the Basics, Part I
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">May 2, 2007</span>
+<span>
+  <a class="post-link" href="/tech-blog/2007/05/02/asp-net-2-0-ramping-up-my-knowledge-on-microsofts-latest-version-of-asp.html">
+    ASP.NET 2.0: Ramping up my knowledge on Microsoft's latest version of ASP
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Apr 28, 2007</span>
+<span>
+  <a class="post-link" href="/tech-blog/2007/04/28/sql-server-2005-new-data-types.html">
+    SQL Server 2005: New data types
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Apr 28, 2007</span>
+<span>
+  <a class="post-link" href="/tech-blog/2007/04/28/general-programming-test-1.html">
+    General: Programming Test #1
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Apr 21, 2007</span>
+<span>
+  <a class="post-link" href="/tech-blog/2007/04/21/vb-2005-dont-use-the-timer-control-on-your-windows-service-project.html">
+    VB 2005: Don't use the Timer control on your Windows Service project
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Mar 28, 2007</span>
+<span>
+  <a class="post-link" href="/tech-blog/2007/03/28/vb-2005-quick-introduction-to-the-world-of-net.html">
+    VB 2005: Quick introduction to the world of .NET
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Mar 27, 2007</span>
+<span>
+  <a class="post-link" href="/tech-blog/2007/03/27/vb-2005-a-journey-towards-mastering-visual-basic-2005.html">
+    VB 2005: A journey towards mastering Visual Basic 2005
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Mar 27, 2007</span>
+<span>
+  <a class="post-link" href="/tech-blog/2007/03/27/sql-server-2005-aggregate-functions.html">
+    SQL Server 2005: Aggregate Functions
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Mar 27, 2007</span>
+<span>
+  <a class="post-link" href="/tech-blog/2007/03/27/access-2003-a-journey-towards-mastering-access-2003.html">
+    Access 2003: A journey towards mastering Access 2003
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Mar 26, 2007</span>
+<span>
+  <a class="post-link" href="/tech-blog/2007/03/26/sql-server-2005-transaction-log.html">
+    SQL Server 2005: Transaction log
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Mar 26, 2007</span>
+<span>
+  <a class="post-link" href="/tech-blog/2007/03/26/sql-server-2005-bit-image-varbinary-and-unsigned-numeric-data-types.html">
+    SQL Server 2005: Bit, Image, VarBinary, and unsigned numeric data types
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Mar 26, 2007</span>
+<span>
+  <a class="post-link" href="/tech-blog/2007/03/26/slq-server-2005-operators-you-can-use-in-the-where-clause.html">
+    SLQ Server 2005: Operators you can use in the WHERE clause
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Mar 25, 2007</span>
+<span>
+  <a class="post-link" href="/tech-blog/2007/03/25/sql-server-2005-model-and-msdb-system-databases.html">
+    SQL Server 2005: model and msdb system databases
+  </a>
+</span>
+ </li>
+        
+      
+        
+        <li> 
+<span class="post-meta">Mar 24, 2007</span>
+<span>
+  <a class="post-link" href="/tech-blog/2007/03/24/sql-server-2005-a-journey-towards-learning-sql-server-2005-better.html">
+    SQL Server 2005: A journey towards learning SQL Server 2005 better
+  </a>
+</span>
+ </li>
+        
+      
+    
+  </ul>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="common-list">
+  <ul>
+    <li>
+      <a href="/tech-blog/index.html">
+        All<span>159</span>
+      </a>
+    </li>
+
+    
+      <li>
+        <a href="/tech-blog/archives.html#h-2007">
+          2007 <span>28</span>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/tech-blog/archives.html#h-2009">
+          2009 <span>13</span>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/tech-blog/archives.html#h-2011">
+          2011 <span>7</span>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/tech-blog/archives.html#h-2013">
+          2013 <span>34</span>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/tech-blog/archives.html#h-2014">
+          2014 <span>22</span>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/tech-blog/archives.html#h-2015">
+          2015 <span>17</span>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/tech-blog/archives.html#h-2016">
+          2016 <span>4</span>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/tech-blog/archives.html#h-2017">
+          2017 <span>17</span>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/tech-blog/archives.html#h-2022">
+          2022 <span>15</span>
+        </a>
+      </li>
+    
+      <li>
+        <a href="/tech-blog/archives.html#h-2023">
+          2023 <span>2</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+</section>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/tech-blog/"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-inner">
+<div></div>
+      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
+      generator." href="https://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
+      <div class="footer-col rss-subscribe">Subscribe <a href="/tech-blog/feed.xml">via RSS</a>
+</div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

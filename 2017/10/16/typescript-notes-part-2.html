@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>TypeScript Notes: Part 2 | Rodan Sotto’s Tech Blog</title>
+<meta name="generator" content="Jekyll v3.9.2">
+<meta property="og:title" content="TypeScript Notes: Part 2">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Part 2 is all about classes, interfaces, abstract classes, and inheritance in TypeScript.  It’s similar to OOP in C#.  So easy to grasp and use that one might totally forget how OOP in JavaScript works.  Same as in TypeScript Notes: Part 1, I will present the TypeScript code and the generated JavaScript code.  The generated JavaScript code might be overwhelming to understand at first but as long as your knowledge with JavaScript objects is still intact, you should be able to figure it out.  For a refresher, read MDN’s Introducing JavaScript objects">
+<meta property="og:description" content="Part 2 is all about classes, interfaces, abstract classes, and inheritance in TypeScript.  It’s similar to OOP in C#.  So easy to grasp and use that one might totally forget how OOP in JavaScript works.  Same as in TypeScript Notes: Part 1, I will present the TypeScript code and the generated JavaScript code.  The generated JavaScript code might be overwhelming to understand at first but as long as your knowledge with JavaScript objects is still intact, you should be able to figure it out.  For a refresher, read MDN’s Introducing JavaScript objects">
+<link rel="canonical" href="https://rodansotto.github.io/tech-blog/2017/10/16/typescript-notes-part-2.html">
+<meta property="og:url" content="https://rodansotto.github.io/tech-blog/2017/10/16/typescript-notes-part-2.html">
+<meta property="og:site_name" content="Rodan Sotto’s Tech Blog">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2017-10-16T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="TypeScript Notes: Part 2">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2017-10-16T00:00:00+00:00","datePublished":"2017-10-16T00:00:00+00:00","description":"Part 2 is all about classes, interfaces, abstract classes, and inheritance in TypeScript.  It’s similar to OOP in C#.  So easy to grasp and use that one might totally forget how OOP in JavaScript works.  Same as in TypeScript Notes: Part 1, I will present the TypeScript code and the generated JavaScript code.  The generated JavaScript code might be overwhelming to understand at first but as long as your knowledge with JavaScript objects is still intact, you should be able to figure it out.  For a refresher, read MDN’s Introducing JavaScript objects","headline":"TypeScript Notes: Part 2","mainEntityOfPage":{"@type":"WebPage","@id":"https://rodansotto.github.io/tech-blog/2017/10/16/typescript-notes-part-2.html"},"url":"https://rodansotto.github.io/tech-blog/2017/10/16/typescript-notes-part-2.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="icon" href="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+  <link rel="stylesheet" href="/tech-blog/assets/css/main.css">
+  <script src="/tech-blog/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="https://rodansotto.github.io/tech-blog/feed.xml" title="Rodan Sotto's Tech Blog">
+<!--<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">-->
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs tpbg ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+
+  .tpbg {
+    background: transparent;
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header " role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/tech-blog/">
+  <img class="site-favicon" title="Rodan Sotto's Tech Blog" src="" onerror="this.style.display='none'">
+  Rodan Sotto's Tech Blog
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+<a class="page-link" href="/tech-blog/">HOME</a><a class="page-link" href="/tech-blog/archives.html">ARCHIVES</a><a class="page-link" href="/tech-blog/categories.html">CATEGORIES</a><a class="page-link" href="/tech-blog/search2.html">SEARCH</a>
+
+
+
+
+</div>
+        </nav>
+</div>
+  </div>
+</header>
+
+<script>
+  function initHeader() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;var scrollStatus = "";
+
+      if (y <= 0) {
+        scrollStatus = "top";
+      } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  }
+  document.addEventListener('DOMContentLoaded', initHeader);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    hashValue = decodeURIComponent(hashValue);
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+<div id="click-to-top" class="click-to-top">
+  <i class="fa fa-arrow-up"></i>
+</div>
+<script>
+  (function () {
+    const clickToTop = document.getElementById('click-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        clickToTop.classList.add('show')
+      }else {
+        clickToTop.classList.remove('show')
+      }
+    });
+    clickToTop.addEventListener('click', () => {
+      window.smoothScrollTo(0);
+    });
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="post">
+  <section>
+
+
+
+
+
+
+
+
+
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">TypeScript Notes: Part 2</h1>
+  <h2 class="post-subtitle"></h2>
+
+  <p class="post-meta">
+    <time class="dt-published" datetime="2017-10-16T00:00:00+00:00" itemprop="datePublished"><i class="fa fa-calendar"></i> Oct 16, 2017
+    </time>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 17 mins</span>
+  </p></header>
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <p><img src="/tech-blog/assets/images/tslogo.png" alt=""> Part 2 is all about classes, interfaces, abstract classes, and inheritance in TypeScript.  It’s similar to OOP in C#.  So easy to grasp and use that one might totally forget how OOP in JavaScript works.  Same as in <a href="https://rodansotto.github.io/tech-blog/2017/09/08/typescript-notes-part-1.html">TypeScript Notes: Part 1</a>, I will present the TypeScript code and the generated JavaScript code.  The generated JavaScript code might be overwhelming to understand at first but as long as your knowledge with JavaScript objects is still intact, you should be able to figure it out.  For a refresher, read <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects">MDN’s Introducing JavaScript objects</a></p>
+
+<p>.</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// TypeScript Notes: Part 2</span>
+
+<span class="c1">// Classes, access modifiers, properties, constructor</span>
+<span class="kd">class</span> <span class="nx">Employee</span> <span class="p">{</span>
+    <span class="nl">FullName</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nx">HireDate</span><span class="p">:</span> <span class="nb">Date</span><span class="p">;</span> <span class="c1">// this is a Javascript Date object</span>
+    <span class="k">private</span> <span class="nx">Salary</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
+    <span class="k">protected</span> <span class="nx">HomeAddress</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+
+    <span class="c1">// properties / accessors</span>
+    <span class="k">private</span> <span class="nx">_position</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="kd">get</span> <span class="nx">Position</span><span class="p">():</span> <span class="kr">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_position</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kd">set</span> <span class="nx">Position</span><span class="p">(</span><span class="nx">position</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">_position</span> <span class="o">=</span> <span class="nx">position</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// constructor</span>
+    <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Employee object created</span><span class="dl">"</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nx">Save</span><span class="p">():</span> <span class="k">void</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Employee saved: </span><span class="dl">"</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">FullName</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">, </span><span class="dl">"</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">HireDate</span><span class="p">.</span><span class="nx">toLocaleDateString</span><span class="p">());</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">e</span><span class="p">:</span> <span class="nx">Employee</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Employee</span><span class="p">();</span> <span class="c1">// displays "Employee object created"</span>
+<span class="nx">e</span><span class="p">.</span><span class="nx">FullName</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Rodan Sotto</span><span class="dl">"</span><span class="p">;</span>
+<span class="nx">e</span><span class="p">.</span><span class="nx">HireDate</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="dl">"</span><span class="s2">12/1/2015</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">e</span><span class="p">.</span><span class="nx">Save</span><span class="p">();</span> <span class="c1">// displays "Employee saved: Rodan Sotto, 12/1/2015"</span>
+
+<span class="nx">e</span><span class="p">.</span><span class="nx">Salary</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// compile-time error because e.Salary is declared private; default access modifier is public</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Salary set to </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">e</span><span class="p">.</span><span class="nx">Salary</span><span class="p">);</span>
+
+<span class="nx">e</span><span class="p">.</span><span class="nx">HomeAddress</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Mississauga, ON</span><span class="dl">"</span><span class="p">;</span> <span class="c1">// compile-time error because e.HomeAddress is protected</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Home address set to </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">e</span><span class="p">.</span><span class="nx">HomeAddress</span><span class="p">);</span>
+
+<span class="nx">e</span><span class="p">.</span><span class="nx">Position</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Senior Software Developer</span><span class="dl">"</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Position set to </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">e</span><span class="p">.</span><span class="nx">Position</span><span class="p">);</span> <span class="c1">// displays "Position set to Senior Software Developer"</span>
+<span class="c1">// Note: To support properties / accessors, at minimum, ES5 is required</span>
+
+<span class="c1">// Using shorthand properties to initialize properties at construction</span>
+<span class="kd">class</span> <span class="nx">Employer</span> <span class="p">{</span>
+    <span class="c1">// specifying access modifier before constructor parameter makes it a property</span>
+    <span class="c1">// in the example below, Name and Address are properties while misc is not</span>
+    <span class="kd">constructor</span><span class="p">(</span><span class="k">public</span> <span class="nx">Name</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="k">public</span> <span class="nx">Address</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">misc</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">er</span><span class="p">:</span> <span class="nx">Employer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Employer</span><span class="p">(</span><span class="dl">"</span><span class="s2">Acme Company</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Ontario, Canada</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">xyz</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Employer: </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">er</span><span class="p">.</span><span class="nx">Name</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">, </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">er</span><span class="p">.</span><span class="nx">Address</span><span class="p">);</span> <span class="c1">// displays "Employer: Acme Company, Ontario, Canada"</span>
+
+<span class="c1">// Inheritance, protected variables in derived classes</span>
+<span class="kd">class</span> <span class="nx">Manager</span> <span class="kd">extends</span> <span class="nx">Employee</span> <span class="p">{</span>
+    <span class="kd">constructor</span><span class="p">(</span><span class="k">public</span> <span class="nx">CompanyShares</span><span class="p">:</span> <span class="kr">number</span><span class="p">,</span> <span class="nx">address</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">super</span><span class="p">();</span> <span class="c1">// required call for derived classes</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">HomeAddress</span> <span class="o">=</span> <span class="nx">address</span><span class="p">;</span> <span class="c1">// protected variable is accessible to derived classes</span>
+    <span class="p">}</span>
+
+    <span class="c1">// method to return the protected variable HomeAddress</span>
+    <span class="nx">GetHomeAddress</span><span class="p">():</span> <span class="kr">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">HomeAddress</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">m</span><span class="p">:</span> <span class="nx">Manager</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Manager</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Toronto, ON</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// displays "Employee object created"</span>
+<span class="nx">m</span><span class="p">.</span><span class="nx">FullName</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">John Smith</span><span class="dl">"</span><span class="p">;</span>
+<span class="nx">m</span><span class="p">.</span><span class="nx">HireDate</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="dl">"</span><span class="s2">1/1/2000</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">m</span><span class="p">.</span><span class="nx">Position</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Development Manager</span><span class="dl">"</span><span class="p">;</span>
+<span class="nx">m</span><span class="p">.</span><span class="nx">Save</span><span class="p">();</span> <span class="c1">// displays "Employee saved: John Smith, 1/1/2000"</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Company shares set to </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">m</span><span class="p">.</span><span class="nx">CompanyShares</span><span class="p">);</span> <span class="c1">// displays "Company shares set to 1000"</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Home address set to </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">m</span><span class="p">.</span><span class="nx">GetHomeAddress</span><span class="p">());</span> <span class="c1">// displays "Home address set to Toronto, ON"</span>
+
+<span class="c1">// Template strings</span>
+<span class="c1">// To use, enclose your template string with the tick symbol (`)</span>
+<span class="c1">//  and enclose the variables in ${} notation</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Manager </span><span class="p">${</span><span class="nx">m</span><span class="p">.</span><span class="nx">FullName</span><span class="p">}</span><span class="s2"> is hired </span><span class="p">${</span><span class="nx">m</span><span class="p">.</span><span class="nx">HireDate</span><span class="p">.</span><span class="nx">toLocaleDateString</span><span class="p">()}</span><span class="s2"> as a </span><span class="p">${</span><span class="nx">m</span><span class="p">.</span><span class="nx">Position</span><span class="p">}</span><span class="s2"> and he lives in </span><span class="p">${</span><span class="nx">m</span><span class="p">.</span><span class="nx">GetHomeAddress</span><span class="p">()}</span><span class="s2">`</span><span class="p">);</span>
+<span class="c1">// displays "Manager John Smith is hired ?1?/?1?/?2000 as a Development Manager and he lives in Toronto, ON"</span>
+
+<span class="c1">// Interfaces</span>
+<span class="kr">interface</span> <span class="nx">ICanSing</span> <span class="p">{</span>
+    <span class="nx">Sing</span><span class="p">():</span> <span class="k">void</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">interface</span> <span class="nx">ICanDance</span> <span class="p">{</span>
+    <span class="nx">Dance</span><span class="p">():</span> <span class="k">void</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nx">Person</span> <span class="k">implements</span> <span class="nx">ICanSing</span><span class="p">,</span> <span class="nx">ICanDance</span> <span class="p">{</span>
+    <span class="kd">constructor</span><span class="p">(</span><span class="k">public</span> <span class="nx">Name</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="nx">Sing</span><span class="p">():</span> <span class="k">void</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">Name</span><span class="p">}</span><span class="s2"> can sing!`</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nx">Dance</span><span class="p">():</span> <span class="k">void</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">Name</span><span class="p">}</span><span class="s2"> can dance!`</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">j</span><span class="p">:</span> <span class="nx">Person</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="dl">"</span><span class="s2">Jane</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">j</span><span class="p">.</span><span class="nx">Sing</span><span class="p">();</span> <span class="c1">// displays "Jane can sing!"</span>
+<span class="nx">j</span><span class="p">.</span><span class="nx">Dance</span><span class="p">();</span> <span class="c1">// displays "Jane can dance!"</span>
+
+<span class="c1">// Abstract classes</span>
+<span class="c1">// In an abstract class you can have partial implementation while in an interface you cannot</span>
+<span class="c1">// Plus you cannot extend more than one abstract class while you can implement more than one interface</span>
+<span class="kd">abstract</span> <span class="kd">class</span> <span class="nx">AbstractPerson</span> <span class="p">{</span>
+    <span class="nx">ShowAbilities</span><span class="p">():</span> <span class="k">void</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">CanSing</span><span class="p">)</span> <span class="k">this</span><span class="p">.</span><span class="nx">Sing</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">CanDance</span><span class="p">)</span> <span class="k">this</span><span class="p">.</span><span class="nx">Dance</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="nl">CanSing</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">;</span>
+    <span class="nl">CanDance</span><span class="p">:</span> <span class="nx">boolean</span><span class="p">;</span>
+    <span class="kd">abstract</span> <span class="nx">Sing</span><span class="p">():</span> <span class="k">void</span><span class="p">;</span>
+    <span class="kd">abstract</span> <span class="nx">Dance</span><span class="p">():</span> <span class="k">void</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nx">AnotherPerson</span> <span class="kd">extends</span> <span class="nx">AbstractPerson</span> <span class="p">{</span>
+    <span class="kd">constructor</span><span class="p">(</span><span class="k">public</span> <span class="nx">Name</span><span class="p">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">super</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="nx">Sing</span><span class="p">():</span> <span class="k">void</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">Name</span><span class="p">}</span><span class="s2"> can sing!`</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nx">Dance</span><span class="p">():</span> <span class="k">void</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">Name</span><span class="p">}</span><span class="s2"> can dance!`</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">k</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AnotherPerson</span><span class="p">(</span><span class="dl">"</span><span class="s2">Kane</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">k</span><span class="p">.</span><span class="nx">CanSing</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+<span class="nx">k</span><span class="p">.</span><span class="nx">CanDance</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+<span class="nx">k</span><span class="p">.</span><span class="nx">ShowAbilities</span><span class="p">();</span>
+</code></pre></div></div>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Generated JavaScript Code From TypeScript Notes: Part 2</span>
+
+<span class="c1">// Classes, access modifiers, properties, constructor</span>
+<span class="kd">var</span> <span class="nx">Employee</span> <span class="o">=</span> <span class="cm">/** @class */</span> <span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// constructor</span>
+    <span class="kd">function</span> <span class="nx">Employee</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Employee object created</span><span class="dl">"</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+	<span class="nb">Object</span><span class="p">.</span><span class="nx">defineProperty</span><span class="p">(</span><span class="nx">Employee</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Position</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
+        <span class="na">get</span><span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_position</span><span class="p">;</span>
+        <span class="p">},</span>
+        <span class="na">set</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">position</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">_position</span> <span class="o">=</span> <span class="nx">position</span><span class="p">;</span>
+        <span class="p">},</span>
+        <span class="na">enumerable</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">configurable</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">});</span>
+    
+	<span class="nx">Employee</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">Save</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Employee saved: </span><span class="dl">"</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">FullName</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">, </span><span class="dl">"</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">HireDate</span><span class="p">.</span><span class="nx">toLocaleDateString</span><span class="p">());</span>
+    <span class="p">};</span>
+    
+	<span class="k">return</span> <span class="nx">Employee</span><span class="p">;</span>
+<span class="p">}());</span>
+
+<span class="kd">var</span> <span class="nx">e</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Employee</span><span class="p">();</span> <span class="c1">// displays "Employee object created"</span>
+<span class="nx">e</span><span class="p">.</span><span class="nx">FullName</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Rodan Sotto</span><span class="dl">"</span><span class="p">;</span>
+<span class="nx">e</span><span class="p">.</span><span class="nx">HireDate</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="dl">"</span><span class="s2">12/1/2015</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">e</span><span class="p">.</span><span class="nx">Save</span><span class="p">();</span> <span class="c1">// displays "Employee saved: Rodan Sotto, 12/1/2015"</span>
+
+<span class="nx">e</span><span class="p">.</span><span class="nx">Salary</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Salary set to </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">e</span><span class="p">.</span><span class="nx">Salary</span><span class="p">);</span>
+
+<span class="nx">e</span><span class="p">.</span><span class="nx">HomeAddress</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Mississauga, ON</span><span class="dl">"</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Home address set to </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">e</span><span class="p">.</span><span class="nx">HomeAddress</span><span class="p">);</span>
+
+<span class="nx">e</span><span class="p">.</span><span class="nx">Position</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Senior Software Developer</span><span class="dl">"</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Position set to </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">e</span><span class="p">.</span><span class="nx">Position</span><span class="p">);</span> <span class="c1">// displays "Position set to Senior Software Developer"</span>
+
+<span class="c1">// Using shorthand properties to initialize properties at construction</span>
+<span class="kd">var</span> <span class="nx">Employer</span> <span class="o">=</span> <span class="cm">/** @class */</span> <span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="nx">Employer</span><span class="p">(</span><span class="nx">Name</span><span class="p">,</span> <span class="nx">Address</span><span class="p">,</span> <span class="nx">misc</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">Name</span> <span class="o">=</span> <span class="nx">Name</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">Address</span> <span class="o">=</span> <span class="nx">Address</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+	<span class="k">return</span> <span class="nx">Employer</span><span class="p">;</span>
+<span class="p">}());</span>
+
+<span class="kd">var</span> <span class="nx">er</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Employer</span><span class="p">(</span><span class="dl">"</span><span class="s2">Acme Company</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Ontario, Canada</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">xyz</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Employer: </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">er</span><span class="p">.</span><span class="nx">Name</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">, </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">er</span><span class="p">.</span><span class="nx">Address</span><span class="p">);</span> <span class="c1">// displays "Employer: Acme Company, Ontario, Canada"</span>
+
+<span class="c1">// Inheritance, protected variables in derived classes</span>
+<span class="kd">var</span> <span class="nx">Manager</span> <span class="o">=</span> <span class="cm">/** @class */</span> <span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">_super</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">__extends</span><span class="p">(</span><span class="nx">Manager</span><span class="p">,</span> <span class="nx">_super</span><span class="p">);</span>
+    
+	<span class="kd">function</span> <span class="nx">Manager</span><span class="p">(</span><span class="nx">CompanyShares</span><span class="p">,</span> <span class="nx">address</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">_this</span> <span class="o">=</span> <span class="nx">_super</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">)</span> <span class="o">||</span> <span class="k">this</span><span class="p">;</span>
+        <span class="nx">_this</span><span class="p">.</span><span class="nx">CompanyShares</span> <span class="o">=</span> <span class="nx">CompanyShares</span><span class="p">;</span>
+        <span class="nx">_this</span><span class="p">.</span><span class="nx">HomeAddress</span> <span class="o">=</span> <span class="nx">address</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nx">_this</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="nx">Manager</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">GetHomeAddress</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">HomeAddress</span><span class="p">;</span>
+    <span class="p">};</span>
+    
+	<span class="k">return</span> <span class="nx">Manager</span><span class="p">;</span>
+<span class="p">}(</span><span class="nx">Employee</span><span class="p">));</span>
+
+<span class="kd">var</span> <span class="nx">m</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Manager</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="dl">"</span><span class="s2">Toronto, ON</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// displays "Employee object created"</span>
+<span class="nx">m</span><span class="p">.</span><span class="nx">FullName</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">John Smith</span><span class="dl">"</span><span class="p">;</span>
+<span class="nx">m</span><span class="p">.</span><span class="nx">HireDate</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="dl">"</span><span class="s2">1/1/2000</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">m</span><span class="p">.</span><span class="nx">Position</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Development Manager</span><span class="dl">"</span><span class="p">;</span>
+<span class="nx">m</span><span class="p">.</span><span class="nx">Save</span><span class="p">();</span> <span class="c1">// displays "Employee saved: John Smith, 1/1/2000"</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Company shares set to </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">m</span><span class="p">.</span><span class="nx">CompanyShares</span><span class="p">);</span> <span class="c1">// displays "Company shares set to 1000"</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Home address set to </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">m</span><span class="p">.</span><span class="nx">GetHomeAddress</span><span class="p">());</span> <span class="c1">// displays "Home address set to Toronto, ON"</span>
+
+<span class="c1">// Template strings</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Manager </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">m</span><span class="p">.</span><span class="nx">FullName</span> <span class="o">+</span> <span class="dl">"</span><span class="s2"> is hired </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">m</span><span class="p">.</span><span class="nx">HireDate</span><span class="p">.</span><span class="nx">toLocaleDateString</span><span class="p">()</span> <span class="o">+</span> <span class="dl">"</span><span class="s2"> as a </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">m</span><span class="p">.</span><span class="nx">Position</span> <span class="o">+</span> <span class="dl">"</span><span class="s2"> and he lives in </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">m</span><span class="p">.</span><span class="nx">GetHomeAddress</span><span class="p">());</span>
+
+<span class="c1">// Interfaces</span>
+
+<span class="kd">var</span> <span class="nx">Person</span> <span class="o">=</span> <span class="cm">/** @class */</span> <span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="nx">Person</span><span class="p">(</span><span class="nx">Name</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">Name</span> <span class="o">=</span> <span class="nx">Name</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+	<span class="nx">Person</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">Sing</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">Name</span> <span class="o">+</span> <span class="dl">"</span><span class="s2"> can sing!</span><span class="dl">"</span><span class="p">);</span>
+    <span class="p">};</span>
+    
+	<span class="nx">Person</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">Dance</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">Name</span> <span class="o">+</span> <span class="dl">"</span><span class="s2"> can dance!</span><span class="dl">"</span><span class="p">);</span>
+    <span class="p">};</span>
+    
+	<span class="k">return</span> <span class="nx">Person</span><span class="p">;</span>
+<span class="p">}());</span>
+
+<span class="kd">var</span> <span class="nx">j</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="dl">"</span><span class="s2">Jane</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">j</span><span class="p">.</span><span class="nx">Sing</span><span class="p">();</span> <span class="c1">// displays "Jane can sing!"</span>
+<span class="nx">j</span><span class="p">.</span><span class="nx">Dance</span><span class="p">();</span> <span class="c1">// displays "Jane can dance!"</span>
+
+<span class="c1">// Abstract classes</span>
+
+<span class="kd">var</span> <span class="nx">AbstractPerson</span> <span class="o">=</span> <span class="cm">/** @class */</span> <span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="nx">AbstractPerson</span><span class="p">()</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="nx">AbstractPerson</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">ShowAbilities</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">CanSing</span><span class="p">)</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">Sing</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">CanDance</span><span class="p">)</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">Dance</span><span class="p">();</span>
+    <span class="p">};</span>
+
+    <span class="k">return</span> <span class="nx">AbstractPerson</span><span class="p">;</span>
+<span class="p">}());</span>
+
+<span class="kd">var</span> <span class="nx">AnotherPerson</span> <span class="o">=</span> <span class="cm">/** @class */</span> <span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">_super</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">__extends</span><span class="p">(</span><span class="nx">AnotherPerson</span><span class="p">,</span> <span class="nx">_super</span><span class="p">);</span>
+    
+	<span class="kd">function</span> <span class="nx">AnotherPerson</span><span class="p">(</span><span class="nx">Name</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">_this</span> <span class="o">=</span> <span class="nx">_super</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">)</span> <span class="o">||</span> <span class="k">this</span><span class="p">;</span>
+        <span class="nx">_this</span><span class="p">.</span><span class="nx">Name</span> <span class="o">=</span> <span class="nx">Name</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nx">_this</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+	<span class="nx">AnotherPerson</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">Sing</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">Name</span> <span class="o">+</span> <span class="dl">"</span><span class="s2"> can sing!</span><span class="dl">"</span><span class="p">);</span>
+    <span class="p">};</span>
+    
+	<span class="nx">AnotherPerson</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">Dance</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">Name</span> <span class="o">+</span> <span class="dl">"</span><span class="s2"> can dance!</span><span class="dl">"</span><span class="p">);</span>
+    <span class="p">};</span>
+    
+	<span class="k">return</span> <span class="nx">AnotherPerson</span><span class="p">;</span>
+<span class="p">}(</span><span class="nx">AbstractPerson</span><span class="p">));</span>
+
+<span class="kd">var</span> <span class="nx">k</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AnotherPerson</span><span class="p">(</span><span class="dl">"</span><span class="s2">Kane</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">k</span><span class="p">.</span><span class="nx">CanSing</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+<span class="nx">k</span><span class="p">.</span><span class="nx">CanDance</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+<span class="nx">k</span><span class="p">.</span><span class="nx">ShowAbilities</span><span class="p">();</span>
+
+<span class="c1">// This is the __extends code used to implement classes extending another class or abstract class in Typescript</span>
+<span class="kd">var</span> <span class="nx">__extends</span> <span class="o">=</span> <span class="p">(</span><span class="k">this</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="nx">__extends</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">extendStatics</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">setPrototypeOf</span> <span class="o">||</span>
+        <span class="p">({</span> <span class="na">__proto__</span><span class="p">:</span> <span class="err">\</span><span class="p">[</span><span class="err">\</span><span class="p">]</span> <span class="p">}</span> <span class="k">instanceof</span> <span class="nb">Array</span> <span class="o">&amp;&amp;</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">d</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span> <span class="nx">d</span><span class="p">.</span><span class="nx">__proto__</span> <span class="o">=</span> <span class="nx">b</span><span class="p">;</span> <span class="p">})</span> <span class="o">||</span>
+        <span class="kd">function</span> <span class="p">(</span><span class="nx">d</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span> <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">p</span> <span class="k">in</span> <span class="nx">b</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="nx">b</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">p</span><span class="p">))</span> <span class="nx">d</span><span class="err">\</span><span class="p">[</span><span class="nx">p</span><span class="err">\</span><span class="p">]</span> <span class="o">=</span> <span class="nx">b</span><span class="err">\</span><span class="p">[</span><span class="nx">p</span><span class="err">\</span><span class="p">];</span> <span class="p">};</span>
+    
+	<span class="k">return</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">d</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">extendStatics</span><span class="p">(</span><span class="nx">d</span><span class="p">,</span> <span class="nx">b</span><span class="p">);</span>
+        <span class="kd">function</span> <span class="nx">__</span><span class="p">()</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="kd">constructor</span> <span class="o">=</span> <span class="nx">d</span><span class="p">;</span> <span class="p">}</span>
+        <span class="nx">d</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nx">b</span> <span class="o">===</span> <span class="kc">null</span> <span class="p">?</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">b</span><span class="p">)</span> <span class="p">:</span> <span class="p">(</span><span class="nx">__</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nx">b</span><span class="p">.</span><span class="nx">prototype</span><span class="p">,</span> <span class="k">new</span> <span class="nx">__</span><span class="p">());</span>
+    <span class="p">};</span>
+<span class="p">})();</span>
+</code></pre></div></div>
+
+
+    </div>
+
+</article>
+<div class="post-nav">
+<a class="previous" href="/tech-blog/2017/10/12/sql-tricks-csv-to-table-rows-and-vice-versa.html" title="SQL Tricks: CSV To Table Rows And Vice Versa">SQL Tricks: CSV To Table Rows...</a><a class="next" href="/tech-blog/2017/10/17/quick-refresher-on-javascripts-objects-prototypes-and-inheritance.html" title="Quick refresher on JavaScript's objects, prototypes and inheritance">Quick refresher on JavaScript's objects, prototypes...</a>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/tech-blog/2017/11/03/ways-to-extend-the-asp-net-mvc-5-framework.html" title="Quick refresher on JavaScript's objects, prototypes and inheritance">Ways to Extend The ASP.NET MVC 5 Framework</a></li>
+<li><a class="post-link" href="/tech-blog/2013/04/18/general-if-we-have-cloud-then-what-is-saas-what-about-asp-2.html" title="Quick refresher on JavaScript's objects, prototypes and inheritance">General: If we have Cloud, then what is SaaS? What about ASP?...</a></li>
+<li><a class="post-link" href="/tech-blog/2013/05/13/c-how-many-versions-of-c-do-we-have-right-now.html" title="Quick refresher on JavaScript's objects, prototypes and inheritance">C#: How many versions of C# do we have right now?</a></li>
+<li><a class="post-link" href="/tech-blog/2009/04/01/asp-net-2-0-crystal-reports-fitting-the-report-inside-the-available-space-in-your-web-page.html" title="Quick refresher on JavaScript's objects, prototypes and inheritance">ASP.NET 2.0: Crystal Reports – Fitting the report inside the available space...</a></li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items --><style type="text/css" media="screen">
+.post-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+</style>
+
+<div class="post-menu">
+  <div class="post-menu-title">TOC</div>
+  <div class="post-menu-content"></div>
+</div>
+
+<script>
+  function generateContent() {
+    var menu = document.querySelector(".post-menu");
+    var menuContent =  menu.querySelector(".post-menu-content");
+    var headings = document.querySelector(".post-content").querySelectorAll("h2, h3, h4, h5, h6");
+
+    // Hide menu when no headings
+    if (headings.length === 0) {
+      return menu.style.display = "none";
+    }
+
+    // Generate post menu
+    var menuHTML = '';
+    for (var i = 0; i < headings.length; i++) {
+      var h = headings[i];
+      menuHTML += (
+        '<li class="h-' + h.tagName.toLowerCase() + '">'
+        + '<a href="#h-' + h.getAttribute('id') + '">' + h.textContent + '</a></li>');
+    }
+
+    menuContent.innerHTML = '<ul>' + menuHTML + '</ul>';
+
+    // The header element
+    var header = document.querySelector('header.site-header');
+
+    function doMenuCollapse(index, over_items) {
+      var items = menuContent.firstChild.children;
+
+      if (over_items == undefined) {
+        over_items = 20;
+      }
+
+      if (items.length < over_items) {
+        return;
+      }
+
+      var activeItem = items[index];
+      var beginItem = activeItem
+      var endItem = activeItem
+      var beginIndex = index;
+      var endIndex = index + 1;
+      while (beginIndex >= 0
+        && !items[beginIndex].classList.contains('h-h2')) {
+        beginIndex -= 1;
+      }
+      while (endIndex < items.length
+        && !items[endIndex].classList.contains('h-h2')) {
+        endIndex += 1;
+      }
+      for (var i = 0; i < beginIndex; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+      for (var i = beginIndex + 1; i < endIndex; i++) {
+        item = items[i]
+        // if (!item.classList.contains('h-h2')) {
+          item.style.display = '';
+        // }
+      }
+      for (var i = endIndex; i < items.length; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+    }
+
+    // Init menu collapsed
+    doMenuCollapse(-1);
+
+    // Active the menu item
+    window.addEventListener('scroll', function (event) {
+      var lastActive = menuContent.querySelector('.active');
+      var changed = true;
+      var activeIndex = -1;
+      for (var i = headings.length - 1; i >= 0; i--) {
+        var h = headings[i];
+        var headingRect = h.getBoundingClientRect();
+        var headerRect = header.getBoundingClientRect();
+        var headerTop = Math.floor(headerRect.top);
+        var headerHeight = Math.floor(headerRect.height);
+        var headerHeight = headerTop + headerHeight + 20;
+        if (headingRect.top <= headerHeight) {
+          var id = 'h-' + h.getAttribute('id');
+          var a = menuContent.querySelector('a[href="#' + id  + '"]');
+          var curActive = a.parentNode;
+          if (curActive) {
+            curActive.classList.add('active');
+            activeIndex = i;
+          }
+          if (lastActive == curActive) {
+            changed = false;
+          }
+          break;
+        }
+      }
+      if (changed) {
+        if (lastActive) {
+          lastActive.classList.remove('active');
+        }
+        doMenuCollapse(activeIndex);
+      }
+      event.preventDefault();
+    });
+  }
+  generateContent();
+</script>
+</section>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/tech-blog/"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-inner">
+<div></div>
+      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
+      generator." href="https://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
+      <div class="footer-col rss-subscribe">Subscribe <a href="/tech-blog/feed.xml">via RSS</a>
+</div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

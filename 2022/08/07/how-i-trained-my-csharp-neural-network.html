@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>How I Trained A Simple Neural Network In C# To Recognize Numbers 0-9 | Rodan Sotto’s Tech Blog</title>
+<meta name="generator" content="Jekyll v3.9.2">
+<meta property="og:title" content="How I Trained A Simple Neural Network In C# To Recognize Numbers 0-9">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="A software developer’s personal notes">
+<meta property="og:description" content="A software developer’s personal notes">
+<link rel="canonical" href="https://rodansotto.github.io/tech-blog/2022/08/07/how-i-trained-my-csharp-neural-network.html">
+<meta property="og:url" content="https://rodansotto.github.io/tech-blog/2022/08/07/how-i-trained-my-csharp-neural-network.html">
+<meta property="og:site_name" content="Rodan Sotto’s Tech Blog">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2022-08-07T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="How I Trained A Simple Neural Network In C# To Recognize Numbers 0-9">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-08-07T00:00:00+00:00","datePublished":"2022-08-07T00:00:00+00:00","description":"A software developer’s personal notes","headline":"How I Trained A Simple Neural Network In C# To Recognize Numbers 0-9","mainEntityOfPage":{"@type":"WebPage","@id":"https://rodansotto.github.io/tech-blog/2022/08/07/how-i-trained-my-csharp-neural-network.html"},"url":"https://rodansotto.github.io/tech-blog/2022/08/07/how-i-trained-my-csharp-neural-network.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="icon" href="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+  <link rel="stylesheet" href="/tech-blog/assets/css/main.css">
+  <script src="/tech-blog/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="https://rodansotto.github.io/tech-blog/feed.xml" title="Rodan Sotto's Tech Blog">
+<!--<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">-->
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs tpbg ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+
+  .tpbg {
+    background: transparent;
+  }
+</style>
+<script>MathJax={"tex":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]]},"svg":{"fontCache":"global"}}</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header " role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/tech-blog/">
+  <img class="site-favicon" title="Rodan Sotto's Tech Blog" src="" onerror="this.style.display='none'">
+  Rodan Sotto's Tech Blog
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+<a class="page-link" href="/tech-blog/">HOME</a><a class="page-link" href="/tech-blog/archives.html">ARCHIVES</a><a class="page-link" href="/tech-blog/categories.html">CATEGORIES</a><a class="page-link" href="/tech-blog/search2.html">SEARCH</a>
+
+
+
+
+</div>
+        </nav>
+</div>
+  </div>
+</header>
+
+<script>
+  function initHeader() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;var scrollStatus = "";
+
+      if (y <= 0) {
+        scrollStatus = "top";
+      } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  }
+  document.addEventListener('DOMContentLoaded', initHeader);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    hashValue = decodeURIComponent(hashValue);
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+<div id="click-to-top" class="click-to-top">
+  <i class="fa fa-arrow-up"></i>
+</div>
+<script>
+  (function () {
+    const clickToTop = document.getElementById('click-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        clickToTop.classList.add('show')
+      }else {
+        clickToTop.classList.remove('show')
+      }
+    });
+    clickToTop.addEventListener('click', () => {
+      window.smoothScrollTo(0);
+    });
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="post">
+  <section>
+
+
+
+
+
+
+
+
+
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">How I Trained A Simple Neural Network In C# To Recognize Numbers 0-9</h1>
+  <h2 class="post-subtitle"></h2>
+
+  <p class="post-meta">
+    <time class="dt-published" datetime="2022-08-07T00:00:00+00:00" itemprop="datePublished"><i class="fa fa-calendar"></i> Aug 7, 2022
+    </time>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 7 mins</span>
+  </p></header>
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <p><img src="/tech-blog/assets/images/ann/ann-number-recognizer.png" alt=""></p>
+
+<p>[Looking for the code? Find it <a href="https://dotnetfiddle.net/0aI8Ea">here</a>.  You can run the code as well]</p>
+
+<p>As promised in my previous post <a href="/tech-blog/2022/07/06/a-simple-neural-network-in-c-sharp.html">here</a>, I was able to come up with a very simple and very specific problem that our simple neural network in C# can solve just to show in it’s very basic implementation how artificial neural network works.</p>
+
+<p>For our problem, I went with recognizing a number from <strong>0</strong> to <strong>9</strong> in an image. And to scale our problem down further in order to simplify things, I went with a <strong>5 pixels wide and 7 pixels high image</strong> with just <strong>black and white</strong> color, a <strong>0</strong> or <strong>1</strong> in value.  Trying to avoid the complexities brought by having a full RGB image, thus no need for any convolutional processing as we are just testing a very simple neural network.</p>
+
+<p>Here is our image of the numbers 0-9 that we would like our neural network to recognize.  Note that we are not doing any classifying here, just recognizing these numbers in it’s exact layout/format for simplicity.</p>
+
+<p><img src="/tech-blog/assets/images/ann/numbers-in-grid.png" alt=""></p>
+
+<p>Next thing we want to decide  is what kind of output do we want our neural network to return when training with this input data.  I decided to have the neural network to output these values corresponding to the numbers in its the input.  I also have to divide them by 10 as our neural network apparently only works with values between 0 and 1 (inclusive).</p>
+
+<p>Expected output: $ [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.0 ] $</p>
+
+<p>We also need to decide how to represent the input image to our neural network.  We have to transform our 2D image data into 1D array of decimal values.  Since we have 7 pixels high in the image representing 7 rows, I decided to have <strong>7 decimal values in our 1D array</strong>.  In the image below for number 5, I assigned the first row with a decimal value of 14 which corresponds to the binary value 01110 which is the bit representation of our 5 pixel row.</p>
+
+<p><img src="/tech-blog/assets/images/ann/number-5-input.png" alt=""></p>
+
+<p>So below is what our input for all numbers will be like.  Note that we need to transform these values so they lie in the range from 0 to 1.  I had to divide them by 31 before feeding them to the neural network.  Why 31?  It is because since we have 5 pixels in a row, the maximum value that we can have for a row is where all bits are set to 1 which is 11111, a binary value that converts to 31 in decimal.</p>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="p">{</span> <span class="m">4</span><span class="p">,</span> <span class="m">12</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">4</span> <span class="p">},</span>       <span class="c1">// number 1</span>
+    <span class="p">{</span> <span class="m">6</span><span class="p">,</span> <span class="m">9</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">15</span> <span class="p">},</span>       <span class="c1">// number 2</span>
+    <span class="p">{</span> <span class="m">6</span><span class="p">,</span> <span class="m">9</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">6</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">9</span><span class="p">,</span> <span class="m">6</span> <span class="p">},</span>        <span class="c1">// number 3</span>
+    <span class="p">{</span> <span class="m">3</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">9</span><span class="p">,</span> <span class="m">15</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">1</span> <span class="p">},</span>       <span class="c1">// number 4</span>
+    <span class="p">{</span> <span class="m">14</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">14</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">14</span> <span class="p">},</span>     <span class="c1">// number 5</span>
+    <span class="p">{</span> <span class="m">6</span><span class="p">,</span> <span class="m">9</span><span class="p">,</span> <span class="m">16</span><span class="p">,</span> <span class="m">14</span><span class="p">,</span> <span class="m">17</span><span class="p">,</span> <span class="m">17</span><span class="p">,</span> <span class="m">14</span> <span class="p">},</span>   <span class="c1">// number 6</span>
+    <span class="p">{</span> <span class="m">14</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">4</span> <span class="p">},</span>       <span class="c1">// number 7</span>
+    <span class="p">{</span> <span class="m">6</span><span class="p">,</span> <span class="m">9</span><span class="p">,</span> <span class="m">9</span><span class="p">,</span> <span class="m">6</span><span class="p">,</span> <span class="m">9</span><span class="p">,</span> <span class="m">9</span><span class="p">,</span> <span class="m">6</span> <span class="p">},</span>        <span class="c1">// number 8</span>
+    <span class="p">{</span> <span class="m">6</span><span class="p">,</span> <span class="m">9</span><span class="p">,</span> <span class="m">9</span><span class="p">,</span> <span class="m">9</span><span class="p">,</span> <span class="m">7</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">6</span> <span class="p">},</span>        <span class="c1">// number 9</span>
+    <span class="p">{</span> <span class="m">6</span><span class="p">,</span> <span class="m">9</span><span class="p">,</span> <span class="m">9</span><span class="p">,</span> <span class="m">9</span><span class="p">,</span> <span class="m">9</span><span class="p">,</span> <span class="m">9</span><span class="p">,</span> <span class="m">6</span> <span class="p">},</span>        <span class="c1">// number 0</span>
+</code></pre></div></div>
+
+<p>Now that we have our input and expected output defined, we now have to decide how our neural network would look like.  Definitely our <strong>input layer will have 7 neurons</strong> as our input data is an array of 7 decimal values.  Our <strong>output layer will have 1 neuron</strong>.  As for the hidden layers, I opted for only <strong>1 hidden layer with 4 neurons</strong>.  And I used the <strong>Sigmoid function</strong> as the activation function for our hidden and output layers.</p>
+
+<p><img src="/tech-blog/assets/images/ann/ann-layout.png" alt=""></p>
+<blockquote>
+  <p>*schematic generated using <a href="https://alexlenail.me/NN-SVG/index.html">NN-SVG</a></p>
+</blockquote>
+
+<p>Once we have our layout, we are ready to train.  I left the <strong>number of epochs</strong> for our training to <strong>10000</strong>.  By the  way, I also found myself making the following code changes to make this work:</p>
+<ul>
+  <li>One of them is having a static instance of a <code class="language-plaintext highlighter-rouge">Random</code> object instead of creating multiple of them to make sure our initial weight values are randomly generated.</li>
+  <li>Another is changing the calculation of delta in <code class="language-plaintext highlighter-rouge">HandleOutputLayer()</code> and <code class="language-plaintext highlighter-rouge">HandleHiddenLayers()</code> to not multiply by <code class="language-plaintext highlighter-rouge">-1</code> as it will not work otherwise.</li>
+  <li>Lastly, bumping the <code class="language-plaintext highlighter-rouge">_learningRate</code> to a high value of <code class="language-plaintext highlighter-rouge">20</code>.</li>
+</ul>
+
+<p>Please note I have to play around with the input and output data, learning rate, number of epochs, etc. to arrive at these decisions and get it to work.  It was a learning experience to me.  So the instant I got the result below, I was so ecstatic that I couldn’t believe that I would be able to do it, in C#!.  I was actually about to give up and go with Python instead.  But I persisted.</p>
+
+<p><img src="/tech-blog/assets/images/ann/test-results2.png" alt=""></p>
+
+<p><strong>So what is next for this?</strong>  Well if you notice you have to run the code couple more times or so to get it to recognize the number properly.  That’s because you have to train it everytime you run it as it does not store the trained state/model of our neural network.  So saving a model would be the next step definitely.  And maybe implement a basic convolutional neural network might be in the works too depending on time and difficulty.  Was also thinking of incorporating speech, etc. but that is looking ahead too far.  For now we will see how it goes.  But just happy I was able to do this, and in C#, not in Python :).</p>
+
+
+    </div>
+
+</article>
+<div class="post-nav">
+<a class="previous" href="/tech-blog/2022/08/02/from-cloudformation-to-serverless-to-cdk.html" title="From CloudFormation To Serverless Framework To Cloud Development Kit?">From CloudFormation To Serverless Framework To...</a><a class="next" href="/tech-blog/2022/09/06/task-based-async-pattern.html" title="Multi-threading in C#: Task-Based Asynchronous Pattern (TAP)">Multi-threading in C#: Task-Based Asynchronous Pattern...</a>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/tech-blog/2009/04/03/net-2-0-notes-on-foundation-part-4-c.html" title="Multi-threading in C#: Task-Based Asynchronous Pattern (TAP)">.NET 2.0: Notes on Foundation Part 4 (C#)</a></li>
+<li><a class="post-link" href="/tech-blog/2015/11/09/how-many-ways-can-you-add-entity-framework-model-to-your-project.html" title="Multi-threading in C#: Task-Based Asynchronous Pattern (TAP)">How Many Ways Can You Add Entity Framework Model To Your Project?...</a></li>
+<li><a class="post-link" href="/tech-blog/2007/03/26/sql-server-2005-transaction-log.html" title="Multi-threading in C#: Task-Based Asynchronous Pattern (TAP)">SQL Server 2005: Transaction log</a></li>
+<li><a class="post-link" href="/tech-blog/2015/10/19/a-custom-webgrid-my-1st-iteration.html" title="Multi-threading in C#: Task-Based Asynchronous Pattern (TAP)">A Custom WebGrid (My 1st Iteration)</a></li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items --><style type="text/css" media="screen">
+.post-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+</style>
+
+<div class="post-menu">
+  <div class="post-menu-title">TOC</div>
+  <div class="post-menu-content"></div>
+</div>
+
+<script>
+  function generateContent() {
+    var menu = document.querySelector(".post-menu");
+    var menuContent =  menu.querySelector(".post-menu-content");
+    var headings = document.querySelector(".post-content").querySelectorAll("h2, h3, h4, h5, h6");
+
+    // Hide menu when no headings
+    if (headings.length === 0) {
+      return menu.style.display = "none";
+    }
+
+    // Generate post menu
+    var menuHTML = '';
+    for (var i = 0; i < headings.length; i++) {
+      var h = headings[i];
+      menuHTML += (
+        '<li class="h-' + h.tagName.toLowerCase() + '">'
+        + '<a href="#h-' + h.getAttribute('id') + '">' + h.textContent + '</a></li>');
+    }
+
+    menuContent.innerHTML = '<ul>' + menuHTML + '</ul>';
+
+    // The header element
+    var header = document.querySelector('header.site-header');
+
+    function doMenuCollapse(index, over_items) {
+      var items = menuContent.firstChild.children;
+
+      if (over_items == undefined) {
+        over_items = 20;
+      }
+
+      if (items.length < over_items) {
+        return;
+      }
+
+      var activeItem = items[index];
+      var beginItem = activeItem
+      var endItem = activeItem
+      var beginIndex = index;
+      var endIndex = index + 1;
+      while (beginIndex >= 0
+        && !items[beginIndex].classList.contains('h-h2')) {
+        beginIndex -= 1;
+      }
+      while (endIndex < items.length
+        && !items[endIndex].classList.contains('h-h2')) {
+        endIndex += 1;
+      }
+      for (var i = 0; i < beginIndex; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+      for (var i = beginIndex + 1; i < endIndex; i++) {
+        item = items[i]
+        // if (!item.classList.contains('h-h2')) {
+          item.style.display = '';
+        // }
+      }
+      for (var i = endIndex; i < items.length; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+    }
+
+    // Init menu collapsed
+    doMenuCollapse(-1);
+
+    // Active the menu item
+    window.addEventListener('scroll', function (event) {
+      var lastActive = menuContent.querySelector('.active');
+      var changed = true;
+      var activeIndex = -1;
+      for (var i = headings.length - 1; i >= 0; i--) {
+        var h = headings[i];
+        var headingRect = h.getBoundingClientRect();
+        var headerRect = header.getBoundingClientRect();
+        var headerTop = Math.floor(headerRect.top);
+        var headerHeight = Math.floor(headerRect.height);
+        var headerHeight = headerTop + headerHeight + 20;
+        if (headingRect.top <= headerHeight) {
+          var id = 'h-' + h.getAttribute('id');
+          var a = menuContent.querySelector('a[href="#' + id  + '"]');
+          var curActive = a.parentNode;
+          if (curActive) {
+            curActive.classList.add('active');
+            activeIndex = i;
+          }
+          if (lastActive == curActive) {
+            changed = false;
+          }
+          break;
+        }
+      }
+      if (changed) {
+        if (lastActive) {
+          lastActive.classList.remove('active');
+        }
+        doMenuCollapse(activeIndex);
+      }
+      event.preventDefault();
+    });
+  }
+  generateContent();
+</script>
+</section>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/tech-blog/"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-inner">
+<div></div>
+      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
+      generator." href="https://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
+      <div class="footer-col rss-subscribe">Subscribe <a href="/tech-blog/feed.xml">via RSS</a>
+</div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

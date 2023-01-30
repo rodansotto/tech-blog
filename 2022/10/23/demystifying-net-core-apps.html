@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Demystifying .NET Core apps, a quick walkthrough (.NET 6) | Rodan Sotto’s Tech Blog</title>
+<meta name="generator" content="Jekyll v3.9.2">
+<meta property="og:title" content="Demystifying .NET Core apps, a quick walkthrough (.NET 6)">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="A software developer’s personal notes">
+<meta property="og:description" content="A software developer’s personal notes">
+<link rel="canonical" href="https://rodansotto.github.io/tech-blog/2022/10/23/demystifying-net-core-apps.html">
+<meta property="og:url" content="https://rodansotto.github.io/tech-blog/2022/10/23/demystifying-net-core-apps.html">
+<meta property="og:site_name" content="Rodan Sotto’s Tech Blog">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2022-10-23T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Demystifying .NET Core apps, a quick walkthrough (.NET 6)">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-10-23T00:00:00+00:00","datePublished":"2022-10-23T00:00:00+00:00","description":"A software developer’s personal notes","headline":"Demystifying .NET Core apps, a quick walkthrough (.NET 6)","mainEntityOfPage":{"@type":"WebPage","@id":"https://rodansotto.github.io/tech-blog/2022/10/23/demystifying-net-core-apps.html"},"url":"https://rodansotto.github.io/tech-blog/2022/10/23/demystifying-net-core-apps.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="icon" href="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+  <link rel="stylesheet" href="/tech-blog/assets/css/main.css">
+  <script src="/tech-blog/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="https://rodansotto.github.io/tech-blog/feed.xml" title="Rodan Sotto's Tech Blog">
+<!--<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">-->
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs tpbg ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+
+  .tpbg {
+    background: transparent;
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header " role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/tech-blog/">
+  <img class="site-favicon" title="Rodan Sotto's Tech Blog" src="" onerror="this.style.display='none'">
+  Rodan Sotto's Tech Blog
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+<a class="page-link" href="/tech-blog/">HOME</a><a class="page-link" href="/tech-blog/archives.html">ARCHIVES</a><a class="page-link" href="/tech-blog/categories.html">CATEGORIES</a><a class="page-link" href="/tech-blog/search2.html">SEARCH</a>
+
+
+
+
+</div>
+        </nav>
+</div>
+  </div>
+</header>
+
+<script>
+  function initHeader() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;var scrollStatus = "";
+
+      if (y <= 0) {
+        scrollStatus = "top";
+      } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  }
+  document.addEventListener('DOMContentLoaded', initHeader);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    hashValue = decodeURIComponent(hashValue);
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+<div id="click-to-top" class="click-to-top">
+  <i class="fa fa-arrow-up"></i>
+</div>
+<script>
+  (function () {
+    const clickToTop = document.getElementById('click-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        clickToTop.classList.add('show')
+      }else {
+        clickToTop.classList.remove('show')
+      }
+    });
+    clickToTop.addEventListener('click', () => {
+      window.smoothScrollTo(0);
+    });
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="post">
+  <section>
+
+
+
+
+
+
+
+
+
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">Demystifying .NET Core apps, a quick walkthrough (.NET 6)</h1>
+  <h2 class="post-subtitle"></h2>
+
+  <p class="post-meta">
+    <time class="dt-published" datetime="2022-10-23T00:00:00+00:00" itemprop="datePublished"><i class="fa fa-calendar"></i> Oct 23, 2022
+    </time>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 15 mins</span>
+  </p></header>
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <p><img src="/tech-blog/assets/images/netcoreapps.png" alt=""></p>
+
+<p>This is just an overview of what makes <strong>.NET Core</strong> apps work with links pointing to a much more in-depth coverage of these concepts.  There are several types of <strong>.NET Core</strong> apps but this only covers the common ones, or at least those I have worked with.  Hopefully this will give you a much better understanding of the scope involved in developing <strong>.NET Core</strong> apps.  Let’s go straight to it then.</p>
+
+<h2 id="net-generic-host">.NET Generic Host</h2>
+
+<p><a href="https://learn.microsoft.com/en-us/dotnet/core/introduction">.NET Core</a> apps uses this <strong>.NET Generic Host</strong> to handle the apps’ resources such as:</p>
+<ul>
+  <li><a href="https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection">Dependency Injection (DI)</a></li>
+  <li><a href="https://learn.microsoft.com/en-us/dotnet/core/extensions/logging?tabs=command-line">Logging</a></li>
+  <li><a href="https://learn.microsoft.com/en-us/dotnet/core/extensions/configuration">Configuration</a></li>
+  <li>App shutdown</li>
+</ul>
+
+<p>They are 2 versions of this host and are created by these 2 builders:</p>
+<ul>
+  <li><a href="https://learn.microsoft.com/en-us/dotnet/core/extensions/generic-host">HostBuilder</a></li>
+  <li><a href="https://learn.microsoft.com/en-us/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-6.0">WebApplicationBuilder</a></li>
+</ul>
+
+<p><strong>.NET Core</strong> apps such as the <a href="https://learn.microsoft.com/en-us/dotnet/core/extensions/workers">Worker Services</a> and even <a href="https://learn.microsoft.com/en-us/dotnet/core/tutorials/with-visual-studio-code?pivots=dotnet-6-0">Console apps</a> use the <code class="language-plaintext highlighter-rouge">HostBuilder</code> version while <a href="https://learn.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-6.0">ASP.NET Core</a> apps such as <a href="https://learn.microsoft.com/en-us/aspnet/core/web-api/?view=aspnetcore-6.0">Web APIs</a> and <a href="https://learn.microsoft.com/en-us/aspnet/core/mvc/overview?view=aspnetcore-6.0">MVC apps</a> use the <code class="language-plaintext highlighter-rouge">WebApplicationBuilder</code> version.</p>
+
+<p>Historically, this host was originally developed for <strong>ASP.NET Core</strong> apps but was extended for use with other types of <strong>.NET Core</strong> apps.</p>
+
+<p>Let’s look at the different <strong>.NET Core</strong> apps generated from templates provided in the <a href="https://visualstudio.microsoft.com/vs/community/">Visual Studio 2022 Community Edition</a> and see what type of host they use and how it is used in it’s basic setup.</p>
+
+<h2 id="console-app">Console App</h2>
+
+<p>Here is the generated code from the <code class="language-plaintext highlighter-rouge">Console App</code> template with the usual startup code or entry point for any <strong>.NET Core</strong> app found in <code class="language-plaintext highlighter-rouge">Program.cs</code> file.</p>
+
+<div class="language-c# highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* Program.cs */</span>
+
+<span class="c1">// See https://aka.ms/new-console-template for more information</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Hello, World!"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>It does not actually contain code that uses a host.  You will have to add it yourself which is not that difficult once you looked at the generated <code class="language-plaintext highlighter-rouge">Worker Service</code> code later on.</p>
+
+<p>What you will notice in the code is the missing <code class="language-plaintext highlighter-rouge">Main</code> method.  This is the new form in <a href="https://learn.microsoft.com/en-us/dotnet/core/whats-new/dotnet-6">.NET 6</a>.  See <a href="https://learn.microsoft.com/en-us/dotnet/core/tutorials/top-level-templates">.NET 6 C# console app template generates top-level statements</a> for more information on this.</p>
+
+<h2 id="worker-service">Worker Service</h2>
+
+<p>Here is the generated code from the <code class="language-plaintext highlighter-rouge">Worker Service</code> template:</p>
+
+<div class="language-c# highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* Program.cs */</span>
+
+<span class="k">using</span> <span class="nn">WorkerService1</span><span class="p">;</span>
+
+<span class="n">IHost</span> <span class="n">host</span> <span class="p">=</span> <span class="n">Host</span><span class="p">.</span><span class="nf">CreateDefaultBuilder</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+    <span class="p">.</span><span class="nf">ConfigureServices</span><span class="p">(</span><span class="n">services</span> <span class="p">=&gt;</span>
+    <span class="p">{</span>
+        <span class="n">services</span><span class="p">.</span><span class="n">AddHostedService</span><span class="p">&lt;</span><span class="n">Worker</span><span class="p">&gt;();</span>
+    <span class="p">})</span>
+    <span class="p">.</span><span class="nf">Build</span><span class="p">();</span>
+
+<span class="k">await</span> <span class="n">host</span><span class="p">.</span><span class="nf">RunAsync</span><span class="p">();</span>
+</code></pre></div></div>
+
+<div class="language-c# highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* Worker.cs */</span>
+
+<span class="k">namespace</span> <span class="nn">WorkerService1</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">Worker</span> <span class="p">:</span> <span class="n">BackgroundService</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="n">ILogger</span><span class="p">&lt;</span><span class="n">Worker</span><span class="p">&gt;</span> <span class="n">_logger</span><span class="p">;</span>
+
+        <span class="k">public</span> <span class="nf">Worker</span><span class="p">(</span><span class="n">ILogger</span><span class="p">&lt;</span><span class="n">Worker</span><span class="p">&gt;</span> <span class="n">logger</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">_logger</span> <span class="p">=</span> <span class="n">logger</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">protected</span> <span class="k">override</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">ExecuteAsync</span><span class="p">(</span><span class="n">CancellationToken</span> <span class="n">stoppingToken</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">while</span> <span class="p">(!</span><span class="n">stoppingToken</span><span class="p">.</span><span class="n">IsCancellationRequested</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">_logger</span><span class="p">.</span><span class="nf">LogInformation</span><span class="p">(</span><span class="s">"Worker running at: {time}"</span><span class="p">,</span> <span class="n">DateTimeOffset</span><span class="p">.</span><span class="n">Now</span><span class="p">);</span>
+                <span class="k">await</span> <span class="n">Task</span><span class="p">.</span><span class="nf">Delay</span><span class="p">(</span><span class="m">1000</span><span class="p">,</span> <span class="n">stoppingToken</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>In the <code class="language-plaintext highlighter-rouge">Program.cs</code> file,</p>
+<ol>
+  <li>the <a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.hosting.host.createdefaultbuilder?view=dotnet-plat-ext-6.0">Host.CreateDefaultBuilder()</a> returns an instance of the <a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.hosting.hostbuilder?view=dotnet-plat-ext-6.0">HostBuilder</a> class.</li>
+  <li>From this host you can then add services to the (dependency injection) container via <a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.hosting.hostbuilder.configureservices?view=dotnet-plat-ext-6.0#microsoft-extensions-hosting-hostbuilder-configureservices(system-action((microsoft-extensions-hosting-hostbuildercontext-microsoft-extensions-dependencyinjection-iservicecollection)))">ConfigureServices()</a>.</li>
+  <li>Then you register your own <a href="https://learn.microsoft.com/en-us/dotnet/core/extensions/timer-service?source=recommendations">implementation of an IHostedService</a> which in this case is the <code class="language-plaintext highlighter-rouge">Worker</code> in the <code class="language-plaintext highlighter-rouge">Worker.cs</code> file via <a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.dependencyinjection.servicecollectionhostedserviceextensions.addhostedservice?view=dotnet-plat-ext-6.0#microsoft-extensions-dependencyinjection-servicecollectionhostedserviceextensions-addhostedservice-1(microsoft-extensions-dependencyinjection-iservicecollection)">AddHostedService&lt;T&gt;()</a>.</li>
+  <li>Then you <a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.hosting.hostbuilder.build?view=dotnet-plat-ext-6.0#microsoft-extensions-hosting-hostbuilder-build">Build()</a> your host.</li>
+  <li>And lastly, call <a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.hosting.hostingabstractionshostextensions.run?view=dotnet-plat-ext-6.0#microsoft-extensions-hosting-hostingabstractionshostextensions-run(microsoft-extensions-hosting-ihost)">Run()</a> or <a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.hosting.hostingabstractionshostextensions.runasync?view=dotnet-plat-ext-6.0#microsoft-extensions-hosting-hostingabstractionshostextensions-runasync(microsoft-extensions-hosting-ihost-system-threading-cancellationtoken)">RunAsync()</a> on the host to run all registered hosted services, because you can have multiple hosted services running and not just one.</li>
+</ol>
+
+<p>The <code class="language-plaintext highlighter-rouge">Worker.cs</code> file, on the otherhand, contains the <code class="language-plaintext highlighter-rouge">Worker</code> class which inherits from <a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.hosting.backgroundservice?view=dotnet-plat-ext-6.0">BackgroundService</a> which is an implementation of an <a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.hosting.ihostedservice?view=dotnet-plat-ext-6.0">IHostedService</a>.</p>
+
+<p>Note that in the constructor method of the <code class="language-plaintext highlighter-rouge">Worker</code> class, <code class="language-plaintext highlighter-rouge">Worker()</code>, is passed, or shall we say is where an <a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.logging.ilogger-1?view=dotnet-plat-ext-6.0">ILogger&lt;T&gt;</a> implementation is injected.  This is an example of how <strong>.NET Generic Host</strong> provides dependency injection for services such as the basic logging provided by <strong>.NET Core</strong>.</p>
+
+<p>Next the function <a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.hosting.backgroundservice.executeasync?view=dotnet-plat-ext-6.0">ExecuteAsync()</a> is called when the hosted service starts.  It accepts a <a href="https://learn.microsoft.com/en-us/dotnet/api/system.threading.cancellationtoken?view=net-6.0&viewFallbackFrom=dotnet-plat-ext-6.0">CancellationToken</a> which means this long running operation should be cancellable.</p>
+
+<h2 id="aspnet-core-web-api">ASP.NET Core Web API</h2>
+
+<p>Here is the generated code from the <code class="language-plaintext highlighter-rouge">ASP.NET Core Web API</code> template:</p>
+
+<div class="language-c# highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* Program.cs */</span>
+
+<span class="kt">var</span> <span class="n">builder</span> <span class="p">=</span> <span class="n">WebApplication</span><span class="p">.</span><span class="nf">CreateBuilder</span><span class="p">(</span><span class="n">args</span><span class="p">);</span>
+
+<span class="c1">// Add services to the container.</span>
+
+<span class="n">builder</span><span class="p">.</span><span class="n">Services</span><span class="p">.</span><span class="nf">AddControllers</span><span class="p">();</span>
+<span class="c1">// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle</span>
+<span class="n">builder</span><span class="p">.</span><span class="n">Services</span><span class="p">.</span><span class="nf">AddEndpointsApiExplorer</span><span class="p">();</span>
+<span class="n">builder</span><span class="p">.</span><span class="n">Services</span><span class="p">.</span><span class="nf">AddSwaggerGen</span><span class="p">();</span>
+
+<span class="kt">var</span> <span class="n">app</span> <span class="p">=</span> <span class="n">builder</span><span class="p">.</span><span class="nf">Build</span><span class="p">();</span>
+
+<span class="c1">// Configure the HTTP request pipeline.</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">app</span><span class="p">.</span><span class="n">Environment</span><span class="p">.</span><span class="nf">IsDevelopment</span><span class="p">())</span>
+<span class="p">{</span>
+    <span class="n">app</span><span class="p">.</span><span class="nf">UseSwagger</span><span class="p">();</span>
+    <span class="n">app</span><span class="p">.</span><span class="nf">UseSwaggerUI</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="n">app</span><span class="p">.</span><span class="nf">UseHttpsRedirection</span><span class="p">();</span>
+
+<span class="n">app</span><span class="p">.</span><span class="nf">UseAuthorization</span><span class="p">();</span>
+
+<span class="n">app</span><span class="p">.</span><span class="nf">MapControllers</span><span class="p">();</span>
+
+<span class="n">app</span><span class="p">.</span><span class="nf">Run</span><span class="p">();</span>
+</code></pre></div></div>
+
+<div class="language-c# highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* WeatherForecastController.cs */</span>
+
+<span class="k">using</span> <span class="nn">Microsoft.AspNetCore.Mvc</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">ControllerWebAPI1.Controllers</span>
+<span class="p">{</span>
+    <span class="p">[</span><span class="n">ApiController</span><span class="p">]</span>
+    <span class="p">[</span><span class="nf">Route</span><span class="p">(</span><span class="s">"[controller]"</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">WeatherForecastController</span> <span class="p">:</span> <span class="n">ControllerBase</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="k">static</span> <span class="k">readonly</span> <span class="kt">string</span><span class="p">[]</span> <span class="n">Summaries</span> <span class="p">=</span> <span class="k">new</span><span class="p">[]</span>
+        <span class="p">{</span>
+            <span class="s">"Freezing"</span><span class="p">,</span> <span class="s">"Bracing"</span><span class="p">,</span> <span class="s">"Chilly"</span><span class="p">,</span> <span class="s">"Cool"</span><span class="p">,</span> <span class="s">"Mild"</span><span class="p">,</span> <span class="s">"Warm"</span><span class="p">,</span> <span class="s">"Balmy"</span><span class="p">,</span> <span class="s">"Hot"</span><span class="p">,</span> <span class="s">"Sweltering"</span><span class="p">,</span> <span class="s">"Scorching"</span>
+        <span class="p">};</span>
+
+        <span class="k">private</span> <span class="k">readonly</span> <span class="n">ILogger</span><span class="p">&lt;</span><span class="n">WeatherForecastController</span><span class="p">&gt;</span> <span class="n">_logger</span><span class="p">;</span>
+
+        <span class="k">public</span> <span class="nf">WeatherForecastController</span><span class="p">(</span><span class="n">ILogger</span><span class="p">&lt;</span><span class="n">WeatherForecastController</span><span class="p">&gt;</span> <span class="n">logger</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">_logger</span> <span class="p">=</span> <span class="n">logger</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="p">[</span><span class="nf">HttpGet</span><span class="p">(</span><span class="n">Name</span> <span class="p">=</span> <span class="s">"GetWeatherForecast"</span><span class="p">)]</span>
+        <span class="k">public</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">WeatherForecast</span><span class="p">&gt;</span> <span class="nf">Get</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">Enumerable</span><span class="p">.</span><span class="nf">Range</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">5</span><span class="p">).</span><span class="nf">Select</span><span class="p">(</span><span class="n">index</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="n">WeatherForecast</span>
+            <span class="p">{</span>
+                <span class="n">Date</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">.</span><span class="nf">AddDays</span><span class="p">(</span><span class="n">index</span><span class="p">),</span>
+                <span class="n">TemperatureC</span> <span class="p">=</span> <span class="n">Random</span><span class="p">.</span><span class="n">Shared</span><span class="p">.</span><span class="nf">Next</span><span class="p">(-</span><span class="m">20</span><span class="p">,</span> <span class="m">55</span><span class="p">),</span>
+                <span class="n">Summary</span> <span class="p">=</span> <span class="n">Summaries</span><span class="p">[</span><span class="n">Random</span><span class="p">.</span><span class="n">Shared</span><span class="p">.</span><span class="nf">Next</span><span class="p">(</span><span class="n">Summaries</span><span class="p">.</span><span class="n">Length</span><span class="p">)]</span>
+            <span class="p">})</span>
+            <span class="p">.</span><span class="nf">ToArray</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>In the <code class="language-plaintext highlighter-rouge">Program.cs</code> file of an <strong>ASP.NET Core</strong> app such as <strong>Web API</strong> app,</p>
+<ol>
+  <li>the <a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.builder.webapplication.createbuilder?view=aspnetcore-6.0">WebApplication.CreateBuilder()</a> is called to create an instance of the <a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.builder.webapplicationbuilder?view=aspnetcore-6.0">WebApplicationBuilder</a> class.</li>
+  <li>Then the following services are added into it’s DI container, the <a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.builder.webapplicationbuilder.services?view=aspnetcore-6.0">WebApplicationBuilder.Services</a>:
+    <ol>
+      <li>Adds MVC services for controllers via <a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.dependencyinjection.mvcservicecollectionextensions.addcontrollers?view=aspnetcore-6.0#microsoft-extensions-dependencyinjection-mvcservicecollectionextensions-addcontrollers(microsoft-extensions-dependencyinjection-iservicecollection)">AddControllers()</a>
+</li>
+      <li>Configures <a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.apiexplorer?view=aspnetcore-6.0">ApiExplorer</a> using <a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.http.endpoint.metadata?view=aspnetcore-6.0#microsoft-aspnetcore-http-endpoint-metadata">Endpoint’s Metadata</a> via <a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.dependencyinjection.endpointmetadataapiexplorerservicecollectionextensions.addendpointsapiexplorer?view=aspnetcore-6.0">AddEndpointsApiExplorer()</a>
+</li>
+      <li>Adds the <a href="https://learn.microsoft.com/en-us/aspnet/core/tutorials/web-api-help-pages-using-swagger?view=aspnetcore-6.0">Swagger</a> generator via <code class="language-plaintext highlighter-rouge">AddSwaggerGen()</code>.  See <a href="https://learn.microsoft.com/en-us/aspnet/core/tutorials/getting-started-with-swashbuckle?view=aspnetcore-6.0&tabs=visual-studio">Get started with Swashbuckle and ASP.NET Core</a>.</li>
+    </ol>
+  </li>
+  <li>Then you <a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.builder.webapplicationbuilder.build?view=aspnetcore-6.0#microsoft-aspnetcore-builder-webapplicationbuilder-build">Build()</a> the host, the <a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.builder.webapplication?view=aspnetcore-6.0">WebApplication</a>.</li>
+  <li>Next you configure the HTTP request pipeline or the middleware with the following calls:
+    <ol>
+      <li>Register the Swagger middleware via <code class="language-plaintext highlighter-rouge">UseSwagger()</code>
+</li>
+      <li>Register the SwaggerUI middleware via <code class="language-plaintext highlighter-rouge">UseSwaggerUI()</code>
+</li>
+      <li>Adds middleware for redirecting HTTP requests to HTTPS vi <a href="https://learn.microsoft.com/en-us/aspnet/core/security/enforcing-ssl?view=aspnetcore-6.0&tabs=visual-studio">UseHttpsRedirection()</a>
+</li>
+      <li>Enables authorization capabilities via <a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.builder.authorizationappbuilderextensions.useauthorization?view=aspnetcore-6.0">UseAuthorization()</a>
+</li>
+      <li>Adds endpoints to controller actions via <a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.builder.controllerendpointroutebuilderextensions.mapcontrollers?view=aspnetcore-6.0">MapControllers()</a>
+<br>
+See <a href="https://learn.microsoft.com/en-us/aspnet/core/fundamentals/middleware/?view=aspnetcore-6.0">ASP.NET Core Middleware</a> for more information of what middleware is and what other built-in middleware components came with <strong>ASP.NET Core</strong>.  Briefly, they replace the HTTP handlers and modules in previous <strong>ASP.NET</strong> versions and come with <a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.builder.useextensions.use?view=aspnetcore-6.0">Use</a>, <a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.builder.mapextensions.map?view=aspnetcore-6.0">Map</a>, or <a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.builder.runextensions.run?view=aspnetcore-6.0">Run</a> extension methods.
+<br>
+</li>
+    </ol>
+  </li>
+  <li>And lastly, runs the application via <a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.builder.webapplication.run?view=aspnetcore-6.0">Run()</a> which blocks the calling thread until host shutdown</li>
+</ol>
+
+<h2 id="the-old-startupcs">The Old Startup.cs</h2>
+<p>You will notice that all the configuration and setup is done in the <code class="language-plaintext highlighter-rouge">Program.cs</code> file.  Before <strong>.NET 6</strong>, it used to be in 2 files: <code class="language-plaintext highlighter-rouge">Program.cs</code> and <code class="language-plaintext highlighter-rouge">Startup.cs</code> and it looks something like this:</p>
+
+<div class="language-c# highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* Program.cs */</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">Program</span>
+<span class="p">{</span>
+	<span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="nf">CreateWebHostBuilder</span><span class="p">(</span><span class="n">args</span><span class="p">).</span><span class="nf">Build</span><span class="p">().</span><span class="nf">Run</span><span class="p">();</span>
+	<span class="p">}</span>
+	   
+	<span class="k">public</span> <span class="k">static</span> <span class="n">IWebHostBuilder</span> <span class="nf">CreateWebHostBuilder</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">IConfiguration</span> <span class="n">config</span> <span class="p">=</span> <span class="n">Configuration</span><span class="p">.</span><span class="nf">CreateConfigurationContainer</span><span class="p">();</span>
+
+		<span class="k">return</span> <span class="n">WebHost</span><span class="p">.</span><span class="nf">CreateDefaultBuilder</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+			<span class="p">.</span><span class="nf">UseConfiguration</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+			<span class="p">.</span><span class="nf">ConfigureLogging</span><span class="p">(</span><span class="n">logging</span> <span class="p">=&gt;</span>
+			<span class="p">{</span>
+				<span class="n">logging</span><span class="p">.</span><span class="nf">ClearProviders</span><span class="p">();</span>
+				<span class="n">logging</span><span class="p">.</span><span class="nf">AddConsole</span><span class="p">();</span>
+			<span class="p">})</span>
+			<span class="p">.</span><span class="n">UseStartup</span><span class="p">&lt;</span><span class="n">Startup</span><span class="p">&gt;();</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-c# highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* Startup.cs */</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">Startup</span>
+<span class="p">{</span>
+	<span class="k">public</span> <span class="nf">Startup</span><span class="p">(</span><span class="n">IConfiguration</span> <span class="n">configuration</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">Configuration</span> <span class="p">=</span> <span class="n">configuration</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="k">public</span> <span class="n">IConfiguration</span> <span class="n">Configuration</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+
+	<span class="c1">// This method gets called by the runtime. Use this method to add services to the container.</span>
+	<span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">services</span><span class="p">.</span><span class="nf">AddMvc</span><span class="p">()</span>
+			<span class="p">.</span><span class="nf">SetCompatibilityVersion</span><span class="p">(</span><span class="n">CompatibilityVersion</span><span class="p">.</span><span class="n">Version_2_1</span><span class="p">);</span>
+		<span class="c1">// etc.</span>
+	<span class="p">}</span>
+
+	<span class="c1">// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.</span>
+	<span class="k">public</span> <span class="k">void</span> <span class="nf">Configure</span><span class="p">(</span><span class="n">IApplicationBuilder</span> <span class="n">app</span><span class="p">,</span> <span class="n">IHostingEnvironment</span> <span class="n">env</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">env</span><span class="p">.</span><span class="nf">IsDevelopment</span><span class="p">())</span>
+		<span class="p">{</span>
+			<span class="n">app</span><span class="p">.</span><span class="nf">UseDeveloperExceptionPage</span><span class="p">();</span>
+		<span class="p">}</span>
+		<span class="k">else</span>
+		<span class="p">{</span>
+			<span class="n">app</span><span class="p">.</span><span class="nf">UseHsts</span><span class="p">();</span>
+		<span class="p">}</span>
+
+		<span class="n">app</span><span class="p">.</span><span class="nf">UseHttpsRedirection</span><span class="p">();</span>
+		<span class="n">app</span><span class="p">.</span><span class="nf">UseMvc</span><span class="p">();</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>You have the <code class="language-plaintext highlighter-rouge">Program.cs</code> file where you create the host and call <a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.hosting.webhostbuilderextensions.usestartup?view=aspnetcore-6.0">UseStartup&lt;TStartup&gt;()</a> to use a separate file containing the startup code.</p>
+
+<p>In the <code class="language-plaintext highlighter-rouge">Startup.cs</code> file, you implement the following 2 methods that are called by the runtime:</p>
+<ul>
+  <li>
+<strong>ConfigureServices(IServiceCollection)</strong> - to add services to the container</li>
+  <li>
+<strong>Configure(IApplicationBuilder app, IHostingEnvironment env)</strong> - to configure the HTTP request pipeline</li>
+</ul>
+
+<p>As you can see there is more boilerplate code you need to add compared to the new minimal hosting model in <strong>.NET 6</strong>.</p>
+
+<h2 id="minimal-api">Minimal API</h2>
+
+<p><strong>Minimal API</strong> is a new type of <strong>.NET Core</strong> application in <strong>.NET 6</strong>.  You can generate the code from the same <code class="language-plaintext highlighter-rouge">ASP.NET Core Web API</code> template but unselecting the checkbox besides <code class="language-plaintext highlighter-rouge">Use controllers (uncheck to use minimal APIs)</code>.  Below is the generated code:</p>
+
+<div class="language-c# highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* Program.cs */</span>
+
+<span class="kt">var</span> <span class="n">builder</span> <span class="p">=</span> <span class="n">WebApplication</span><span class="p">.</span><span class="nf">CreateBuilder</span><span class="p">(</span><span class="n">args</span><span class="p">);</span>
+
+<span class="c1">// Add services to the container.</span>
+<span class="c1">// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle</span>
+<span class="n">builder</span><span class="p">.</span><span class="n">Services</span><span class="p">.</span><span class="nf">AddEndpointsApiExplorer</span><span class="p">();</span>
+<span class="n">builder</span><span class="p">.</span><span class="n">Services</span><span class="p">.</span><span class="nf">AddSwaggerGen</span><span class="p">();</span>
+
+<span class="kt">var</span> <span class="n">app</span> <span class="p">=</span> <span class="n">builder</span><span class="p">.</span><span class="nf">Build</span><span class="p">();</span>
+
+<span class="c1">// Configure the HTTP request pipeline.</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">app</span><span class="p">.</span><span class="n">Environment</span><span class="p">.</span><span class="nf">IsDevelopment</span><span class="p">())</span>
+<span class="p">{</span>
+    <span class="n">app</span><span class="p">.</span><span class="nf">UseSwagger</span><span class="p">();</span>
+    <span class="n">app</span><span class="p">.</span><span class="nf">UseSwaggerUI</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="n">app</span><span class="p">.</span><span class="nf">UseHttpsRedirection</span><span class="p">();</span>
+
+<span class="kt">var</span> <span class="n">summaries</span> <span class="p">=</span> <span class="k">new</span><span class="p">[]</span>
+<span class="p">{</span>
+    <span class="s">"Freezing"</span><span class="p">,</span> <span class="s">"Bracing"</span><span class="p">,</span> <span class="s">"Chilly"</span><span class="p">,</span> <span class="s">"Cool"</span><span class="p">,</span> <span class="s">"Mild"</span><span class="p">,</span> <span class="s">"Warm"</span><span class="p">,</span> <span class="s">"Balmy"</span><span class="p">,</span> <span class="s">"Hot"</span><span class="p">,</span> <span class="s">"Sweltering"</span><span class="p">,</span> <span class="s">"Scorching"</span>
+<span class="p">};</span>
+
+<span class="n">app</span><span class="p">.</span><span class="nf">MapGet</span><span class="p">(</span><span class="s">"/weatherforecast"</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">forecast</span> <span class="p">=</span> <span class="n">Enumerable</span><span class="p">.</span><span class="nf">Range</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">5</span><span class="p">).</span><span class="nf">Select</span><span class="p">(</span><span class="n">index</span> <span class="p">=&gt;</span>
+        <span class="k">new</span> <span class="nf">WeatherForecast</span>
+        <span class="p">(</span>
+            <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">.</span><span class="nf">AddDays</span><span class="p">(</span><span class="n">index</span><span class="p">),</span>
+            <span class="n">Random</span><span class="p">.</span><span class="n">Shared</span><span class="p">.</span><span class="nf">Next</span><span class="p">(-</span><span class="m">20</span><span class="p">,</span> <span class="m">55</span><span class="p">),</span>
+            <span class="n">summaries</span><span class="p">[</span><span class="n">Random</span><span class="p">.</span><span class="n">Shared</span><span class="p">.</span><span class="nf">Next</span><span class="p">(</span><span class="n">summaries</span><span class="p">.</span><span class="n">Length</span><span class="p">)]</span>
+        <span class="p">))</span>
+        <span class="p">.</span><span class="nf">ToArray</span><span class="p">();</span>
+    <span class="k">return</span> <span class="n">forecast</span><span class="p">;</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nf">WithName</span><span class="p">(</span><span class="s">"GetWeatherForecast"</span><span class="p">);</span>
+
+<span class="n">app</span><span class="p">.</span><span class="nf">Run</span><span class="p">();</span>
+
+<span class="k">internal</span> <span class="n">record</span> <span class="nf">WeatherForecast</span><span class="p">(</span><span class="n">DateTime</span> <span class="n">Date</span><span class="p">,</span> <span class="kt">int</span> <span class="n">TemperatureC</span><span class="p">,</span> <span class="kt">string</span><span class="p">?</span> <span class="n">Summary</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">TemperatureF</span> <span class="p">=&gt;</span> <span class="m">32</span> <span class="p">+</span> <span class="p">(</span><span class="kt">int</span><span class="p">)(</span><span class="n">TemperatureC</span> <span class="p">/</span> <span class="m">0.5556</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>So it does not have controller code like in the regular <strong>Web API</strong> but it makes a call to <a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.builder.endpointroutebuilderextensions.mapget?view=aspnetcore-6.0">MapGet()</a>.  I won’t go over too much on this but feel free to look at <a href="https://learn.microsoft.com/en-us/aspnet/core/fundamentals/minimal-apis?view=aspnetcore-6.0">Minimal APIs overview</a> for more information.  Also <a href="https://learn.microsoft.com/en-us/aspnet/core/fundamentals/routing?view=aspnetcore-6.0#routing-basics">Routing basics</a> in <strong>ASP.NET Core</strong>.</p>
+
+<h2 id="aspnet-core-empty">ASP.NET Core Empty</h2>
+
+<p>And just to show you how many lines of code is required to get yourself a bare minimum, no content <strong>ASP.NET Core</strong> web application up and running, you can use the <code class="language-plaintext highlighter-rouge">ASP.NET Core Empty</code> template to generate this code for you:</p>
+
+<div class="language-c# highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">var</span> <span class="n">builder</span> <span class="p">=</span> <span class="n">WebApplication</span><span class="p">.</span><span class="nf">CreateBuilder</span><span class="p">(</span><span class="n">args</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">app</span> <span class="p">=</span> <span class="n">builder</span><span class="p">.</span><span class="nf">Build</span><span class="p">();</span>
+
+<span class="n">app</span><span class="p">.</span><span class="nf">MapGet</span><span class="p">(</span><span class="s">"/"</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="s">"Hello World!"</span><span class="p">);</span>
+
+<span class="n">app</span><span class="p">.</span><span class="nf">Run</span><span class="p">();</span>
+</code></pre></div></div>
+
+<h2 id="adding-host-to-a-console-app">Adding Host to a Console App</h2>
+
+<p>As previously mentioned, you need to add the <strong>.NET Generic Host</strong> to the console app because the generated code does not expose it.  You will need to add a NuGet package for <a href="https://www.nuget.org/packages/Microsoft.Extensions.Hosting">Microsoft.Hosting.Extensions</a> before you can use the host.  See this video showing you how to do this.</p>
+
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/I6SzqpoQ-Gw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<p><br>
+And below is the code to use host in a console app after adding the NuGet package:</p>
+
+<div class="language-c# highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">Microsoft.Extensions.DependencyInjection</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.Extensions.Hosting</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.Extensions.Logging</span><span class="p">;</span>
+
+<span class="kt">var</span> <span class="n">host</span> <span class="p">=</span> <span class="n">Host</span><span class="p">.</span><span class="nf">CreateDefaultBuilder</span><span class="p">(</span><span class="n">args</span><span class="p">).</span><span class="nf">Build</span><span class="p">();</span>
+
+<span class="c1">// See https://aka.ms/new-console-template for more information</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Hello, World!"</span><span class="p">);</span>
+
+<span class="kt">var</span> <span class="n">logger</span> <span class="p">=</span> <span class="n">host</span><span class="p">.</span><span class="n">Services</span><span class="p">.</span><span class="n">GetRequiredService</span><span class="p">&lt;</span><span class="n">ILogger</span><span class="p">&lt;</span><span class="n">Program</span><span class="p">&gt;&gt;();</span>
+<span class="n">logger</span><span class="p">.</span><span class="nf">LogInformation</span><span class="p">(</span><span class="s">"Host created."</span><span class="p">);</span>
+
+<span class="k">await</span> <span class="n">host</span><span class="p">.</span><span class="nf">RunAsync</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>And as an added bonus, it also shows you how to get the host’s default logger service to log messages.</p>
+
+<h2 id="whats-next">What’s Next</h2>
+<p>There’s still a lot more to cover but this is only part 1.  In the next part or so, I like to get more into .NET Generic Host’s features such as dependency injection, logging, and configuration; some of the framework provided sevices; some of ASP.NET Core’s built-in HTTP middleware like authentication and authorization; and how to create a custom HTTP middleware.</p>
+
+<h2 id="additional-references">Additional References</h2>
+<ul>
+  <li><a href="https://learn.microsoft.com/en-us/dotnet/">.NET documentation</a></li>
+  <li><a href="https://learn.microsoft.com/en-us/dotnet/fundamentals/">.NET Fundamentals</a></li>
+  <li><a href="https://learn.microsoft.com/en-us/aspnet/core/?view=aspnetcore-6.0">ASP.NET documentation</a></li>
+</ul>
+
+
+    </div>
+
+</article>
+<div class="post-nav">
+<a class="previous" href="/tech-blog/2022/10/02/tictactoe-ng-rx-lit.html" title="Tic-Tac-Toe in Angular, React, and Lit">Tic-Tac-Toe in Angular, React, and Lit...</a><a class="next" href="/tech-blog/2022/11/15/maintainable-scalable-software-checklist.html" title="Maintainable and Scalable Software: A Checklist">Maintainable and Scalable Software: A Checklist...</a>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/tech-blog/2013/10/29/http-fundamentals-part-1-url-encoding-request-and-response.html" title="Maintainable and Scalable Software: A Checklist">HTTP Fundamentals, Part 1: URL, Encoding, Request and Response</a></li>
+<li><a class="post-link" href="/tech-blog/2022/08/02/from-cloudformation-to-serverless-to-cdk.html" title="Maintainable and Scalable Software: A Checklist">From CloudFormation To Serverless Framework To Cloud Development Kit?</a></li>
+<li><a class="post-link" href="/tech-blog/2009/04/01/asp-net-2-0-crystal-reports-fitting-the-report-inside-the-available-space-in-your-web-page.html" title="Maintainable and Scalable Software: A Checklist">ASP.NET 2.0: Crystal Reports – Fitting the report inside the available space...</a></li>
+<li><a class="post-link" href="/tech-blog/2017/10/12/sql-tricks-csv-to-table-rows-and-vice-versa.html" title="Maintainable and Scalable Software: A Checklist">SQL Tricks: CSV To Table Rows And Vice Versa</a></li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items --><style type="text/css" media="screen">
+.post-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+</style>
+
+<div class="post-menu">
+  <div class="post-menu-title">TOC</div>
+  <div class="post-menu-content"></div>
+</div>
+
+<script>
+  function generateContent() {
+    var menu = document.querySelector(".post-menu");
+    var menuContent =  menu.querySelector(".post-menu-content");
+    var headings = document.querySelector(".post-content").querySelectorAll("h2, h3, h4, h5, h6");
+
+    // Hide menu when no headings
+    if (headings.length === 0) {
+      return menu.style.display = "none";
+    }
+
+    // Generate post menu
+    var menuHTML = '';
+    for (var i = 0; i < headings.length; i++) {
+      var h = headings[i];
+      menuHTML += (
+        '<li class="h-' + h.tagName.toLowerCase() + '">'
+        + '<a href="#h-' + h.getAttribute('id') + '">' + h.textContent + '</a></li>');
+    }
+
+    menuContent.innerHTML = '<ul>' + menuHTML + '</ul>';
+
+    // The header element
+    var header = document.querySelector('header.site-header');
+
+    function doMenuCollapse(index, over_items) {
+      var items = menuContent.firstChild.children;
+
+      if (over_items == undefined) {
+        over_items = 20;
+      }
+
+      if (items.length < over_items) {
+        return;
+      }
+
+      var activeItem = items[index];
+      var beginItem = activeItem
+      var endItem = activeItem
+      var beginIndex = index;
+      var endIndex = index + 1;
+      while (beginIndex >= 0
+        && !items[beginIndex].classList.contains('h-h2')) {
+        beginIndex -= 1;
+      }
+      while (endIndex < items.length
+        && !items[endIndex].classList.contains('h-h2')) {
+        endIndex += 1;
+      }
+      for (var i = 0; i < beginIndex; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+      for (var i = beginIndex + 1; i < endIndex; i++) {
+        item = items[i]
+        // if (!item.classList.contains('h-h2')) {
+          item.style.display = '';
+        // }
+      }
+      for (var i = endIndex; i < items.length; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+    }
+
+    // Init menu collapsed
+    doMenuCollapse(-1);
+
+    // Active the menu item
+    window.addEventListener('scroll', function (event) {
+      var lastActive = menuContent.querySelector('.active');
+      var changed = true;
+      var activeIndex = -1;
+      for (var i = headings.length - 1; i >= 0; i--) {
+        var h = headings[i];
+        var headingRect = h.getBoundingClientRect();
+        var headerRect = header.getBoundingClientRect();
+        var headerTop = Math.floor(headerRect.top);
+        var headerHeight = Math.floor(headerRect.height);
+        var headerHeight = headerTop + headerHeight + 20;
+        if (headingRect.top <= headerHeight) {
+          var id = 'h-' + h.getAttribute('id');
+          var a = menuContent.querySelector('a[href="#' + id  + '"]');
+          var curActive = a.parentNode;
+          if (curActive) {
+            curActive.classList.add('active');
+            activeIndex = i;
+          }
+          if (lastActive == curActive) {
+            changed = false;
+          }
+          break;
+        }
+      }
+      if (changed) {
+        if (lastActive) {
+          lastActive.classList.remove('active');
+        }
+        doMenuCollapse(activeIndex);
+      }
+      event.preventDefault();
+    });
+  }
+  generateContent();
+</script>
+</section>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/tech-blog/"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-inner">
+<div></div>
+      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
+      generator." href="https://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
+      <div class="footer-col rss-subscribe">Subscribe <a href="/tech-blog/feed.xml">via RSS</a>
+</div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

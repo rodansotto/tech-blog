@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Design Patterns: Factory Method, Abstract Factory, and Singleton | Rodan Sotto’s Tech Blog</title>
+<meta name="generator" content="Jekyll v3.9.2">
+<meta property="og:title" content="Design Patterns: Factory Method, Abstract Factory, and Singleton">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Back again with design patterns, defining them briefly and the design principles they are based on, and providing several very good (almost) real-world C# examples that are available on the Internet.  In this series we have the factory patterns and the singleton pattern and their several different implementations.">
+<meta property="og:description" content="Back again with design patterns, defining them briefly and the design principles they are based on, and providing several very good (almost) real-world C# examples that are available on the Internet.  In this series we have the factory patterns and the singleton pattern and their several different implementations.">
+<link rel="canonical" href="https://rodansotto.github.io/tech-blog/2014/02/11/design-patterns-factory-method-abstract-factory-and-singleton.html">
+<meta property="og:url" content="https://rodansotto.github.io/tech-blog/2014/02/11/design-patterns-factory-method-abstract-factory-and-singleton.html">
+<meta property="og:site_name" content="Rodan Sotto’s Tech Blog">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2014-02-11T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Design Patterns: Factory Method, Abstract Factory, and Singleton">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2014-02-11T00:00:00+00:00","datePublished":"2014-02-11T00:00:00+00:00","description":"Back again with design patterns, defining them briefly and the design principles they are based on, and providing several very good (almost) real-world C# examples that are available on the Internet.  In this series we have the factory patterns and the singleton pattern and their several different implementations.","headline":"Design Patterns: Factory Method, Abstract Factory, and Singleton","mainEntityOfPage":{"@type":"WebPage","@id":"https://rodansotto.github.io/tech-blog/2014/02/11/design-patterns-factory-method-abstract-factory-and-singleton.html"},"url":"https://rodansotto.github.io/tech-blog/2014/02/11/design-patterns-factory-method-abstract-factory-and-singleton.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="icon" href="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+  <link rel="stylesheet" href="/tech-blog/assets/css/main.css">
+  <script src="/tech-blog/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="https://rodansotto.github.io/tech-blog/feed.xml" title="Rodan Sotto's Tech Blog">
+<!--<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">-->
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs tpbg ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+
+  .tpbg {
+    background: transparent;
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header " role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/tech-blog/">
+  <img class="site-favicon" title="Rodan Sotto's Tech Blog" src="" onerror="this.style.display='none'">
+  Rodan Sotto's Tech Blog
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+<a class="page-link" href="/tech-blog/">HOME</a><a class="page-link" href="/tech-blog/archives.html">ARCHIVES</a><a class="page-link" href="/tech-blog/categories.html">CATEGORIES</a><a class="page-link" href="/tech-blog/search2.html">SEARCH</a>
+
+
+
+
+</div>
+        </nav>
+</div>
+  </div>
+</header>
+
+<script>
+  function initHeader() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;var scrollStatus = "";
+
+      if (y <= 0) {
+        scrollStatus = "top";
+      } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  }
+  document.addEventListener('DOMContentLoaded', initHeader);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    hashValue = decodeURIComponent(hashValue);
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+<div id="click-to-top" class="click-to-top">
+  <i class="fa fa-arrow-up"></i>
+</div>
+<script>
+  (function () {
+    const clickToTop = document.getElementById('click-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        clickToTop.classList.add('show')
+      }else {
+        clickToTop.classList.remove('show')
+      }
+    });
+    clickToTop.addEventListener('click', () => {
+      window.smoothScrollTo(0);
+    });
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="post">
+  <section>
+
+
+
+
+
+
+
+
+
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">Design Patterns: Factory Method, Abstract Factory, and Singleton</h1>
+  <h2 class="post-subtitle"></h2>
+
+  <p class="post-meta">
+    <time class="dt-published" datetime="2014-02-11T00:00:00+00:00" itemprop="datePublished"><i class="fa fa-calendar"></i> Feb 11, 2014
+    </time>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 6 mins</span>
+  </p></header>
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <p>Back again with design patterns, defining them briefly and the design principles they are based on, and providing several very good (almost) real-world C# examples that are available on the Internet.  In this series we have the factory patterns and the singleton pattern and their several different implementations.</p>
+
+<p><strong>Design Pattern #4: Factory Method Pattern</strong></p>
+<ul>
+  <li>Defines an interface for creating an object but lets subclasses decide which class to instantiate.  It lets a class defer instantiation to the subclasses.</li>
+  <li>Design Principle:
+    <ul>
+      <li>
+<em>Design Principle #6</em> :  Depend on abstraction.  Do not depend on concrete classes.</li>
+    </ul>
+  </li>
+  <li>C# Examples:
+    <ul>
+      <li>
+        <p><a href="http://www.intstrings.com/ramivemula/articles/c-design-patternfactory-method/">Example using multiple vehicle factories where each vehicle factory produces only one type of vehicle</a>.</p>
+
+        <blockquote>
+          <table style="font-size:.85em;" border="1" cellspacing="0" cellpadding="0" width="898"><tbody>
+<tr>
+<td valign="top" width="150">Product</td>
+<td valign="top" width="746">Vehicle</td>
+</tr>
+<tr>
+<td valign="top" width="150">ConcreteProduct</td>
+<td valign="top" width="746">Bike, Car, Bus</td>
+</tr>
+<tr>
+<td valign="top" width="150">Creator</td>
+<td valign="top" width="746">Factory; with abstract method <em>GetVehicle()</em>
+</td>
+</tr>
+<tr>
+<td valign="top" width="150">ConcreteCreator</td>
+<td valign="top" width="746">TwoWheeler, CompactFourWheeler, FourWheeler</td>
+</tr>
+</tbody></table>
+        </blockquote>
+      </li>
+      <li>
+        <p><a href="http://www.codeproject.com/Articles/184765/Factory-Method-Design-Pattern">An online bookstore application using multiple distributors to send books to its customers</a>.  This example uses the <em>parameterized factory</em> implementation or the <em>procedural solution/basic noob</em> implementation, wherein the bookstore factory receives the customer location to determine which distributor to choose from.</p>
+
+        <blockquote>
+          <table style="font-size:.85em;" border="1" cellspacing="0" cellpadding="0" width="896"><tbody>
+<tr>
+<td valign="top" width="153">Product</td>
+<td valign="top" width="741">IDistributor</td>
+</tr>
+<tr>
+<td valign="top" width="153">ConcreteProduct</td>
+<td valign="top" width="741">EastCoastDistributor, MidwestDistributor, WestCoastDistributor</td>
+</tr>
+<tr>
+<td valign="top" width="153">Creator</td>
+<td valign="top" width="741">IBookStore; with abstract method <em>GetDistributor()</em>
+</td>
+</tr>
+<tr>
+<td valign="top" width="153">ConcreteCreator</td>
+<td valign="top" width="741">BookStoreA</td>
+</tr>
+</tbody></table>
+        </blockquote>
+      </li>
+      <li>
+        <p><a href="http://www.codeproject.com/Articles/37547/Exploring-Factory-Pattern">A lodging inquiry system wherein a customer can get details of different types of available rooms</a>.  This example also shows the <em>registration with reflection</em> implementation, the <em>self registration without reflection</em> implementation and the <em>self registration with reflection</em> implementation.  It is actually using a <em>factory pattern</em>, a pattern that is the basis for the <em>factory method pattern</em> and the <em>abstract factory pattern</em>. The only difference between the factory pattern and the factory method pattern is in the creator. The factory method pattern requires an abstract class which defines the interface for several factories, thus abstracting the client from both the type of product and type of factory used to create the product.</p>
+
+        <blockquote>
+          <table style="font-size:.85em;" border="1" cellspacing="0" cellpadding="0" width="896"><tbody>
+<tr>
+<td valign="top" width="154">Product</td>
+<td valign="top" width="740">IRoomType</td>
+</tr>
+<tr>
+<td valign="top" width="154">ConcreteProduct</td>
+<td valign="top" width="740">ACRoom, DeluxeRoom, NonACRoom</td>
+</tr>
+<tr>
+<td valign="top" width="154">Creator</td>
+<td valign="top" width="740">-</td>
+</tr>
+<tr>
+<td valign="top" width="154">ConcreteCreator</td>
+<td valign="top" width="740">RoomFactory; concrete class with concrete method <em>GetRoomType()</em>
+</td>
+</tr>
+</tbody></table>
+        </blockquote>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Design Pattern #5: Abstract Factory Pattern</strong></p>
+<ul>
+  <li>Provides an interface for creating families of related or dependent objects without specifying their concrete classes.</li>
+  <li>Design Principle:
+    <ul>
+      <li>Same as the factory method pattern, it follows the <em>Design Principle #6</em>.</li>
+    </ul>
+  </li>
+  <li>C# Examples:
+    <ul>
+      <li>
+        <p><a href="http://gugiaji.wordpress.com/2013/01/19/abstract-factory-pattern-example-with-c/">A drawing and printing machine that can process low and high resolution</a>.  This can be extended to process medium resolution by creating a medium resolution factory that provides the medium resolution display and print drivers.</p>
+
+        <blockquote>
+          <table style="font-size:.85em;" border="1" cellspacing="0" cellpadding="0" width="896"><tbody>
+<tr>
+<td valign="top" width="154">AbstractFactory</td>
+<td valign="top" width="738">ResFactory; with abstract methods <em>getDispDrvr()</em> and <em>getPrtDrvr()</em>
+</td>
+</tr>
+<tr>
+<td valign="top" width="154">ConcreteFactory</td>
+<td valign="top" width="738">LowResFact, HighResFact</td>
+</tr>
+<tr>
+<td valign="top" width="154">AbstractProduct</td>
+<td valign="top" width="738">DisplayDriver, PrintDriver</td>
+</tr>
+<tr>
+<td valign="top" width="154">ConcreteProduct</td>
+<td valign="top" width="738">LowDisplayDriver, HighDisplayDriver, LowPrintDriver, HighPrintDriver</td>
+</tr>
+<tr>
+<td valign="top" width="154">Client</td>
+<td valign="top" width="738">ApControl</td>
+</tr>
+</tbody></table>
+        </blockquote>
+      </li>
+      <li>
+        <p><a href="http://www.codeguru.com/csharp/.net/net_general/patterns/article.php/c4673/Abstract-Factory-Design-Pattern-Sample-in-C-and-VB-NET.htm">An audio/video device object providing access to it’s audio and video properties</a>.  Again this can be extended to include Bluray by creating a Bluray object that exposes Bluray audio and video objects.</p>
+
+        <blockquote>
+          <table style="font-size:.85em;" border="1" cellspacing="0" cellpadding="0" width="896"><tbody>
+<tr>
+<td valign="top" width="32">AbstractFactory</td>
+<td valign="top" width="555">IAVDevice; with abstract methods <em>GetAudio()</em> and <em>GetVideo()</em>
+</td>
+</tr>
+<tr>
+<td valign="top" width="32">ConcreteFactory</td>
+<td valign="top" width="555">CCd, CDvd</td>
+</tr>
+<tr>
+<td valign="top" width="32">AbstractProduct</td>
+<td valign="top" width="555">IAudio, IVideo</td>
+</tr>
+<tr>
+<td valign="top" width="32">ConcreteProduct</td>
+<td valign="top" width="555">CCdAudio, CDvdAudio, CCdVideo, CDvdVideo</td>
+</tr>
+<tr>
+<td valign="top" width="32">Client</td>
+<td valign="top" width="555">CAVMaker</td>
+</tr>
+</tbody></table>
+        </blockquote>
+      </li>
+      <li>
+        <p><a href="http://blog.bekijkhet.com/2012/05/c-abstract-factory-pattern-combined.html">An example using employee and customer factories that provides personal information</a>.  This example shows the <em>dependency injection</em> implementation and the <em>inversion of control container</em> implementation.  These types of implementations, factory pattern, dependency injection, and inversion of control container, are all techniques to implement <em>inversion of control</em>, a programming technique in which object coupling is bound at run time and is typically not known at compile time.  I will talk more about inversion of control on a separate post, as this I think, is a hot topic too in the object oriented programming world.</p>
+
+        <blockquote>
+          <table style="font-size:.85em;" border="1" cellspacing="0" cellpadding="0" width="896"><tbody>
+<tr>
+<td valign="top" width="28">AbstractFactory</td>
+<td valign="top" width="550">IPersonAbstractFactory</td>
+</tr>
+<tr>
+<td valign="top" width="28">ConcreteFactory</td>
+<td valign="top" width="550">EmployeeFactory, CustomerFactory</td>
+</tr>
+<tr>
+<td valign="top" width="28">AbstractProduct</td>
+<td valign="top" width="550">IPerson</td>
+</tr>
+<tr>
+<td valign="top" width="28">ConcreteProduct</td>
+<td valign="top" width="550">Employee, Customer</td>
+</tr>
+<tr>
+<td valign="top" width="28">Client</td>
+<td valign="top" width="550">MySample</td>
+</tr>
+</tbody></table>
+        </blockquote>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Design Pattern #6: Singleton Pattern</strong></p>
+<ul>
+  <li>Ensures a class only has one instance and provides a global point of access to it</li>
+  <li>C# Examples:
+    <ul>
+      <li>
+<a href="http://msdn.microsoft.com/en-us/library/ff650316.aspx">Singleton implementations from MSDN</a>.  It shows 3 implementations: the <em>basic</em> implementation, the <em>static initialization</em> implementation, and the <em>multithreaded</em> or <em>double-check locking</em> implementation.</li>
+      <li>
+<a href="http://csharpindepth.com/articles/general/singleton.aspx">Singleton implementations from the book C# In Depth</a>.  It shows 6 implementations:
+        <ul>
+          <li>basic implementation that is not thread-safe</li>
+          <li>simple thread-safe implementation using a lock</li>
+          <li>attempted thread-safe using double-check locking implementation</li>
+          <li>static initialization implementation that is thread-safe without using locks but not quite as lazy</li>
+          <li>full lazy static initialization implementation
+            <div class="language-cs highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  <span class="k">public</span> <span class="k">sealed</span> <span class="k">class</span> <span class="nc">Singleton</span>  
+  <span class="p">{</span>  
+  <span class="k">private</span> <span class="nf">Singleton</span><span class="p">()</span>  
+  <span class="p">{</span>  
+  <span class="p">}</span>  
+              
+  <span class="k">public</span> <span class="k">static</span> <span class="n">Singleton</span> <span class="n">Instance</span> <span class="p">{</span> <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="n">Nested</span><span class="p">.</span><span class="n">instance</span><span class="p">;</span> <span class="p">}</span> <span class="p">}</span>  
+                  
+  <span class="k">private</span> <span class="k">class</span> <span class="nc">Nested</span>  
+  <span class="p">{</span>  
+      <span class="c1">// Explicit static constructor to tell C# compiler  </span>
+      <span class="c1">// not to mark type as beforefieldinit  </span>
+      <span class="k">static</span> <span class="nf">Nested</span><span class="p">()</span>  
+      <span class="p">{</span>  
+      <span class="p">}</span>  
+          
+      <span class="k">internal</span> <span class="k">static</span> <span class="k">readonly</span> <span class="n">Singleton</span> <span class="n">instance</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Singleton</span><span class="p">();</span>  
+  <span class="p">}</span>  
+  <span class="p">}</span>
+</code></pre></div>            </div>
+          </li>
+          <li>C# 4.0’s Lazy<t> static initialization implementation
+</t>            <div class="language-cs highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  <span class="k">public</span> <span class="k">sealed</span> <span class="k">class</span> <span class="nc">Singleton</span>  
+  <span class="p">{</span>  
+  <span class="k">private</span> <span class="k">static</span> <span class="k">readonly</span> <span class="n">Lazy</span><span class="p">&lt;</span><span class="n">Singleton</span><span class="p">&gt;</span> <span class="n">lazy</span> <span class="p">=</span>  
+      <span class="k">new</span> <span class="n">Lazy</span><span class="p">&lt;</span><span class="n">Singleton</span><span class="p">&gt;(()</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="nf">Singleton</span><span class="p">());</span>  
+              
+  <span class="k">public</span> <span class="k">static</span> <span class="n">Singleton</span> <span class="n">Instance</span> <span class="p">{</span> <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="n">lazy</span><span class="p">.</span><span class="n">Value</span><span class="p">;</span> <span class="p">}</span> <span class="p">}</span>  
+              
+  <span class="k">private</span> <span class="nf">Singleton</span><span class="p">()</span>  
+  <span class="p">{</span>  
+  <span class="p">}</span>  
+  <span class="p">}</span>
+</code></pre></div>            </div>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>This is the second in the Design Patterns series.  The first one is <a href="https://rodansotto.github.io/tech-blog/2013/11/05/design-patterns-strategy-observer-and-decorator.html">Design Patterns: Strategy, Observer, and Decorator</a>.</li>
+</ul>
+
+
+    </div>
+
+</article>
+<div class="post-nav">
+<a class="previous" href="/tech-blog/2014/02/05/http-fundamentals-part-2-communication-stack-http-connections-and-rest-style-of-architecture.html" title="HTTP Fundamentals, Part 2: Communication Stack, HTTP Connections, and REST Style of Architecture">HTTP Fundamentals, Part 2: Communication Stack,...</a><a class="next" href="/tech-blog/2014/02/13/javascript-you-think-you-know-it-well.html" title="JavaScript: You think you know it well?">JavaScript: You think you know it...</a>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/tech-blog/2009/04/01/net-2-0-notes-on-foundation-part-3-c.html" title="JavaScript: You think you know it well?">.NET 2.0: Notes on Foundation Part 3 (C#)</a></li>
+<li><a class="post-link" href="/tech-blog/2007/04/28/sql-server-2005-new-data-types.html" title="JavaScript: You think you know it well?">SQL Server 2005: New data types</a></li>
+<li><a class="post-link" href="/tech-blog/2007/03/28/vb-2005-quick-introduction-to-the-world-of-net.html" title="JavaScript: You think you know it well?">VB 2005: Quick introduction to the world of .NET</a></li>
+<li><a class="post-link" href="/tech-blog/2022/12/13/securing-asp-net-2022.html" title="JavaScript: You think you know it well?">Ways Developer Can Secure An ASP.NET Application (Redux 2022)</a></li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items --><style type="text/css" media="screen">
+.post-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+</style>
+
+<div class="post-menu">
+  <div class="post-menu-title">TOC</div>
+  <div class="post-menu-content"></div>
+</div>
+
+<script>
+  function generateContent() {
+    var menu = document.querySelector(".post-menu");
+    var menuContent =  menu.querySelector(".post-menu-content");
+    var headings = document.querySelector(".post-content").querySelectorAll("h2, h3, h4, h5, h6");
+
+    // Hide menu when no headings
+    if (headings.length === 0) {
+      return menu.style.display = "none";
+    }
+
+    // Generate post menu
+    var menuHTML = '';
+    for (var i = 0; i < headings.length; i++) {
+      var h = headings[i];
+      menuHTML += (
+        '<li class="h-' + h.tagName.toLowerCase() + '">'
+        + '<a href="#h-' + h.getAttribute('id') + '">' + h.textContent + '</a></li>');
+    }
+
+    menuContent.innerHTML = '<ul>' + menuHTML + '</ul>';
+
+    // The header element
+    var header = document.querySelector('header.site-header');
+
+    function doMenuCollapse(index, over_items) {
+      var items = menuContent.firstChild.children;
+
+      if (over_items == undefined) {
+        over_items = 20;
+      }
+
+      if (items.length < over_items) {
+        return;
+      }
+
+      var activeItem = items[index];
+      var beginItem = activeItem
+      var endItem = activeItem
+      var beginIndex = index;
+      var endIndex = index + 1;
+      while (beginIndex >= 0
+        && !items[beginIndex].classList.contains('h-h2')) {
+        beginIndex -= 1;
+      }
+      while (endIndex < items.length
+        && !items[endIndex].classList.contains('h-h2')) {
+        endIndex += 1;
+      }
+      for (var i = 0; i < beginIndex; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+      for (var i = beginIndex + 1; i < endIndex; i++) {
+        item = items[i]
+        // if (!item.classList.contains('h-h2')) {
+          item.style.display = '';
+        // }
+      }
+      for (var i = endIndex; i < items.length; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+    }
+
+    // Init menu collapsed
+    doMenuCollapse(-1);
+
+    // Active the menu item
+    window.addEventListener('scroll', function (event) {
+      var lastActive = menuContent.querySelector('.active');
+      var changed = true;
+      var activeIndex = -1;
+      for (var i = headings.length - 1; i >= 0; i--) {
+        var h = headings[i];
+        var headingRect = h.getBoundingClientRect();
+        var headerRect = header.getBoundingClientRect();
+        var headerTop = Math.floor(headerRect.top);
+        var headerHeight = Math.floor(headerRect.height);
+        var headerHeight = headerTop + headerHeight + 20;
+        if (headingRect.top <= headerHeight) {
+          var id = 'h-' + h.getAttribute('id');
+          var a = menuContent.querySelector('a[href="#' + id  + '"]');
+          var curActive = a.parentNode;
+          if (curActive) {
+            curActive.classList.add('active');
+            activeIndex = i;
+          }
+          if (lastActive == curActive) {
+            changed = false;
+          }
+          break;
+        }
+      }
+      if (changed) {
+        if (lastActive) {
+          lastActive.classList.remove('active');
+        }
+        doMenuCollapse(activeIndex);
+      }
+      event.preventDefault();
+    });
+  }
+  generateContent();
+</script>
+</section>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/tech-blog/"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-inner">
+<div></div>
+      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
+      generator." href="https://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
+      <div class="footer-col rss-subscribe">Subscribe <a href="/tech-blog/feed.xml">via RSS</a>
+</div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

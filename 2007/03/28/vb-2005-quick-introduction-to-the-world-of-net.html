@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>VB 2005: Quick introduction to the world of .NET | Rodan Sotto’s Tech Blog</title>
+<meta name="generator" content="Jekyll v3.9.2">
+<meta property="og:title" content="VB 2005: Quick introduction to the world of .NET">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Before .NET came, COM (Component Object Model) was the norm.  You build COM objects to make your code reusable and so that you can fit them in a 3-tier or n-tier architecture.  This architecture was called or marketed by Microsoft as DNA (Distributed interNet Architecture).  It is just a way to architect or build distributed business applications using (but not necessarily) Microsoft technologies.  One of its technologies besides COM, is MTS (Microsoft Transaction Server).  MTS is a run-time environment that provides objects with not only transaction services but also concurrency, resource pooling, security, context management, and other system-level services.  It provides location transparency as well.  Then there is this COM+ which is just COM and MTS combined.">
+<meta property="og:description" content="Before .NET came, COM (Component Object Model) was the norm.  You build COM objects to make your code reusable and so that you can fit them in a 3-tier or n-tier architecture.  This architecture was called or marketed by Microsoft as DNA (Distributed interNet Architecture).  It is just a way to architect or build distributed business applications using (but not necessarily) Microsoft technologies.  One of its technologies besides COM, is MTS (Microsoft Transaction Server).  MTS is a run-time environment that provides objects with not only transaction services but also concurrency, resource pooling, security, context management, and other system-level services.  It provides location transparency as well.  Then there is this COM+ which is just COM and MTS combined.">
+<link rel="canonical" href="https://rodansotto.github.io/tech-blog/2007/03/28/vb-2005-quick-introduction-to-the-world-of-net.html">
+<meta property="og:url" content="https://rodansotto.github.io/tech-blog/2007/03/28/vb-2005-quick-introduction-to-the-world-of-net.html">
+<meta property="og:site_name" content="Rodan Sotto’s Tech Blog">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2007-03-28T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="VB 2005: Quick introduction to the world of .NET">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2007-03-28T00:00:00+00:00","datePublished":"2007-03-28T00:00:00+00:00","description":"Before .NET came, COM (Component Object Model) was the norm.  You build COM objects to make your code reusable and so that you can fit them in a 3-tier or n-tier architecture.  This architecture was called or marketed by Microsoft as DNA (Distributed interNet Architecture).  It is just a way to architect or build distributed business applications using (but not necessarily) Microsoft technologies.  One of its technologies besides COM, is MTS (Microsoft Transaction Server).  MTS is a run-time environment that provides objects with not only transaction services but also concurrency, resource pooling, security, context management, and other system-level services.  It provides location transparency as well.  Then there is this COM+ which is just COM and MTS combined.","headline":"VB 2005: Quick introduction to the world of .NET","mainEntityOfPage":{"@type":"WebPage","@id":"https://rodansotto.github.io/tech-blog/2007/03/28/vb-2005-quick-introduction-to-the-world-of-net.html"},"url":"https://rodansotto.github.io/tech-blog/2007/03/28/vb-2005-quick-introduction-to-the-world-of-net.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="icon" href="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+  <link rel="stylesheet" href="/tech-blog/assets/css/main.css">
+  <script src="/tech-blog/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="https://rodansotto.github.io/tech-blog/feed.xml" title="Rodan Sotto's Tech Blog">
+<!--<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">-->
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs tpbg ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+
+  .tpbg {
+    background: transparent;
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header " role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/tech-blog/">
+  <img class="site-favicon" title="Rodan Sotto's Tech Blog" src="" onerror="this.style.display='none'">
+  Rodan Sotto's Tech Blog
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+<a class="page-link" href="/tech-blog/">HOME</a><a class="page-link" href="/tech-blog/archives.html">ARCHIVES</a><a class="page-link" href="/tech-blog/categories.html">CATEGORIES</a><a class="page-link" href="/tech-blog/search2.html">SEARCH</a>
+
+
+
+
+</div>
+        </nav>
+</div>
+  </div>
+</header>
+
+<script>
+  function initHeader() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;var scrollStatus = "";
+
+      if (y <= 0) {
+        scrollStatus = "top";
+      } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  }
+  document.addEventListener('DOMContentLoaded', initHeader);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    hashValue = decodeURIComponent(hashValue);
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+<div id="click-to-top" class="click-to-top">
+  <i class="fa fa-arrow-up"></i>
+</div>
+<script>
+  (function () {
+    const clickToTop = document.getElementById('click-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        clickToTop.classList.add('show')
+      }else {
+        clickToTop.classList.remove('show')
+      }
+    });
+    clickToTop.addEventListener('click', () => {
+      window.smoothScrollTo(0);
+    });
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="post">
+  <section>
+
+
+
+
+
+
+
+
+
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">VB 2005: Quick introduction to the world of .NET</h1>
+  <h2 class="post-subtitle"></h2>
+
+  <p class="post-meta">
+    <time class="dt-published" datetime="2007-03-28T00:00:00+00:00" itemprop="datePublished"><i class="fa fa-calendar"></i> Mar 28, 2007
+    </time>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 4 mins</span>
+  </p></header>
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <p>Before <strong>.NET</strong> came, <a href="http://www.microsoft.com/com/default.mspx"><strong>COM (Component Object Model)</strong></a> was the norm.  You build COM objects to make your code reusable and so that you can fit them in a 3-tier or n-tier architecture.  This architecture was called or marketed by Microsoft as <strong>DNA (Distributed interNet Architecture)</strong>.  It is just a way to architect or build distributed business applications using (but not necessarily) Microsoft technologies.  One of its technologies besides COM, is <strong>MTS</strong> (<strong>Microsoft Transaction Server</strong>).  MTS is a run-time environment that provides objects with not only transaction services but also concurrency, resource pooling, security, context management, and other system-level services.  It provides location transparency as well.  Then there is this <strong>COM+</strong> which is just COM and MTS combined.</p>
+
+<p>Now that we have .NET, it’s time to learn this new technology from Microsoft which I think will stay with us for some time.  .NET is the next generation platform that developers can take advantage of in building not only distributed applications but the more traditional applications as well, more easily and intuitively.  Which is why .NET is appropriately called <strong><a href="http://msdn2.microsoft.com/en-us/netframework/default.aspx">.NET Framework</a></strong>.</p>
+
+<p>Here I am going to blog about .NET 2.0.  The latest version now is 3.0 but it is still relatively new and I think the knowledge you will get from understanding the .NET Framework even if it’s not the latest version will be useful for a long time.</p>
+
+<p>Basically the .NET Framework contains the following major components: <strong>CLR (Common Language Runtime)</strong>, <strong>.NET Framework Base Classes</strong>, <strong>Windows Forms</strong> and <strong>ASP.NET</strong>. </p>
+
+<p><strong>CLR</strong> is where component loading, memory management, reference tracking for objects and garbage collection happens.  It includes a common system of datatypes and coupled with standard interface convention, provides cross-language inheritance.  It also provides easy deployment of your .NET applications. </p>
+
+<p>One thing to note about applications in .NET is that they are self-describing because <strong>metadata</strong>, the information that describes the applications, is stored together with the application itself.  This is key to the easy deployment in .NET.</p>
+
+<p><strong>.NET Framework Base Classes</strong> provides developers with a rich set of functionality (in classes and interfaces) that they can use to help them develop applications with lesser code.  These classes and interfaces are organized into namespaces.  Examples of popular namespaces would be <strong>System.Collections</strong>, <strong>System.Data</strong>, <strong>System.Diagnostics</strong>, <strong>System.IO</strong>, <strong>System.Math</strong>, <strong>System.Reflection</strong>, and <strong>System.Security</strong>.</p>
+
+<p><strong>Windows Forms</strong> is the user interface services provided by .NET Framework in building windows-based applications.  <strong>Smart client</strong> applications with rich user interface are now more practical under .NET, even for a large number of users.</p>
+
+<p><strong>ASP.NET</strong> is the part of .NET that provides services for developing web-based applications.  <strong>Web Forms</strong> and <strong>Web Services</strong> are part of ASP.NET.</p>
+
+<p><strong>Web Forms</strong> is used to develop browser-based user interfaces and much like in a standard Visual Basic form, code is separated from the layout and properties information of the user interface elements.  Before in classic ASP, code is all over the HTML page.</p>
+
+<p><strong>Web Services</strong> allows programs to talk to each other directly over the web using the <strong><a href="http://www.w3.org/TR/soap12-part1/">SOAP (Simple Object Access Protocol)</a></strong> standard.  With web services, software functionality are exposed over the web as resources for building your distributed applications.</p>
+
+<p>It is worth noting that ASP.NET 2.0 has been significantly improved from previous versions with more built-in functionality making it possible to write far less code.  Also ASP.NET components for user authentication are already prebuilt.</p>
+
+<p><a href="http://www.w3.org/XML/"><strong>XML</strong></a> is also at the center stage in the .NET Framework as most of the underlying technologies are dependent on XML.  It is used as a glue to tie pieces together internally and externally.</p>
+
+<p>Some of the important changes in .NET 2.0 are the following: <strong>partial classes</strong> which allows coding for a class into multiple code modules; <strong>generics</strong> which allows generic collections to handle specific data types, declared when collection is created; <strong>ClickOnce</strong> which is a new technology for deploying across the web, with automatic updating; <strong>My class</strong> which provides easy access to most commonly used classes in .NET; <strong>nullable types</strong>; <strong>operator overloading</strong>; <strong>IsNot</strong> and <strong>Using</strong> keyword.</p>
+
+
+    </div>
+
+</article>
+<div class="post-nav">
+<a class="previous" href="/tech-blog/2007/03/27/vb-2005-a-journey-towards-mastering-visual-basic-2005.html" title="VB 2005: A journey towards mastering Visual Basic 2005">VB 2005: A journey towards mastering...</a><a class="next" href="/tech-blog/2007/04/21/vb-2005-dont-use-the-timer-control-on-your-windows-service-project.html" title="VB 2005: Don't use the Timer control on your Windows Service project">VB 2005: Don't use the Timer...</a>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/tech-blog/2022/12/16/key-points-to-arch-cloud-app-ops.html" title="VB 2005: Don't use the Timer control on your Windows Service project">Key Points To Architecturing Cloud Applications, Part 2: Operations</a></li>
+<li><a class="post-link" href="/tech-blog/2013/10/29/http-fundamentals-part-1-url-encoding-request-and-response.html" title="VB 2005: Don't use the Timer control on your Windows Service project">HTTP Fundamentals, Part 1: URL, Encoding, Request and Response</a></li>
+<li><a class="post-link" href="/tech-blog/2022/08/07/how-i-trained-my-csharp-neural-network.html" title="VB 2005: Don't use the Timer control on your Windows Service project">How I Trained A Simple Neural Network In C# To Recognize Numbers...</a></li>
+<li><a class="post-link" href="/tech-blog/2014/05/14/using-css-media-queries.html" title="VB 2005: Don't use the Timer control on your Windows Service project">Using CSS Media Queries</a></li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items --><style type="text/css" media="screen">
+.post-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+</style>
+
+<div class="post-menu">
+  <div class="post-menu-title">TOC</div>
+  <div class="post-menu-content"></div>
+</div>
+
+<script>
+  function generateContent() {
+    var menu = document.querySelector(".post-menu");
+    var menuContent =  menu.querySelector(".post-menu-content");
+    var headings = document.querySelector(".post-content").querySelectorAll("h2, h3, h4, h5, h6");
+
+    // Hide menu when no headings
+    if (headings.length === 0) {
+      return menu.style.display = "none";
+    }
+
+    // Generate post menu
+    var menuHTML = '';
+    for (var i = 0; i < headings.length; i++) {
+      var h = headings[i];
+      menuHTML += (
+        '<li class="h-' + h.tagName.toLowerCase() + '">'
+        + '<a href="#h-' + h.getAttribute('id') + '">' + h.textContent + '</a></li>');
+    }
+
+    menuContent.innerHTML = '<ul>' + menuHTML + '</ul>';
+
+    // The header element
+    var header = document.querySelector('header.site-header');
+
+    function doMenuCollapse(index, over_items) {
+      var items = menuContent.firstChild.children;
+
+      if (over_items == undefined) {
+        over_items = 20;
+      }
+
+      if (items.length < over_items) {
+        return;
+      }
+
+      var activeItem = items[index];
+      var beginItem = activeItem
+      var endItem = activeItem
+      var beginIndex = index;
+      var endIndex = index + 1;
+      while (beginIndex >= 0
+        && !items[beginIndex].classList.contains('h-h2')) {
+        beginIndex -= 1;
+      }
+      while (endIndex < items.length
+        && !items[endIndex].classList.contains('h-h2')) {
+        endIndex += 1;
+      }
+      for (var i = 0; i < beginIndex; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+      for (var i = beginIndex + 1; i < endIndex; i++) {
+        item = items[i]
+        // if (!item.classList.contains('h-h2')) {
+          item.style.display = '';
+        // }
+      }
+      for (var i = endIndex; i < items.length; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+    }
+
+    // Init menu collapsed
+    doMenuCollapse(-1);
+
+    // Active the menu item
+    window.addEventListener('scroll', function (event) {
+      var lastActive = menuContent.querySelector('.active');
+      var changed = true;
+      var activeIndex = -1;
+      for (var i = headings.length - 1; i >= 0; i--) {
+        var h = headings[i];
+        var headingRect = h.getBoundingClientRect();
+        var headerRect = header.getBoundingClientRect();
+        var headerTop = Math.floor(headerRect.top);
+        var headerHeight = Math.floor(headerRect.height);
+        var headerHeight = headerTop + headerHeight + 20;
+        if (headingRect.top <= headerHeight) {
+          var id = 'h-' + h.getAttribute('id');
+          var a = menuContent.querySelector('a[href="#' + id  + '"]');
+          var curActive = a.parentNode;
+          if (curActive) {
+            curActive.classList.add('active');
+            activeIndex = i;
+          }
+          if (lastActive == curActive) {
+            changed = false;
+          }
+          break;
+        }
+      }
+      if (changed) {
+        if (lastActive) {
+          lastActive.classList.remove('active');
+        }
+        doMenuCollapse(activeIndex);
+      }
+      event.preventDefault();
+    });
+  }
+  generateContent();
+</script>
+</section>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/tech-blog/"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-inner">
+<div></div>
+      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
+      generator." href="https://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
+      <div class="footer-col rss-subscribe">Subscribe <a href="/tech-blog/feed.xml">via RSS</a>
+</div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

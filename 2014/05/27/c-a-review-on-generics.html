@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>C#: A Review on Generics | Rodan Sotto’s Tech Blog</title>
+<meta name="generator" content="Jekyll v3.9.2">
+<meta property="og:title" content="C#: A Review on Generics">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="I think a good C# developer needs to get a handle on .NET generics.  Most of the advanced features in C# deal with lots of generics and having a very good understanding of generics will help considerably, most especially when dealing with generic delegates.  So here in this post, we will review generics.">
+<meta property="og:description" content="I think a good C# developer needs to get a handle on .NET generics.  Most of the advanced features in C# deal with lots of generics and having a very good understanding of generics will help considerably, most especially when dealing with generic delegates.  So here in this post, we will review generics.">
+<link rel="canonical" href="https://rodansotto.github.io/tech-blog/2014/05/27/c-a-review-on-generics.html">
+<meta property="og:url" content="https://rodansotto.github.io/tech-blog/2014/05/27/c-a-review-on-generics.html">
+<meta property="og:site_name" content="Rodan Sotto’s Tech Blog">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2014-05-27T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="C#: A Review on Generics">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2014-05-27T00:00:00+00:00","datePublished":"2014-05-27T00:00:00+00:00","description":"I think a good C# developer needs to get a handle on .NET generics.  Most of the advanced features in C# deal with lots of generics and having a very good understanding of generics will help considerably, most especially when dealing with generic delegates.  So here in this post, we will review generics.","headline":"C#: A Review on Generics","mainEntityOfPage":{"@type":"WebPage","@id":"https://rodansotto.github.io/tech-blog/2014/05/27/c-a-review-on-generics.html"},"url":"https://rodansotto.github.io/tech-blog/2014/05/27/c-a-review-on-generics.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="icon" href="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+  <link rel="stylesheet" href="/tech-blog/assets/css/main.css">
+  <script src="/tech-blog/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="https://rodansotto.github.io/tech-blog/feed.xml" title="Rodan Sotto's Tech Blog">
+<!--<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">-->
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs tpbg ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+
+  .tpbg {
+    background: transparent;
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header " role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/tech-blog/">
+  <img class="site-favicon" title="Rodan Sotto's Tech Blog" src="" onerror="this.style.display='none'">
+  Rodan Sotto's Tech Blog
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+<a class="page-link" href="/tech-blog/">HOME</a><a class="page-link" href="/tech-blog/archives.html">ARCHIVES</a><a class="page-link" href="/tech-blog/categories.html">CATEGORIES</a><a class="page-link" href="/tech-blog/search2.html">SEARCH</a>
+
+
+
+
+</div>
+        </nav>
+</div>
+  </div>
+</header>
+
+<script>
+  function initHeader() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;var scrollStatus = "";
+
+      if (y <= 0) {
+        scrollStatus = "top";
+      } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  }
+  document.addEventListener('DOMContentLoaded', initHeader);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    hashValue = decodeURIComponent(hashValue);
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+<div id="click-to-top" class="click-to-top">
+  <i class="fa fa-arrow-up"></i>
+</div>
+<script>
+  (function () {
+    const clickToTop = document.getElementById('click-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        clickToTop.classList.add('show')
+      }else {
+        clickToTop.classList.remove('show')
+      }
+    });
+    clickToTop.addEventListener('click', () => {
+      window.smoothScrollTo(0);
+    });
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="post">
+  <section>
+
+
+
+
+
+
+
+
+
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">C#: A Review on Generics</h1>
+  <h2 class="post-subtitle"></h2>
+
+  <p class="post-meta">
+    <time class="dt-published" datetime="2014-05-27T00:00:00+00:00" itemprop="datePublished"><i class="fa fa-calendar"></i> May 27, 2014
+    </time>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 6 mins</span>
+  </p></header>
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <p>I think a good C# developer needs to get a handle on .NET generics.  Most of the advanced features in C# deal with lots of generics and having a very good understanding of generics will help considerably, most especially when dealing with generic delegates.  So here in this post, we will review generics.</p>
+
+<p><em>Generic type definitions</em> can be methods, classes, structures, and interfaces.</p>
+
+<p>// an example generic class
+public class MyGenericClass<t>
+{
+    public T MyProperty;
+}</t></p>
+
+<p> </p>
+
+<p> </p>
+
+<p>The placeholders (e.g. **<t>**) are called _generic type parameters_, or _type parameters_.</t></p>
+
+<p>You specify the actual types to substitute for the type parameters during instantiation.</p>
+
+<p>// instantiate generic class with string type
+MyGenericClass&lt;string&gt; c = new MyGenericClass&lt;string&gt;();</p>
+
+<p> </p>
+
+<p> </p>
+
+<p>When instantiated, a generic type definition becomes a <em>constructed generic type</em>.</p>
+
+<p>You can place limits or <em>constraints</em> on generic type parameters.</p>
+
+<p>// limit type to value types except Nullable
+public class MyGenericClass<t> where T : struct {/*...*/}</t></p>
+
+<p>// limit type to reference types which can include classes,
+//  interfaces, delegates, and array types
+public class MyGenericClass<t> where T : class {/*...*/}</t></p>
+
+<p>// limit type to types with public parameterless constructor
+// must be specified last in multiple constraints
+public class MyGenericClass<t> where T : new() {/*...*/}</t></p>
+
+<p>// limit type to specified base class or to types derived from it
+public class MyGenericClass<t> where T : MyBaseClass {/*...*/}</t></p>
+
+<p>// limit type to specified interface or to types that implement it
+public class MyGenericClass<t> where T : IMyInterface {/*...*/}</t></p>
+
+<p>// limit type to specified type parameter</p>
+
+<p>// in a generic member function, it limits its type to the type 
+//  parameter of the containing type
+public class MyGenericClass<t>
+{
+    void MyMethod<u>(List<u> items) where U : T {/*...*/}
+}</u></u></t></p>
+
+<p>// in a generic class, it enforces an inheritance relationship
+//  between the two type parameters
+public class MyGenericClass&lt;T, U&gt; where U : T {/<em>…</em>/}</p>
+
+<p>// type parameter can have multiple constraints 
+//  and constraints can also be generics
+//  and constraints can be applied to multiple type parameters
+public class MyGenericClass&lt;T, U&gt; 
+    where T : MyClass, IMyInterface, System.IComparable<t>, new()
+    where U : struct
+{
+    // ...
+}</t></p>
+
+<p> </p>
+
+<p> </p>
+
+<p>A method is considered a <em>generic method definition</em> if it has two parameter lists: a list of type parameters enclosed in &lt;&gt; and a list of formal parameters enclosed in ().  A method belonging to a generic or non-generic type does not make the method generic or non-generic.  Only the existence of the two parameter lists will make the method generic, as in the example below.</p>
+
+<p>public class MyClass
+{
+    // a generic method inside a non-generic class
+    T MyGenericMethod<t>(T arg) {/*...*/}
+}</t></p>
+
+<p> </p>
+
+<p> </p>
+
+<p>A type nested in a generic type is considered by CLR to be generic even if it doesn’t have generic type parameters of its own.  When you instantiate a nested type, you need to specify the type arguments for all enclosing generic types.</p>
+
+<p>// generic type
+public class MyGenericType&lt;T, U&gt;
+{
+    // nested type
+    public class MyNestedType
+    {
+        // …
+    }
+}</p>
+
+<p>// … somewhere in code you instantiate the nested type <br>
+MyGenericType&lt;string, int&gt;.MyNestedType nt = 
+    new MyGenericType&lt;string, int&gt;.MyNestedType();</p>
+
+<p> </p>
+
+<p> </p>
+
+<p>The following are some common <em>generic collection counterparts</em> provided by the .NET framework:</p>
+
+<ul>
+  <li>
+<a href="http://msdn.microsoft.com/en-us/library/xfhwa508.aspx">Dictionary&lt;TKey, TValue&gt;</a> which is the generic version of <em>Hashtable</em>.  It uses <a href="http://msdn.microsoft.com/en-us/library/5tbh8a42.aspx">KeyValuePair&lt;TKey, TValue&gt;</a> for enumeration instead of <em>DictionaryEntry</em>.</li>
+  <li>[List<t>](http://msdn.microsoft.com/en-us/library/6sh2ey19.aspx) which is the generic version of _ArrayList_.</t>
+</li>
+  <li>[Queue<t>](http://msdn.microsoft.com/en-us/library/7977ey2c.aspx) and [Stack<t>](http://msdn.microsoft.com/en-us/library/3278tedw.aspx) which is the generic versions of collections with same names.</t></t>
+</li>
+  <li>
+<a href="http://msdn.microsoft.com/en-us/library/ms132319.aspx">SortedList&lt;TKey, TValue&gt;</a> which is a hybrid of a dictionary and list, just like it’s nongeneric version of same name.</li>
+  <li>
+<a href="http://msdn.microsoft.com/en-us/library/f7fta44c.aspx">SortedDictionary&lt;TKey, TValue&gt;</a> which is a pure dictionary, and [LinkedList<t>](http://msdn.microsoft.com/en-us/library/he2s3bh7.aspx).  Both don’t have nongeneric versions.</t>
+</li>
+  <li>[Collection<t>](http://msdn.microsoft.com/en-us/library/ms132397.aspx) which is a base class for generating custom collection types, [ReadOnlyCollection<t>](http://msdn.microsoft.com/en-us/library/ms132474.aspx) which provides read-only collection from any type implementing _IList<t>_, and [KeyedCollection&lt;TKey, TItem&gt;](http://msdn.microsoft.com/en-us/library/ms132438.aspx) for storing objects containing their own keys.</t></t></t>
+</li>
+</ul>
+
+<p> </p>
+
+<p>There are also <em>generic interface counterparts</em> for ordering and equality comparisons and for shared collection functionality:</p>
+
+<ul>
+  <li>[System.IComparable<t>](http://msdn.microsoft.com/en-us/library/4d7sx9hd.aspx) and [System.IEquatable<t>](http://msdn.microsoft.com/en-us/library/ms131187.aspx) which define methods for ordering comparisons and equality comparisons.</t></t>
+</li>
+  <li>[IComparer<t>](http://msdn.microsoft.com/en-us/library/8ehhxeaf.aspx) and [IEqualityComparer<t>](http://msdn.microsoft.com/en-us/library/ms132151.aspx) in the _System.Collections.Generic_ namespace, which offer alternative way for types that do not implement System.IComparable<t> and System.IEquatable<t>.  They are used by methods and constructors of many of the generic collection classes.  An example would be passing a generic IComparer<t> object to the constructor of SortedDictionary&lt;TKey, TValue&gt; to specify a sort order.  Generic classes _Comparer<t>_ and _EqualityComparer<t>_ are their base class implementations.</t></t></t></t></t></t></t>
+</li>
+  <li>[ICollection<t>](http://msdn.microsoft.com/en-us/library/92t2ye13.aspx) which provides basic functionality for adding, removing, copying, and enumerating elements in a generic collection type.  It inherits from _IEnumerable<t>_ and the nongeneric _IEnumerable_.</t></t>
+</li>
+  <li>[IList<t>](http://msdn.microsoft.com/en-us/library/5y536ey6.aspx) which extends ICollection<t> with methods for indexed retrieval.</t></t>
+</li>
+  <li>
+<a href="http://msdn.microsoft.com/en-us/library/s4ys34ea.aspx">IDictionary&lt;TKey, TValue&gt;</a> which extends ICollection<t> with methods for keyed retrieval.  Generic dictionary types also inherit from nongeneric _IDictionary_.</t>
+</li>
+  <li>[IEnumerable<t>](http://msdn.microsoft.com/en-us/library/9eekhta0.aspx) which provides a generic enumerator structure used by _foreach._  It inherits from nongeneric _IEnumerator_ because _MoveNext_ and _Reset_ methods appear only on the nongeneric interface.  This means consumer of the nongeneric interface can also consume the generic interface because the generic interface provides for nongeneric implementation.</t>
+</li>
+</ul>
+
+<p> </p>
+
+<p>You also have <em>generic delegates</em> in .NET framework.  An example is the _EventHandler<teventargs>_ which you can use in handling events with custom event arguments.  No need to declare your own delegate type for the event.  If you need to brush up on events and delegates, see my post on [raising events](https://rodansotto.github.io/tech-blog/2014/05/21/c-quick-review-on-raising-events.html "C#: Quick Review on Raising Events") and [nongeneric delegates](https://rodansotto.github.io/tech-blog/2014/05/16/c-quick-review-on-delegates.html "C#: Quick Review on Delegates").</teventargs></p>
+
+<p>public event EventHandler<publishedeventargs> Published;</publishedeventargs></p>
+
+<p> </p>
+
+<p> </p>
+
+<p>There are also a bunch of useful generic delegates available for manipulating arrays and lists</p>
+
+<ul>
+  <li>[Action<t>](http://msdn.microsoft.com/en-us/library/018hxwa8.aspx) which allows you to perform action on an element by passing an Action<t> delegate instance and an array to the generic method [Array.ForEach<t>](http://msdn.microsoft.com/en-us/library/zecdkyw2.aspx).  You can also pass an Action<t> delegate instance to the nongeneric method [List<t>.ForEach](http://msdn.microsoft.com/en-us/library/bwabdf9z.aspx).</t></t></t></t></t>
+</li>
+  <li>[Predicate<t>](http://msdn.microsoft.com/en-us/library/bfcke1bz.aspx) which allows you to specify a search criteria to _Array_’s _Exists<t>_, _Find<t>_, _FindAll<t>_, and so on and also to _List<t>_’s _Exists_, _Find_, _FindAll_, and so on.</t></t></t></t></t>
+</li>
+  <li>[Comparsion<t>](http://msdn.microsoft.com/en-us/library/tfakywbh.aspx) which allows you to provide a sort order.</t>
+</li>
+  <li>
+<a href="http://msdn.microsoft.com/en-us/library/kt456a2y.aspx">Converter&lt;TInput, TOutput&gt;</a> which allows you to convert between two types of arrays or lists.</li>
+</ul>
+
+<p> </p>
+
+<p>Ok so that’s all we have for generics.  Just a review of the basics that a C# developer need to know.</p>
+
+
+    </div>
+
+</article>
+<div class="post-nav">
+<a class="previous" href="/tech-blog/2014/05/21/c-quick-review-on-raising-events.html" title="C#: Quick Review on Raising Events">C#: Quick Review on Raising Events...</a><a class="next" href="/tech-blog/2014/06/03/access-type-mismatch-run-time-error-after-converting-to-accdb-format.html" title="Access: Type Mismatch Run-time Error After Converting to ACCDB Format">Access: Type Mismatch Run-time Error After...</a>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/tech-blog/2013/05/20/html-css-javascript-and-jquery-putting-them-all-together-part-2.html" title="Access: Type Mismatch Run-time Error After Converting to ACCDB Format">HTML, CSS, Javascript, and jQuery: Putting them all together (Part 2)</a></li>
+<li><a class="post-link" href="/tech-blog/2014/03/18/android-development-main-method-application-lifecycle-and-event-handling.html" title="Access: Type Mismatch Run-time Error After Converting to ACCDB Format">Android Development: main() Method, Application Lifecycle, and Event Handling</a></li>
+<li><a class="post-link" href="/tech-blog/2015/11/09/how-many-ways-can-you-add-entity-framework-model-to-your-project.html" title="Access: Type Mismatch Run-time Error After Converting to ACCDB Format">How Many Ways Can You Add Entity Framework Model To Your Project?...</a></li>
+<li><a class="post-link" href="/tech-blog/2015/11/19/display-bootstraps-navbar-dropdown-menu-on-hover.html" title="Access: Type Mismatch Run-time Error After Converting to ACCDB Format">Display Bootstrap’s Navbar Dropdown Menu On Hover</a></li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items --><style type="text/css" media="screen">
+.post-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+</style>
+
+<div class="post-menu">
+  <div class="post-menu-title">TOC</div>
+  <div class="post-menu-content"></div>
+</div>
+
+<script>
+  function generateContent() {
+    var menu = document.querySelector(".post-menu");
+    var menuContent =  menu.querySelector(".post-menu-content");
+    var headings = document.querySelector(".post-content").querySelectorAll("h2, h3, h4, h5, h6");
+
+    // Hide menu when no headings
+    if (headings.length === 0) {
+      return menu.style.display = "none";
+    }
+
+    // Generate post menu
+    var menuHTML = '';
+    for (var i = 0; i < headings.length; i++) {
+      var h = headings[i];
+      menuHTML += (
+        '<li class="h-' + h.tagName.toLowerCase() + '">'
+        + '<a href="#h-' + h.getAttribute('id') + '">' + h.textContent + '</a></li>');
+    }
+
+    menuContent.innerHTML = '<ul>' + menuHTML + '</ul>';
+
+    // The header element
+    var header = document.querySelector('header.site-header');
+
+    function doMenuCollapse(index, over_items) {
+      var items = menuContent.firstChild.children;
+
+      if (over_items == undefined) {
+        over_items = 20;
+      }
+
+      if (items.length < over_items) {
+        return;
+      }
+
+      var activeItem = items[index];
+      var beginItem = activeItem
+      var endItem = activeItem
+      var beginIndex = index;
+      var endIndex = index + 1;
+      while (beginIndex >= 0
+        && !items[beginIndex].classList.contains('h-h2')) {
+        beginIndex -= 1;
+      }
+      while (endIndex < items.length
+        && !items[endIndex].classList.contains('h-h2')) {
+        endIndex += 1;
+      }
+      for (var i = 0; i < beginIndex; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+      for (var i = beginIndex + 1; i < endIndex; i++) {
+        item = items[i]
+        // if (!item.classList.contains('h-h2')) {
+          item.style.display = '';
+        // }
+      }
+      for (var i = endIndex; i < items.length; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+    }
+
+    // Init menu collapsed
+    doMenuCollapse(-1);
+
+    // Active the menu item
+    window.addEventListener('scroll', function (event) {
+      var lastActive = menuContent.querySelector('.active');
+      var changed = true;
+      var activeIndex = -1;
+      for (var i = headings.length - 1; i >= 0; i--) {
+        var h = headings[i];
+        var headingRect = h.getBoundingClientRect();
+        var headerRect = header.getBoundingClientRect();
+        var headerTop = Math.floor(headerRect.top);
+        var headerHeight = Math.floor(headerRect.height);
+        var headerHeight = headerTop + headerHeight + 20;
+        if (headingRect.top <= headerHeight) {
+          var id = 'h-' + h.getAttribute('id');
+          var a = menuContent.querySelector('a[href="#' + id  + '"]');
+          var curActive = a.parentNode;
+          if (curActive) {
+            curActive.classList.add('active');
+            activeIndex = i;
+          }
+          if (lastActive == curActive) {
+            changed = false;
+          }
+          break;
+        }
+      }
+      if (changed) {
+        if (lastActive) {
+          lastActive.classList.remove('active');
+        }
+        doMenuCollapse(activeIndex);
+      }
+      event.preventDefault();
+    });
+  }
+  generateContent();
+</script>
+</section>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/tech-blog/"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-inner">
+<div></div>
+      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
+      generator." href="https://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
+      <div class="footer-col rss-subscribe">Subscribe <a href="/tech-blog/feed.xml">via RSS</a>
+</div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

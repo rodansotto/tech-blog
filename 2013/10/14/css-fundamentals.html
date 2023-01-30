@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>CSS Fundamentals | Rodan Sotto’s Tech Blog</title>
+<meta name="generator" content="Jekyll v3.9.2">
+<meta property="og:title" content="CSS Fundamentals">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="In my last blog here, I talked about ways to put CSS in an HTML, the preferred method using external style sheets, and how styles are overwritten when using more than one method.  I also talked about the syntax for declaring a CSS property.">
+<meta property="og:description" content="In my last blog here, I talked about ways to put CSS in an HTML, the preferred method using external style sheets, and how styles are overwritten when using more than one method.  I also talked about the syntax for declaring a CSS property.">
+<link rel="canonical" href="https://rodansotto.github.io/tech-blog/2013/10/14/css-fundamentals.html">
+<meta property="og:url" content="https://rodansotto.github.io/tech-blog/2013/10/14/css-fundamentals.html">
+<meta property="og:site_name" content="Rodan Sotto’s Tech Blog">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2013-10-14T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="CSS Fundamentals">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2013-10-14T00:00:00+00:00","datePublished":"2013-10-14T00:00:00+00:00","description":"In my last blog here, I talked about ways to put CSS in an HTML, the preferred method using external style sheets, and how styles are overwritten when using more than one method.  I also talked about the syntax for declaring a CSS property.","headline":"CSS Fundamentals","mainEntityOfPage":{"@type":"WebPage","@id":"https://rodansotto.github.io/tech-blog/2013/10/14/css-fundamentals.html"},"url":"https://rodansotto.github.io/tech-blog/2013/10/14/css-fundamentals.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="icon" href="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+  <link rel="stylesheet" href="/tech-blog/assets/css/main.css">
+  <script src="/tech-blog/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="https://rodansotto.github.io/tech-blog/feed.xml" title="Rodan Sotto's Tech Blog">
+<!--<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">-->
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs tpbg ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+
+  .tpbg {
+    background: transparent;
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header " role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/tech-blog/">
+  <img class="site-favicon" title="Rodan Sotto's Tech Blog" src="" onerror="this.style.display='none'">
+  Rodan Sotto's Tech Blog
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+<a class="page-link" href="/tech-blog/">HOME</a><a class="page-link" href="/tech-blog/archives.html">ARCHIVES</a><a class="page-link" href="/tech-blog/categories.html">CATEGORIES</a><a class="page-link" href="/tech-blog/search2.html">SEARCH</a>
+
+
+
+
+</div>
+        </nav>
+</div>
+  </div>
+</header>
+
+<script>
+  function initHeader() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;var scrollStatus = "";
+
+      if (y <= 0) {
+        scrollStatus = "top";
+      } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  }
+  document.addEventListener('DOMContentLoaded', initHeader);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    hashValue = decodeURIComponent(hashValue);
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+<div id="click-to-top" class="click-to-top">
+  <i class="fa fa-arrow-up"></i>
+</div>
+<script>
+  (function () {
+    const clickToTop = document.getElementById('click-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        clickToTop.classList.add('show')
+      }else {
+        clickToTop.classList.remove('show')
+      }
+    });
+    clickToTop.addEventListener('click', () => {
+      window.smoothScrollTo(0);
+    });
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="post">
+  <section>
+
+
+
+
+
+
+
+
+
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">CSS Fundamentals</h1>
+  <h2 class="post-subtitle"></h2>
+
+  <p class="post-meta">
+    <time class="dt-published" datetime="2013-10-14T00:00:00+00:00" itemprop="datePublished"><i class="fa fa-calendar"></i> Oct 14, 2013
+    </time>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 8 mins</span>
+  </p></header>
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <p>In my last blog <a href="https://rodansotto.github.io/tech-blog/2013/05/19/web-ui-html-css-javascript-and-jquery-putting-them-all-together-part-1.html">here</a>, I talked about ways to put CSS in an HTML, the preferred method using external style sheets, and how styles are overwritten when using more than one method.  I also talked about the syntax for declaring a CSS property.</p>
+
+<p>Here I am going to go through some of the basic CSS properties that one would need to know in order to have a good understanding of the capabilities of the CSS, and also a means to brush up one’s CSS knowledge if it ever becomes rusty.  So here they are:</p>
+
+<p>/* comments <em>/<br>
+/</em></p>
+<ul>
+  <li>declaring a CSS property <em>/<br>
+p {<br>
+ border-style: solid;<br>
+}<br>
+/</em>
+</li>
+  <li>declaring multiple CSS properties <em>/<br>
+p {<br>
+ background-color: #00FF00;<br>
+ font-size: 8px;<br>
+}<br>
+/</em>
+</li>
+  <li>setting font-size using em which is a relative measure</li>
+  <li>1em = default font size, 2em = twice as big, and 0.5em = half the size <em>/<br>
+p {<br>
+ font-size: 2em;<br>
+}<br>
+/</em>
+</li>
+  <li>declaring fall back fonts in case user’s computer does not have the font</li>
+  <li>note CSS has default fonts and they are serif, sans-serif, and cursive <em>/<br>
+p {<br>
+ font-family: Verdana, serif;<br>
+}<br>
+/</em>
+</li>
+  <li>styling a table’s border property to 1px, solid line, and color black <em>/<br>
+table {<br>
+ border: 1px solid black;<br>
+}<br>
+/</em>
+</li>
+  <li>styling a link’s text-decoration property to hide the underline <em>/<br>
+a {<br>
+ text-decoration: none;<br>
+ color: #cc0000;<br>
+}<br>
+/</em>
+</li>
+  <li>creating a button</li>
+  <li>use border-radius property to give the button a rounder look</li>
+  <li>use margin: auto to put equal left and right margin on the button,</li>
+  <li>centering it on the page</li>
+  <li>use text-align to set alignment of text inside the button <em>/<br>
+div {<br>
+ height: 50px;<br>
+ width: 120px;<br>
+ border: 2px solid #6495ed;<br>
+ background-color: #bcd2ee;<br>
+ border-radius: 5px;<br>
+ margin: auto;<br>
+ text-align: center;<br>
+}<br>
+/</em>
+</li>
+  <li>styling every element on the page using the universal (*) selector */</li>
+  <li>{<br>
+  color: black;<br>
+}<br>
+/*</li>
+  <li>styling an element nested somewhere inside another element or</li>
+  <li>is a child of another element using nested selectors <em>/<br>
+div h3 {<br>
+color: red;<br>
+}<br>
+/</em>
+</li>
+  <li>styling an element nested directly inside another element or</li>
+  <li>is a direct child of another element <em>/<br>
+body &gt; div &gt; p {<br>
+color: #7ac5cd;<br>
+}<br>
+/</em>
+</li>
+  <li>note that more specific selectors will override other selectors</li>
+  <li>e.g. &lt;p&gt; selector will be overridden by nested selector body &gt; div &gt; p</li>
+  <li>nested selectors can be overridden too by the class and id selectors <em>/<br>
+/</em>
+</li>
+  <li>so far we have used HTML element selectors and the universal selector <em>/<br>
+/</em>
+</li>
+  <li>styling using the class selector - the . selector <em>/<br>
+.myClass {<br>
+ font-family: cursive;<br>
+ color: #0000cd;<br>
+}<br>
+/</em>
+</li>
+  <li>styling using the id selector - the # selector <em>/<br>
+#myID {<br>
+ font-family: Courier;<br>
+ color: #cc0000;<br>
+}<br>
+/</em>
+</li>
+  <li>note that the id selector is more specific than the class selector,</li>
+  <li>thus the id selector will override the class selector <em>/<br>
+/</em>
+</li>
+  <li>using pseudo-class selectors - the : selector,</li>
+  <li>to select HTML items not part of the document tree <em>/<br>
+/</em>
+</li>
+  <li>styling a link’s unvisited link <em>/<br>
+a:link {<br>
+ text-decoration: none;<br>
+ color: #008b45;<br>
+}<br>
+/</em>
+</li>
+  <li>styling a link’s visited link <em>/<br>
+a:visited {<br>
+ color: #ee9a00;<br>
+}<br>
+/</em>
+</li>
+  <li>styling a link when it’s hovered over by the mouse <em>/<br>
+a:hover {<br>
+ color: #00ff00;<br>
+}<br>
+/</em>
+</li>
+  <li>styling elements that are the first children of their parents <em>/<br>
+p:first-child {<br>
+ font-family: cursive;<br>
+}<br>
+/</em>
+</li>
+  <li>styling elements that are not the first children of their parents -</li>
+  <li>the second, or the third, and so on… <em>/<br>
+p:nth-child(2) {<br>
+font-family: Tahoma;<br>
+}<br>
+/</em>
+</li>
+  <li>CSS positioning <em>/<br>
+/</em>
+</li>
+  <li>positioning using the display property</li>
+  <li>4 possible values:</li>
+  <li>block - stacks the elements on top of each other like blocks in a column</li>
+  <li>inline-block - puts the elements next to each other like blocks in a row</li>
+  <li>inline - puts the elements next to each other but not as blocks:</li>
+  <li>they don’t keep their dimensions</li>
+  <li>none - hides the element and it’s contents from the page <em>/<br>
+div {<br>
+ height: 50px;<br>
+ width: 100px;<br>
+ border: 2px solid black;<br>
+ border-radius: 5px;<br>
+ display: block;<br>
+}<br>
+/</em>
+</li>
+  <li>CSS box model</li>
+  <li>every element follows the box model in CSS,</li>
+  <li>where each element contains the content surrounded by padding, which</li>
+  <li>in turn is surrounded by border, which in turn is surrounded by margin</li>
+  <li>margin is the space around the element,</li>
+  <li>the space between the element and the elements around it</li>
+  <li>border is the edge of the element; set using the border property</li>
+  <li>padding is the space between the border and the content of the element</li>
+  <li>content is the actual stuff<br>
+/*</li>
+  <li>setting the margin using margin: auto <em>/<br>
+div {<br>
+ height: 50px;<br>
+ width: 120px;<br>
+ border: 2px solid #6495ed;<br>
+ background-color: #bcd2ee;<br>
+ margin: auto;<br>
+}<br>
+/</em> setting the margin using margin: top right bottom left <em>/<br>
+div {<br>
+ height: 50px;<br>
+ width: 120px;<br>
+ border: 2px solid #6495ed;<br>
+ background-color: #bcd2ee;<br>
+ margin: 20px 50px 10px 5px;<br>
+}<br>
+/</em> setting the margin using margin-top, margin-right, margin-bottom,</li>
+  <li>and margin-left properties <em>/<br>
+div {<br>
+height: 50px;<br>
+width: 120px;<br>
+border: 2px solid #6495ed;<br>
+background-color: #bcd2ee;<br>
+margin-top: 20px;<br>
+margin-right: 50px;<br>
+margin-bottom: 10px;<br>
+margin-left: 5px;<br>
+}<br>
+/</em>
+</li>
+  <li>note that you can use negative values on the margins,</li>
+  <li>which will move the element in the other direction <em>/<br>
+/</em>
+</li>
+  <li>setting the padding is similar to setting the margin</li>
+  <li>you can use padding property to set top, right, bottom, left padding</li>
+  <li>you can use padding property to give it one value,</li>
+  <li>to apply same value of padding on all sides</li>
+  <li>or you can use the padding-top, padding-right, padding-bottom,</li>
+  <li>and padding-left properties <em>/<br>
+div {<br>
+height: 50px;<br>
+width: 120px;<br>
+border: 2px solid #6495ed;<br>
+background-color: #bcd2ee;<br>
+padding: 10px;<br>
+}<br>
+/</em>
+</li>
+  <li>positioning using the float property</li>
+  <li>setting float to right will put the element on right side of the page</li>
+  <li>setting float to left will put the element on left side of the page <em>/<br>
+div {<br>
+ height: 50px;<br>
+ width: 120px;<br>
+ border: 2px solid #6495ed;<br>
+ background-color: #bcd2ee;<br>
+ float: right;<br>
+}<br>
+/</em>
+</li>
+  <li>note that floating elements will go on top of non-floating elements,</li>
+  <li>unless you set the clear property to the following values:</li>
+  <li>left will move the non-floating element below any floating elements</li>
+  <li>on the left side</li>
+  <li>right will move the non-floating element below any floating elements</li>
+  <li>on the right side</li>
+  <li>both will move it below any floating elements on left and right sides <em>/<br>
+div {<br>
+ height: 50px;<br>
+ background-color: #69D2E7;<br>
+ clear: both;<br>
+}<br>
+/</em>
+</li>
+  <li>positioning using the position property</li>
+  <li>CSS positioning, by default, is static,</li>
+  <li>meaning elements are positioned where they would normally go</li>
+  <li>setting position to absolute will position the element relative</li>
+  <li>to the first parent element that does not have a static position</li>
+  <li>if there is no such element then it is positioned relative to &lt;html&gt;</li>
+  <li>setting position to relative will position the element relative</li>
+  <li>to where it would have been placed if it had a default static position</li>
+  <li>setting position to fixed will anchor the element to the browser window</li>
+  <li>and stays put even when you scroll up or down */<br>
+div {<br>
+height: 50px;<br>
+background-color: #69D2E7;<br>
+position: fixed;<br>
+}</li>
+</ul>
+
+<p>You could also look at this <a href="http://www.codecademy.com/glossary/css">link</a> for a quick review of CSS basics.</p>
+
+
+    </div>
+
+</article>
+<div class="post-nav">
+<a class="previous" href="/tech-blog/2013/10/12/sql-server-how-to-linked-server-an-access-database.html" title="SQL Server: How to Linked Server an Access Database">SQL Server: How to Linked Server...</a><a class="next" href="/tech-blog/2013/10/29/http-fundamentals-part-1-url-encoding-request-and-response.html" title="HTTP Fundamentals, Part 1: URL, Encoding, Request and Response">HTTP Fundamentals, Part 1: URL, Encoding,...</a>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/tech-blog/2017/11/28/net-code-documentation-and-testing-they-are-there-why-not-use-it-4.html" title="HTTP Fundamentals, Part 1: URL, Encoding, Request and Response">.NET Code Documentation And Testing: They Are There, Why Not Use It?...</a></li>
+<li><a class="post-link" href="/tech-blog/2015/02/27/c-whats-with-enums-anyways.html" title="HTTP Fundamentals, Part 1: URL, Encoding, Request and Response">C#: What’s with Enums anyways?</a></li>
+<li><a class="post-link" href="/tech-blog/2007/05/05/sql-server-2005-joins-and-union.html" title="HTTP Fundamentals, Part 1: URL, Encoding, Request and Response">SQL Server 2005: JOINS and UNION</a></li>
+<li><a class="post-link" href="/tech-blog/2007/04/21/vb-2005-dont-use-the-timer-control-on-your-windows-service-project.html" title="HTTP Fundamentals, Part 1: URL, Encoding, Request and Response">VB 2005: Don't use the Timer control on your Windows Service project...</a></li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items --><style type="text/css" media="screen">
+.post-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+</style>
+
+<div class="post-menu">
+  <div class="post-menu-title">TOC</div>
+  <div class="post-menu-content"></div>
+</div>
+
+<script>
+  function generateContent() {
+    var menu = document.querySelector(".post-menu");
+    var menuContent =  menu.querySelector(".post-menu-content");
+    var headings = document.querySelector(".post-content").querySelectorAll("h2, h3, h4, h5, h6");
+
+    // Hide menu when no headings
+    if (headings.length === 0) {
+      return menu.style.display = "none";
+    }
+
+    // Generate post menu
+    var menuHTML = '';
+    for (var i = 0; i < headings.length; i++) {
+      var h = headings[i];
+      menuHTML += (
+        '<li class="h-' + h.tagName.toLowerCase() + '">'
+        + '<a href="#h-' + h.getAttribute('id') + '">' + h.textContent + '</a></li>');
+    }
+
+    menuContent.innerHTML = '<ul>' + menuHTML + '</ul>';
+
+    // The header element
+    var header = document.querySelector('header.site-header');
+
+    function doMenuCollapse(index, over_items) {
+      var items = menuContent.firstChild.children;
+
+      if (over_items == undefined) {
+        over_items = 20;
+      }
+
+      if (items.length < over_items) {
+        return;
+      }
+
+      var activeItem = items[index];
+      var beginItem = activeItem
+      var endItem = activeItem
+      var beginIndex = index;
+      var endIndex = index + 1;
+      while (beginIndex >= 0
+        && !items[beginIndex].classList.contains('h-h2')) {
+        beginIndex -= 1;
+      }
+      while (endIndex < items.length
+        && !items[endIndex].classList.contains('h-h2')) {
+        endIndex += 1;
+      }
+      for (var i = 0; i < beginIndex; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+      for (var i = beginIndex + 1; i < endIndex; i++) {
+        item = items[i]
+        // if (!item.classList.contains('h-h2')) {
+          item.style.display = '';
+        // }
+      }
+      for (var i = endIndex; i < items.length; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+    }
+
+    // Init menu collapsed
+    doMenuCollapse(-1);
+
+    // Active the menu item
+    window.addEventListener('scroll', function (event) {
+      var lastActive = menuContent.querySelector('.active');
+      var changed = true;
+      var activeIndex = -1;
+      for (var i = headings.length - 1; i >= 0; i--) {
+        var h = headings[i];
+        var headingRect = h.getBoundingClientRect();
+        var headerRect = header.getBoundingClientRect();
+        var headerTop = Math.floor(headerRect.top);
+        var headerHeight = Math.floor(headerRect.height);
+        var headerHeight = headerTop + headerHeight + 20;
+        if (headingRect.top <= headerHeight) {
+          var id = 'h-' + h.getAttribute('id');
+          var a = menuContent.querySelector('a[href="#' + id  + '"]');
+          var curActive = a.parentNode;
+          if (curActive) {
+            curActive.classList.add('active');
+            activeIndex = i;
+          }
+          if (lastActive == curActive) {
+            changed = false;
+          }
+          break;
+        }
+      }
+      if (changed) {
+        if (lastActive) {
+          lastActive.classList.remove('active');
+        }
+        doMenuCollapse(activeIndex);
+      }
+      event.preventDefault();
+    });
+  }
+  generateContent();
+</script>
+</section>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/tech-blog/"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-inner">
+<div></div>
+      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
+      generator." href="https://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
+      <div class="footer-col rss-subscribe">Subscribe <a href="/tech-blog/feed.xml">via RSS</a>
+</div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

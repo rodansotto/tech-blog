@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Ways Developer Can Secure An ASP.NET Application (Redux 2022) | Rodan Sotto’s Tech Blog</title>
+<meta name="generator" content="Jekyll v3.9.2">
+<meta property="og:title" content="Ways Developer Can Secure An ASP.NET Application (Redux 2022)">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="A software developer’s personal notes">
+<meta property="og:description" content="A software developer’s personal notes">
+<link rel="canonical" href="https://rodansotto.github.io/tech-blog/2022/12/13/securing-asp-net-2022.html">
+<meta property="og:url" content="https://rodansotto.github.io/tech-blog/2022/12/13/securing-asp-net-2022.html">
+<meta property="og:site_name" content="Rodan Sotto’s Tech Blog">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2022-12-13T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Ways Developer Can Secure An ASP.NET Application (Redux 2022)">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-12-13T00:00:00+00:00","datePublished":"2022-12-13T00:00:00+00:00","description":"A software developer’s personal notes","headline":"Ways Developer Can Secure An ASP.NET Application (Redux 2022)","mainEntityOfPage":{"@type":"WebPage","@id":"https://rodansotto.github.io/tech-blog/2022/12/13/securing-asp-net-2022.html"},"url":"https://rodansotto.github.io/tech-blog/2022/12/13/securing-asp-net-2022.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="icon" href="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+  <link rel="stylesheet" href="/tech-blog/assets/css/main.css">
+  <script src="/tech-blog/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="https://rodansotto.github.io/tech-blog/feed.xml" title="Rodan Sotto's Tech Blog">
+<!--<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">-->
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs tpbg ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+
+  .tpbg {
+    background: transparent;
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header " role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/tech-blog/">
+  <img class="site-favicon" title="Rodan Sotto's Tech Blog" src="" onerror="this.style.display='none'">
+  Rodan Sotto's Tech Blog
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+<a class="page-link" href="/tech-blog/">HOME</a><a class="page-link" href="/tech-blog/archives.html">ARCHIVES</a><a class="page-link" href="/tech-blog/categories.html">CATEGORIES</a><a class="page-link" href="/tech-blog/search2.html">SEARCH</a>
+
+
+
+
+</div>
+        </nav>
+</div>
+  </div>
+</header>
+
+<script>
+  function initHeader() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;var scrollStatus = "";
+
+      if (y <= 0) {
+        scrollStatus = "top";
+      } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  }
+  document.addEventListener('DOMContentLoaded', initHeader);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    hashValue = decodeURIComponent(hashValue);
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+<div id="click-to-top" class="click-to-top">
+  <i class="fa fa-arrow-up"></i>
+</div>
+<script>
+  (function () {
+    const clickToTop = document.getElementById('click-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        clickToTop.classList.add('show')
+      }else {
+        clickToTop.classList.remove('show')
+      }
+    });
+    clickToTop.addEventListener('click', () => {
+      window.smoothScrollTo(0);
+    });
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="post">
+  <section>
+
+
+
+
+
+
+
+
+
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">Ways Developer Can Secure An ASP.NET Application (Redux 2022)</h1>
+  <h2 class="post-subtitle"></h2>
+
+  <p class="post-meta">
+    <time class="dt-published" datetime="2022-12-13T00:00:00+00:00" itemprop="datePublished"><i class="fa fa-calendar"></i> Dec 13, 2022
+    </time>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 10 mins</span>
+  </p></header>
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <p><img src="/tech-blog/assets/images/secureaspnetlogo.png" alt=""></p>
+
+<p>Updating my post back in 2015 <a href="/tech-blog/2015/11/02/ways-developer-can-secure-an-asp-net-application-part-1.html">here</a> for year 2022.</p>
+
+<h2 id="cross-site-scripting-xss">Cross-Site Scripting (XSS)</h2>
+
+<ul>
+  <li>
+    <p>According to <a href="https://owasp.org/www-community/attacks/xss/">OWASP’s definition of XSS</a>, XSS is a type of injection that occurs when a web application uses input from a user within the output it generates without validating or encoding it</p>
+  </li>
+  <li>
+    <p>To avoid XSS in ASP.NET, use <a href="https://learn.microsoft.com/en-us/aspnet/core/mvc/views/razor?view=aspnetcore-7.0#expression-encoding">Razor’s expression syntax</a> with the <code class="language-plaintext highlighter-rouge">@</code> symbol preceeding variable names, e.g. <code class="language-plaintext highlighter-rouge">@InputString</code>, as this will escape HTML characters in the input string by default</p>
+
+    <p>For example the following code:</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  @("&lt;span&gt;Hello World&lt;/span&gt;")
+</code></pre></div>    </div>
+
+    <p>will render the following HTML:</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  &amp;lt;span&amp;gt;Hello World&amp;lt;/span&amp;gt;
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Use the <a href="https://learn.microsoft.com/en-us/dotnet/api/system.web.httputility.htmlencode?view=net-7.0">HttpUtility.HtmlEncode()</a> function inside your Razor code:</p>
+
+    <div class="language-plaintext highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  &lt;%= HttpUtility.HtmlEncode(UserInput) %&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Avoid using <a href="https://learn.microsoft.com/en-us/dotnet/api/system.web.mvc.htmlhelper.raw?view=aspnet-mvc-5.2">HtmlHelper.Raw()</a>, unless you validate and sanitize the input string variable</p>
+  </li>
+</ul>
+
+<h2 id="same-origin-policy-and-cross-origin-resource-sharing-cors">Same Origin Policy and Cross Origin Resource Sharing (CORS)</h2>
+
+<ul>
+  <li>
+    <p>According to <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy#:~:text=The%20same%2Dorigin%20policy%20is,documents%2C%20reducing%20possible%20attack%20vectors.">MDN’s definition of same origin policy</a>, same origin policy restricts how a document or script loaded by one origin can interact with a resource from another origin</p>
+  </li>
+  <li>
+    <p>2 URLs have different origin if any of the following is different:</p>
+    <ul>
+      <li>protocol (<code class="language-plaintext highlighter-rouge">http</code> vs <code class="language-plaintext highlighter-rouge">https</code>)</li>
+      <li>domain (<code class="language-plaintext highlighter-rouge">https://my-site.com</code> vs <code class="language-plaintext highlighter-rouge">https://www.my-site.com</code>)</li>
+      <li>port (<code class="language-plaintext highlighter-rouge">:443</code> vs <code class="language-plaintext highlighter-rouge">:5000</code>)</li>
+    </ul>
+  </li>
+</ul>
+
+<p></p>
+<ul>
+  <li>
+    <p>CORS on the other hand, according to <a href="https://owasp.org/www-community/attacks/CORS_OriginHeaderScrutiny">OWASP’s definition of CORS</a>, allows a web application to expose resources to all or restricted domain and allows a web client to make AJAX request for resource on other domain than its source domain</p>
+  </li>
+  <li>
+    <p>The process involves the browser sending the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Origin">Origin</a> HTTP request header (with origin URL as its value) for cross domain request to the server.  The server then sending the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin">Access-Control-Allow-Origin</a> HTTP response header (with origin URL as its value) to allow CORS.  Then lastly the browser checking if URL in <code class="language-plaintext highlighter-rouge">Access-Control-Allow-Origin</code> header matches the origin URL.</p>
+  </li>
+  <li>
+    <p>To enable CORS per endpoint in ASP.NET:</p>
+    <ul>
+      <li>Use <a href="https://learn.microsoft.com/en-us/aspnet/core/security/cors?view=aspnetcore-7.0#attr">[EnableCors]</a> attribute at the controller level</li>
+      <li>And call <a href="https://learn.microsoft.com/en-us/aspnet/web-api/overview/security/enabling-cross-origin-requests-in-web-api#enable-cors">CorsHttpConfigurationExtensions.EnableCors()</a> on startup/configuration</li>
+    </ul>
+  </li>
+</ul>
+
+<p></p>
+<ul>
+  <li>
+    <p>You can enable CORS in <code class="language-plaintext highlighter-rouge">web.config</code> using <a href="https://learn.microsoft.com/en-us/iis/configuration/system.webserver/httpprotocol/customheaders/">&lt;customHeaders&gt;</a> but this will apply for all requests:</p>
+
+    <div class="language-xml highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;system.webServer&gt;</span>
+      <span class="nt">&lt;httpProtocol&gt;</span>
+          <span class="nt">&lt;customHeaders&gt;</span>
+              <span class="nt">&lt;add</span> <span class="na">name=</span><span class="s">"Access-Control-Allow-Origin"</span> <span class="na">value=</span><span class="s">"https://..."</span> <span class="nt">/&gt;</span>
+          <span class="nt">&lt;/customHeaders&gt;</span>
+      <span class="nt">&lt;/httpProtocol&gt;</span>
+  <span class="nt">&lt;/system.webServer&gt;</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="sql-injection">SQL Injection</h2>
+
+<ul>
+  <li>
+    <p>Avoid concatenating user input to SQL query statements</p>
+  </li>
+  <li>
+    <p>Use parameterized query or prepared statements</p>
+
+    <p>In your SQL query use <a href="https://learn.microsoft.com/en-us/sql/t-sql/language-elements/variables-transact-sql?view=sql-server-ver16">SQL variables</a>:</p>
+
+    <div class="language-sql highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">product</span> <span class="k">WHERE</span> <span class="n">id</span> <span class="o">=</span> <span class="o">@</span><span class="n">id</span>
+</code></pre></div>    </div>
+
+    <p>And in your ASP.NET code, use <a href="https://learn.microsoft.com/en-us/dotnet/api/system.data.sqlclient.sqlcommand.parameters?view=dotnet-plat-ext-7.0">SQL command parameters</a>:</p>
+
+    <div class="language-c# highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  <span class="n">command</span><span class="p">.</span><span class="n">Parameters</span><span class="p">.</span><span class="nf">AddWithValue</span><span class="p">(</span><span class="s">"@id"</span><span class="p">,</span> <span class="n">id</span><span class="p">);</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Additionally validate user input</p>
+  </li>
+  <li>
+    <p>Avoid execution of raw SQL even in Entity Framework 6 (EF6) - EF6 calls such as as <a href="https://learn.microsoft.com/en-us/dotnet/api/system.data.entity.database.sqlquery?view=entity-framework-6.2.0">Database.SqlQuery()</a> and <a href="https://learn.microsoft.com/en-us/dotnet/api/system.data.entity.database.executesqlcommand?view=entity-framework-6.2.0">Database.ExecuteSqlCommand()</a></p>
+  </li>
+  <li>
+    <p>For Entity Framework Core (EF Core), see <a href="https://learn.microsoft.com/en-us/ef/core/querying/sql-queries#passing-parameters">Passing parameters in EF Core</a></p>
+  </li>
+  <li>
+    <p>Also, avoid returning <a href="https://learn.microsoft.com/en-us/dotnet/api/system.linq.iqueryable?view=net-7.0">IQueryable</a> in EF and instead call <a href="https://learn.microsoft.com/en-us/dotnet/api/system.linq.enumerable.tolist?view=net-7.0">ToList()</a> before returning results</p>
+  </li>
+</ul>
+
+<h2 id="cross-site-request-forgery-csrf">Cross-Site Request Forgery (CSRF)</h2>
+
+<ul>
+  <li>
+    <p>According to <a href="https://owasp.org/www-community/attacks/csrf">OWASP’s definition of CSRF</a>, CSRF forces an end user to execute unwanted actions on a web application in which they are currently authenticated.</p>
+  </li>
+  <li>
+    <p>An example of CSRF is luring a user to visit the attacker’s site where the attacker is able to send an authenticated HTTP request to the server being attacked that the user has previously logged in</p>
+  </li>
+  <li>
+    <p>To prevent CSRF in ASP.NET, antiforgery tokens are used and they work because the malicious page cannot read the user’s tokens, due to same-origin policies</p>
+
+    <p>Use <a href="https://learn.microsoft.com/en-us/dotnet/api/system.web.mvc.htmlhelper.antiforgerytoken?view=aspnet-mvc-5.2">HtmlHelper.AntiForgeryToken()</a> to add antiforgery token to a <code class="language-plaintext highlighter-rouge">&lt;form&gt;</code> element:</p>
+
+    <div class="language-c# highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  <span class="nf">@using</span> <span class="p">(</span><span class="n">Html</span><span class="p">.</span><span class="nf">BeginForm</span><span class="p">(</span><span class="s">"DeleteProduct"</span><span class="p">,</span> <span class="s">"Admin"</span><span class="p">))</span> <span class="p">{</span>
+      <span class="n">@Html</span><span class="p">.</span><span class="nf">AntiForgeryToken</span><span class="p">()</span>
+      <span class="p">...</span>
+  <span class="p">}</span>
+</code></pre></div>    </div>
+
+    <p>And add the <a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.validateantiforgerytokenattribute?view=aspnetcore-7.0">[ValidateAntiForgeryToken]</a> attribute to the controller action:</p>
+
+    <div class="language-c# highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  <span class="p">[</span><span class="n">HttpPost</span><span class="p">]</span>
+  <span class="p">[</span><span class="n">ValidateAntiForgeryToken</span><span class="p">]</span>
+  <span class="k">public</span> <span class="n">ActionResult</span> <span class="nf">DeleteProduct</span><span class="p">(...)</span>
+  <span class="p">{</span>
+      <span class="p">...</span>
+  <span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>For ASP.NET Core, see <a href="https://learn.microsoft.com/en-us/aspnet/core/security/anti-request-forgery?view=aspnetcore-7.0">Prevent Cross-Site Request Forgery (XSRF/CSRF) attacks in ASP.NET Core</a></p>
+  </li>
+</ul>
+
+<h2 id="webconfig">Web.config</h2>
+
+<ul>
+  <li>
+    <p>ASP.NET or specifically IIS by default forbids downloading the <code class="language-plaintext highlighter-rouge">web.config</code> file via HTTP as this is configured in it’s config under <a href="https://learn.microsoft.com/en-us/previous-versions/dotnet/netframework-4.0/bya7fh0a(v=vs.100)">&lt;system.web&gt;/&lt;httpHandlers&gt;</a>:</p>
+
+    <div class="language-xml highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;system.web&gt;</span>
+      <span class="nt">&lt;httpHandlers&gt;</span>
+          <span class="nt">&lt;add</span> <span class="na">verb=</span><span class="s">"*"</span> <span class="na">path=</span><span class="s">"*.config"</span> <span class="na">type=</span><span class="s">"System.Web.HttpForbiddenHandler"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;/httpHandlers&gt;</span>
+  <span class="nt">&lt;/system.web&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>But still it should not contain sensitive information as this <code class="language-plaintext highlighter-rouge">web.config</code> file can be stored in the project’s source control repository</p>
+  </li>
+  <li>
+    <p>You can store your app settings and connections strings in an external file which you can refer to in your <code class="language-plaintext highlighter-rouge">web.config</code> (see <a href="https://learn.microsoft.com/en-us/dotnet/framework/configure-apps/file-schema/appsettings/appsettings-element-for-configuration#attribute">&lt;appSettings&gt; file</a> attribute and <a href="https://learn.microsoft.com/en-us/dotnet/framework/data/adonet/connection-strings-and-configuration-files">&lt;connectionStrings&gt; configSource</a>  attribute):</p>
+  </li>
+</ul>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nt">&lt;appSettings</span> <span class="na">file=</span><span class="s">"secrets.appSettings.config"</span><span class="nt">&gt;</span>
+        ...
+    <span class="nt">&lt;/appSettings&gt;</span>
+</code></pre></div></div>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nt">&lt;connectionStrings</span> <span class="na">configSource=</span><span class="s">"secrets.connectionStrings.config"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/connectionStrings&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>Encrypt sections of your <code class="language-plaintext highlighter-rouge">web.config</code> file (see <a href="https://learn.microsoft.com/en-us/previous-versions/aspnet/zhhddkxy(v=vs.100)">Encrypting and Decrypting Configuration Sections</a>)</p>
+  </li>
+  <li>
+    <p>If you are using a cloud provider, use the <a href="https://learn.microsoft.com/en-us/azure/key-vault/general/basic-concepts">Key Vault in Azure</a> or <a href="https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html">Secrets Manager in AWS</a> to store sensitive information</p>
+  </li>
+</ul>
+
+<h2 id="password-hashing">Password Hashing</h2>
+
+<ul>
+  <li>
+    <p>You can use <a href="https://learn.microsoft.com/en-us/dotnet/api/system.security.cryptography.rfc2898derivebytes?view=net-7.0">Rfc2898DeriveBytes</a> to hash password</p>
+  </li>
+  <li>
+    <p>Or use <a href="https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.identity.passwordhasher-1?view=aspnetcore-7.0">ASP.NET Core Identity PasswordHasher</a> (see <a href="https://andrewlock.net/exploring-the-asp-net-core-identity-passwordhasher/">Exploring the ASP.NET Core Identity PasswordHasher</a>)</p>
+  </li>
+</ul>
+
+<h2 id="cookies">Cookies</h2>
+
+<ul>
+  <li>Secure cookies in ASP.NET code (see <a href="https://learn.microsoft.com/en-us/dotnet/api/system.web.httpcookie?view=netframework-4.8">HttpCookie Class</a>) by setting the following properties:
+    <ul>
+      <li>
+<a href="https://owasp.org/www-community/controls/SecureCookieAttribute">Secure</a> - set to <code class="language-plaintext highlighter-rouge">true</code> to only transmit cookie using SSL, that is over HTTPS</li>
+      <li>
+<a href="https://owasp.org/www-community/HttpOnly">HttpOnly</a> - set to <code class="language-plaintext highlighter-rouge">true</code> to prevent client-side script from accessing the cookie</li>
+      <li>
+<a href="https://owasp.org/www-community/SameSite">SameSite</a> - set to <code class="language-plaintext highlighter-rouge">strict</code> to prevent cookie from being sent in all cross-site browsing contexts or set to <code class="language-plaintext highlighter-rouge">lax</code> for a more balanced approach between security and usability</li>
+    </ul>
+
+    <p></p>
+    <div class="language-c# highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  <span class="n">cookie</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">HttpCookie</span><span class="p">(</span><span class="s">"NewCookie"</span><span class="p">);</span>
+  <span class="n">cookie</span><span class="p">.</span><span class="n">Secure</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+  <span class="n">cookie</span><span class="p">.</span><span class="n">HttpOnly</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+  <span class="n">cookie</span><span class="p">.</span><span class="n">SameSite</span> <span class="p">=</span> <span class="n">SameSiteMode</span><span class="p">.</span><span class="n">Strict</span> <span class="c1">// or SameSiteMode.Lax</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="sessions">Sessions</h2>
+
+<ul>
+  <li>
+    <p>Secure sessions by setting properties in <code class="language-plaintext highlighter-rouge">web.config</code> under <code class="language-plaintext highlighter-rouge">&lt;system.web&gt;/&lt;sessionState&gt;</code> (see <a href="https://learn.microsoft.com/en-us/dotnet/api/system.web.configuration.sessionstatesection?view=netframework-4.8">SessionStateSection Class</a>) and <code class="language-plaintext highlighter-rouge">&lt;system.web&gt;/&lt;httpCookies&gt;</code> (see <a href="https://learn.microsoft.com/en-us/dotnet/api/system.web.configuration.httpcookiessection?view=netframework-4.8">HttpCookiesSection Class</a>):</p>
+
+    <div class="language-xml highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;system.web&gt;</span>
+      <span class="nt">&lt;sessionState</span>
+          <span class="na">cookieless=</span><span class="s">"false"</span>
+          <span class="na">regenerateExpiredSessionId=</span><span class="s">"false"</span>
+          <span class="na">timeout=</span><span class="s">"20"</span>
+      <span class="nt">/&gt;</span>
+      <span class="nt">&lt;httpCookies</span>
+          <span class="na">httpOnlyCookies=</span><span class="s">"true"</span>
+          <span class="na">requireSSL=</span><span class="s">"true"</span>
+          <span class="na">sameSite=</span><span class="s">"Strict"</span>
+      <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/system.web&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Setting <code class="language-plaintext highlighter-rouge">&lt;sessionState&gt; cookieless</code> attribute to <code class="language-plaintext highlighter-rouge">false</code> will prevent encoding the session ID in the URL which is prone to a security attack and instead use a cookie to store the session ID</p>
+  </li>
+  <li>
+    <p>Setting <code class="language-plaintext highlighter-rouge">&lt;sessionState&gt; regenerateExpiredSessionId</code> attribute to <code class="language-plaintext highlighter-rouge">false</code> will prevent using the same session ID value when expired</p>
+  </li>
+  <li>
+    <p>Setting a <code class="language-plaintext highlighter-rouge">&lt;sessionState&gt; timeout</code> is recommended to prevent a session running too long which make it more vulnerable to security attack</p>
+  </li>
+</ul>
+
+<h2 id="enforce-https">Enforce HTTPS</h2>
+
+<ul>
+  <li>
+    <p>Enforce HTTPS in ASP.NET code by redirecting after checking <a href="https://learn.microsoft.com/en-us/dotnet/api/system.web.httprequest.issecureconnection?view=netframework-4.8">HttpRequest.IsSecureConnection</a>:</p>
+
+    <div class="language-c# highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> <span class="k">if</span> <span class="p">(!</span><span class="n">HttpContext</span><span class="p">.</span><span class="n">Current</span><span class="p">.</span><span class="n">Request</span><span class="p">.</span><span class="n">IsSecureConnection</span><span class="p">)</span>
+ <span class="p">{</span>
+      <span class="n">Response</span><span class="p">.</span><span class="nf">Redirect</span><span class="p">(</span><span class="s">"https://"</span> <span class="p">+</span> <span class="n">Request</span><span class="p">.</span><span class="n">ServerVariables</span><span class="p">[</span><span class="s">"HTTP_HOST"</span><span class="p">]</span> <span class="p">+</span> <span class="n">HttpContext</span><span class="p">.</span><span class="n">Current</span><span class="p">.</span><span class="n">Request</span><span class="p">.</span><span class="n">RawUrl</span><span class="p">);</span>
+ <span class="p">}</span>    
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>You can add a rewrite rule in <code class="language-plaintext highlighter-rouge">web.config</code>:</p>
+
+    <div class="language-xml highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;system.webServer&gt;</span>
+      <span class="nt">&lt;rewrite&gt;</span>
+          <span class="nt">&lt;rules&gt;</span>
+              <span class="nt">&lt;rule</span> <span class="na">name=</span><span class="s">"HTTP to HTTPS redirect"</span> <span class="na">stopProcessing=</span><span class="s">"true"</span><span class="nt">&gt;</span> 
+                  <span class="nt">&lt;match</span> <span class="na">url=</span><span class="s">"(.*)"</span> <span class="nt">/&gt;</span> 
+                  <span class="nt">&lt;conditions&gt;</span> 
+                      <span class="nt">&lt;add</span> <span class="na">input=</span><span class="s">"{HTTPS}"</span> <span class="na">pattern=</span><span class="s">"off"</span> <span class="na">ignoreCase=</span><span class="s">"true"</span> <span class="nt">/&gt;</span>
+                  <span class="nt">&lt;/conditions&gt;</span> 
+                  <span class="nt">&lt;action</span> <span class="na">type=</span><span class="s">"Redirect"</span> <span class="na">redirectType=</span><span class="s">"Permanent"</span> <span class="na">url=</span><span class="s">"https://{HTTP_HOST}/{R:1}"</span> <span class="nt">/&gt;</span>
+              <span class="nt">&lt;/rule&gt;</span> 
+          <span class="nt">&lt;/rules&gt;</span>
+      <span class="nt">&lt;/rewrite&gt;</span>
+  <span class="nt">&lt;/system.webServer&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Or you can add the HTTP <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security">Strict-Transport-Security (HSTS)</a> header to the response</p>
+  </li>
+  <li>
+    <p>For ASP.NET Core, see <a href="https://learn.microsoft.com/en-us/aspnet/core/security/enforcing-ssl?view=aspnetcore-7.0&tabs=visual-studio">Enforce HTTPS in ASP.NET Core</a> for information on <code class="language-plaintext highlighter-rouge">UseHttpsRedirection()</code> and <code class="language-plaintext highlighter-rouge">UseHsts()</code></p>
+  </li>
+</ul>
+
+<h2 id="error-handling">Error handling</h2>
+
+<ul>
+  <li>
+    <p>Having a custom error page allows you to tailor your error messages from displaying too much information or from displaying sensitive information that can lead to a security attack</p>
+  </li>
+  <li>
+    <p>In ASP.NET, you can add custom error handler in <code class="language-plaintext highlighter-rouge">Global.asax</code> file under <code class="language-plaintext highlighter-rouge">Application_Error()</code>:</p>
+
+    <div class="language-c# highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  <span class="k">protected</span> <span class="k">void</span> <span class="nf">Application_Error</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+  <span class="p">{</span>
+      <span class="n">Exception</span> <span class="n">exception</span> <span class="p">=</span> <span class="n">Server</span><span class="p">.</span><span class="nf">GetLastError</span><span class="p">();</span>
+      <span class="n">System</span><span class="p">.</span><span class="n">Diagnostics</span><span class="p">.</span><span class="n">Debug</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">exception</span><span class="p">);</span>
+      <span class="n">Response</span><span class="p">.</span><span class="nf">Redirect</span><span class="p">(</span><span class="s">"/Home/Error"</span><span class="p">);</span>
+  <span class="p">}</span>  
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>You can configure custom error messages/pages in <code class="language-plaintext highlighter-rouge">web.config</code></p>
+
+    <p>For example you can add this to your <code class="language-plaintext highlighter-rouge">web.config</code> file:</p>
+
+    <div class="language-xml highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  <span class="nt">&lt;customErrors</span> <span class="na">mode=</span><span class="s">"On"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;error</span> <span class="na">statusCode=</span><span class="s">"404"</span> <span class="na">redirect=</span><span class="s">"~/Home/MyCustomErrorPage"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/customErrors&gt;</span>
+</code></pre></div>    </div>
+
+    <p>Then in your <code class="language-plaintext highlighter-rouge">HomeController</code> code, you would have this method defined:</p>
+
+    <div class="language-c# highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  <span class="k">public</span> <span class="n">ActionResult</span> <span class="nf">MyCustomErrorPage</span><span class="p">(...)</span>
+  <span class="p">{</span>
+      <span class="p">...</span>
+  <span class="p">}</span>
+</code></pre></div>    </div>
+
+    <p>And of course the corresponding view file <code class="language-plaintext highlighter-rouge">MyCustomErrorPage.cshtml</code> should have been created as well</p>
+  </li>
+</ul>
+
+<h2 id="owasp-links">OWASP Links</h2>
+<ul>
+  <li><a href="https://owasp.org/Top10/">OWASP Top 10 2021</a></li>
+  <li><a href="https://owasp.org/www-project-top-ten/2017/">OWASP Top 10 2017</a></li>
+</ul>
+
+
+    </div>
+
+</article>
+<div class="post-nav">
+<a class="previous" href="/tech-blog/2022/11/15/maintainable-scalable-software-checklist.html" title="Maintainable and Scalable Software: A Checklist">Maintainable and Scalable Software: A Checklist...</a><a class="next" href="/tech-blog/2022/12/14/key-points-to-arch-cloud-app-cost.html" title="Key Points To Architecturing Cloud Applications, Part 1: Cost">Key Points To Architecturing Cloud Applications,...</a>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/tech-blog/2013/12/17/javascript-attachingdetaching-event-onload-vs-domcontentloaded-manipulating-dom-and-css.html" title="Key Points To Architecturing Cloud Applications, Part 1: Cost">JavaScript: Attaching/Detaching Event, OnLoad vs. DOMContentLoaded, Manipulating DOM and CSS</a></li>
+<li><a class="post-link" href="/tech-blog/2014/06/04/demonstrating-the-new-html5-and-css3-features.html" title="Key Points To Architecturing Cloud Applications, Part 1: Cost">Demonstrating the new HTML5 and CSS3 Features</a></li>
+<li><a class="post-link" href="/tech-blog/2017/11/13/a-chat-app-that-receives-sms-and-sends-http-messages-a-xamarin-android-app-preview2.html" title="Key Points To Architecturing Cloud Applications, Part 1: Cost">A chat app that receives SMS and sends HTTP messages (A Xamarin...</a></li>
+<li><a class="post-link" href="/tech-blog/2007/05/05/vb-2005-things-to-know-about-the-visual-studio-2005-ide.html" title="Key Points To Architecturing Cloud Applications, Part 1: Cost">VB 2005: Things to know about the Visual Studio 2005 IDE</a></li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items --><style type="text/css" media="screen">
+.post-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+</style>
+
+<div class="post-menu">
+  <div class="post-menu-title">TOC</div>
+  <div class="post-menu-content"></div>
+</div>
+
+<script>
+  function generateContent() {
+    var menu = document.querySelector(".post-menu");
+    var menuContent =  menu.querySelector(".post-menu-content");
+    var headings = document.querySelector(".post-content").querySelectorAll("h2, h3, h4, h5, h6");
+
+    // Hide menu when no headings
+    if (headings.length === 0) {
+      return menu.style.display = "none";
+    }
+
+    // Generate post menu
+    var menuHTML = '';
+    for (var i = 0; i < headings.length; i++) {
+      var h = headings[i];
+      menuHTML += (
+        '<li class="h-' + h.tagName.toLowerCase() + '">'
+        + '<a href="#h-' + h.getAttribute('id') + '">' + h.textContent + '</a></li>');
+    }
+
+    menuContent.innerHTML = '<ul>' + menuHTML + '</ul>';
+
+    // The header element
+    var header = document.querySelector('header.site-header');
+
+    function doMenuCollapse(index, over_items) {
+      var items = menuContent.firstChild.children;
+
+      if (over_items == undefined) {
+        over_items = 20;
+      }
+
+      if (items.length < over_items) {
+        return;
+      }
+
+      var activeItem = items[index];
+      var beginItem = activeItem
+      var endItem = activeItem
+      var beginIndex = index;
+      var endIndex = index + 1;
+      while (beginIndex >= 0
+        && !items[beginIndex].classList.contains('h-h2')) {
+        beginIndex -= 1;
+      }
+      while (endIndex < items.length
+        && !items[endIndex].classList.contains('h-h2')) {
+        endIndex += 1;
+      }
+      for (var i = 0; i < beginIndex; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+      for (var i = beginIndex + 1; i < endIndex; i++) {
+        item = items[i]
+        // if (!item.classList.contains('h-h2')) {
+          item.style.display = '';
+        // }
+      }
+      for (var i = endIndex; i < items.length; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+    }
+
+    // Init menu collapsed
+    doMenuCollapse(-1);
+
+    // Active the menu item
+    window.addEventListener('scroll', function (event) {
+      var lastActive = menuContent.querySelector('.active');
+      var changed = true;
+      var activeIndex = -1;
+      for (var i = headings.length - 1; i >= 0; i--) {
+        var h = headings[i];
+        var headingRect = h.getBoundingClientRect();
+        var headerRect = header.getBoundingClientRect();
+        var headerTop = Math.floor(headerRect.top);
+        var headerHeight = Math.floor(headerRect.height);
+        var headerHeight = headerTop + headerHeight + 20;
+        if (headingRect.top <= headerHeight) {
+          var id = 'h-' + h.getAttribute('id');
+          var a = menuContent.querySelector('a[href="#' + id  + '"]');
+          var curActive = a.parentNode;
+          if (curActive) {
+            curActive.classList.add('active');
+            activeIndex = i;
+          }
+          if (lastActive == curActive) {
+            changed = false;
+          }
+          break;
+        }
+      }
+      if (changed) {
+        if (lastActive) {
+          lastActive.classList.remove('active');
+        }
+        doMenuCollapse(activeIndex);
+      }
+      event.preventDefault();
+    });
+  }
+  generateContent();
+</script>
+</section>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/tech-blog/"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-inner">
+<div></div>
+      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
+      generator." href="https://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
+      <div class="footer-col rss-subscribe">Subscribe <a href="/tech-blog/feed.xml">via RSS</a>
+</div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

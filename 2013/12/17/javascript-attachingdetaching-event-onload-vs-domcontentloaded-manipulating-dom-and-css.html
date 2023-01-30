@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>JavaScript: Attaching/Detaching Event, OnLoad vs. DOMContentLoaded, Manipulating DOM and CSS | Rodan Sotto’s Tech Blog</title>
+<meta name="generator" content="Jekyll v3.9.2">
+<meta property="og:title" content="JavaScript: Attaching/Detaching Event, OnLoad vs. DOMContentLoaded, Manipulating DOM and CSS">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Event Handling, Attaching and Detaching Events">
+<meta property="og:description" content="Event Handling, Attaching and Detaching Events">
+<link rel="canonical" href="https://rodansotto.github.io/tech-blog/2013/12/17/javascript-attachingdetaching-event-onload-vs-domcontentloaded-manipulating-dom-and-css.html">
+<meta property="og:url" content="https://rodansotto.github.io/tech-blog/2013/12/17/javascript-attachingdetaching-event-onload-vs-domcontentloaded-manipulating-dom-and-css.html">
+<meta property="og:site_name" content="Rodan Sotto’s Tech Blog">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2013-12-17T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="JavaScript: Attaching/Detaching Event, OnLoad vs. DOMContentLoaded, Manipulating DOM and CSS">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2013-12-17T00:00:00+00:00","datePublished":"2013-12-17T00:00:00+00:00","description":"Event Handling, Attaching and Detaching Events","headline":"JavaScript: Attaching/Detaching Event, OnLoad vs. DOMContentLoaded, Manipulating DOM and CSS","mainEntityOfPage":{"@type":"WebPage","@id":"https://rodansotto.github.io/tech-blog/2013/12/17/javascript-attachingdetaching-event-onload-vs-domcontentloaded-manipulating-dom-and-css.html"},"url":"https://rodansotto.github.io/tech-blog/2013/12/17/javascript-attachingdetaching-event-onload-vs-domcontentloaded-manipulating-dom-and-css.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="icon" href="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+  <link rel="stylesheet" href="/tech-blog/assets/css/main.css">
+  <script src="/tech-blog/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="https://rodansotto.github.io/tech-blog/feed.xml" title="Rodan Sotto's Tech Blog">
+<!--<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">-->
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs tpbg ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+
+  .tpbg {
+    background: transparent;
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header " role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/tech-blog/">
+  <img class="site-favicon" title="Rodan Sotto's Tech Blog" src="" onerror="this.style.display='none'">
+  Rodan Sotto's Tech Blog
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+<a class="page-link" href="/tech-blog/">HOME</a><a class="page-link" href="/tech-blog/archives.html">ARCHIVES</a><a class="page-link" href="/tech-blog/categories.html">CATEGORIES</a><a class="page-link" href="/tech-blog/search2.html">SEARCH</a>
+
+
+
+
+</div>
+        </nav>
+</div>
+  </div>
+</header>
+
+<script>
+  function initHeader() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;var scrollStatus = "";
+
+      if (y <= 0) {
+        scrollStatus = "top";
+      } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  }
+  document.addEventListener('DOMContentLoaded', initHeader);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    hashValue = decodeURIComponent(hashValue);
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+<div id="click-to-top" class="click-to-top">
+  <i class="fa fa-arrow-up"></i>
+</div>
+<script>
+  (function () {
+    const clickToTop = document.getElementById('click-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        clickToTop.classList.add('show')
+      }else {
+        clickToTop.classList.remove('show')
+      }
+    });
+    clickToTop.addEventListener('click', () => {
+      window.smoothScrollTo(0);
+    });
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="post">
+  <section>
+
+
+
+
+
+
+
+
+
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">JavaScript: Attaching/Detaching Event, OnLoad vs. DOMContentLoaded, Manipulating DOM and CSS</h1>
+  <h2 class="post-subtitle"></h2>
+
+  <p class="post-meta">
+    <time class="dt-published" datetime="2013-12-17T00:00:00+00:00" itemprop="datePublished"><i class="fa fa-calendar"></i> Dec 17, 2013
+    </time>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 4 mins</span>
+  </p></header>
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <p><strong>Event Handling, Attaching and Detaching Events</strong></p>
+
+<p>3 phases of event dispatch:</p>
+
+<ul>
+  <li>
+<em>Capturing</em> – going down the DOM tree until it reaches the target element</li>
+  <li><em>Target</em></li>
+  <li>
+<em>Bubbling</em> – going back up the DOM tree from the target element</li>
+</ul>
+
+<p>// standard way of accessing the Event object<br>
+var eventHandlerDOM = function(evt) {<br>
+    alert(evt.type); //displays click<br>
+}</p>
+
+<p>// starting IE 9 you can use the standard way<br>
+var eventHandlerIE8Older = function() {<br>
+    var evt = window.event;<br>
+    alert(evt.type);<br>
+}</p>
+
+<p>// cross-browser way<br>
+var eventHandlerCB = function(evt) {<br>
+    if (!evt) evt = window.event;<br>
+    alert(evt.type);<br>
+}</p>
+
+<p>window.onload = function() {<br>
+    var btn = document.getElementById(“btn”);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 2 ways of attaching an event  
+btn.onclick = eventHandlerCB;  
+// or ...  
+if (btn.addEventListener) {  
+    btn.addEventListener("click", eventHandlerCB, false);  
+}  
+else {  
+    // starting IE 9, you can use the standard way using  
+    //  addEventListener  
+    btn.attachEvent("onclick", eventHandlerCB);  
+}  
+  
+alert("events attached");  
+alert("now detaching events...");  
+detachEvents();  
+alert("events detached");       }  
+</code></pre></div></div>
+
+<p>// detaching events<br>
+var detachEvents = function() {<br>
+    if (btn.removeEventListener) {<br>
+        btn.removeEventListener(“click”, eventHandlerCB, false);<br>
+    }<br>
+    else {<br>
+        // starting IE 9, you can use the standard way using<br>
+        //  removeEventListener<br>
+        btn.detachEvent(“onclick”, eventHandlerCB);<br>
+    }    <br>
+}</p>
+
+<p><strong><em>window.onload</em> Event vs. <em>document.DOMContentLoaded</em> event</strong></p>
+
+<p>The problem with running script on <em>window.onload</em> event is that if you have a rather large image to download, your script will run only after the image is downloaded.  <em>window.onload</em> event is triggered after everything, including external stylesheets, javascript files and images, has been downloaded.  An alternative, and usually a best practice, is to run your script on <em>document.DOMContentLoaded</em> event.</p>
+
+<p>var readyFunc = function() {<br>
+    var stat = document.getElementById(“statDOMReady”);<br>
+    stat.innerHTML = “DOM is ready!!!”;<br>
+}</p>
+
+<p>document.addEventListener(“DOMContentLoaded”, readyFunc, false);</p>
+
+<p>Note that <em>document.DOMContentLoaded</em> event is an <em>HTML5</em> specification.  Also if your script needs to work with CSS, you need to put all your external stylesheets in the header and all your external scripts in the footer so all the styles will be loaded before your scripts are run.</p>
+
+<p><strong>Manipulating DOM</strong></p>
+
+<p>A sample of what you can do for manipulating DOM:</p>
+
+<ul>
+  <li>
+<em>document.createElement()</em> – create an Element node</li>
+  <li>
+<em>document.createTextNode()</em> –  create a Text node</li>
+  <li>
+<em>element.cloneNode()</em> – create a copy of a node and its attributes with option to include the descendants as well</li>
+  <li>
+<em>element.appendChild()</em> – add a new child node as the last child node</li>
+  <li>
+<em>element.insertBefore()</em> – insert a new child node before a specified child node</li>
+  <li>
+<em>element.removeChild()</em> – remove a child node</li>
+  <li>
+<em>element.replaceChild()</em> – replace a child node</li>
+  <li>
+<em>document.createDocumentFragment()</em> – create an imaginary Node object; useful for adding content to your document, or extracting parts of your document and modifying it and inserting it back</li>
+</ul>
+
+<p><strong>Manipulating CSS</strong></p>
+
+<p>2 ways to import external stylesheets:</p>
+
+<!-- using <style> tag and @import -->
+<p>&lt;style type=“text/css”&gt;<br>
+    @import “myStylesheet.css”;<br>
+&lt;/style&gt;</p>
+
+<!-- using <link> tag and rel="stylesheet" -->
+<p>&lt;link type=“text/css” href=“myStylesheet.css” rel=“stylesheet” /&gt;</p>
+
+<p>Persistent, preferred, and alternate stylesheets:</p>
+
+<!-- persistent stylesheet -->
+<p>&lt;link type=“text/css” href=“main.css” rel=“stylesheet” /&gt;</p>
+
+<!-- preferred stylesheet -->
+<p>&lt;link type=“text/css” href=“dflt.css” rel=“stylesheet” title=“Default” /&gt;</p>
+
+<!-- alternate stylesheet -->
+<p>&lt;link type=“text/css” href=“alt1.css” rel=“alternate stylesheet”<br>
+    title=“Alternate 1” /&gt;</p>
+
+<p><em>element.style</em>, <em>window.getComputedSyle()</em>, <em>element.currentStyle</em>, elements positioning properties:</p>
+
+<p>var p1 = document.getElementById(“p1”);<br>
+p1.style.fontSize = “20px”;</p>
+
+<p>// standard way of getting the computed style<br>
+var computedStyle = window.getComputedStyle(p1, null);<br>
+alert(computedStyle.fontSize); // displays 20px</p>
+
+<p>// IE way of getting the computed syle<br>
+// starting from IE9, you can use the standard way<br>
+var computedStyle2 = p1.currentStyle;<br>
+alert(computedStyle2.fontSize); // displays 20px</p>
+
+<p>// cross-browser code for getting the computed style<br>
+if ( !(“getComputedStyle” in window) ) {<br>
+    alert(“getComputedStyle does not exist”)<br>
+    window.getComputedStyle = function(element) {<br>
+        return element.currentStyle;<br>
+    }<br>
+}</p>
+
+<p>// positioning properties of an element you can use<br>
+alert(p1.offsetTop);    // displays 130<br>
+alert(p1.offsetLeft);   // displays 8<br>
+alert(p1.offsetHeight); // displays 23<br>
+alert(p1.offsetWidth);  // displays 911<br>
+// below will display 0, because it’s parent is the body tag<br>
+alert(p1.offsetParent.offsetTop);<br>
+var body = document.getElementsByTagName(“body”)[0];<br>
+alert(body.offsetTop);  // displays 0</p>
+
+
+    </div>
+
+</article>
+<div class="post-nav">
+<a class="previous" href="/tech-blog/2013/12/09/javascript-regexp-error-dom-event.html" title="JavaScript: RegExp, Error, DOM, and Event">JavaScript: RegExp, Error, DOM, and Event...</a><a class="next" href="/tech-blog/2014/01/15/sql-server-quick-notes-on-synonym-merge-try_convert-try_cast-parse-try_parse-checksum-isnull-coalesce-nullif-and-join.html" title="SQL Server: Quick Notes on SYNONYM, MERGE, TRY_CONVERT, TRY_CAST, PARSE, TRY_PARSE, CHECKSUM, ISNULL, COALESCE, NULLIF, and JOIN">SQL Server: Quick Notes on SYNONYM,...</a>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/tech-blog/2014/12/26/the-very-basic-syntax-of-razor.html" title="SQL Server: Quick Notes on SYNONYM, MERGE, TRY_CONVERT, TRY_CAST, PARSE, TRY_PARSE, CHECKSUM, ISNULL, COALESCE, NULLIF, and JOIN">The Very Basic Syntax of Razor</a></li>
+<li><a class="post-link" href="/tech-blog/2013/04/28/general-c-html-css-javascript-ajax.html" title="SQL Server: Quick Notes on SYNONYM, MERGE, TRY_CONVERT, TRY_CAST, PARSE, TRY_PARSE, CHECKSUM, ISNULL, COALESCE, NULLIF, and JOIN">General: C#, HTML, CSS, Javascript, AJAX</a></li>
+<li><a class="post-link" href="/tech-blog/2014/03/03/winforms-using-devexpress-there-is-a-quick-way-of-making-sure-only-one-instance-of-a-form-is-open.html" title="SQL Server: Quick Notes on SYNONYM, MERGE, TRY_CONVERT, TRY_CAST, PARSE, TRY_PARSE, CHECKSUM, ISNULL, COALESCE, NULLIF, and JOIN">WinForms: Using DevExpress, there is a quick way of making sure only...</a></li>
+<li><a class="post-link" href="/tech-blog/2009/04/01/design-patterns-introduction.html" title="SQL Server: Quick Notes on SYNONYM, MERGE, TRY_CONVERT, TRY_CAST, PARSE, TRY_PARSE, CHECKSUM, ISNULL, COALESCE, NULLIF, and JOIN">Design Patterns: Introduction</a></li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items --><style type="text/css" media="screen">
+.post-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+</style>
+
+<div class="post-menu">
+  <div class="post-menu-title">TOC</div>
+  <div class="post-menu-content"></div>
+</div>
+
+<script>
+  function generateContent() {
+    var menu = document.querySelector(".post-menu");
+    var menuContent =  menu.querySelector(".post-menu-content");
+    var headings = document.querySelector(".post-content").querySelectorAll("h2, h3, h4, h5, h6");
+
+    // Hide menu when no headings
+    if (headings.length === 0) {
+      return menu.style.display = "none";
+    }
+
+    // Generate post menu
+    var menuHTML = '';
+    for (var i = 0; i < headings.length; i++) {
+      var h = headings[i];
+      menuHTML += (
+        '<li class="h-' + h.tagName.toLowerCase() + '">'
+        + '<a href="#h-' + h.getAttribute('id') + '">' + h.textContent + '</a></li>');
+    }
+
+    menuContent.innerHTML = '<ul>' + menuHTML + '</ul>';
+
+    // The header element
+    var header = document.querySelector('header.site-header');
+
+    function doMenuCollapse(index, over_items) {
+      var items = menuContent.firstChild.children;
+
+      if (over_items == undefined) {
+        over_items = 20;
+      }
+
+      if (items.length < over_items) {
+        return;
+      }
+
+      var activeItem = items[index];
+      var beginItem = activeItem
+      var endItem = activeItem
+      var beginIndex = index;
+      var endIndex = index + 1;
+      while (beginIndex >= 0
+        && !items[beginIndex].classList.contains('h-h2')) {
+        beginIndex -= 1;
+      }
+      while (endIndex < items.length
+        && !items[endIndex].classList.contains('h-h2')) {
+        endIndex += 1;
+      }
+      for (var i = 0; i < beginIndex; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+      for (var i = beginIndex + 1; i < endIndex; i++) {
+        item = items[i]
+        // if (!item.classList.contains('h-h2')) {
+          item.style.display = '';
+        // }
+      }
+      for (var i = endIndex; i < items.length; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+    }
+
+    // Init menu collapsed
+    doMenuCollapse(-1);
+
+    // Active the menu item
+    window.addEventListener('scroll', function (event) {
+      var lastActive = menuContent.querySelector('.active');
+      var changed = true;
+      var activeIndex = -1;
+      for (var i = headings.length - 1; i >= 0; i--) {
+        var h = headings[i];
+        var headingRect = h.getBoundingClientRect();
+        var headerRect = header.getBoundingClientRect();
+        var headerTop = Math.floor(headerRect.top);
+        var headerHeight = Math.floor(headerRect.height);
+        var headerHeight = headerTop + headerHeight + 20;
+        if (headingRect.top <= headerHeight) {
+          var id = 'h-' + h.getAttribute('id');
+          var a = menuContent.querySelector('a[href="#' + id  + '"]');
+          var curActive = a.parentNode;
+          if (curActive) {
+            curActive.classList.add('active');
+            activeIndex = i;
+          }
+          if (lastActive == curActive) {
+            changed = false;
+          }
+          break;
+        }
+      }
+      if (changed) {
+        if (lastActive) {
+          lastActive.classList.remove('active');
+        }
+        doMenuCollapse(activeIndex);
+      }
+      event.preventDefault();
+    });
+  }
+  generateContent();
+</script>
+</section>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/tech-blog/"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-inner">
+<div></div>
+      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
+      generator." href="https://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
+      <div class="footer-col rss-subscribe">Subscribe <a href="/tech-blog/feed.xml">via RSS</a>
+</div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

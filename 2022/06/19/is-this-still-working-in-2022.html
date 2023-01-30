@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Is This Still Working In 2022 ?!?! | Rodan Sotto’s Tech Blog</title>
+<meta name="generator" content="Jekyll v3.9.2">
+<meta property="og:title" content="Is This Still Working In 2022 ?!?!">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="A software developer’s personal notes">
+<meta property="og:description" content="A software developer’s personal notes">
+<link rel="canonical" href="https://rodansotto.github.io/tech-blog/2022/06/19/is-this-still-working-in-2022.html">
+<meta property="og:url" content="https://rodansotto.github.io/tech-blog/2022/06/19/is-this-still-working-in-2022.html">
+<meta property="og:site_name" content="Rodan Sotto’s Tech Blog">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2022-06-19T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Is This Still Working In 2022 ?!?!">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-06-19T00:00:00+00:00","datePublished":"2022-06-19T00:00:00+00:00","description":"A software developer’s personal notes","headline":"Is This Still Working In 2022 ?!?!","mainEntityOfPage":{"@type":"WebPage","@id":"https://rodansotto.github.io/tech-blog/2022/06/19/is-this-still-working-in-2022.html"},"url":"https://rodansotto.github.io/tech-blog/2022/06/19/is-this-still-working-in-2022.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="icon" href="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+  <link rel="stylesheet" href="/tech-blog/assets/css/main.css">
+  <script src="/tech-blog/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="https://rodansotto.github.io/tech-blog/feed.xml" title="Rodan Sotto's Tech Blog">
+<!--<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">-->
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs tpbg ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+
+  .tpbg {
+    background: transparent;
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header " role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/tech-blog/">
+  <img class="site-favicon" title="Rodan Sotto's Tech Blog" src="" onerror="this.style.display='none'">
+  Rodan Sotto's Tech Blog
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+<a class="page-link" href="/tech-blog/">HOME</a><a class="page-link" href="/tech-blog/archives.html">ARCHIVES</a><a class="page-link" href="/tech-blog/categories.html">CATEGORIES</a><a class="page-link" href="/tech-blog/search2.html">SEARCH</a>
+
+
+
+
+</div>
+        </nav>
+</div>
+  </div>
+</header>
+
+<script>
+  function initHeader() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;var scrollStatus = "";
+
+      if (y <= 0) {
+        scrollStatus = "top";
+      } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  }
+  document.addEventListener('DOMContentLoaded', initHeader);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    hashValue = decodeURIComponent(hashValue);
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+<div id="click-to-top" class="click-to-top">
+  <i class="fa fa-arrow-up"></i>
+</div>
+<script>
+  (function () {
+    const clickToTop = document.getElementById('click-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        clickToTop.classList.add('show')
+      }else {
+        clickToTop.classList.remove('show')
+      }
+    });
+    clickToTop.addEventListener('click', () => {
+      window.smoothScrollTo(0);
+    });
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="post">
+  <section>
+
+
+
+
+
+
+
+
+
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">Is This Still Working In 2022 ?!?!</h1>
+  <h2 class="post-subtitle"></h2>
+
+  <p class="post-meta">
+    <time class="dt-published" datetime="2022-06-19T00:00:00+00:00" itemprop="datePublished"><i class="fa fa-calendar"></i> Jun 19, 2022
+    </time>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 5 mins</span>
+  </p></header>
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <p><img src="/tech-blog/assets/images/hello-verse.png" alt=""></p>
+
+<p>I haven’t made a post for almost 5 years now since I took this job which I’m still at right now.  I’m going 5 years in this job pretty soon.  Part of the reason is of course the pandemic.  The other is it just kept me busy and kept me learning… and I learned a lot.  But what’s with the title then?  I thought of posting this on LinkedIn and see if that title catches attention.</p>
+
+<p>Anyways, that aside, I just wanted to share that I put up my web site again (as it was down for while now) and this time hosted on GitHub at <a href="https://rodansotto.github.io">rodansotto.github.io</a>.  I thought it makes sense for my web site which features coding projects I did in my spare time, to live besides their source code.  Yes I have uploaded my source code to GitHub and this will be my code repository moving forward.  You can see my repositories at <a href="https://github.com/rodansotto">github.com/rodansotto</a>.  Also, I migrated my technical blog from WordPress to GitHub and it’s now at <a href="https://rodansotto.github.io/tech-blog">rodansotto.github.io/tech-blog</a>.  So if you are reading this now, then you are reading this on GitHub.</p>
+
+<p>Enough of the intro, let’s get down to business.  I wanted to share in this post what I learned as a software developer in the last almost 5 years and anything else I want to learn further moving forward.  I will not go into details on each one of them as I want to keep this post from getting too long.  Just going to list them out for now.</p>
+
+<p>As far as back end technologies goes, here is a list of things I learned:</p>
+<ul>
+  <li>
+<a href="https://servicestack.net/">Servicestack</a> on C# .NET Framework for creating RESTful APIs for the front end to call (before ASP.Net MVC API and ASP.Net Core were available)</li>
+  <li>
+<a href="https://swagger.io/">Swagger</a> (came with Servicestack) for viewing those APIs and trying them out in a browser</li>
+  <li>
+<a href="https://aws.amazon.com/">Amazon Web Services (AWS)</a>: EC2, S3, Athena, CloudFront, CloudWatch, Elasticsearch,  RDS, SES, SNS, SQS, CloudFormation, IAM, Lambda, Management Console, Systems Manager - App Management</li>
+  <li>
+<a href="https://cloud.google.com/">Google Cloud Platform</a>: BigQuery, Cloud Storage, Cloud Functions, Cloud Scheduler, IAM,</li>
+  <li>3rd Party API Integrations: <a href="https://www.lever.co/">Lever</a>, <a href="https://www.smartsheet.com/">Smartsheet</a>, <a href="https://www.manageengine.com/products/service-desk/">ServiceDeskPlus</a>, <a href="https://slack.com/">Slack</a>
+</li>
+  <li>Databases: <a href="https://www.postgresql.org/">PostgreSQL</a>, <a href="https://www.mongodb.com/atlas/database">MongoDB</a> / <a href="https://www.mongodb.com/docs/drivers/csharp/">MongoDB C#/.NET Driver</a>
+</li>
+  <li>
+<a href="https://nunit.org/">NUnit</a> for unit-testing .NET code</li>
+  <li>Others: <a href="https://www.puppeteersharp.com/">Puppeteer</a> for scraping LinkedIn profiles, <a href="https://www.elastic.co/elasticsearch/">Elasticsearch</a> (here is the <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html">reference</a>), <a href="https://www.elastic.co/guide/en/kibana/current/index.html">Kibana</a>
+</li>
+</ul>
+
+<p>And for front end technologies:</p>
+<ul>
+  <li>
+<a href="https://mithril.js.org/">Mithril</a> a not so new Javascript framework for building single page applications in MVC style</li>
+  <li>
+<a href="https://www.typescriptlang.org/">Typescript</a> for coding with type checking in Javascript</li>
+  <li>
+<a href="https://lit.dev/">Lit</a> a library for building fast, lightweight <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components">web components</a>
+</li>
+  <li>
+<a href="https://vaadin.com/router">Vaadin Router</a> for client-side routing of web components</li>
+  <li>
+<a href="https://redux.js.org/">Redux</a> for managing state in Javascript applications</li>
+  <li>
+<a href="https://github.com/carbon-design-system/carbon-web-components">Carbon Web Components</a> a variant of <a href="https://carbondesignsystem.com/">Carbon Design System</a> implemented as web components</li>
+  <li>
+<a href="https://storybook.js.org/">StoryBook</a> for documenting UI components but also for developing and testing UI components in isolation</li>
+</ul>
+
+<p>What I would look to try or learn next are:</p>
+<ul>
+  <li>
+<a href="https://reactjs.org/">React</a> or <a href="https://vuejs.org/">Vue</a> (just one of them for now).  Maybe create a to do list app which will be a part of like a mail or calendar app similar to Google Mail or Google Calendar.</li>
+  <li>
+<a href="https://angular.io/">Angular</a>. Actually continue learning it (it’s a big framework btw) by building more features on this Angular project I worked on last time, the product catalog, to maybe make it more like an Amazon online store, right?.</li>
+  <li>
+<a href="https://docs.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-6.0">ASP.NET Core</a>. Probably only for it’s <a href="https://docs.microsoft.com/en-us/aspnet/core/web-api/?view=aspnetcore-6.0">Web API</a> and <a href="https://docs.microsoft.com/en-us/aspnet/core/signalr/introduction?view=aspnetcore-6.0">SignalR</a>.  I’m still interested with ASP.Net Core.  I’m thinking of getting a free <a href="https://azure.microsoft.com/en-ca/">Azure</a> account to play with these and maybe try out the other free stuff there.</li>
+  <li>
+<a href="https://www.python.org/">Phython</a> / <a href="https://en.wikipedia.org/wiki/Machine_learning">Machine Learning</a>.  Yes machine learning has been in my radar for a while now.  It’s a pretty big scope and it’s very technical if I may say.  There are so many stuff out there being put out with how to make machines learn.  I’m interested in using Phython for this.  I recently read about this article 
+<a href="https://www.analyticsinsight.net/top-100-machine-learning-project-ideas-for-tech-enthusiasts/">Top 100 Machine Learning Project Ideas for Tech Enthusiasts</a> and it can definitely be a source of motivation.</li>
+  <li>Metaverse Application Development.  Technologies surrounding this really piqued my interest.  I’m hoping they would be useful outside of social networking, like maybe in the medical fields or somewhere else.  This article <a href="https://simpleprogrammer.com/skills-metaverse-developer/">The Skills You Need To Become a Metaverse Developer</a> lists out those technologies.</li>
+  <li>Blockchain Application Development.  I’m interested on blockchain technologies for non-financial applications though.  This article 
+<a href="https://www.section.io/engineering-education/the-complete-roadmap-to-blockchain-development/">A Complete Roadmap to Blockchain Development</a> will serve as an introduction and guide.</li>
+</ul>
+
+<p>Now we’ve come to the end of this post.  Writing a blog really takes time, for me at least.  I would prefer to spend it coding on my projects than blogging. But I will make it to a point to put one every month.  So that’s it, all 5 years worth in one post, well just in summary.</p>
+
+
+    </div>
+
+</article>
+<div class="post-nav">
+<a class="previous" href="/tech-blog/2022/06/05/welcome-to-jekyll.html" title="Welcome to My Jekyll-Powered Tech Blog!">Welcome to My Jekyll-Powered Tech Blog!...</a><a class="next" href="/tech-blog/2022/07/04/back-to-the-roots-with-algorithms.html" title="Back to the Roots with Algorithms">Back to the Roots with Algorithms...</a>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/tech-blog/2017/11/25/im-familiar-with-net-framework-so-what-is-net-standard-and-net-core.html" title="Back to the Roots with Algorithms">I'm familiar with .NET Framework, so what is .NET Standard and .NET...</a></li>
+<li><a class="post-link" href="/tech-blog/2016/05/26/column-aliases-in-order-by-works-on-older-sql-version-but-not-on-sql-2014.html" title="Back to the Roots with Algorithms">Column aliases in ORDER BY works on older SQL version but not...</a></li>
+<li><a class="post-link" href="/tech-blog/2017/11/28/net-code-documentation-and-testing-they-are-there-why-not-use-it-4.html" title="Back to the Roots with Algorithms">.NET Code Documentation And Testing: They Are There, Why Not Use It?...</a></li>
+<li><a class="post-link" href="/tech-blog/2015/02/27/c-whats-with-enums-anyways.html" title="Back to the Roots with Algorithms">C#: What’s with Enums anyways?</a></li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items --><style type="text/css" media="screen">
+.post-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+</style>
+
+<div class="post-menu">
+  <div class="post-menu-title">TOC</div>
+  <div class="post-menu-content"></div>
+</div>
+
+<script>
+  function generateContent() {
+    var menu = document.querySelector(".post-menu");
+    var menuContent =  menu.querySelector(".post-menu-content");
+    var headings = document.querySelector(".post-content").querySelectorAll("h2, h3, h4, h5, h6");
+
+    // Hide menu when no headings
+    if (headings.length === 0) {
+      return menu.style.display = "none";
+    }
+
+    // Generate post menu
+    var menuHTML = '';
+    for (var i = 0; i < headings.length; i++) {
+      var h = headings[i];
+      menuHTML += (
+        '<li class="h-' + h.tagName.toLowerCase() + '">'
+        + '<a href="#h-' + h.getAttribute('id') + '">' + h.textContent + '</a></li>');
+    }
+
+    menuContent.innerHTML = '<ul>' + menuHTML + '</ul>';
+
+    // The header element
+    var header = document.querySelector('header.site-header');
+
+    function doMenuCollapse(index, over_items) {
+      var items = menuContent.firstChild.children;
+
+      if (over_items == undefined) {
+        over_items = 20;
+      }
+
+      if (items.length < over_items) {
+        return;
+      }
+
+      var activeItem = items[index];
+      var beginItem = activeItem
+      var endItem = activeItem
+      var beginIndex = index;
+      var endIndex = index + 1;
+      while (beginIndex >= 0
+        && !items[beginIndex].classList.contains('h-h2')) {
+        beginIndex -= 1;
+      }
+      while (endIndex < items.length
+        && !items[endIndex].classList.contains('h-h2')) {
+        endIndex += 1;
+      }
+      for (var i = 0; i < beginIndex; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+      for (var i = beginIndex + 1; i < endIndex; i++) {
+        item = items[i]
+        // if (!item.classList.contains('h-h2')) {
+          item.style.display = '';
+        // }
+      }
+      for (var i = endIndex; i < items.length; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+    }
+
+    // Init menu collapsed
+    doMenuCollapse(-1);
+
+    // Active the menu item
+    window.addEventListener('scroll', function (event) {
+      var lastActive = menuContent.querySelector('.active');
+      var changed = true;
+      var activeIndex = -1;
+      for (var i = headings.length - 1; i >= 0; i--) {
+        var h = headings[i];
+        var headingRect = h.getBoundingClientRect();
+        var headerRect = header.getBoundingClientRect();
+        var headerTop = Math.floor(headerRect.top);
+        var headerHeight = Math.floor(headerRect.height);
+        var headerHeight = headerTop + headerHeight + 20;
+        if (headingRect.top <= headerHeight) {
+          var id = 'h-' + h.getAttribute('id');
+          var a = menuContent.querySelector('a[href="#' + id  + '"]');
+          var curActive = a.parentNode;
+          if (curActive) {
+            curActive.classList.add('active');
+            activeIndex = i;
+          }
+          if (lastActive == curActive) {
+            changed = false;
+          }
+          break;
+        }
+      }
+      if (changed) {
+        if (lastActive) {
+          lastActive.classList.remove('active');
+        }
+        doMenuCollapse(activeIndex);
+      }
+      event.preventDefault();
+    });
+  }
+  generateContent();
+</script>
+</section>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/tech-blog/"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-inner">
+<div></div>
+      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
+      generator." href="https://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
+      <div class="footer-col rss-subscribe">Subscribe <a href="/tech-blog/feed.xml">via RSS</a>
+</div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

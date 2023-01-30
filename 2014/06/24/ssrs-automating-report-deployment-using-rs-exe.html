@@ -1,0 +1,1573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>SSRS: Automating Report Deployment using RS.EXE | Rodan Sotto’s Tech Blog</title>
+<meta name="generator" content="Jekyll v3.9.2">
+<meta property="og:title" content="SSRS: Automating Report Deployment using RS.EXE">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="I was looking for a way to deploy reports on the production server without going through the Report Manager and deploying one report at a time.  Then I stumbled upon RS.EXE, a scripting hosting utility that uses VB.NET script.  With VB.NET script you can deploy all your reports.">
+<meta property="og:description" content="I was looking for a way to deploy reports on the production server without going through the Report Manager and deploying one report at a time.  Then I stumbled upon RS.EXE, a scripting hosting utility that uses VB.NET script.  With VB.NET script you can deploy all your reports.">
+<link rel="canonical" href="https://rodansotto.github.io/tech-blog/2014/06/24/ssrs-automating-report-deployment-using-rs-exe.html">
+<meta property="og:url" content="https://rodansotto.github.io/tech-blog/2014/06/24/ssrs-automating-report-deployment-using-rs-exe.html">
+<meta property="og:site_name" content="Rodan Sotto’s Tech Blog">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2014-06-24T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="SSRS: Automating Report Deployment using RS.EXE">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2014-06-24T00:00:00+00:00","datePublished":"2014-06-24T00:00:00+00:00","description":"I was looking for a way to deploy reports on the production server without going through the Report Manager and deploying one report at a time.  Then I stumbled upon RS.EXE, a scripting hosting utility that uses VB.NET script.  With VB.NET script you can deploy all your reports.","headline":"SSRS: Automating Report Deployment using RS.EXE","mainEntityOfPage":{"@type":"WebPage","@id":"https://rodansotto.github.io/tech-blog/2014/06/24/ssrs-automating-report-deployment-using-rs-exe.html"},"url":"https://rodansotto.github.io/tech-blog/2014/06/24/ssrs-automating-report-deployment-using-rs-exe.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="icon" href="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+  <link rel="stylesheet" href="/tech-blog/assets/css/main.css">
+  <script src="/tech-blog/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="https://rodansotto.github.io/tech-blog/feed.xml" title="Rodan Sotto's Tech Blog">
+<!--<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">-->
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs tpbg ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+
+  .tpbg {
+    background: transparent;
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header " role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/tech-blog/">
+  <img class="site-favicon" title="Rodan Sotto's Tech Blog" src="" onerror="this.style.display='none'">
+  Rodan Sotto's Tech Blog
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+<a class="page-link" href="/tech-blog/">HOME</a><a class="page-link" href="/tech-blog/archives.html">ARCHIVES</a><a class="page-link" href="/tech-blog/categories.html">CATEGORIES</a><a class="page-link" href="/tech-blog/search2.html">SEARCH</a>
+
+
+
+
+</div>
+        </nav>
+</div>
+  </div>
+</header>
+
+<script>
+  function initHeader() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;var scrollStatus = "";
+
+      if (y <= 0) {
+        scrollStatus = "top";
+      } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  }
+  document.addEventListener('DOMContentLoaded', initHeader);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    hashValue = decodeURIComponent(hashValue);
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+<div id="click-to-top" class="click-to-top">
+  <i class="fa fa-arrow-up"></i>
+</div>
+<script>
+  (function () {
+    const clickToTop = document.getElementById('click-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        clickToTop.classList.add('show')
+      }else {
+        clickToTop.classList.remove('show')
+      }
+    });
+    clickToTop.addEventListener('click', () => {
+      window.smoothScrollTo(0);
+    });
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="post">
+  <section>
+
+
+
+
+
+
+
+
+
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">SSRS: Automating Report Deployment using RS.EXE</h1>
+  <h2 class="post-subtitle"></h2>
+
+  <p class="post-meta">
+    <time class="dt-published" datetime="2014-06-24T00:00:00+00:00" itemprop="datePublished"><i class="fa fa-calendar"></i> Jun 24, 2014
+    </time>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 11 mins</span>
+  </p></header>
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <p>I was looking for a way to deploy reports on the production server without going through the Report Manager and deploying one report at a time.  Then I stumbled upon <a href="http://msdn.microsoft.com/en-us/library/ms162839(v=sql.105).aspx">RS.EXE</a>, a scripting hosting utility that uses VB.NET script.  With VB.NET script you can deploy all your reports.</p>
+
+<p>But how do you deploy SSRS reports in VB.NET?  Instead of creating one from scratch I searched the Internet and found one from John Desch’s blog <a href="http://blogs.msdn.com/b/johndesch/archive/2012/12/17/using-the-rs-exe-utility-to-deploy-a-report-server-project-and-shared-dataset.aspx">Using the RS.EXE utility to deploy a Report Server Project and Shared Dataset</a>.  It was said to be one of the best automated script available but one of the problems with the script is it does not support 2008SP1 which I need it to.</p>
+
+<p>Good thing I found another script based on John Desch’s script but with enhancements including support for 2008SP1.  I found the script from Nishar’s blog <a href="http://www.sqlblogspot.com/2014/03/ssrs-deploymentcomplete-automation2012.html">SSRS Deployment–Complete Automation–2012 &amp; 2008</a>. </p>
+
+<p>I slightly modified the <em>Commonscript.rss</em> file for my own purposes.</p>
+
+<p>‘Begin Script</p>
+
+<p>Dim definition As [Byte]() = Nothing</p>
+
+<p>Dim bytedefinition As [Byte]() = Nothing</p>
+
+<p>Dim warnings As Warning() = Nothing</p>
+
+<p>‘Main Entry point of utility</p>
+
+<p>Public Sub Main()</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Console.WriteLine()  
+  
+Console.WriteLine("Initiating Deployment")  
+  
+rs.Credentials = System.Net.CredentialCache.DefaultCredentials  
+  
+Try  
+  
+    'Create the shared data source  
+  
+    CreateFolders(DataSourceFolderName, "/", "", "Visible")  
+  
+    'Create the folder that will contain the shared data sets  
+  
+    'CreateFolders(DataSetFolderName, "/", "", "Visible")  
+  
+    'Create the folder that will contain the deployed reports  
+  
+    CreateFolders(ReportFolderName, "/", "", "Visible")  
+  
+Catch goof As Exception  
+  
+    Console.WriteLine(goof.Message)  
+  
+End Try  
+  
+ReadFiles(ReportSourcePath, "*.rds")  
+  
+'ReadFiles(ReportSourcePath, "*.rsd")  
+  
+ReadFiles(ReportSourcePath, "*.rdl")  
+  
+'Publish the report  
+  
+'PublishReport(ReportName)  
+  
+'UpdateDataSources(ReportFolderName, DataSourcePath)  
+</code></pre></div></div>
+
+<p>End Sub</p>
+
+<p>‘Utility for creation of folders</p>
+
+<p>Public Sub CreateFolders(ByVal folderName As String, ByVal parentPath As String, ByVal description As String, ByVal visible As String)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Console.WriteLine()  
+  
+Console.WriteLine("Checking for Target Folders")  
+  
+'CatalogItem properties  
+  
+Dim descriptionProp As New \[Property\]  
+  
+descriptionProp.Name = "Description"  
+  
+descriptionProp.Value = description  
+  
+Dim visibleProp As New \[Property\]  
+  
+visibleProp.Name = "Visible"  
+  
+visibleProp.value = visible  
+  
+Dim props(1) As \[Property\]  
+  
+props(0) = descriptionProp  
+  
+props(1) = visibleProp  
+  
+Try  
+  
+    rs.CreateFolder(folderName, parentPath, props)  
+  
+    Console.WriteLine("Folder {0} successfully created", foldername)  
+  
+Catch goof As SoapException  
+  
+    If goof.Message.Indexof("AlreadyExists") &gt; 0 Then  
+  
+        Console.WriteLine("Folder {0} already exists", foldername)  
+  
+    End If  
+  
+End Try  
+</code></pre></div></div>
+
+<p>End Sub</p>
+
+<p>‘Utility for reading files from the Report Sevices Project</p>
+
+<p>Public Sub ReadFiles(filepath As String, fileextension As String)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Console.WriteLine()  
+  
+Console.WriteLine("Reading Files from Report Services Project")  
+  
+Dim rptdirinfo As System.IO.DirectoryInfo  
+  
+rptdirinfo = New System.IO.DirectoryInfo(filepath)  
+  
+Dim filedoc As FileInfo()  
+  
+filedoc = rptdirinfo.GetFiles(fileextension)  
+  
+Try  
+  
+    For rptcount As Integer = 0 To filedoc.Length - 1  
+  
+        If Not filedoc(rptcount).Name.ToString.Trim.ToUpper.Contains("BACKUP") Then  
+  
+            Select Case fileextension  
+  
+                Case "*.rds"  
+  
+                    CreateDataSource(filedoc(rptcount).tostring.trim)  
+  
+                Case "*.rsd"  
+  
+                    CreateDataSet(filedoc(rptcount).tostring.trim)  
+  
+                Case "*.rdl"  
+  
+                    PublishReport(filedoc(rptcount).tostring.trim)  
+  
+            End Select  
+  
+        End If  
+  
+    Next  
+  
+Catch goof As Exception  
+  
+    Console.WriteLine("In ReadFiles " + goof.message)  
+  
+End Try  
+</code></pre></div></div>
+
+<p>End Sub</p>
+
+<p>‘Utility for Creating Shared Data Sets contained in the project</p>
+
+<p>Public Sub CreateDataSet(ByVal filename As String)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Dim valstart As Integer  
+  
+Dim valend As Integer  
+  
+Dim DSDefinitionStr As String  
+  
+Dim DataSourceName As String  
+  
+Dim QueryString As String  
+  
+Try  
+  
+    Dim stream As FileStream = File.OpenRead(ReportSourcePath + "\\" + filename)  
+  
+    definition = New \[Byte\](stream.Length - 1) {}  
+  
+    stream.Read(definition, 0, CInt(stream.Length))  
+  
+    stream.Close()  
+  
+    For i As Integer = 0 To definition.Length - 1  
+  
+        DSDefinitionStr = DSDefinitionStr + Convert.ToString(Convert.ToChar(Convert.ToInt16(definition(i).ToString)))  
+  
+    Next  
+  
+    valstart = DSDefinitionStr.ToString.Indexof("&lt;DataSourceReference&gt;")  
+  
+    If valstart &gt; 0 Then  
+  
+        valstart = DSDefinitionStr.ToString.IndexOf("&lt;DataSourceReference&gt;") + 21  
+  
+        valend = DSDefinitionStr.ToString.IndexOf("&lt;/DataSourceReference&gt;")  
+  
+        DataSourceName = DSDefinitionStr.ToString.Substring(valstart, valend - valstart)  
+  
+        Console.WriteLine(DataSourceName)  
+  
+    End If  
+  
+Catch e As IOException  
+  
+    Console.WriteLine(e.Message)  
+  
+End Try  
+  
+filename = filename.tostring.replace(".rsd", "")  
+  
+Console.WriteLine("Attempting to Deploy DataSet {0}", filename)  
+  
+Try  
+  
+    Dim item As CatalogItem  
+  
+    item = rs.CreateCatalogItem("DataSet", filename, "/" + DataSetFolderName, True, definition, Nothing, warnings)  
+  
+    If Not (warnings Is Nothing) Then  
+  
+        Dim warning As Warning  
+  
+        For Each warning In warnings  
+  
+            If warning.message.tostring.tolower.contains("refers to the shared data source") Then  
+  
+                Console.WriteLine("Connecting DataSet {0} to Data Source {1}", filename, DataSourceName)  
+  
+                Dim referenceData() As ItemReferenceData = rs.GetItemReferences("/" + DataSetFolderName + "/" + filename, "DataSet")  
+  
+                Dim references(0) As ItemReference  
+  
+                Dim reference As New ItemReference()  
+  
+                Dim datasourceURL = "/" + DataSourcePath + "/" + DataSourceName  
+  
+                reference.name = referenceData(0).Name  
+  
+                Console.WriteLine("Reference name = " + reference.name)  
+  
+                reference.Reference = datasourceURL  
+  
+                references(0) = reference  
+  
+                rs.SetItemReferences("/" + DataSetFolderName + "/" + filename, references)  
+  
+            Else  
+  
+                Console.WriteLine(warning.Message)  
+  
+            End If  
+  
+        Next warning  
+  
+    Else  
+  
+        Console.WriteLine("DataSet: {0} published successfully with no warnings", filename)  
+  
+    End If  
+  
+Catch goof As SoapException  
+  
+    If goof.Message.Indexof("AlreadyExists") &gt; 0 Then  
+  
+        Console.WriteLine("The DataSet {0} already exists", fileName.ToString)  
+  
+    Else  
+  
+        If goof.Message.IndexOf("published") = -1 Then  
+  
+            Console.Writeline(goof.Message)  
+  
+        End If  
+  
+    End If  
+  
+End Try  
+  
+'UpdateDataSetSources(filename,DataSetFolderName, DataSourceFolderName,DataSourceName)  
+</code></pre></div></div>
+
+<p>End Sub</p>
+
+<p>‘Utility for creating Data Sources on the Server</p>
+
+<p>Public Sub CreateDataSource(filename As String)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Define the data source definition.  
+  
+Dim dsDefinition As New DataSourceDefinition()  
+  
+Dim DataSourceName As String  
+  
+Dim valstart As Integer  
+  
+Dim valend As Integer  
+  
+Dim ConnectionString As String  
+  
+Dim Extension As String  
+  
+Dim IntegratedSec As String  
+  
+Dim DataSourceID As String  
+  
+Dim PromptStr As String  
+  
+PromptStr = ""  
+  
+Dim DSDefinitionStr As String  
+  
+DSDefinitionStr = ""  
+  
+DataSourceName = filename.tostring.trim.substring(0, filename.tostring.trim.length - 4)  
+  
+Console.WriteLine("Attempting to Deploy Data Source {0}", DataSourceName)  
+  
+Try  
+  
+    Dim stream As FileStream = File.OpenRead(ReportSourcePath + "\\" + filename)  
+  
+    bytedefinition = New \[Byte\](stream.Length - 1) {}  
+  
+    stream.Read(bytedefinition, 0, CInt(stream.Length))  
+  
+    stream.Close()  
+  
+    For i As Integer = 0 To bytedefinition.Length - 1  
+  
+        DSDefinitionStr = DSDefinitionStr + Convert.ToString(Convert.ToChar(Convert.ToInt16(bytedefinition(i).ToString)))  
+  
+    Next  
+  
+Catch goof As IOException  
+  
+    Console.WriteLine(goof.Message)  
+  
+End Try  
+  
+If DSDefinitionStr.ToString.Contains("&lt;ConnectString&gt;") And DSDefinitionStr.ToString.Contains("&lt;/ConnectString&gt;") Then  
+  
+    valstart = DSDefinitionStr.ToString.IndexOf("&lt;ConnectString&gt;") + 15  
+  
+    valend = DSDefinitionStr.ToString.IndexOf("&lt;/ConnectString&gt;")  
+  
+    ConnectionString = DSDefinitionStr.ToString.Substring(valstart, valend - valstart)  
+  
+End If  
+  
+If DSDefinitionStr.ToString.Contains("&lt;Extension&gt;") And DSDefinitionStr.ToString.Contains("&lt;/Extension&gt;") Then  
+  
+    valstart = DSDefinitionStr.ToString.IndexOf("&lt;Extension&gt;") + 11  
+  
+    valend = DSDefinitionStr.ToString.IndexOf("&lt;/Extension&gt;")  
+  
+    Extension = DSDefinitionStr.ToString.Substring(valstart, valend - valstart)  
+  
+End If  
+  
+If DSDefinitionStr.ToString.Contains("&lt;IntegratedSecurity&gt;") And DSDefinitionStr.ToString.Contains("&lt;/IntegratedSecurity&gt;") Then  
+  
+    valstart = DSDefinitionStr.ToString.IndexOf("&lt;IntegratedSecurity&gt;") + 20  
+  
+    valend = DSDefinitionStr.ToString.IndexOf("&lt;/IntegratedSecurity&gt;")  
+  
+    IntegratedSec = DSDefinitionStr.ToString.Substring(valstart, valend - valstart)  
+  
+End If  
+  
+If DSDefinitionStr.ToString.Contains("&lt;DataSourceID&gt;") And DSDefinitionStr.ToString.Contains("&lt;/DataSourceID&gt;") Then  
+  
+    valstart = DSDefinitionStr.ToString.IndexOf("&lt;DataSourceID&gt;") + 14  
+  
+    valend = DSDefinitionStr.ToString.IndexOf("&lt;/DataSourceID&gt;")  
+  
+    DataSourceID = DSDefinitionStr.ToString.Substring(valstart, valend - valstart)  
+  
+End If  
+  
+If DSDefinitionStr.ToString.Contains("&lt;Prompt&gt;") And DSDefinitionStr.ToString.Contains("&lt;/Prompt&gt;") Then  
+  
+    valstart = DSDefinitionStr.ToString.IndexOf("&lt;Prompt&gt;") + 8  
+  
+    valend = DSDefinitionStr.ToString.IndexOf("&lt;/Prompt&gt;")  
+  
+    PromptStr = DSDefinitionStr.ToString.Substring(valstart, valend - valstart)  
+  
+End If  
+  
+dsdefinition.CredentialRetrieval = CredentialRetrievalEnum.Integrated  
+  
+dsdefinition.ConnectString = ConnectionString  
+  
+dsdefinition.Enabled = True  
+  
+dsdefinition.EnabledSpecified = True  
+  
+dsdefinition.Extension = extension  
+  
+dsdefinition.ImpersonateUser = False  
+  
+dsdefinition.ImpersonateUserSpecified = True  
+  
+'Use the default prompt string.  
+  
+If PromptStr.ToString.Length = 0 Then  
+  
+    dsdefinition.Prompt = Nothing  
+  
+Else  
+  
+    dsdefinition.Prompt = PromptStr  
+  
+End If  
+  
+dsdefinition.WindowsCredentials = False  
+  
+Try  
+  
+    rs.CreateDataSource(DataSourceName, "/" + DataSourceFolderName, False, dsdefinition, Nothing)  
+  
+    Console.WriteLine("Data source {0} created successfully", DataSourceName.ToString)  
+  
+Catch goof As SoapException  
+  
+    If goof.Message.Indexof("AlreadyExists") &gt; 0 Then  
+  
+        Console.WriteLine("The Data Source name {0} already exists", DataSourceName.ToString)  
+  
+    End If  
+  
+End Try  
+</code></pre></div></div>
+
+<p>End Sub</p>
+
+<p>‘Utility to Publish the Reports</p>
+
+<p>Public Sub PublishReport(ByVal reportName As String)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Try  
+  
+    Dim stream As FileStream = File.OpenRead(ReportSourcePath + "\\" + reportName)  
+  
+    definition = New \[Byte\](stream.Length - 1) {}  
+  
+    stream.Read(definition, 0, CInt(stream.Length))  
+  
+    stream.Close()  
+  
+Catch e As IOException  
+  
+    Console.WriteLine(e.Message)  
+  
+End Try  
+  
+reportname = reportname.tostring.replace(".rdl", "")  
+  
+Console.WriteLine("Attempting to Deploy Report Name {0}", reportname.tostring)  
+  
+Dim item As CatalogItem  
+  
+  
+Try  
+  
+    item = rs.CreateCatalogItem("Report", reportname, "/" + ReportFolderName, True, definition, Nothing, warnings)  
+  
+    'warnings = rs.CreateCatalogItem(reportName, "/" + ReportFolderName, False, definition, Nothing)  
+  
+    If Not (warnings Is Nothing) Then  
+  
+        If item.Name &lt;&gt; "" Then  
+  
+            Console.WriteLine("Report: {0} published successfully with warnings", reportName)  
+            UpdateDataSources_report(reportName)  
+            UpdateDataSet_report(reportName)  
+        Else  
+  
+            Dim warning As Warning  
+  
+            For Each warning In warnings  
+  
+                Console.WriteLine(warning.Message)  
+  
+            Next warning  
+  
+        End If  
+  
+    Else  
+  
+        Console.WriteLine("Report: {0} published successfully with no warnings", reportName)  
+        UpdateDataSources_report(reportName)  
+        UpdateDataSet_report(reportName)  
+    End If  
+  
+Catch goof As SoapException  
+  
+    If goof.Message.Indexof("AlreadyExists") &gt; 0 Then  
+  
+        Console.WriteLine("The Report Name {0} already exists", reportName.ToString)  
+  
+    Else  
+  
+        If goof.Message.IndexOf("published") = -1 Then  
+  
+            Console.WriteLine(goof.Message)  
+  
+        End If  
+  
+    End If  
+  
+End Try  
+</code></pre></div></div>
+
+<p>End Sub</p>
+
+<p>‘Utility to Update The Data Sources on the Server</p>
+
+<p>Public Sub UpdateDataSources(ReportFolderName As String, DataSourcePath As String)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rs.Credentials = System.Net.CredentialCache.DefaultCredentials  
+  
+Dim item As CatalogItem  
+  
+Dim items As CatalogItem()  
+  
+Try  
+  
+  
+  
+    items = rs.ListChildren("/" + ReportFolderName, False)  
+  
+    For Each item In items  
+  
+        'Console.WriteLine("          update date source called     --------"+ item.Path + " -----------")  
+  
+        If item.path.Indexof("rdl") &gt; 0 And ReportName = "" Then  
+  
+            'Console.WriteLine("          update date source called     --------"+ item.path.Indexof("rdl").tostring() + " -----------")  
+  
+            Dim dataSources() As DataSource = rs.GetItemDataSources(item.Path)  
+  
+            For Each ds As DataSource In dataSources  
+  
+                Dim sharedDs(0) As DataSource  
+  
+                sharedDs(0) = GetDataSource(DataSourcePath, ds.Name)  
+  
+                rs.SetItemDataSources(item.Path, sharedDs)  
+  
+                Console.WriteLine("Set " &amp; ds.Name &amp; " datasource for " &amp; item.Path &amp; " report")  
+  
+                'end if  
+            Next  
+  
+        End If  
+  
+    Next  
+  
+    If ReportName = "" Then  
+  
+        Console.WriteLine("Shared data source reference set for reports in the {0} folder.", ReportFolderName)  
+  
+    End If  
+  
+  
+    If ReportName &lt;&gt; "" Then  
+  
+        '    Console.WriteLine("               " + "/" + ReportFolderName + "/" + ReportName + "  ------------- second  update called        ---------------------- ")  
+  
+        Dim dataSources() As DataSource = rs.GetItemDataSources("/" + ReportFolderName + "/" + ReportName)  
+  
+        For Each ds As DataSource In dataSources  
+  
+            Dim sharedDs(0) As DataSource  
+  
+            sharedDs(0) = GetDataSource(DataSourcePath, ds.Name)  
+  
+            rs.SetItemDataSources("/" + ReportFolderName + "/" + ReportName, sharedDs)  
+  
+            Console.WriteLine("Set " &amp; ds.Name &amp; " datasource for " &amp; "/" + ReportFolderName + "/" + ReportName &amp; " report")  
+  
+            'end if  
+        Next  
+  
+        Console.WriteLine("All the shared data source reference set for report {0} ", "/" + ReportFolderName + "/" + ReportName)  
+  
+    End If  
+  
+Catch goof As SoapException  
+  
+    Console.WriteLine(goof.Detail.InnerXml.ToString())  
+  
+End Try  
+</code></pre></div></div>
+
+<p>End Sub</p>
+
+<p>‘Utility to Update The Data Sources on the Server</p>
+
+<p>Public Sub UpdateDataSources_report(ReportName As String)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rs.Credentials = System.Net.CredentialCache.DefaultCredentials  
+  
+Dim item As CatalogItem  
+  
+Dim items As CatalogItem()  
+  
+Try  
+  
+    'If ReportName &lt;&gt; "" then  
+  
+    '    Console.WriteLine("               " + "/" + ReportFolderName + "/" + ReportName + "  ------------- second  update called        ---------------------- ")  
+  
+    Dim dataSources() As DataSource = rs.GetItemDataSources("/" + ReportFolderName + "/" + ReportName)  
+  
+    For Each ds As DataSource In dataSources  
+  
+        Dim sharedDs(0) As DataSource  
+  
+        sharedDs(0) = GetDataSource(DataSourcePath, ds.Name)  
+  
+        rs.SetItemDataSources("/" + ReportFolderName + "/" + ReportName, sharedDs)  
+  
+        Console.WriteLine("Set " &amp; ds.Name &amp; " datasource for " &amp; "/" + ReportFolderName + "/" + ReportName &amp; " report")  
+  
+        'end if  
+    Next  
+  
+    Console.WriteLine("All the shared data source reference set for report {0} ", "/" + ReportFolderName + "/" + ReportName)  
+  
+    'end if      
+  
+  
+Catch goof As SoapException  
+  
+    Console.WriteLine(goof.Detail.InnerXml.ToString())  
+  
+End Try  
+</code></pre></div></div>
+
+<p>End Sub</p>
+
+<p>‘Utility to link The Dataset with the Report</p>
+
+<p>Public Sub UpdateDataSet_report(ReportName As String)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rs.Credentials = System.Net.CredentialCache.DefaultCredentials  
+  
+  
+Try  
+  
+    Dim dataSets As ItemReferenceData() = rs.GetItemReferences("/" + ReportFolderName + "/" + ReportName, "DataSet")  
+  
+    If dataSets IsNot Nothing AndAlso dataSets.Length &gt; 0 AndAlso Not String.IsNullOrEmpty(dataSets(0).Name) Then  
+  
+        For i As Integer = 0 To dataSets.Length - 1  
+  
+            Dim references(0) As ItemReference  
+            Dim sharedDataSet = New ItemReference()  
+            sharedDataSet.Name = dataSets(i).Name  
+            Console.WriteLine("Attempting to Link Dataset {0}", dataSets(i).Name)  
+            sharedDataSet.Reference = "/" + DataSetFolderName + "/" + dataSets(i).Name  
+            references(0) = sharedDataSet  
+            rs.SetItemReferences("/" + ReportFolderName + "/" + ReportName, references)  
+            Console.WriteLine("Report " + ReportName + " Linked to data set " + "/" + DataSetFolderName + "/" + Convert.ToString(sharedDataSet.Name))  
+        Next  
+  
+    End If  
+  
+Catch goof As SoapException  
+  
+    Console.WriteLine(goof.Detail.InnerXml.ToString())  
+  
+End Try  
+</code></pre></div></div>
+
+<p>End Sub</p>
+
+<p>‘Function to Reference Data Sources</p>
+
+<p>Private Function GetDataSource(sharedDataSourcePath As String, dataSourceName As String) As DataSource</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Dim reference As New DataSourceReference()  
+  
+Dim ds As New DataSource  
+  
+reference.Reference = "/" + sharedDataSourcePath &amp; "/" &amp; dataSourceName  
+  
+ds.Item = CType(reference, DataSourceDefinitionOrReference)  
+  
+ds.Name = dataSourceName  
+  
+Console.WriteLine("Attempting to Link Data Source {0}", ds.Name)  
+  
+GetDataSource = ds  
+</code></pre></div></div>
+
+<p>End Function</p>
+
+<p>I also modified the <em>deploy.bat</em> file as well.</p>
+
+<p>set ServerPath=http://localhost/ReportServer<br>
+set DataSourceFolderName=Data Sources<br>
+set DataSourcePath=Data Sources<br>
+set DataSetFolderName=Datasets<br>
+set ReportFolderName=My Reports<br>
+set ReportSourcePath=.\My Reports<br>
+set ReportName=</p>
+
+<p>rs.exe <br>
+-i Commonscript.rss <br>
+-s %ServerPath% <br>
+-v DataSourceFolderName=”%DataSourceFolderName%” <br>
+-v DataSourcePath=”%DataSourcePath%” <br>
+-v DataSetFolderName=”%DataSetFolderName%” <br>
+-v ReportFolderName=”%ReportFolderName%” <br>
+-v ReportSourcePath=”%ReportSourcePath%” <br>
+-v ReportName=”%ReportName%” <br>
+-e Mgmt2010</p>
+
+
+    </div>
+
+</article>
+<div class="post-nav">
+<a class="previous" href="/tech-blog/2014/06/04/demonstrating-the-new-html5-and-css3-features.html" title="Demonstrating the new HTML5 and CSS3 Features">Demonstrating the new HTML5 and CSS3...</a><a class="next" href="/tech-blog/2014/07/09/storing-an-excel-file-in-a-sql-server-database.html" title="Storing an Excel File in a SQL Server Database">Storing an Excel File in a...</a>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/tech-blog/2007/05/05/sql-server-2005-query-window-in-microsoft-sql-server-management-studio.html" title="Storing an Excel File in a SQL Server Database">SQL Server 2005: Query window in Microsoft SQL Server Management Studio</a></li>
+<li><a class="post-link" href="/tech-blog/2014/09/05/is-that-a-vb-code-or-c.html" title="Storing an Excel File in a SQL Server Database">Is that a VB code or C#?</a></li>
+<li><a class="post-link" href="/tech-blog/2014/05/12/testing-an-html-page-on-the-android-emulator-browser.html" title="Storing an Excel File in a SQL Server Database">Testing an HTML Page on the Android Emulator Browser</a></li>
+<li><a class="post-link" href="/tech-blog/2009/03/28/net-2-0-notes-on-foundation-part-1-3.html" title="Storing an Excel File in a SQL Server Database">.NET 2.0: Notes on Foundation Part 1</a></li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items --><style type="text/css" media="screen">
+.post-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+</style>
+
+<div class="post-menu">
+  <div class="post-menu-title">TOC</div>
+  <div class="post-menu-content"></div>
+</div>
+
+<script>
+  function generateContent() {
+    var menu = document.querySelector(".post-menu");
+    var menuContent =  menu.querySelector(".post-menu-content");
+    var headings = document.querySelector(".post-content").querySelectorAll("h2, h3, h4, h5, h6");
+
+    // Hide menu when no headings
+    if (headings.length === 0) {
+      return menu.style.display = "none";
+    }
+
+    // Generate post menu
+    var menuHTML = '';
+    for (var i = 0; i < headings.length; i++) {
+      var h = headings[i];
+      menuHTML += (
+        '<li class="h-' + h.tagName.toLowerCase() + '">'
+        + '<a href="#h-' + h.getAttribute('id') + '">' + h.textContent + '</a></li>');
+    }
+
+    menuContent.innerHTML = '<ul>' + menuHTML + '</ul>';
+
+    // The header element
+    var header = document.querySelector('header.site-header');
+
+    function doMenuCollapse(index, over_items) {
+      var items = menuContent.firstChild.children;
+
+      if (over_items == undefined) {
+        over_items = 20;
+      }
+
+      if (items.length < over_items) {
+        return;
+      }
+
+      var activeItem = items[index];
+      var beginItem = activeItem
+      var endItem = activeItem
+      var beginIndex = index;
+      var endIndex = index + 1;
+      while (beginIndex >= 0
+        && !items[beginIndex].classList.contains('h-h2')) {
+        beginIndex -= 1;
+      }
+      while (endIndex < items.length
+        && !items[endIndex].classList.contains('h-h2')) {
+        endIndex += 1;
+      }
+      for (var i = 0; i < beginIndex; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+      for (var i = beginIndex + 1; i < endIndex; i++) {
+        item = items[i]
+        // if (!item.classList.contains('h-h2')) {
+          item.style.display = '';
+        // }
+      }
+      for (var i = endIndex; i < items.length; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+    }
+
+    // Init menu collapsed
+    doMenuCollapse(-1);
+
+    // Active the menu item
+    window.addEventListener('scroll', function (event) {
+      var lastActive = menuContent.querySelector('.active');
+      var changed = true;
+      var activeIndex = -1;
+      for (var i = headings.length - 1; i >= 0; i--) {
+        var h = headings[i];
+        var headingRect = h.getBoundingClientRect();
+        var headerRect = header.getBoundingClientRect();
+        var headerTop = Math.floor(headerRect.top);
+        var headerHeight = Math.floor(headerRect.height);
+        var headerHeight = headerTop + headerHeight + 20;
+        if (headingRect.top <= headerHeight) {
+          var id = 'h-' + h.getAttribute('id');
+          var a = menuContent.querySelector('a[href="#' + id  + '"]');
+          var curActive = a.parentNode;
+          if (curActive) {
+            curActive.classList.add('active');
+            activeIndex = i;
+          }
+          if (lastActive == curActive) {
+            changed = false;
+          }
+          break;
+        }
+      }
+      if (changed) {
+        if (lastActive) {
+          lastActive.classList.remove('active');
+        }
+        doMenuCollapse(activeIndex);
+      }
+      event.preventDefault();
+    });
+  }
+  generateContent();
+</script>
+</section>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/tech-blog/"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-inner">
+<div></div>
+      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
+      generator." href="https://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
+      <div class="footer-col rss-subscribe">Subscribe <a href="/tech-blog/feed.xml">via RSS</a>
+</div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

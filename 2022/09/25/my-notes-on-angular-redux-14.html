@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>My notes on Angular (Redux 14) | Rodan Sotto’s Tech Blog</title>
+<meta name="generator" content="Jekyll v3.9.2">
+<meta property="og:title" content="My notes on Angular (Redux 14)">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="A software developer’s personal notes">
+<meta property="og:description" content="A software developer’s personal notes">
+<link rel="canonical" href="https://rodansotto.github.io/tech-blog/2022/09/25/my-notes-on-angular-redux-14.html">
+<meta property="og:url" content="https://rodansotto.github.io/tech-blog/2022/09/25/my-notes-on-angular-redux-14.html">
+<meta property="og:site_name" content="Rodan Sotto’s Tech Blog">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2022-09-25T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="My notes on Angular (Redux 14)">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-09-25T00:00:00+00:00","datePublished":"2022-09-25T00:00:00+00:00","description":"A software developer’s personal notes","headline":"My notes on Angular (Redux 14)","mainEntityOfPage":{"@type":"WebPage","@id":"https://rodansotto.github.io/tech-blog/2022/09/25/my-notes-on-angular-redux-14.html"},"url":"https://rodansotto.github.io/tech-blog/2022/09/25/my-notes-on-angular-redux-14.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="icon" href="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+  <link rel="stylesheet" href="/tech-blog/assets/css/main.css">
+  <script src="/tech-blog/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="https://rodansotto.github.io/tech-blog/feed.xml" title="Rodan Sotto's Tech Blog">
+<!--<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">-->
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs tpbg ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+
+  .tpbg {
+    background: transparent;
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header " role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/tech-blog/">
+  <img class="site-favicon" title="Rodan Sotto's Tech Blog" src="" onerror="this.style.display='none'">
+  Rodan Sotto's Tech Blog
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+<a class="page-link" href="/tech-blog/">HOME</a><a class="page-link" href="/tech-blog/archives.html">ARCHIVES</a><a class="page-link" href="/tech-blog/categories.html">CATEGORIES</a><a class="page-link" href="/tech-blog/search2.html">SEARCH</a>
+
+
+
+
+</div>
+        </nav>
+</div>
+  </div>
+</header>
+
+<script>
+  function initHeader() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;var scrollStatus = "";
+
+      if (y <= 0) {
+        scrollStatus = "top";
+      } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  }
+  document.addEventListener('DOMContentLoaded', initHeader);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    hashValue = decodeURIComponent(hashValue);
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+<div id="click-to-top" class="click-to-top">
+  <i class="fa fa-arrow-up"></i>
+</div>
+<script>
+  (function () {
+    const clickToTop = document.getElementById('click-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        clickToTop.classList.add('show')
+      }else {
+        clickToTop.classList.remove('show')
+      }
+    });
+    clickToTop.addEventListener('click', () => {
+      window.smoothScrollTo(0);
+    });
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="post">
+  <section>
+
+
+
+
+
+
+
+
+
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">My notes on Angular (Redux 14)</h1>
+  <h2 class="post-subtitle"></h2>
+
+  <p class="post-meta">
+    <time class="dt-published" datetime="2022-09-25T00:00:00+00:00" itemprop="datePublished"><i class="fa fa-calendar"></i> Sep 25, 2022
+    </time>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 15 mins</span>
+  </p></header>
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <p><img src="/tech-blog/assets/images/angularbanner.png" alt=""></p>
+
+<p>I was going over my Angular post back in 2017, <a href="/tech-blog/2017/11/23/my-notes-on-angular-2-0.html">My notes on Angular (2.0+)</a>, and thought I should provide code examples from my Angular product catalog application demo that you can check out <a href="https://rodansotto.github.io/productcatalogdemo-angular14/products">here</a> with the full source code <a href="https://github.com/rodansotto/productcatalogdemo-angular14">here</a>.</p>
+
+<p>This post can serve as a quick refresher to the basic concepts we need to know to build a full running Angular application.</p>
+
+<p>I do think that these are the concepts that you can easily transfer to any modern front-end framework especially any web component based framework.</p>
+
+<p>Without further ado, let’s get down to it…</p>
+
+<h2 id="root-module">Root module</h2>
+
+<p>Following Angular’s default directory structure, our root module would be in <a href="https://github.com/rodansotto/productcatalogdemo-angular14/blob/main/src/app/app.module.ts">/src/app/app.module.ts</a>:</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">@</span><span class="nd">NgModule</span><span class="p">({</span>
+  <span class="na">declarations</span><span class="p">:</span> <span class="p">[</span>
+    <span class="nx">AppComponent</span><span class="p">,</span>
+  <span class="p">],</span>
+  <span class="na">bootstrap</span><span class="p">:</span> <span class="p">[</span><span class="nx">AppComponent</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nx">AppModule</span> <span class="p">{</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<p>What this code does is export a class named <code class="language-plaintext highlighter-rouge">AppModule</code> and decorate it with Angular directive <code class="language-plaintext highlighter-rouge">@NgModule</code> to indicate that this is an <a href="https://angular.io/guide/architecture-modules">Angular module</a>.</p>
+
+<p>In <a href="https://github.com/rodansotto/productcatalogdemo-angular14/blob/main/src/main.ts">/src/main.ts</a>, our <code class="language-plaintext highlighter-rouge">AppModule</code> is loaded at startup via call to <code class="language-plaintext highlighter-rouge">bootstrapModule()</code>:</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">platformBrowserDynamic</span><span class="p">().</span><span class="nx">bootstrapModule</span><span class="p">(</span><span class="nx">AppModule</span><span class="p">)</span>
+  <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">));</span>
+</code></pre></div></div>
+
+<p>We also declare in our root module our root component <code class="language-plaintext highlighter-rouge">AppComponent</code> via the <code class="language-plaintext highlighter-rouge">declarations</code> property and we set it to load at startup via the <code class="language-plaintext highlighter-rouge">bootstrap</code> property.  Note that the <code class="language-plaintext highlighter-rouge">declarations</code> property is where you declare all Angular components that an Angular module requires.</p>
+
+<h2 id="root-component">Root component</h2>
+
+<p>Our root component would be in <a href="https://github.com/rodansotto/productcatalogdemo-angular14/blob/main/src/app/app.component.ts">/src/app/app.component.ts</a>:</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">@</span><span class="nd">Component</span><span class="p">({</span>
+  <span class="na">selector</span><span class="p">:</span> <span class="dl">'</span><span class="s1">app-root</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">templateUrl</span><span class="p">:</span> <span class="dl">'</span><span class="s1">./app.component.html</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">styleUrls</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">./app.component.css</span><span class="dl">'</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nx">AppComponent</span> <span class="p">{</span>
+  <span class="nx">title</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">productcatalogdemo-angular14</span><span class="dl">'</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>What this code does is export a class named <code class="language-plaintext highlighter-rouge">AppComponent</code> with a property <code class="language-plaintext highlighter-rouge">title</code> and decorate the class with Angular directive <code class="language-plaintext highlighter-rouge">@Component</code> to indicate that this is an <a href="https://angular.io/guide/component-overview">Angular component</a>.</p>
+
+<p>An Angular component is where we define our HTML and CSS, the UI for our application, and also the custom HTML tag name which in this case is <code class="language-plaintext highlighter-rouge">&lt;app-root&gt;</code>.  Note that this follows the concept of <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components">Web Components</a>.</p>
+
+<p>If we look at the <a href="https://github.com/rodansotto/productcatalogdemo-angular14/blob/main/src/index.html">/src/index.html</a> file of our Angular application, the <code class="language-plaintext highlighter-rouge">&lt;app-root&gt;</code> is added under the <code class="language-plaintext highlighter-rouge">&lt;body&gt;</code> tag:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;app-root&gt;&lt;/app-root&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>Note that I loosely called it root component because this will be the only entry point to our Angular application.  But we can have multiple entries if we declare and boostrap more than one component in our root module and add them in the <code class="language-plaintext highlighter-rouge">index.html</code> file.  See <a href="https://angular.io/guide/bootstrapping#the-bootstrap-array">The bootstrap array</a> for more info.</p>
+
+<h2 id="interpolation">Interpolation</h2>
+
+<p><a href="https://angular.io/guide/interpolation">Interpolation</a> is a way to embed values or expressions in an Angular component template.  It uses the double curly braces <code class="language-plaintext highlighter-rouge">{{</code> and <code class="language-plaintext highlighter-rouge">}}</code> as delimiters.</p>
+
+<p>Remember in our root component class <code class="language-plaintext highlighter-rouge">AppComponent</code> we defined a property called <code class="language-plaintext highlighter-rouge">title</code>?  We can embed this property inside the the component’s template in <code class="language-plaintext highlighter-rouge">/src/app/app.component.html</code>:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div&gt;</span>{{ title }}<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h2 id="template-variable">Template Variable</h2>
+
+<p>There is also such thing as <a href="https://angular.io/guide/template-reference-variables">template variable</a> in Angular which we don’t have an example in our Angular application.  Basically you can assign a variable to any HTML element (.e.g input, div, or even our own custom element) in a template using the hash symbol <code class="language-plaintext highlighter-rouge">#</code> and refer to it from another part of the template.</p>
+
+<h2 id="property-binding">Property binding</h2>
+
+<p>Good examples of <a href="https://angular.io/guide/property-binding">property binding</a> can be found in our <code class="language-plaintext highlighter-rouge">ProductListComponent</code>’s template in <a href="https://github.com/rodansotto/productcatalogdemo-angular14/blob/main/src/app/product-list/product-list.component.html">/src/app/product-list/product-list.component.html</a>:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;mat-paginator</span>
+  <span class="na">[length]=</span><span class="s">"totalRecords"</span>
+  <span class="na">[pageSize]=</span><span class="s">"pageSize"</span>
+  <span class="na">[pageSizeOptions]=</span><span class="s">"pageSizeOptions"</span>
+  <span class="na">[pageIndex]=</span><span class="s">"page-1"</span>
+  <span class="na">(page)=</span><span class="s">"pageEvent($event)"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/mat-paginator&gt;</span>
+</code></pre></div></div>
+
+<p>Here we are setting the value of the <code class="language-plaintext highlighter-rouge">length</code> attribute, among other things, of <code class="language-plaintext highlighter-rouge">&lt;mat-paginator&gt;</code>.  Basically we enclose the attribute with the square brackets <code class="language-plaintext highlighter-rouge">[</code> and <code class="language-plaintext highlighter-rouge">]</code>:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[length]="totalRecords"
+</code></pre></div></div>
+
+<p>to bind it to the value of <code class="language-plaintext highlighter-rouge">totalRecords</code> where <code class="language-plaintext highlighter-rouge">totalRecords</code> is a property in our <code class="language-plaintext highlighter-rouge">ProductListComponent</code> in <a href="https://github.com/rodansotto/productcatalogdemo-angular14/blob/main/src/app/product-list/product-list.component.ts">/src/app/product-list/product-list.component.ts</a>.</p>
+
+<h2 id="event-binding">Event binding</h2>
+
+<p>Similarly for <a href="https://angular.io/guide/event-binding">event binding</a>, we enclose the event attribute, in this case the <code class="language-plaintext highlighter-rouge">page</code> event attribute in our code example above, with the parentheses <code class="language-plaintext highlighter-rouge">(</code> and <code class="language-plaintext highlighter-rouge">)</code>:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(page)="pageEvent($event)"
+</code></pre></div></div>
+
+<p>to bind it to the function <code class="language-plaintext highlighter-rouge">pageEvent()</code> defined in our <code class="language-plaintext highlighter-rouge">ProductListComponent</code>.  <code class="language-plaintext highlighter-rouge">$event</code> is Angular’s event object that we need to pass to the function.</p>
+
+<h2 id="two-way-binding">Two-way binding</h2>
+
+<p>We don’t have an example of <a href="https://angular.io/guide/two-way-binding">two-way binding</a> in our Angular application.  One thing to note is that when doing two-way binding with form elements, the built-in attribute directive <a href="https://angular.io/guide/built-in-directives#ngModel">NgModel</a> is used instead.</p>
+
+<p>So let’s say we have a form for editing our product in our catalog and to allow editing a product’s name we can use two-way binding on an <code class="language-plaintext highlighter-rouge">&lt;input&gt;</code> element:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">[(ngModel)]=</span><span class="s">"product.Name"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
+<p>, where <code class="language-plaintext highlighter-rouge">product</code> is an object  defined in our product component and <code class="language-plaintext highlighter-rouge">Name</code> is one of product’s properties.</p>
+
+<p>With two-way binding, we enclose the attribute with <code class="language-plaintext highlighter-rouge">[(</code> and <code class="language-plaintext highlighter-rouge">)]</code>.</p>
+
+<h2 id="built-in-attribute-directives">Built-in attribute directives</h2>
+
+<p>We also don’t have examples of <a href="https://angular.io/guide/built-in-directives#built-in-attribute-directives">built-in attribute directives</a> in our Angular application.  But one such attribute is the <code class="language-plaintext highlighter-rouge">NgModel</code> mentioned above.  The other commonly used ones are: <code class="language-plaintext highlighter-rouge">NgClass</code> and <code class="language-plaintext highlighter-rouge">NgStyle</code>.</p>
+
+<h2 id="built-in-structural-directives">Built-in structural directives</h2>
+
+<p>Our <code class="language-plaintext highlighter-rouge">ProductListComponent</code>’s template in <a href="https://github.com/rodansotto/productcatalogdemo-angular14/blob/main/src/app/product-list/product-list.component.html">/src/app/product-list/product-list.component.html</a> has examples of some of Angular’s <a href="https://angular.io/guide/built-in-directives#built-in-structural-directives">built-in structural directives</a>.</p>
+
+<p>One such built-in structural directive is <code class="language-plaintext highlighter-rouge">*ngIf</code>:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;mat-progress-spinner</span>
+  <span class="na">style=</span><span class="s">"margin-left: 10px;"</span>
+  <span class="na">*ngIf=</span><span class="s">"!productsLoaded"</span>
+  <span class="na">mode=</span><span class="s">"indeterminate"</span>
+  <span class="na">diameter=</span><span class="s">"25"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/mat-progress-spinner&gt;</span>
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">*ngIf</code> directive here tells Angular to display or render the <code class="language-plaintext highlighter-rouge">&lt;mat-progress-spinner&gt;</code> component if products have not been loaded yet or has not finished loading yet.  Note that <code class="language-plaintext highlighter-rouge">productsLoaded</code> is a property of our <code class="language-plaintext highlighter-rouge">ProductListComponent</code> in <a href="https://github.com/rodansotto/productcatalogdemo-angular14/blob/main/src/app/product-list/product-list.component.ts">/src/app/product-list/product-list.component.ts</a>.</p>
+
+<p>Another commonly used built-in structural directive is the <code class="language-plaintext highlighter-rouge">*ngFor</code>:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">*ngFor=</span><span class="s">"let product of products"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;mat-card&gt;</span>
+    <span class="nt">&lt;mat-card-content&gt;</span>
+      <span class="nt">&lt;p&gt;</span>
+        {{product.ProductNumber}}
+        | {{product.ProductCategory}}
+        | {{product.ProductModel}}
+        | {{product.Color}}
+        | Sz {{product.Size}}
+        | Wt {{product.Weight}}
+      <span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/mat-card-content&gt;</span>
+  <span class="nt">&lt;/mat-card&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">*ngFor</code> directive iterates/loops over the containing HTML code, and in our example above, it iterates for each <code class="language-plaintext highlighter-rouge">product</code> in the <code class="language-plaintext highlighter-rouge">products</code> propery of our <code class="language-plaintext highlighter-rouge">ProductListComponent</code> and displays a <code class="language-plaintext highlighter-rouge">&lt;mat-card-content&gt;</code> component showing each product’s informations such as <code class="language-plaintext highlighter-rouge">ProductNumber</code>, <code class="language-plaintext highlighter-rouge">ProductCategory</code>, etc.</p>
+
+<h2 id="pipes">Pipes</h2>
+
+<p>We use the character <code class="language-plaintext highlighter-rouge">|</code> to indicate a pipe operation in Angular.  In our <code class="language-plaintext highlighter-rouge">ProductListComponent</code>’s template, the <a href="https://angular.io/api/common/CurrencyPipe">CurrencyPipe</a> is used to display all dollar amount values to currency format:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;mat-card-subtitle&gt;</span>{{product.ListPrice | currency}}<span class="nt">&lt;/mat-card-subtitle&gt;</span>
+</code></pre></div></div>
+
+<h2 id="parent-to-child-component-interaction">Parent to child component interaction</h2>
+
+<p>We don’t have an example of <a href="https://angular.io/guide/inputs-outputs#sending-data-to-a-child-component">passing data from parent component to child component</a> in our Angular application.  But let’s say we decided to create our own card component for our single product named <code class="language-plaintext highlighter-rouge">&lt;product-card&gt;</code> and we wanted to iterate over them, we could have the following modified template on our <code class="language-plaintext highlighter-rouge">ProductListComponent</code>’s template:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">*ngFor=</span><span class="s">"let product of products"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;product-card</span> <span class="na">[product]=</span><span class="s">"product"</span><span class="nt">&gt;&lt;/product-card&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<p>, where we are binding the <code class="language-plaintext highlighter-rouge">product</code> attribute of the the <code class="language-plaintext highlighter-rouge">&lt;product-card&gt;</code> to the iterated products of our <code class="language-plaintext highlighter-rouge">*ngFor</code> directive.</p>
+
+<p>To add the <code class="language-plaintext highlighter-rouge">product</code> attribute to our <code class="language-plaintext highlighter-rouge">ProductCard</code> component, we use the <code class="language-plaintext highlighter-rouge">@Input</code> decorator:</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">@</span><span class="nd">Component</span><span class="p">({</span>
+  <span class="na">selector</span><span class="p">:</span> <span class="dl">'</span><span class="s1">product-card</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">templateUrl</span><span class="p">:</span> <span class="dl">'</span><span class="s1">./product-card.component.html</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">styleUrls</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">./product-card.component.css</span><span class="dl">'</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nx">ProductCard</span> <span class="p">{</span>
+  <span class="p">@</span><span class="nd">Input</span><span class="p">()</span> <span class="nx">product</span><span class="p">:</span> <span class="nx">Product</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This is like passing a custom property to our component.</p>
+
+<h2 id="child-to-parent-component-interaction">Child to parent component interaction</h2>
+
+<p>To <a href="https://angular.io/guide/inputs-outputs#sending-data-to-a-parent-component">pass data or information back to parent from a child component</a>, we use <code class="language-plaintext highlighter-rouge">EventEmmitter</code> in Angular to expose an event from child that the parent can listen to.  To define an event, we use the <code class="language-plaintext highlighter-rouge">@Output</code> decorator.</p>
+
+<p>For example, if we wanted to have a list of liked products in our product list page (our parent component) and everytime the <strong>Like</strong> button is clicked in our product card component (our child component), we would use the <code class="language-plaintext highlighter-rouge">@Output</code> decorator to define our <code class="language-plaintext highlighter-rouge">EventEmitter</code>.</p>
+
+<p>Back to our <code class="language-plaintext highlighter-rouge">ProductCard</code> component (our child component), we would add the <code class="language-plaintext highlighter-rouge">@Output</code> statement and the code to emit the event:</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">class</span> <span class="nx">ProductCard</span> <span class="p">{</span>
+  <span class="p">@</span><span class="nd">Output</span><span class="p">()</span> <span class="nx">likedEventEmitter</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EventEmitter</span><span class="o">&lt;</span><span class="nx">Product</span><span class="o">&gt;</span><span class="p">();</span>
+
+  <span class="nx">likeButtonClicked</span><span class="p">(</span><span class="nx">product</span><span class="p">:</span> <span class="nx">Product</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">likedEventEmitter</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="nx">product</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Then on our <code class="language-plaintext highlighter-rouge">ProductListComponent</code>’s template (our parent component), we listen to the event emitted by our child component using event binding:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">*ngFor=</span><span class="s">"let product of products"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;product-card</span> 
+    <span class="na">[product]=</span><span class="s">"product"</span>
+    <span class="na">(likedEventEmitter)=</span><span class="s">"addLikedProduct($event)"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/product-card&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<p>, where <code class="language-plaintext highlighter-rouge">addLikedProduct()</code> is a function defined in our <code class="language-plaintext highlighter-rouge">ProductListComponent</code>.</p>
+
+<h2 id="lifecycle-hooks">Lifecycle hooks</h2>
+
+<p>You will notice in our <code class="language-plaintext highlighter-rouge">ProductListComponent</code> in <a href="https://github.com/rodansotto/productcatalogdemo-angular14/blob/main/src/app/product-list/product-list.component.ts">/src/app/product-list/product-list.component.ts</a> in its declaration that it’s implementing an interface called <code class="language-plaintext highlighter-rouge">OnInit</code>:</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">class</span> <span class="nx">ProductListComponent</span> <span class="k">implements</span> <span class="nx">OnInit</span> <span class="p">{</span>
+</code></pre></div></div>
+
+<p>That is to say we would like our component to implement the <code class="language-plaintext highlighter-rouge">ngOnInit()</code> method:</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nx">ngOnInit</span><span class="p">():</span> <span class="k">void</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">getProducts</span><span class="p">();</span> <span class="c1">// load products on load</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">ngOnInit()</code> is one of the most common <a href="https://angular.io/guide/lifecycle-hooks">lifecycle hooks</a> available in Angular that we can use.  Other commons ones are: <code class="language-plaintext highlighter-rouge">ngOnChanges()</code> and <code class="language-plaintext highlighter-rouge">ngOnDestroy()</code>.</p>
+
+<h2 id="service">Service</h2>
+<p><a href="https://angular.io/guide/architecture-services">Angular service</a> is a way to separate logic from view, from Angular component.  It is decorated as <code class="language-plaintext highlighter-rouge">@Injectable</code>, declared in Angular module as a provider, and injected to an Angular component.</p>
+
+<p>An example of an Angular service in our Angular application is the <code class="language-plaintext highlighter-rouge">ProductService</code> in <a href="https://github.com/rodansotto/productcatalogdemo-angular14/blob/main/src/app/product-service/product.service.ts">/src/app/product-service/product.service.ts</a>:</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">@</span><span class="nd">Injectable</span><span class="p">()</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nx">ProductService</span> <span class="p">{</span>
+  <span class="k">async</span> <span class="nx">getProducts</span><span class="p">(...)</span> <span class="p">{</span>
+    <span class="p">...</span>
+  <span class="p">}</span>
+
+  <span class="nx">orderBy</span><span class="p">(...)</span> <span class="p">{</span>
+    <span class="p">...</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>In our <code class="language-plaintext highlighter-rouge">AppModule</code> in <a href="https://github.com/rodansotto/productcatalogdemo-angular14/blob/main/src/app/app.module.ts">/src/app/app.module.ts</a> we list our <code class="language-plaintext highlighter-rouge">ProductService</code> as a provider via the <code class="language-plaintext highlighter-rouge">providers</code> property:</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">@</span><span class="nd">NgModule</span><span class="p">({</span>
+  <span class="na">declarations</span><span class="p">:</span> <span class="p">[</span>
+    <span class="nx">AppComponent</span><span class="p">,</span>
+    <span class="nx">ProductListComponent</span><span class="p">,</span>
+  <span class="p">],</span>
+  <span class="na">providers</span><span class="p">:</span> <span class="p">[</span><span class="nx">ProductService</span><span class="p">],</span>
+  <span class="na">bootstrap</span><span class="p">:</span> <span class="p">[</span><span class="nx">AppComponent</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nx">AppModule</span> <span class="p">{</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<p>Then our <code class="language-plaintext highlighter-rouge">ProductService</code> is injected to the <code class="language-plaintext highlighter-rouge">ProductListComponent</code>’s constructor in <a href="https://github.com/rodansotto/productcatalogdemo-angular14/blob/main/src/app/product-list/product-list.component.ts">/src/app/product-list/product-list.component.ts</a> so our product list component can call functions of our product service such as <code class="language-plaintext highlighter-rouge">getProducts()</code>.</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">class</span> <span class="nx">ProductListComponent</span><span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="k">private</span> <span class="nx">_productService</span><span class="p">:</span> <span class="nx">ProductService</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+
+  <span class="p">...</span>
+   <span class="k">this</span><span class="p">.</span><span class="nx">_productService</span><span class="p">.</span><span class="nx">getProducts</span><span class="p">(...);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="routing">Routing</h2>
+<p>Routing enables us to build a single page application where you can navigate from one view to the next without requesting a whole new page from the server.  The <a href="https://angular.io/guide/routing-overview">Angular router</a> provides us such feature.</p>
+
+<p>We have routing in our Angular application and they are defined in the routing module in <a href="https://github.com/rodansotto/productcatalogdemo-angular14/blob/main/src/app/app-routing.module.ts">/src/app/app-routing.module.ts</a>:</p>
+
+<div class="language-ts highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">RouterModule</span><span class="p">,</span> <span class="nx">Routes</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@angular/router</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">routes</span><span class="p">:</span> <span class="nx">Routes</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span> <span class="na">path</span><span class="p">:</span> <span class="dl">'</span><span class="s1">products</span><span class="dl">'</span><span class="p">,</span> <span class="na">component</span><span class="p">:</span> <span class="nx">ProductListComponent</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="na">path</span><span class="p">:</span> <span class="dl">'</span><span class="s1">**</span><span class="dl">'</span><span class="p">,</span> <span class="na">component</span><span class="p">:</span> <span class="nx">PageNotFoundComponent</span> <span class="p">}</span>
+<span class="p">];</span>
+
+<span class="p">@</span><span class="nd">NgModule</span><span class="p">({</span>
+  <span class="na">imports</span><span class="p">:</span> <span class="p">[</span><span class="nx">RouterModule</span><span class="p">.</span><span class="nx">forRoot</span><span class="p">(</span><span class="nx">routes</span><span class="p">,</span> <span class="p">{</span> <span class="na">useHash</span><span class="p">:</span> <span class="kc">false</span> <span class="p">})],</span>
+  <span class="na">exports</span><span class="p">:</span> <span class="p">[</span><span class="nx">RouterModule</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="k">export</span> <span class="kd">class</span> <span class="nx">AppRoutingModule</span> <span class="p">{</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<p>The variable <code class="language-plaintext highlighter-rouge">routes</code> contains our route definitions and basically we are saying that for any url path (including the base path <code class="language-plaintext highlighter-rouge">'/'</code>) other than <code class="language-plaintext highlighter-rouge">/products</code> we show the <code class="language-plaintext highlighter-rouge">Page Not Found</code> component, as indicated by the wildcard route <code class="language-plaintext highlighter-rouge">'**'</code>.  Only the url path <code class="language-plaintext highlighter-rouge">/products</code> will show our product list component, our Angular product catalog application.</p>
+
+<p>The routed view is then shown on the template of our root component AppComponent in <a href="https://github.com/rodansotto/productcatalogdemo-angular14/blob/main/src/app/app.component.html">/src/app/app.component.html</a>.  In Angular, the routed views render in the <code class="language-plaintext highlighter-rouge">&lt;router-outlet&gt;</code>.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"padding:20px"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;router-outlet&gt;&lt;/router-outlet&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h2 id="forms">Forms</h2>
+
+<p>We don’t have forms on our Angular application.  But if you are having forms in you web application, you have the option to use <a href="https://angular.io/guide/forms-overview">Angular forms</a>.  Maybe I will do a separate post on this when I add forms in our Angular application.  But for now just be aware that in Angular, there are two approaches to implementing forms: the more simplistic <code class="language-plaintext highlighter-rouge">template-driven forms</code> and the more robust and scalable <code class="language-plaintext highlighter-rouge">reactive forms</code>.</p>
+
+<h2 id="additional-reference">Additional Reference</h2>
+
+<p>There is this Youtube video that I watched (here is the <a href="https://www.youtube.com/watch?v=IYI0em-xT28">link</a>) that goes through these concepts.  It’s a long video, like 4 hours, but it’s totally worth it.  For just a quick refresher you can set the playback to 2x which I totally did and still understandable.</p>
+
+
+    </div>
+
+</article>
+<div class="post-nav">
+<a class="previous" href="/tech-blog/2022/09/06/task-based-async-pattern.html" title="Multi-threading in C#: Task-Based Asynchronous Pattern (TAP)">Multi-threading in C#: Task-Based Asynchronous Pattern...</a><a class="next" href="/tech-blog/2022/10/02/tictactoe-ng-rx-lit.html" title="Tic-Tac-Toe in Angular, React, and Lit">Tic-Tac-Toe in Angular, React, and Lit...</a>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/tech-blog/2009/04/01/design-patterns-introduction.html" title="Tic-Tac-Toe in Angular, React, and Lit">Design Patterns: Introduction</a></li>
+<li><a class="post-link" href="/tech-blog/2014/03/18/android-development-main-method-application-lifecycle-and-event-handling.html" title="Tic-Tac-Toe in Angular, React, and Lit">Android Development: main() Method, Application Lifecycle, and Event Handling</a></li>
+<li><a class="post-link" href="/tech-blog/2009/03/28/net-2-0-notes-on-foundation-part-1-3.html" title="Tic-Tac-Toe in Angular, React, and Lit">.NET 2.0: Notes on Foundation Part 1</a></li>
+<li><a class="post-link" href="/tech-blog/2007/05/05/vb-2005-things-to-know-about-the-visual-studio-2005-ide.html" title="Tic-Tac-Toe in Angular, React, and Lit">VB 2005: Things to know about the Visual Studio 2005 IDE</a></li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items --><style type="text/css" media="screen">
+.post-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+</style>
+
+<div class="post-menu">
+  <div class="post-menu-title">TOC</div>
+  <div class="post-menu-content"></div>
+</div>
+
+<script>
+  function generateContent() {
+    var menu = document.querySelector(".post-menu");
+    var menuContent =  menu.querySelector(".post-menu-content");
+    var headings = document.querySelector(".post-content").querySelectorAll("h2, h3, h4, h5, h6");
+
+    // Hide menu when no headings
+    if (headings.length === 0) {
+      return menu.style.display = "none";
+    }
+
+    // Generate post menu
+    var menuHTML = '';
+    for (var i = 0; i < headings.length; i++) {
+      var h = headings[i];
+      menuHTML += (
+        '<li class="h-' + h.tagName.toLowerCase() + '">'
+        + '<a href="#h-' + h.getAttribute('id') + '">' + h.textContent + '</a></li>');
+    }
+
+    menuContent.innerHTML = '<ul>' + menuHTML + '</ul>';
+
+    // The header element
+    var header = document.querySelector('header.site-header');
+
+    function doMenuCollapse(index, over_items) {
+      var items = menuContent.firstChild.children;
+
+      if (over_items == undefined) {
+        over_items = 20;
+      }
+
+      if (items.length < over_items) {
+        return;
+      }
+
+      var activeItem = items[index];
+      var beginItem = activeItem
+      var endItem = activeItem
+      var beginIndex = index;
+      var endIndex = index + 1;
+      while (beginIndex >= 0
+        && !items[beginIndex].classList.contains('h-h2')) {
+        beginIndex -= 1;
+      }
+      while (endIndex < items.length
+        && !items[endIndex].classList.contains('h-h2')) {
+        endIndex += 1;
+      }
+      for (var i = 0; i < beginIndex; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+      for (var i = beginIndex + 1; i < endIndex; i++) {
+        item = items[i]
+        // if (!item.classList.contains('h-h2')) {
+          item.style.display = '';
+        // }
+      }
+      for (var i = endIndex; i < items.length; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+    }
+
+    // Init menu collapsed
+    doMenuCollapse(-1);
+
+    // Active the menu item
+    window.addEventListener('scroll', function (event) {
+      var lastActive = menuContent.querySelector('.active');
+      var changed = true;
+      var activeIndex = -1;
+      for (var i = headings.length - 1; i >= 0; i--) {
+        var h = headings[i];
+        var headingRect = h.getBoundingClientRect();
+        var headerRect = header.getBoundingClientRect();
+        var headerTop = Math.floor(headerRect.top);
+        var headerHeight = Math.floor(headerRect.height);
+        var headerHeight = headerTop + headerHeight + 20;
+        if (headingRect.top <= headerHeight) {
+          var id = 'h-' + h.getAttribute('id');
+          var a = menuContent.querySelector('a[href="#' + id  + '"]');
+          var curActive = a.parentNode;
+          if (curActive) {
+            curActive.classList.add('active');
+            activeIndex = i;
+          }
+          if (lastActive == curActive) {
+            changed = false;
+          }
+          break;
+        }
+      }
+      if (changed) {
+        if (lastActive) {
+          lastActive.classList.remove('active');
+        }
+        doMenuCollapse(activeIndex);
+      }
+      event.preventDefault();
+    });
+  }
+  generateContent();
+</script>
+</section>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/tech-blog/"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-inner">
+<div></div>
+      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
+      generator." href="https://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
+      <div class="footer-col rss-subscribe">Subscribe <a href="/tech-blog/feed.xml">via RSS</a>
+</div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

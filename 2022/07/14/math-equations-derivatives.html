@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Branches of Mathematics, Solving Equations and Calculating Derivatives | Rodan Sotto’s Tech Blog</title>
+<meta name="generator" content="Jekyll v3.9.2">
+<meta property="og:title" content="Branches of Mathematics, Solving Equations and Calculating Derivatives">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="A software developer’s personal notes">
+<meta property="og:description" content="A software developer’s personal notes">
+<link rel="canonical" href="https://rodansotto.github.io/tech-blog/2022/07/14/math-equations-derivatives.html">
+<meta property="og:url" content="https://rodansotto.github.io/tech-blog/2022/07/14/math-equations-derivatives.html">
+<meta property="og:site_name" content="Rodan Sotto’s Tech Blog">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2022-07-14T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Branches of Mathematics, Solving Equations and Calculating Derivatives">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-07-14T00:00:00+00:00","datePublished":"2022-07-14T00:00:00+00:00","description":"A software developer’s personal notes","headline":"Branches of Mathematics, Solving Equations and Calculating Derivatives","mainEntityOfPage":{"@type":"WebPage","@id":"https://rodansotto.github.io/tech-blog/2022/07/14/math-equations-derivatives.html"},"url":"https://rodansotto.github.io/tech-blog/2022/07/14/math-equations-derivatives.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="icon" href="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+  <link rel="stylesheet" href="/tech-blog/assets/css/main.css">
+  <script src="/tech-blog/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="https://rodansotto.github.io/tech-blog/feed.xml" title="Rodan Sotto's Tech Blog">
+<!--<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">-->
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs tpbg ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+
+  .tpbg {
+    background: transparent;
+  }
+</style>
+<script>MathJax={"tex":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]]},"svg":{"fontCache":"global"}}</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header " role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/tech-blog/">
+  <img class="site-favicon" title="Rodan Sotto's Tech Blog" src="" onerror="this.style.display='none'">
+  Rodan Sotto's Tech Blog
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+<a class="page-link" href="/tech-blog/">HOME</a><a class="page-link" href="/tech-blog/archives.html">ARCHIVES</a><a class="page-link" href="/tech-blog/categories.html">CATEGORIES</a><a class="page-link" href="/tech-blog/search2.html">SEARCH</a>
+
+
+
+
+</div>
+        </nav>
+</div>
+  </div>
+</header>
+
+<script>
+  function initHeader() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;var scrollStatus = "";
+
+      if (y <= 0) {
+        scrollStatus = "top";
+      } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  }
+  document.addEventListener('DOMContentLoaded', initHeader);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    hashValue = decodeURIComponent(hashValue);
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+<div id="click-to-top" class="click-to-top">
+  <i class="fa fa-arrow-up"></i>
+</div>
+<script>
+  (function () {
+    const clickToTop = document.getElementById('click-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        clickToTop.classList.add('show')
+      }else {
+        clickToTop.classList.remove('show')
+      }
+    });
+    clickToTop.addEventListener('click', () => {
+      window.smoothScrollTo(0);
+    });
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="post">
+  <section>
+
+
+
+
+
+
+
+
+
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">Branches of Mathematics, Solving Equations and Calculating Derivatives</h1>
+  <h2 class="post-subtitle"></h2>
+
+  <p class="post-meta">
+    <time class="dt-published" datetime="2022-07-14T00:00:00+00:00" itemprop="datePublished"><i class="fa fa-calendar"></i> Jul 14, 2022
+    </time>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 11 mins</span>
+  </p></header>
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <p><img src="/tech-blog/assets/images/math.png" alt=""></p>
+
+<p>The need for Math is real when diving deep into AI which I found myself scrambling.  Thus I made it my mission to brush up on my math.</p>
+
+<h3 id="branches-of-mathematics">Branches of Mathematics</h3>
+
+<h4 id="traditional-branches">Traditional Branches</h4>
+<p>I do recall the following traditional branches of Math being taught in school but could not say I still know them all:</p>
+
+<ul>
+  <li>
+<strong>Arithmetic</strong> - study of numbers using various operations on them such as addition, subtraction, multiplication, and division</li>
+  <li>
+<strong>Algebra</strong> - study of variables, expressions and equations such as linear equations and quadratic equations</li>
+  <li>
+<strong>Geometry</strong> - study of shapes such as points, lines, angles, surfaces, and solids</li>
+  <li>
+<strong>Trigonometry</strong> - study of triangles specifically side lengths and angles</li>
+  <li>
+<strong>Calculus</strong> - study of continuous change or rate of change</li>
+</ul>
+
+<p>And those are just touching the fundamentals as there are also advanced topics within those branches.  There is a whole swat of other fields in Math that I do not know.  It’s actually so hard to categorize them, classify them, divide them into parts so that it would be easy to navigate between them.  I am basically thrown into the ocean or into the <a href="/tech-blog/assets/images/math/mathematics_trench.jpg">math trench</a> on my own, and it’s up to me to navigate them.</p>
+
+<h4 id="advanced-branches">Advanced Branches</h4>
+<p>There are other branches that maybe worth looking into beyond Calculus to further widen your knowledge in Math, explore the math trench as I would say.  Here are some of them:</p>
+
+<ul>
+  <li>
+<strong>Discrete Math</strong> - antithesis of Calculus; a broad field involving anything that can be separated into discrete objects, with topics like <strong>Formal Logic</strong>, <strong>Counting Problems</strong>, and <strong>Graph Theory</strong>
+</li>
+  <li>
+<strong>Real Analysis</strong> - heart of Calculus; an important field that provides justification for all of Calculus; studies the behavior of real numbers, sequences and series of real numbers, and real functions</li>
+  <li>
+<strong>Complex Analysis</strong> - analysis that takes real functions and extends them to the complex plane; investigates functions of complex numbers</li>
+  <li>
+<strong>Modern/Abstract Algebra</strong> - an advanced field in Algebra;  the study of algebraic structures such as groups, rings, fields, modules, vector spaces, lattices, and algebras</li>
+  <li>
+<strong>Linear Algebra</strong> - study involving linear equations; of lines and planes, vector spaces and mappings that are required for linear transforms</li>
+  <li>
+<strong>Differential Geometry</strong> - studies the geometry of smooth shapes and smooth spaces, otherwise known as smooth manifolds using differential calculus, integral calculus, linear algebra and multilinear algebra</li>
+  <li>
+<strong>Probability and Statistics</strong> - <strong>Probability</strong> deals with predicting the likelihood of future events, while <strong>Statistics</strong> involves the analysis of the frequency of past events</li>
+  <li>
+<strong>Numerical Methods</strong> -  a mathematical tool designed to solve numerical problems in <strong>Numerical Analysis</strong>, which is the study of algorithms that use numerical approximation for the problems of mathematical analysis</li>
+  <li>
+<strong>Information Theory and Signal Processing</strong> - <strong>Information Theory</strong> is the scientific study of the quantification, storage, and communication of digital information while <strong>Signal Processing</strong> is analyzing, modifying, and synthesizing signals such as sound, images, and scientific measurements</li>
+</ul>
+
+<h4 id="branches-for-ai">Branches for AI</h4>
+<p>And there are these branches of Math that you will need when diving deep into AI.  Besides <strong>Linear Algebra</strong>, the following are some of them:</p>
+
+<ul>
+  <li>
+<strong>Analytic Geometry</strong> - also known as coordinate geometry or <strong>Cartesian geometry</strong>, is the study of geometry using a coordinate system</li>
+  <li>
+<strong>Matric Decompositions</strong> - in linear algebra, a matrix decomposition or matrix factorization is a factorization of a matrix into a product of matrices</li>
+  <li>
+<strong>Vector Calculus</strong> - or vector analysis, is concerned with differentiation and integration of vector fields, primarily in 3-dimensional Euclidean space $ R^3 $</li>
+  <li>
+<strong>Probability and Distributions</strong> - in <strong>Probability and Statistics</strong>, a <strong>probability distribution</strong> is a statistical function that describes all the possible values and likelihoods that a random variable can take within a given range</li>
+  <li>
+<strong>Continuous Optimization</strong> - as opposed to <strong>Discrete Optimization</strong>, the variables used in the objective function are required to be continuous variables—that is, to be chosen from a set of real values between which there are no gaps</li>
+</ul>
+
+<h4 id="specific-concepts-for-ai">Specific Concepts for AI</h4>
+<p>To be more specific, the following are some of the concepts you will need:</p>
+<ul>
+  <li>In <strong>Algebra</strong>, they are the <em>Exponents</em>, <em>Radicals</em>, <em>Factorials</em>, <em>Summations</em>, <em>Scientific Notations</em>
+</li>
+  <li>In <strong>Linear Algebra</strong>, they are the <em>Scalars</em>, <em>Vectors</em>, <em>Matrices</em>, <em>Tensors</em>, <em>Eigenvectors &amp; Eigenvalues</em>, <em>Singular Value Decomposition</em>, <em>Principal Component Analysis (PCA)</em>
+</li>
+  <li>In <strong>Calculus</strong>, they are the <em>Derivatives</em>, <em>Vector/Matrix Calculus</em>, <em>Gradient Algorithms</em>
+</li>
+  <li>In <strong>Probability and Statistics</strong>, they are the <em>Basic Statistics</em>, <em>Basic rules in probability</em>, <em>Random variables</em>, <em>Bayes’ Theorem</em>, <em>Maximum Likelihood Estimation (MLE)</em>, <em>Common Distributions</em>
+</li>
+  <li>In <strong>Information Theory</strong>, they are the <em>Entropy</em>, <em>Cross-Entropy</em>, <em>Kullback Leibler Divergence</em>, <em>Viterbi Algorithm</em>, <em>Encoder-Decoder</em>
+</li>
+</ul>
+
+<p>To learn more about these concepts, check this article <a href="https://www.freecodecamp.org/news/all-the-math-you-need-in-artificial-intelligence/">All the Math You Need to Know in Artificial Intelligence</a>.</p>
+
+<p>As you can see now, it’s really daunting how much math you need to know when getting into AI.  I don’t expect to know them all at once but at least I know for now what they are which I can get into more depth as needed.</p>
+
+<h3 id="solving-equations">Solving Equations</h3>
+<p>For now it would be wise to know how to solve equations as I find this will help in understanding the formulas, computations, or calculations that abound in AI.</p>
+
+<h4 id="techniques">Techniques</h4>
+<p>To solve equations, you need to know some basic techniques and these techniques are:</p>
+<ul>
+  <li>
+<a href="https://www.mathsisfun.com/algebra/introduction.html">Add or Subtract</a> the same value from both sides (the balancing method)
+<img src="/tech-blog/assets/images/math/addsubvalbothsides.png" alt="">
+</li>
+  <li>Clear out any fractions by <a href="https://www.mathsisfun.com/algebra/introduction-multiply.html">Multiplying</a> every term by the bottom parts, and in case of multiple fractions multiplying by their <a href="https://www.cuemath.com/numbers/least-common-denominator-lcd/">LCD</a>
+<img src="/tech-blog/assets/images/math/multeverytermbybottompart.png" alt="">
+</li>
+  <li>If there are decimals, multiply both sides of the equation by the lowest <a href="https://www.cuemath.com/numbers/powers-of-10/">power of 10</a> to convert them into whole numbers</li>
+  <li>Divide every term by the same nonzero value
+<img src="/tech-blog/assets/images/math/diveveryterm.png" alt="">
+</li>
+  <li>
+<a href="https://www.mathsisfun.com/algebra/like-terms.html">Combine Like Terms</a>
+<img src="/tech-blog/assets/images/math/combineliketerms.png" alt="">
+</li>
+  <li>
+<a href="https://www.mathsisfun.com/algebra/factoring.html">Factoring</a> and using <a href="https://www.cuemath.com/numbers/distributive-property/">Distributive Property</a>
+<img src="/tech-blog/assets/images/math/factor.png" alt="">
+</li>
+  <li>
+<a href="https://www.mathsisfun.com/algebra/expanding.html">Expanding</a> (the opposite of factoring) may also help
+<img src="/tech-blog/assets/images/math/expand.png" alt="">
+</li>
+  <li>Recognizing a pattern, such as the <a href="https://www.mathsisfun.com/algebra/special-binomial-products.html">difference of squares</a>
+<img src="/tech-blog/assets/images/math/diffofsq.png" alt="">
+</li>
+  <li>Sometimes we can apply a function to both sides (e.g. square both sides)
+<img src="/tech-blog/assets/images/math/sqbothsides.png" alt="">
+</li>
+</ul>
+
+<h4 id="rules-formulas--properties">Rules, Formulas,  Properties</h4>
+<p>The rules, formulas, and properties in the different fields of Mathematics are tools for solving equations. You need to know them as well.  The following infographics lists some of them.</p>
+
+<h5 id="algebra">Algebra</h5>
+<p>In <strong>Algebra</strong> you have: associative, commutative, and distributive properties; arithmetic operations rules; properties of exponents, radicals, inequalities, absolute values, complex numbers, logarithms, and polynomials; common factoring techniques; quadratic equation formula.</p>
+
+<p><img src="/tech-blog/assets/images/math/algebra.webp" alt=""></p>
+
+<h5 id="geometry">Geometry</h5>
+<p>In <strong>Geometry</strong> you have:  circumference and area formulas for square, rectangle, circle, triangle, parallelogram, and trapezoid; area of a circular ring as well as the area and segment length of a circular sector; area and volume of rectangular box, cube, and cylinder; area, side length, and volume of a right circular cone, as well as the volume of a frustum of a cone; pythagorean theorem.</p>
+
+<p><img src="/tech-blog/assets/images/math/geometry-shapes-solids.webp" alt=""></p>
+
+<h5 id="trigonometry">Trigonometry</h5>
+
+<p>In <strong>Trigonometry</strong> you have: right triangle definitions for sine, cosine, tangent, cosecant, secant, and cotangent; unit circle definitions for all trig functions; range, domain and period for each of the trig functions; inverse trig function notation as well as domain and range.</p>
+
+<p><img src="/tech-blog/assets/images/math/trigonometry-definition.webp" alt=""></p>
+
+<p>And you have trigonometry laws and identities such as: law of cosines, law of sines, and law of tangents; tangent identities, reciprocal identities, Pythagorean identities, periodic identities, even/odd identities, double angle identities, half angle identities, product to sum identities, sum to product identities, sum/difference identities, and cofunction identities; Mollweide’s formula.</p>
+
+<p><img src="/tech-blog/assets/images/math/trigonometry-laws-and-identities.webp" alt=""></p>
+
+<h5 id="calculus">Calculus</h5>
+<p>In <strong>Calculus Derivatives and Limits</strong> you have: mean value theorem, derivative’s basic properties; common derivative formulas; product rule, quotient rule, power rule, chain rule, and L’Hopital’s rule; properties of limits, limit evaluations at infinity; limit evaluation method for factoring and cancelling.</p>
+
+<p><img src="/tech-blog/assets/images/math/calculus-derivatives-limits.webp" alt=""></p>
+
+<p>In <strong>Calculus Integrals</strong> you have: fundamental theorem of calculus, integration properties, methods for approximating definite integrals such as left hand rectangle, right hand rectangle, midpoint rule, trapezoid rule, and Simpson’s rule; common integrals; trigonometric substitution when using integrals; integration by substitution as well as the integration by parts.</p>
+
+<p><img src="/tech-blog/assets/images/math/calculus-integrals.webp" alt=""></p>
+
+<h3 id="calculating-derivatives">Calculating Derivatives</h3>
+<p>I wanted to focus here on how to get the derivative of the composition of two or more functions as you will need this in understanding the backpropagation algorithm used in machine learning</p>
+
+<p>A <strong>composition of function</strong> is defined as:</p>
+
+<p>$ h(x) = f(g(x)) $</p>
+
+<p>The <strong>derivative</strong> then is defined as, using the <strong>chain rule</strong> depicted in the previous infographic for the calculus derivatives and limits:</p>
+
+<p>$ \frac{d}{dx}(f(g(x))) =  f’(g(x)){\cdot}g’(x) = \frac{df}{dg}{\cdot}\frac{dg}{dx} $</p>
+
+<p>Let’s use a simple example.  Say you have this function:</p>
+
+<p>$ A = 1 + B^2 $</p>
+
+<p>And $ B $ is also another function:</p>
+
+<p>$ B = \frac{1}{1 + C} $</p>
+
+<p>And $ C $ is yet another function (we will be using a composition of three functions for this example):</p>
+
+<p>$ C = 2x $, where $ x $ has a value of $ 5 $.</p>
+
+<p>Get the derivative of $ A $ <strong>with respect to</strong> $ x $, in other words, what’s the <strong>effect on the output</strong> $ A $ <strong>given a change in variable</strong> $ x $?</p>
+
+<p>Using substitution, you will end up with this all encompassing single function:</p>
+
+<p>$ A(x) = 1 + {\frac{1}{1 + {2x}}}^2 $</p>
+
+<p>You can try to get the derivative of this function straight away, but in cases where you have a more complex looking function it might be difficult.  This is where the <strong>chain rule</strong> can be useful.  Using the <strong>chain rule</strong>, we can have:</p>
+
+<p>$ \frac{dA}{dx} = A’(B(C(x))){\cdot}B’(C(x)){\cdot}C’(x) $</p>
+
+<p>$ = \frac{dA}{dB}{\cdot}\frac{dB}{dC}{\cdot}\frac{dC}{dx} $</p>
+
+<p>Then we get the derivatives for $ A $, $ B $, and $ C $ separately.</p>
+
+<p>For the first derivative,</p>
+
+<p>$ \frac{dA}{dB} = \frac{d}{dB}(1 + B^2) $</p>
+
+<p>, since <strong>derivative of a constant is 0</strong> and using <strong>power rule</strong> you get</p>
+
+<p>$ = 0 + 2B = 2B $</p>
+
+<p>For the second derivative,</p>
+
+<p>$ \frac{dB}{dC} = \frac{d}{dC}(\frac{1}{1 + C}) $</p>
+
+<p>, using <strong>quotient rule</strong> you get</p>
+
+<p>$ = \frac{0{\cdot}(1 + C) - 1{\cdot}1}{(1 + C)^2} = \frac{-1}{(1 + C)^2} $</p>
+
+<p>And for the third derivative,</p>
+
+<p>$ \frac{dC}{dx} = \frac{d}{dx}(2x) = 2{\cdot}C’(x) = 2 $</p>
+
+<p>Multiplying them all together, we have:</p>
+
+<p>$ A’(x) = 2B{\cdot}(\frac{-1}{(1 + C)^2}){\cdot}2 $</p>
+
+<p>You can simplify that equation further or substitute with values to get the derivative, since we know $ x = 5 $.</p>
+
+<p>So there you go.  Having been able to get the derivative is a step closer to appreciating Math again, at least for me.  And having a good knowledge of different Maths will definitely serve you well not just in the area of AI, but in games, financial, blockchain and metaverse.</p>
+
+<h3 id="references">References</h3>
+<ul>
+  <li><a href="https://www.cantorsparadise.com/beyond-calculus-the-math-classes-you-didnt-take-d0365ac42e41">Beyond Calculus: The Math Classes You Didn’t Take</a></li>
+  <li><a href="https://mml-book.github.io/book/mml-book.pdf">Mathematics For Machine Learning (PDF)</a></li>
+  <li><a href="https://www.freecodecamp.org/news/all-the-math-you-need-in-artificial-intelligence/">All the Math You Need to Know in Artificial Intelligence</a></li>
+  <li><a href="https://www.mathsisfun.com/algebra/equations-solving.html">Solving Equations from MathIsFun</a></li>
+  <li><a href="https://www.cuemath.com/algebra/solving-an-equation/">Solving Equations from CueMath</a></li>
+  <li><a href="http://www.sosmath.com/algebra/solve/solve0/solve0.html">Solving Equations from S.O.S. Math</a></li>
+  <li><a href="https://sites.austincc.edu/tsiprep/math-review/">Math Review</a></li>
+  <li><a href="https://www.eeweb.com/tools/math-help/">Math Reference Sheets</a></li>
+  <li><a href="https://www.rapidtables.com/math/symbols/index.html">Mathematical Symbols</a></li>
+  <li><a href="https://www.khanacademy.org/math/calculus-1/cs1-derivatives-definition-and-basic-rules">Derivatives: definition and basic rules</a></li>
+</ul>
+
+
+    </div>
+
+</article>
+<div class="post-nav">
+<a class="previous" href="/tech-blog/2022/07/06/a-simple-neural-network-in-c-sharp.html" title="A Simple Neural Network In C#">A Simple Neural Network In C#...</a><a class="next" href="/tech-blog/2022/08/02/from-cloudformation-to-serverless-to-cdk.html" title="From CloudFormation To Serverless Framework To Cloud Development Kit?">From CloudFormation To Serverless Framework To...</a>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/tech-blog/2014/06/03/access-type-mismatch-run-time-error-after-converting-to-accdb-format.html" title="From CloudFormation To Serverless Framework To Cloud Development Kit?">Access: Type Mismatch Run-time Error After Converting to ACCDB Format</a></li>
+<li><a class="post-link" href="/tech-blog/2015/03/13/why-i-chose-c-over-vb-net.html" title="From CloudFormation To Serverless Framework To Cloud Development Kit?">Why I Chose C# Over VB.NET?</a></li>
+<li><a class="post-link" href="/tech-blog/2017/12/09/linq-exercises-using-both-query-and-fluent-syntaxes.html" title="From CloudFormation To Serverless Framework To Cloud Development Kit?">LINQ Exercises Using Both Query and Fluent Syntaxes</a></li>
+<li><a class="post-link" href="/tech-blog/2014/02/11/design-patterns-factory-method-abstract-factory-and-singleton.html" title="From CloudFormation To Serverless Framework To Cloud Development Kit?">Design Patterns: Factory Method, Abstract Factory, and Singleton</a></li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items --><style type="text/css" media="screen">
+.post-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+</style>
+
+<div class="post-menu">
+  <div class="post-menu-title">TOC</div>
+  <div class="post-menu-content"></div>
+</div>
+
+<script>
+  function generateContent() {
+    var menu = document.querySelector(".post-menu");
+    var menuContent =  menu.querySelector(".post-menu-content");
+    var headings = document.querySelector(".post-content").querySelectorAll("h2, h3, h4, h5, h6");
+
+    // Hide menu when no headings
+    if (headings.length === 0) {
+      return menu.style.display = "none";
+    }
+
+    // Generate post menu
+    var menuHTML = '';
+    for (var i = 0; i < headings.length; i++) {
+      var h = headings[i];
+      menuHTML += (
+        '<li class="h-' + h.tagName.toLowerCase() + '">'
+        + '<a href="#h-' + h.getAttribute('id') + '">' + h.textContent + '</a></li>');
+    }
+
+    menuContent.innerHTML = '<ul>' + menuHTML + '</ul>';
+
+    // The header element
+    var header = document.querySelector('header.site-header');
+
+    function doMenuCollapse(index, over_items) {
+      var items = menuContent.firstChild.children;
+
+      if (over_items == undefined) {
+        over_items = 20;
+      }
+
+      if (items.length < over_items) {
+        return;
+      }
+
+      var activeItem = items[index];
+      var beginItem = activeItem
+      var endItem = activeItem
+      var beginIndex = index;
+      var endIndex = index + 1;
+      while (beginIndex >= 0
+        && !items[beginIndex].classList.contains('h-h2')) {
+        beginIndex -= 1;
+      }
+      while (endIndex < items.length
+        && !items[endIndex].classList.contains('h-h2')) {
+        endIndex += 1;
+      }
+      for (var i = 0; i < beginIndex; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+      for (var i = beginIndex + 1; i < endIndex; i++) {
+        item = items[i]
+        // if (!item.classList.contains('h-h2')) {
+          item.style.display = '';
+        // }
+      }
+      for (var i = endIndex; i < items.length; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+    }
+
+    // Init menu collapsed
+    doMenuCollapse(-1);
+
+    // Active the menu item
+    window.addEventListener('scroll', function (event) {
+      var lastActive = menuContent.querySelector('.active');
+      var changed = true;
+      var activeIndex = -1;
+      for (var i = headings.length - 1; i >= 0; i--) {
+        var h = headings[i];
+        var headingRect = h.getBoundingClientRect();
+        var headerRect = header.getBoundingClientRect();
+        var headerTop = Math.floor(headerRect.top);
+        var headerHeight = Math.floor(headerRect.height);
+        var headerHeight = headerTop + headerHeight + 20;
+        if (headingRect.top <= headerHeight) {
+          var id = 'h-' + h.getAttribute('id');
+          var a = menuContent.querySelector('a[href="#' + id  + '"]');
+          var curActive = a.parentNode;
+          if (curActive) {
+            curActive.classList.add('active');
+            activeIndex = i;
+          }
+          if (lastActive == curActive) {
+            changed = false;
+          }
+          break;
+        }
+      }
+      if (changed) {
+        if (lastActive) {
+          lastActive.classList.remove('active');
+        }
+        doMenuCollapse(activeIndex);
+      }
+      event.preventDefault();
+    });
+  }
+  generateContent();
+</script>
+</section>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/tech-blog/"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-inner">
+<div></div>
+      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
+      generator." href="https://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
+      <div class="footer-col rss-subscribe">Subscribe <a href="/tech-blog/feed.xml">via RSS</a>
+</div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

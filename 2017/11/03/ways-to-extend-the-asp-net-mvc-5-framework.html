@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Ways to Extend The ASP.NET MVC 5 Framework | Rodan Sotto’s Tech Blog</title>
+<meta name="generator" content="Jekyll v3.9.2">
+<meta property="og:title" content="Ways to Extend The ASP.NET MVC 5 Framework">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="A software developer’s personal notes">
+<meta property="og:description" content="A software developer’s personal notes">
+<link rel="canonical" href="https://rodansotto.github.io/tech-blog/2017/11/03/ways-to-extend-the-asp-net-mvc-5-framework.html">
+<meta property="og:url" content="https://rodansotto.github.io/tech-blog/2017/11/03/ways-to-extend-the-asp-net-mvc-5-framework.html">
+<meta property="og:site_name" content="Rodan Sotto’s Tech Blog">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2017-11-03T00:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Ways to Extend The ASP.NET MVC 5 Framework">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2017-11-03T00:00:00+00:00","datePublished":"2017-11-03T00:00:00+00:00","description":"A software developer’s personal notes","headline":"Ways to Extend The ASP.NET MVC 5 Framework","mainEntityOfPage":{"@type":"WebPage","@id":"https://rodansotto.github.io/tech-blog/2017/11/03/ways-to-extend-the-asp-net-mvc-5-framework.html"},"url":"https://rodansotto.github.io/tech-blog/2017/11/03/ways-to-extend-the-asp-net-mvc-5-framework.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="icon" href="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+  <link rel="stylesheet" href="/tech-blog/assets/css/main.css">
+  <script src="/tech-blog/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="https://rodansotto.github.io/tech-blog/feed.xml" title="Rodan Sotto's Tech Blog">
+<!--<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">-->
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs tpbg ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+
+  .tpbg {
+    background: transparent;
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header " role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner">
+<span class="site-brand"><a class="site-brand-inner" rel="author" href="/tech-blog/">
+  <img class="site-favicon" title="Rodan Sotto's Tech Blog" src="" onerror="this.style.display='none'">
+  Rodan Sotto's Tech Blog
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger">
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewbox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger">
+<a class="page-link" href="/tech-blog/">HOME</a><a class="page-link" href="/tech-blog/archives.html">ARCHIVES</a><a class="page-link" href="/tech-blog/categories.html">CATEGORIES</a><a class="page-link" href="/tech-blog/search2.html">SEARCH</a>
+
+
+
+
+</div>
+        </nav>
+</div>
+  </div>
+</header>
+
+<script>
+  function initHeader() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;var scrollStatus = "";
+
+      if (y <= 0) {
+        scrollStatus = "top";
+      } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  }
+  document.addEventListener('DOMContentLoaded', initHeader);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    hashValue = decodeURIComponent(hashValue);
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('auto' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+<div id="click-to-top" class="click-to-top">
+  <i class="fa fa-arrow-up"></i>
+</div>
+<script>
+  (function () {
+    const clickToTop = document.getElementById('click-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        clickToTop.classList.add('show')
+      }else {
+        clickToTop.classList.remove('show')
+      }
+    });
+    clickToTop.addEventListener('click', () => {
+      window.smoothScrollTo(0);
+    });
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="post">
+  <section>
+
+
+
+
+
+
+
+
+
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">Ways to Extend The ASP.NET MVC 5 Framework</h1>
+  <h2 class="post-subtitle"></h2>
+
+  <p class="post-meta">
+    <time class="dt-published" datetime="2017-11-03T00:00:00+00:00" itemprop="datePublished"><i class="fa fa-calendar"></i> Nov 3, 2017
+    </time>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 6 mins</span>
+  </p></header>
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <p><img src="/tech-blog/assets/images/mvcbloglogo.png" alt=""></p>
+
+<p>ASP.NET MVC 5 Framework does not limit you to the capabilities it provide out of the box.  It is an extensible framework which emphasizes on convention over configuration or coding by convention, and below are some ways you can extend it.</p>
+
+<ul>
+  <li>
+<a href="http://www.c-sharpcorner.com/UploadFile/db2972/custom-action-result-sample-in-mvc-day-36/">Action Results</a>
+    <ul>
+      <li>Action results are returned by the controller (e.g. <em>return View()</em>).</li>
+      <li>They are responsible for writing response to a request.</li>
+      <li>They are executed internally by MVC to write out the response.</li>
+      <li>You can create a custom action result by inheriting from <em>ActionResult</em> and overriding <em>ExecuteResult()</em>, or by extending an existing action result (e.g. <em>FileResult</em>).</li>
+    </ul>
+  </li>
+  <li>
+<a href="https://docs.microsoft.com/en-us/aspnet/mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-custom-action-filters">Action Filters</a>
+    <ul>
+      <li>Action filters execute before and after a controller action method.</li>
+      <li>You can create a custom action filter by implementing <em>ActionFilter</em>’s <em>OnActionExecuting()</em> and <em>OnActionExecuted()</em> methods.</li>
+      <li>They can be applied at the method, controller, or global scope.</li>
+    </ul>
+  </li>
+  <li>
+<a href="http://www.c-sharpcorner.com/article/custom-html-helper-in-Asp-Net-mvc/">Helper Methods</a>
+    <ul>
+      <li>Two types: inline Razor helpers (<em>@helper</em>) and HTML helpers (<em>@Html.*</em>).</li>
+      <li>They reduce code duplication but if it involves complex logic consider using partial view / child action method.</li>
+      <li>You can create your own HTML helper by creating an extension method to <em>HTMLHelper</em>.</li>
+    </ul>
+  </li>
+  <li>
+<a href="http://marisks.net/2017/02/03/razor-view-engine-for-feature-folders/">View Engines</a>
+    <ul>
+      <li>When controller returns a view, the MVC executes the action result and in the process uses a view engine to find a view and returns a <em>ViewEngineResult</em> whose <em>Render()</em> method is called.</li>
+      <li>A custom view engine can be used to extend view selection functionality such as to implement swappable UI themes (e.g. Wordpress themes).</li>
+      <li>You create a custom view engine by extending the <em>RazorViewEngine</em> and in the constructor setting the search location format properties to use the theme directories that you want the view engine to search for for the currently active theme.</li>
+      <li>You register the custom view engine in <em>Application_Start()</em> calling <em>ViewEngines.Engines.Insert()</em>, inserting it as the first engine to be evaluated.  You can leave the <em>RazorViewEngine</em> there if you want a fallback.  Note that MVC supports multiple view engines.</li>
+    </ul>
+  </li>
+  <li>
+<a href="http://www.tutorialsteacher.com/mvc/filters-in-asp.net-mvc">Exception Filters</a>
+    <ul>
+      <li>Exception filters catch errors that occur inside the scope of action method execution (including inside action filters and action results) and thus provide more contextual framework information.</li>
+      <li>The default exception filter in MVC is the <em>HandleErrorAttribute</em>.</li>
+      <li>You can create a custom exception filter by implementing the <em>IExceptionFilter</em>’s <em>OnException()</em>.</li>
+      <li>They can be applied at the method, controller, or global scope.</li>
+      <li>The <em>ExceptionHandled</em> flag is useful when using multiple exception filters: checking to make sure exception was not handled by previous exception filter before continuing.</li>
+      <li>
+<em>Application_Error()</em> should still be implemented as a fallback.</li>
+    </ul>
+  </li>
+  <li>
+<a href="http://prideparrot.com/blog/archive/2012/4/model_validation_in_asp_net_mvc">Server-Side Validations</a>
+    <ul>
+      <li>Two ways: via data attributes (e.g. <em>Required</em>, <em>Range</em>, etc.) and implementation of <em>IValidatableObject</em>’s <em>Validate()</em> in the model class, the former being reusable while the latter providing easy cross property validation.</li>
+      <li>The model binder that binds the request data to the model classes (or the action method parameters) checks the data attributes first then the <em>Validate()</em> and populates the controller’s <em>ModelState</em> property which you can check if any errors occurred in the model binding process (e.g. <em>ModelState.IsValid</em>).</li>
+      <li>You can create a custom data attribute by inheriting from <em>ValidationAttribute</em> and overriding <em>IsValid()</em> and setting the <em>ErrorMessage</em> in the constructor.</li>
+      <li>You can implement the <em>IValidatableObject</em>’s <em>Validate()</em> in the model class and return <em>List</em> containing any error messages.</li>
+    </ul>
+  </li>
+  <li>
+<a href="http://www.dotnetcurry.com/aspnet-mvc/1261/custom-model-binder-aspnet-mvc">Model Binders</a>
+    <ul>
+      <li>A model binder implements the <em>IModelBinder</em>’s <em>BindModel()</em>.  The binder model is returned by a model binder provider that implements <em>IModelBinderProvider</em>’s <em>GetBinder</em>().  The model binding process searches through a list of model binder providers asking them if they can provide a model binder for the data it is trying to bind.</li>
+      <li>You can create a custom model binder by implementing <em>IModelBinder</em>’s <em>BindModel</em>() and adding any error messages to the controller’s <em>ModelState</em>.  Then you create a custom model binder provider by implementing <em>IModelBinderProvider</em>’s <em>GetBinder</em>() to return the custom model binder you just created.  You register your custom model binder provider in <em>Application_Start</em>() by calling <em>ModelBinderProviders.BinderProviders.Insert()</em>.</li>
+    </ul>
+  </li>
+  <li>
+<a href="http://www.c-sharpcorner.com/UploadFile/97fc7a/smart-working-with-custom-value-providers-in-Asp-Net-mvc/">Value Providers</a>
+    <ul>
+      <li>A model binder employs value providers to provide it data from different sources such as posted form data, query string, route data, etc. that it can use to populate the action method parameters.</li>
+      <li>Possible uses of a custom value provider is to provide HTTP header data or settings from configuration file or database.</li>
+      <li>You create a custom value provider by implementing <em>IValueProvider</em>’s two methods: <em>ContainsPrefix()</em> to return true if the passed in property name matches any data the custom value provider provides and <em>GetValue()</em> to return the value itself.  Then you create a custom value provider factory by inheriting from <em>ValueProviderFactory</em> and overriding <em>GetValueProvider()</em> to return the custom value provider you just created.  You register your custom value provider factory in <em>Application_Start()</em> by calling <em>ValueProviderFactories.Factories.Insert()</em>.</li>
+    </ul>
+  </li>
+  <li>
+<a href="http://www.dotnetfunda.com/articles/show/2935/creating-custom-authentication-filter-in-aspnet-mvc">Authentication Filters</a> and Authorization Filters
+    <ul>
+      <li>Authentication filters implement <em>IAuthenticationFilter</em>’s two methods: <em>OnAuthentication</em>() to authenticate a request and <em>OnAuthenticationChallenge</em>() that runs when authentication fails and right after action method execution.</li>
+      <li>Authorization filters implement <em>IAuthorizationFilter</em>’s <em>OnAuthorization()</em>.</li>
+      <li>These filters return a non-null context results if authentication/authorization fails.</li>
+      <li>Note that MVC supports Forms and Windows authentication by default and does not support Basic authentication.  One use of a custom authentication filter is to provide Basic authentication.</li>
+      <li>You create a custom authentication filter by implementing <em>IAuthenticationFilter</em>.  For custom authorization filter, consider inheriting from <em>AuthorizeAttribute</em> instead.</li>
+    </ul>
+  </li>
+  <li>Action Name Selectors and <a href="http://www.tutorialsteacher.com/articles/define-custom-action-selector-in-mvc">Action Method Selectors</a>
+    <ul>
+      <li>Action name selectors (e.g. <em>[ActionName(“xxxxx”)]</em>) and action method selectors (e.g. <em>[HttpGet]</em> and <em>[HttpPost]</em>) influence the decision process of selecting which action method to handle the request by the action invoker.</li>
+      <li>You can create a custom action name selector by inheriting from <em>ActionNameSelectorAttribute</em> and overriding <em>IsValidName()</em>.</li>
+      <li>You can create a custom action method selector by inheriting from <em>ActionMethodSelectorAttribute</em> and overriding <em>IsValidForRequest()</em>.</li>
+    </ul>
+  </li>
+</ul>
+
+<p> </p>
+
+<p><strong>Additional References:</strong></p>
+
+<ul>
+  <li>
+<a href="https://docs.microsoft.com/en-us/aspnet/mvc/overview/getting-started/lifecycle-of-an-aspnet-mvc-5-application">ASP.NET MVC 5 Application Lifecycle Diagram</a> - this will give you an idea how MVC 5 works</li>
+  <li>
+<a href="http://beletsky.net/blog/categories/insidemvc/">A look inside MVC</a> - a deep dive inside MVC (older version), but still worth taking a look</li>
+  <li>
+<a href="https://github.com/aspnet/AspNetWebStack">MVC 5 Source Code</a> - if you’re up to it why not pull the source code from GitHub</li>
+</ul>
+
+<p> </p>
+
+<p><strong>BONUS:</strong> Found this good article worth looking too: <a href="http://asp.net-hacker.rocks/2016/02/18/extending-razor-views.html">10 ways to extend your Razor views in ASP.​NET core - the complete overview</a>.</p>
+
+
+    </div>
+
+</article>
+<div class="post-nav">
+<a class="previous" href="/tech-blog/2017/11/01/asp-net-mvc-5-owinkatana-pipeline-and-middleware-components-a-demo.html" title="ASP.NET MVC 5: OWIN/Katana Pipeline And Middleware Components (A Demo)">ASP.NET MVC 5: OWIN/Katana Pipeline And...</a><a class="next" href="/tech-blog/2017/11/07/dont-confuse-dip-ioc-and-di-together-they-are-all-different-but-related.html" title="Don't confuse DIP, IoC, and DI together.  They are all different but related.">Don't confuse DIP, IoC, and DI...</a>
+</div>
+<div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/tech-blog/2014/10/27/new-to-active-directory-and-need-to-use-it-in-net.html" title="Don't confuse DIP, IoC, and DI together.  They are all different but related.">New to Active Directory and need to use it in .NET?</a></li>
+<li><a class="post-link" href="/tech-blog/2013/11/12/asp-net-mvc-ef-razor.html" title="Don't confuse DIP, IoC, and DI together.  They are all different but related.">ASP.NET: Beginner's Resource on MVC 4, Entity Framework, and Razor</a></li>
+<li><a class="post-link" href="/tech-blog/2013/12/09/javascript-regexp-error-dom-event.html" title="Don't confuse DIP, IoC, and DI together.  They are all different but related.">JavaScript: RegExp, Error, DOM, and Event</a></li>
+<li><a class="post-link" href="/tech-blog/2017/12/29/learning-python-for-numeric-and-scientific-applications.html" title="Don't confuse DIP, IoC, and DI together.  They are all different but related.">Learning Python for Numeric and Scientific Applications</a></li>
+</ul>
+    </div>
+<div class="post-comments"></div></section>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items --><style type="text/css" media="screen">
+.post-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+</style>
+
+<div class="post-menu">
+  <div class="post-menu-title">TOC</div>
+  <div class="post-menu-content"></div>
+</div>
+
+<script>
+  function generateContent() {
+    var menu = document.querySelector(".post-menu");
+    var menuContent =  menu.querySelector(".post-menu-content");
+    var headings = document.querySelector(".post-content").querySelectorAll("h2, h3, h4, h5, h6");
+
+    // Hide menu when no headings
+    if (headings.length === 0) {
+      return menu.style.display = "none";
+    }
+
+    // Generate post menu
+    var menuHTML = '';
+    for (var i = 0; i < headings.length; i++) {
+      var h = headings[i];
+      menuHTML += (
+        '<li class="h-' + h.tagName.toLowerCase() + '">'
+        + '<a href="#h-' + h.getAttribute('id') + '">' + h.textContent + '</a></li>');
+    }
+
+    menuContent.innerHTML = '<ul>' + menuHTML + '</ul>';
+
+    // The header element
+    var header = document.querySelector('header.site-header');
+
+    function doMenuCollapse(index, over_items) {
+      var items = menuContent.firstChild.children;
+
+      if (over_items == undefined) {
+        over_items = 20;
+      }
+
+      if (items.length < over_items) {
+        return;
+      }
+
+      var activeItem = items[index];
+      var beginItem = activeItem
+      var endItem = activeItem
+      var beginIndex = index;
+      var endIndex = index + 1;
+      while (beginIndex >= 0
+        && !items[beginIndex].classList.contains('h-h2')) {
+        beginIndex -= 1;
+      }
+      while (endIndex < items.length
+        && !items[endIndex].classList.contains('h-h2')) {
+        endIndex += 1;
+      }
+      for (var i = 0; i < beginIndex; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+      for (var i = beginIndex + 1; i < endIndex; i++) {
+        item = items[i]
+        // if (!item.classList.contains('h-h2')) {
+          item.style.display = '';
+        // }
+      }
+      for (var i = endIndex; i < items.length; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+    }
+
+    // Init menu collapsed
+    doMenuCollapse(-1);
+
+    // Active the menu item
+    window.addEventListener('scroll', function (event) {
+      var lastActive = menuContent.querySelector('.active');
+      var changed = true;
+      var activeIndex = -1;
+      for (var i = headings.length - 1; i >= 0; i--) {
+        var h = headings[i];
+        var headingRect = h.getBoundingClientRect();
+        var headerRect = header.getBoundingClientRect();
+        var headerTop = Math.floor(headerRect.top);
+        var headerHeight = Math.floor(headerRect.height);
+        var headerHeight = headerTop + headerHeight + 20;
+        if (headingRect.top <= headerHeight) {
+          var id = 'h-' + h.getAttribute('id');
+          var a = menuContent.querySelector('a[href="#' + id  + '"]');
+          var curActive = a.parentNode;
+          if (curActive) {
+            curActive.classList.add('active');
+            activeIndex = i;
+          }
+          if (lastActive == curActive) {
+            changed = false;
+          }
+          break;
+        }
+      }
+      if (changed) {
+        if (lastActive) {
+          lastActive.classList.remove('active');
+        }
+        doMenuCollapse(activeIndex);
+      }
+      event.preventDefault();
+    });
+  }
+  generateContent();
+</script>
+</section>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/tech-blog/"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-inner">
+<div></div>
+      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
+      generator." href="https://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
+      <div class="footer-col rss-subscribe">Subscribe <a href="/tech-blog/feed.xml">via RSS</a>
+</div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
