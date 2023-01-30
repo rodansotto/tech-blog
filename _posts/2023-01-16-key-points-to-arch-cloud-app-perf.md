@@ -14,9 +14,10 @@ These are key points from the course I took recently on [Build great solutions w
 Here are the links to the other parts:
 - [Part 1: Cost](/tech-blog/2022/12/14/key-points-to-arch-cloud-app-cost.html)
 - [Part 2: Operations](/tech-blog/2022/12/16/key-points-to-arch-cloud-app-ops.html)
+- [Part 4: Reliability](/tech-blog/2023/01/30/key-points-to-arch-cloud-app-reliab.html)
 
 <p></p>
-This is Part 3: Performance and below are the key points to ensure your cloud architecture is performing at its best thus providing users with the best experience.
+**This is Part 3: Performance** and below are the key points to ensure your cloud architecture is performing at its best thus providing users with the best experience.
 
 
 
